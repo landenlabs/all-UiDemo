@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="TextAppearanceSwitch">
+        <attr name="textColor" format="color" />
+        <attr name="textSize" format="dimension" />
+        <attr name="textStyle" format="integer" />
+        <attr name="typeface" format="reference" />
+        <attr name="fontFamily" format="string" />
+        <attr name="underline" format="boolean" />
+        <attr name="descenders" format="boolean" />
+        <attr name="textColorHighlight" format="color" />
+        <attr name="textColorHint" format="color" />
+        <attr name="textColorLink" format="color" />
+    </declare-styleable>
+
+
+    <attr name="custom_SeekBarStyle" format="reference" />
+    <declare-styleable name="custom_SeekBar">
+
+        <attr name="tickMin" format="integer" />
+        <attr name="tickMax" format="integer" />
+        <attr name="tickStep" format="integer" />
+        <attr name="tickWidth" format="integer" />
+        <attr name="showTick" format="boolean" />
+        <attr name="tickColor" format="color" />
+        <attr name="tickUnder" format="boolean" />
+
+        <attr name="tickMark" format="reference" />
+    </declare-styleable>
+</resources>
