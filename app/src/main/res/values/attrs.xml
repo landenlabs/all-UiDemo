@@ -26,6 +26,7 @@
         <attr name="tickColor" format="color" />
         <attr name="tickUnder" format="boolean" />
 
-        <attr name="tickMark" format="reference" />
+        <!-- Warning attribute "tickMark" is already used by SeekBar so use tickMarker -->
+        <attr name="tickMarker" format="reference" />
     </declare-styleable>
 </resources>

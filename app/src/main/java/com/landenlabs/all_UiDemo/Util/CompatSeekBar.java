@@ -27,6 +27,9 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
+import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
@@ -50,7 +53,6 @@ public class CompatSeekBar extends android.support.v7.widget.AppCompatSeekBar {
     float mTickWidth = 20;
     boolean mTickUnder = false;
 
-    int mTickMark = -1;
     Drawable mTickMarkDr;
 
 
@@ -84,6 +86,19 @@ public class CompatSeekBar extends android.support.v7.widget.AppCompatSeekBar {
         }
     }
 
+    public void setTickWidth(float tickWidth) {
+        if (mTickWidth != tickWidth) {
+            mTickWidth = tickWidth;
+            invalidate();
+        }
+    }
+
+    @Override
+    public synchronized void setProgress(int progress) {
+        super.setProgress(progress);
+        // super.setSecondaryProgress(progress);
+    }
+
     private void initCompSeekkBar(AttributeSet attrs, int defStyleAttr) {
         if (isInEditMode())
             return;
@@ -100,14 +115,14 @@ public class CompatSeekBar extends android.support.v7.widget.AppCompatSeekBar {
         mTickWidth = a.getInt(R.styleable.custom_SeekBar_tickWidth, 20);
         mTickUnder = a.getBoolean(R.styleable.custom_SeekBar_tickUnder, false);
 
-        mTickMark = a.getResourceId(R.styleable.custom_SeekBar_tickMark, -1);
-        int defColor = (mTickMark == -1) ? 0xff101010 : 0;
+        int tickMark = a.getResourceId(R.styleable.custom_SeekBar_tickMarker, -1);
+        int defColor = (tickMark == -1) ? 0xff101010 : 0;
         mTickColor = a.getColor(R.styleable.custom_SeekBar_tickColor, defColor);
 
         a.recycle();
 
-        if (mTickMark != -1) {
-            mTickMarkDr = getResources().getDrawable(mTickMark);
+        if (tickMark != -1) {
+            mTickMarkDr = getResources().getDrawable(tickMark);
         }
     }
 
@@ -126,6 +141,7 @@ public class CompatSeekBar extends android.support.v7.widget.AppCompatSeekBar {
     }
 
     protected  void drawTicks(Canvas canvas) {
+
         if (mTickWidth > 0 && (mTickColor != 0 || mTickMarkDr != null)) {
             float dX = mTickWidth / 2;
             float ticHeight = getHeight();
@@ -135,12 +151,12 @@ public class CompatSeekBar extends android.support.v7.widget.AppCompatSeekBar {
             float per2 = mMaxTic / getMax();
             float perStep =  mTickStep / getMax();
 
-            paint.setColor(mTickColor);
 
-            if (perStep > 0)
-            for (float xPer = per1; xPer < per2; xPer += perStep) {
-                float x = xPer * pixelWidth + getPaddingLeft();
-                drawTick(canvas, new RectF(x - dX, 0, x + dX, ticHeight), paint);
+            if (perStep > 0) {
+                for (float xPer = per1; xPer < per2; xPer += perStep) {
+                    float x = xPer * pixelWidth + getPaddingLeft();
+                    drawTick(canvas, new RectF(x - dX, 0, x + dX, ticHeight), paint);
+                }
             }
 
             float x = per2 * pixelWidth + getPaddingLeft();
@@ -150,9 +166,18 @@ public class CompatSeekBar extends android.support.v7.widget.AppCompatSeekBar {
 
     protected  void drawTick(Canvas canvas, RectF rectF, Paint paint) {
         if (mTickMarkDr == null) {
-            canvas.drawOval(rectF, paint);
+            if (mTickColor != 0) {
+                paint.setColor(mTickColor);
+                paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.MULTIPLY));
+            }
+            canvas.drawRect(rectF, paint);
+            // canvas.drawOval(rectF, paint);
         } else {
             mTickMarkDr.setBounds((int)rectF.left, (int)rectF.top, (int)rectF.right, (int)rectF.bottom);
+            if (mTickColor != 0) {
+                // mTickMarkDr.setColorFilter(new PorterDuffColorFilter(mTickColor, PorterDuff.Mode.SRC_OVER));
+                mTickMarkDr.setColorFilter(new PorterDuffColorFilter(mTickColor, PorterDuff.Mode.MULTIPLY));
+            }
             mTickMarkDr.draw(canvas);
         }
     }

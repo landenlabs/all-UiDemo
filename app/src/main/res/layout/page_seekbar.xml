@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#d0d0ff"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="- SeekBars -"
+        android:textColor="@android:color/black" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/expandBtn1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ProgessBars" />
+
+            <com.landenlabs.all_UiDemo.Util.ExpandablePanel
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_border1"
+                android:orientation="vertical"
+                app:handle="@+id/expandBtn1">
+
+                <ProgressBar
+                    android:id="@+id/progressBar1"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:indeterminate="true"
+                    android:padding="10dp" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar2"
+                    style="@android:style/Widget.SeekBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:indeterminate="true"
+                    android:padding="10dp" />
+
+            </com.landenlabs.all_UiDemo.Util.ExpandablePanel>
+
+            <Button
+                android:id="@+id/expandBtn2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SeekBars1" />
+
+            <com.landenlabs.all_UiDemo.Util.ExpandablePanel
+                android:id="@+id/expandPanel2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_border1"
+                android:orientation="vertical"
+                app:handle="@+id/expandBtn2" >
+
+                <SeekBar
+                    android:id="@+id/seekBar1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="#cff"
+                    android:max="100"
+                    android:padding="10dp"
+                    android:progress="50" />
+
+                <SeekBar
+                    android:id="@+id/seekBar2"
+                    style="@android:style/Widget.SeekBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="#cff"
+                    android:max="10"
+                    android:padding="10dp"
+                    android:progress="5"
+                    app:tickMark="@drawable/thumb_blue" />
+
+                <SeekBar
+                    android:id="@+id/seekBar3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="#cff"
+                    android:max="100"
+                    android:padding="10dp"
+                    android:progress="50"
+                    android:progressDrawable="@drawable/seekbar1" />
+
+                <SeekBar
+                    android:id="@+id/seekBar4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="#cff"
+                    android:max="100"
+                    android:padding="10dp"
+                    android:progress="50"
+                    android:progressDrawable="@drawable/seekbar_gray" />
+
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+                    <SeekBar
+                        android:id="@+id/seekBar5"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_margin="10dp"
+                        android:background="#cff"
+                        android:max="100"
+                        android:maxHeight="150dp"
+                        android:padding="10dp"
+                        android:progress="50"
+                        android:progressDrawable="@drawable/progress_bar_vertical"
+                        android:secondaryProgress="30" />
+
+                    <SeekBar
+                        android:id="@+id/seekBar6"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_margin="10dp"
+                        android:background="#cff"
+                        android:max="100"
+                        android:maxHeight="150dp"
+                        android:padding="10dp"
+                        android:progress="50"
+                        android:progressDrawable="@drawable/progress_bar_hor_cen"
+                        android:secondaryProgress="30" />
+
+                    <SeekBar
+                        android:id="@+id/seekBar7"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_margin="10dp"
+                        android:background="#cff"
+                        android:max="100"
+                        android:maxHeight="150dp"
+                        android:padding="10dp"
+                        android:progress="50"
+                        android:progressDrawable="@drawable/progress_bar_hor_left"
+                        android:secondaryProgress="30" />
+
+                </LinearLayout>
+
+            </com.landenlabs.all_UiDemo.Util.ExpandablePanel>
+
+            <Button
+                android:id="@+id/expandBtn3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SeekBars2" />
+
+            <com.landenlabs.all_UiDemo.Util.ExpandablePanel
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_border1"
+                android:orientation="vertical"
+                app:handle="@+id/expandBtn3">
+
+                <SeekBar
+                    android:id="@+id/seekBar10"
+                    style="@android:style/Widget.ProgressBar.Horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="#ccf"
+                    android:max="100"
+                    android:maxHeight="10dp"
+                    android:padding="10dp"
+                    android:progress="50"
+                    android:progressTint="@color/red_colors"
+                    android:secondaryProgress="90"
+                    android:secondaryProgressTint="@color/green_colors" />
+
+                <SeekBar
+                    android:id="@+id/seekBar11"
+                    style="@android:style/Widget.Holo.SeekBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="#cff"
+                    android:max="100"
+                    android:padding="10dp"
+                    android:progress="50"
+                    android:tickMarkTint="#cc0"
+                    android:tickMarkTintMode="multiply" />
+
+                <SeekBar
+                    android:id="@+id/seekBar12"
+                    style="@android:style/Widget.Holo.SeekBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="#cff"
+                    android:max="100"
+                    android:padding="10dp"
+                    android:progress="50"
+                    android:thumb="@android:drawable/button_onoff_indicator_on" />
+
+                <SeekBar
+                    android:id="@+id/seekBar13"
+                    style="@android:style/Widget.RatingBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="#cff"
+                    android:max="100"
+                    android:padding="10dp"
+                    android:progress="50"
+                    android:thumb="@drawable/tick_circle" />
+
+                <SeekBar
+                    android:id="@+id/seekBar14"
+                    style="@android:style/Widget.Holo.RatingBar.Indicator"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="#cff"
+                    android:max="100"
+                    android:padding="10dp"
+                    android:progress="50"
+                    android:thumb="@drawable/tick_circle" />
+
+                <SeekBar
+                    android:id="@+id/seekBar15"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="#ccf"
+                    android:max="100"
+                    android:padding="10dp"
+                    android:progress="50"
+                    android:thumb="@drawable/tick_circle" />
+
+                <SeekBar
+                    android:id="@+id/seekBar16"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="#ccf"
+                    android:max="100"
+                    android:padding="10dp"
+                    android:progress="50"
+                    android:progressDrawable="@android:drawable/progress_indeterminate_horizontal"
+                    android:thumb="@drawable/tick_circle" />
+
+                <SeekBar
+                    android:id="@+id/seekBar17"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="#ccf"
+                    android:max="100"
+                    android:padding="10dp"
+                    android:progress="50"
+                    android:progressDrawable="@android:drawable/progress_horizontal"
+                    android:thumb="@drawable/tick_circle" />
+
+            </com.landenlabs.all_UiDemo.Util.ExpandablePanel>>
+
+            <Button
+                android:id="@+id/expandBtn4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CompatSeekBar" />
+
+            <com.landenlabs.all_UiDemo.Util.ExpandablePanel
+                android:id="@+id/expandPanel4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_border1"
+                android:orientation="vertical"
+                app:handle="@+id/expandBtn4">
+
+                <com.landenlabs.all_UiDemo.Util.CompatSeekBar
+                    android:id="@+id/compseekbar1"
+                    style="@android:style/Widget.SeekBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="#cff"
+                    android:max="100"
+                    android:padding="10dp"
+                    android:progress="50"
+                    app:tickMark="@drawable/tick_circle"
+                    app:tickMax="80"
+                    app:tickMin="20"
+                    app:tickStep="20"
+                    app:tickUnder="true" />
+
+                <com.landenlabs.all_UiDemo.Util.CompatSeekBar
+                    android:id="@+id/compseekbar2"
+                    style="@android:style/Widget.SeekBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="#ccf"
+                    android:max="100"
+                    android:padding="10dp"
+                    android:progress="50"
+                    android:tickMarkTint="#ff0000"
+                    app:tickMark="@drawable/tick_circle"
+                    app:tickMax="80"
+                    app:tickMin="20"
+                    app:tickStep="20"
+
+                    app:tickUnder="false"
+                    app:tickWidth="20" />
+
+
+                <com.landenlabs.all_UiDemo.Util.CompatSeekBar
+                    android:id="@+id/compseekbar3"
+                    style="@android:style/Widget.SeekBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="#ccf"
+                    android:max="10"
+                    android:padding="10dp"
+                    android:progress="50"
+                    app:tickColor="#f0f0"
+                    app:tickMarker="@drawable/thumb_blue"
+                    app:tickMax="80"
+                    app:tickMin="20"
+                    app:tickStep="2"
+
+                    app:tickUnder="false"
+                    app:tickWidth="30" />
+
+
+                <com.landenlabs.all_UiDemo.Util.CompatSeekBar
+                    android:id="@+id/compseekbar4"
+                    style="@android:style/Widget.SeekBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="#cfc"
+                    android:max="10"
+                    android:padding="10dp"
+                    android:progress="50"
+                    app:tickColor="#ff00ff00"
+                    app:tickMax="8"
+                    app:tickMin="2"
+                    app:tickStep="2"
+
+                    app:tickUnder="false"
+                    app:tickWidth="40" />
+
+                <com.landenlabs.all_UiDemo.Util.CompatSeekBar
+                    android:id="@+id/compseekbar5"
+                    style="@android:style/Widget.SeekBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="#cfc"
+                    android:max="100"
+                    android:padding="10dp"
+                    android:progress="50"
+                    app:tickMax="80"
+                    app:tickMin="20"
+
+                    app:tickStep="20"
+                    app:tickUnder="false" />
+            </com.landenlabs.all_UiDemo.Util.ExpandablePanel>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
