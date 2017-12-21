@@ -78,32 +78,33 @@ public class BoundedLinearLayout extends LinearLayout {
     private final int mBoundedHeightPixel;
     private final float mBoundedWidthPercent;
     private final float mBoundedHeightPercent;
+    private static final int MAX_INT = Integer.MAX_VALUE;
 
     public BoundedLinearLayout(Context context) {
         super(context);
-        mBoundedWidthPixel = 0;
-        mBoundedHeightPixel = 0;
-        mBoundedWidthPercent = 0;
-        mBoundedHeightPercent = 0;
+        mBoundedWidthPixel = MAX_INT;
+        mBoundedHeightPixel = MAX_INT;
+        mBoundedWidthPercent = 1;
+        mBoundedHeightPercent = 1;
     }
 
     public BoundedLinearLayout(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs);
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.BoundedView, defStyle, 0);
-        mBoundedWidthPixel = a.getDimensionPixelSize(R.styleable.BoundedView_bounded_width, 0);
-        mBoundedHeightPixel = a.getDimensionPixelSize(R.styleable.BoundedView_bounded_height, 0);
-        mBoundedWidthPercent = a.getFloat(R.styleable.BoundedView_bounded_widthPercent, 0);
-        mBoundedHeightPercent = a.getFloat(R.styleable.BoundedView_bounded_heightPercent, 0);
+        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.BoundedView, defStyle, MAX_INT);
+        mBoundedWidthPixel = a.getDimensionPixelSize(R.styleable.BoundedView_bounded_width, MAX_INT);
+        mBoundedHeightPixel = a.getDimensionPixelSize(R.styleable.BoundedView_bounded_height, MAX_INT);
+        mBoundedWidthPercent = a.getFloat(R.styleable.BoundedView_bounded_widthPercent, 1);
+        mBoundedHeightPercent = a.getFloat(R.styleable.BoundedView_bounded_heightPercent, 1);
         a.recycle();
     }
 
     public BoundedLinearLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.BoundedView, 0, 0);
-        mBoundedWidthPixel = a.getDimensionPixelSize(R.styleable.BoundedView_bounded_width, 0);
-        mBoundedHeightPixel = a.getDimensionPixelSize(R.styleable.BoundedView_bounded_height, 0);
-        mBoundedWidthPercent = a.getFloat(R.styleable.BoundedView_bounded_widthPercent, 0);
-        mBoundedHeightPercent = a.getFloat(R.styleable.BoundedView_bounded_heightPercent, 0);
+        mBoundedWidthPixel = a.getDimensionPixelSize(R.styleable.BoundedView_bounded_width, MAX_INT);
+        mBoundedHeightPixel = a.getDimensionPixelSize(R.styleable.BoundedView_bounded_height, MAX_INT);
+        mBoundedWidthPercent = a.getFloat(R.styleable.BoundedView_bounded_widthPercent, 1);
+        mBoundedHeightPercent = a.getFloat(R.styleable.BoundedView_bounded_heightPercent, 1);
         a.recycle();
     }
 
@@ -121,28 +122,24 @@ public class BoundedLinearLayout extends LinearLayout {
 
         // Adjust width to max of percent of parent.
         int percentWidth = Math.round(measuredWidth * mBoundedWidthPercent);
-        if (mBoundedWidthPercent > 0 && getMeasuredWidth() > percentWidth) {
-            int measureMode = MeasureSpec.AT_MOST;
-            widthMeasureSpec = MeasureSpec.makeMeasureSpec(percentWidth, measureMode);
+        if (measuredWidth > percentWidth) {
+            widthMeasureSpec = MeasureSpec.makeMeasureSpec(percentWidth, MeasureSpec.AT_MOST);
         }
         // Adjust height to max of percent of parent.
         int percentHeight = Math.round(measuredHeight * mBoundedHeightPercent);
-        if (mBoundedHeightPercent > 0 && getMeasuredHeight() > percentHeight) {
-            int measureMode = MeasureSpec.AT_MOST;
-            heightMeasureSpec = MeasureSpec.makeMeasureSpec(percentHeight, measureMode);
+        if (measuredHeight > percentHeight) {
+            heightMeasureSpec = MeasureSpec.makeMeasureSpec(percentHeight, MeasureSpec.AT_MOST);
         }
 
         // Adjust width as necessary
-        if (mBoundedWidthPixel > 0 && mBoundedWidthPixel < measuredWidth) {
+        if (measuredWidth > mBoundedWidthPixel ) {
             int measureMode = MeasureSpec.getMode(widthMeasureSpec);
-            measureMode = MeasureSpec.AT_MOST;
-            widthMeasureSpec = MeasureSpec.makeMeasureSpec(mBoundedWidthPixel, measureMode);
+            widthMeasureSpec = MeasureSpec.makeMeasureSpec(mBoundedWidthPixel, MeasureSpec.AT_MOST);
         }
         // Adjust height as necessary
-        if (mBoundedHeightPixel > 0 && mBoundedHeightPixel < measuredHeight) {
+        if (measuredHeight > mBoundedHeightPixel) {
             int measureMode = MeasureSpec.getMode(heightMeasureSpec);
-            measureMode = MeasureSpec.AT_MOST;
-            heightMeasureSpec = MeasureSpec.makeMeasureSpec(mBoundedHeightPixel, measureMode);
+            heightMeasureSpec = MeasureSpec.makeMeasureSpec(mBoundedHeightPixel, MeasureSpec.AT_MOST);
         }
 
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);

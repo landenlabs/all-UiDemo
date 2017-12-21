@@ -205,6 +205,7 @@ public class MainActivity extends ActionBarActivity    {
 
             new PageItem( "Menu", R.layout.page_menu_frag),
 
+           // new PageItem( "Bounded views", R.layout.page_bounded_size),
 
             // new PageItem( "DrawerLayout", R.layout.page_drawer_layout),
             new PageItem( "Scroll Resize", R.layout.page_scroll_resize),
