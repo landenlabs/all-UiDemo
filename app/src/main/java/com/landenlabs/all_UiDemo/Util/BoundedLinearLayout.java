@@ -124,11 +124,13 @@ public class BoundedLinearLayout extends LinearLayout {
         int percentWidth = Math.round(measuredWidth * mBoundedWidthPercent);
         if (measuredWidth > percentWidth) {
             widthMeasureSpec = MeasureSpec.makeMeasureSpec(percentWidth, MeasureSpec.AT_MOST);
+            measuredWidth = percentWidth;
         }
         // Adjust height to max of percent of parent.
         int percentHeight = Math.round(measuredHeight * mBoundedHeightPercent);
         if (measuredHeight > percentHeight) {
             heightMeasureSpec = MeasureSpec.makeMeasureSpec(percentHeight, MeasureSpec.AT_MOST);
+            measuredHeight = percentHeight;
         }
 
         // Adjust width as necessary
