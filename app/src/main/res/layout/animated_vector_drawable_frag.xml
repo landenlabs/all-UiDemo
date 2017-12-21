@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="Animataed Vector Drawable"
+        android:textColor="@android:color/black"
+        android:textSize="16dp" />
+
+    <ScrollView
+        android:background="@drawable/paper_lite"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <CheckedTextView
+                android:id="@+id/avd_check1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="CheckedTextView"
+                android:checked="true"
+                android:checkMark="@drawable/checkpath_anim_sel"
+                />
+
+            <CheckedTextView
+                android:id="@+id/avd_check2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="CheckedTextView 20dp"
+                android:textSize="20dp"
+                android:checked="true"
+                android:checkMark="@drawable/checkpath_anim_sel"
+                />
+
+            <CheckedTextView
+                android:id="@+id/avd_check3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="CheckedTextView 30dp"
+                android:textSize="30dp"
+                android:checked="true"
+                android:checkMark="@drawable/checkpath256_anim_sel_scale"
+                />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="- Bottom -"
+        android:textColor="@android:color/black"
+        android:textSize="16dp" />
+
+
+</LinearLayout>

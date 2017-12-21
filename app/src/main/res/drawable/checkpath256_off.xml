@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="256dp"
+    android:height="256dp"
+    android:viewportHeight="32.0"
+    android:viewportWidth="32.0">
+
+    <path
+        android:name="check"
+        android:pathData="M4,20 l8,8 l16,-23"
+        android:strokeColor="#ffff0000"
+        android:strokeWidth="4"
+        android:strokeLineCap="round"
+        android:trimPathStart="1"/>
+
+    <path
+        android:name="box"
+        android:pathData="M0,0 l32,0 l0,32 l-32,0 l0,-32"
+        android:strokeColor="#f0f0"
+        android:strokeWidth="1"
+        />
+
+</vector>

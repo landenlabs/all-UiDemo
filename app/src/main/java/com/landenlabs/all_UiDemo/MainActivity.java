@@ -228,10 +228,13 @@ public class MainActivity extends ActionBarActivity    {
             new PageItem( "Checkbox Right",  R.layout.page_checkbox_right ),
             new PageItem( "Checkbox Left",  R.layout.page_checkbox_left ),
 
+            new PageItem( "Animated Vector",  R.layout.page_animated_vector_drawable ),
+
             new PageItem( "SeekBar", R.layout.page_seekbar),
 
             new PageItem( "Relative Layout",  R.layout.page_rellayout ),
             new PageItem( "Other Layout",  R.layout.page_otherlayout_frag ),
+            new PageItem( "Bounded views", R.layout.page_bounded_size),
             new PageItem( "Layout Anim",  R.layout.page_layout_anim ),
             new PageItem( "Full Screen",  R.layout.page_fullscreen ),
 

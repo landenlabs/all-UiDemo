@@ -23,7 +23,7 @@
                 android:layout_height="wrap_content"
 
                 android:background="@drawable/transparent_ripple"
-                android:drawableRight="@drawable/checkline"
+                android:drawableRight="@drawable/checkmark_sel"
                 android:gravity="left|center_vertical"
                 android:text="Button"
                 android:textAllCaps="false"
@@ -37,7 +37,7 @@
                 android:layout_height="wrap_content"
 
                 android:background="@drawable/transparent_ripple"
-                android:drawableRight="@drawable/checkline"
+                android:drawableRight="@drawable/checkmark_sel"
                 android:gravity="left|center_vertical"
                 android:text="AppCompatButton"
                 android:textAllCaps="false"
@@ -51,7 +51,7 @@
                 android:layout_height="wrap_content"
 
                 android:background="@drawable/transparent_ripple"
-                android:drawableRight="@drawable/checkline"
+                android:drawableRight="@drawable/checkmark_sel"
                 android:gravity="left|center_vertical"
                 android:hapticFeedbackEnabled="true"
 
@@ -65,7 +65,7 @@
                 android:layout_height="wrap_content"
 
                 android:background="@drawable/transparent_ripple"
-                android:drawableRight="@drawable/checkline"
+                android:drawableRight="@drawable/checkmark_sel"
                 android:gravity="left|center_vertical"
                 android:hapticFeedbackEnabled="true"
 
@@ -85,7 +85,7 @@
                 android:background="@drawable/transparent_ripple"
                 android:button="@null"
                 android:checked="true"
-                android:drawableRight="@drawable/checkline"
+                android:drawableRight="@drawable/checkmark_sel"
                 android:gravity="left|center_vertical"
                 android:text="CheckBox"
                 android:textColor="@android:color/white"
@@ -98,7 +98,7 @@
                 android:background="@drawable/transparent_ripple"
                 android:button="@null"
                 android:checked="true"
-                android:drawableRight="@drawable/checkline"
+                android:drawableRight="@drawable/checkpath_anim_sel"
                 android:gravity="left|center_vertical"
                 android:text="AppCompatCheckBox"
                 android:textColor="@android:color/white"
@@ -109,7 +109,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/buttonHeight"
                 android:background="@drawable/transparent_ripple"
-                android:checkMark="@drawable/checkline"
+                android:checkMark="@drawable/checkmark_sel"
                 android:checked="true"
                 android:gravity="left|center_vertical"
                 android:text="AppCompatCheckedTextView"
@@ -122,7 +122,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/buttonHeight"
                 android:background="@drawable/transparent_ripple"
-                android:checkMark="@drawable/checkline"
+                android:checkMark="@drawable/checkpath_anim_sel"
                 android:checked="true"
                 android:gravity="left|center_vertical"
                 android:text="CheckedTextView"
@@ -152,7 +152,7 @@
                 android:layout_height="@dimen/buttonHeight"
                 android:background="@drawable/transparent_ripple"
                 android:checked="true"
-                android:drawableRight="@drawable/checkline"
+                android:drawableRight="@drawable/checkmark_sel"
                 android:gravity="center_vertical|left"
                 android:textAllCaps="false"
                 android:textColor="@android:color/white"
@@ -168,7 +168,7 @@
                 android:layout_height="@dimen/buttonHeight"
                 android:background="@drawable/transparent_ripple"
                 android:checked="true"
-                android:drawableRight="@drawable/btn_check_material_anim"
+                android:drawableRight="@drawable/checkbox_anim_sel"
                 android:gravity="center_vertical|left"
                 android:textAllCaps="false"
 
@@ -202,7 +202,7 @@
 
                     android:clickable="false"
                     android:duplicateParentState="true"
-                    android:src="@drawable/checkline" />
+                    android:src="@drawable/checkmark_sel" />
             </RelativeLayout>
 
 
@@ -219,7 +219,7 @@
                 android:button="@null"
                 android:checked="true"
 
-                android:drawableRight="@drawable/checkline"
+                android:drawableRight="@drawable/checkmark_sel"
 
                 android:text="RadioButton"
                 android:textColor="@android:color/white"
@@ -233,7 +233,7 @@
                 android:button="@null"
                 android:checked="true"
 
-                android:drawableRight="@drawable/checkline"
+                android:drawableRight="@drawable/checkmark_sel"
 
                 android:text="AppCompatRadioButton"
                 android:textColor="@android:color/white"
@@ -258,7 +258,7 @@
                 android:textOn=""
 
                 android:textSize="@dimen/buttonTextSize"
-                android:thumb="@drawable/checkline"
+                android:thumb="@drawable/checkmark_sel"
                 android:track="@null" />
 
             <!-- android:background="@android:drawable/checkbox_on_background" -->
@@ -275,7 +275,7 @@
                 android:textColor="@android:color/white"
 
                 android:textSize="@dimen/buttonTextSize"
-                android:thumb="@drawable/checkline"
+                android:thumb="@drawable/checkmark_sel"
                 android:track="@null" />
 
         </LinearLayout>

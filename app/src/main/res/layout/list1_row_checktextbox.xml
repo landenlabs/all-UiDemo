@@ -17,7 +17,7 @@
     tools:checked="true"
 
     android:checkMark="@null"
-    android:drawableLeft="@drawable/checkline"
+    android:drawableLeft="@drawable/checkmark_sel"
     />
 
     <!--

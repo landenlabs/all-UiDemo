@@ -25,22 +25,22 @@
 <transition
     android:fromId="@+id/unchecked"
     android:toId="@+id/checked"
-    android:drawable="@drawable/checkline_to_check_animation_list" />
+    android:drawable="@drawable/checkmark_to_check_anim_list" />
 
 <transition
     android:fromId="@+id/checked"
     android:toId="@+id/unchecked"
-    android:drawable="@drawable/checkline_to_uncheck_animation_list" />
+    android:drawable="@drawable/checkmark_to_uncheck_anim_list" />
 
 <transition
     android:fromId="@+id/unchecked"
     android:toId="@+id/selected"
-    android:drawable="@drawable/checkline_to_check_animation_list" />
+    android:drawable="@drawable/checkmark_to_check_anim_list" />
 
 <transition
     android:fromId="@+id/selected"
     android:toId="@+id/unchecked"
-    android:drawable="@drawable/checkline_to_uncheck_animation_list" />
+    android:drawable="@drawable/checkmark_to_uncheck_anim_list" />
 
 </animated-selector>
 

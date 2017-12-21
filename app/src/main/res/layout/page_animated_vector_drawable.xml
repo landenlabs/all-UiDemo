@@ -1,0 +1,7 @@
+<fragment
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/anim_vector_drawable_id"
+    android:name="com.landenlabs.all_UiDemo.frag.AnimatedVectorDrawableFrag"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    />

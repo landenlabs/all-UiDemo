@@ -63,6 +63,28 @@
         <item name="android:textSize">20sp</item>
     </style>
 
+    <style name="LongText" parent="@style/TextAppearanceBlack20">
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:paddingTop">20dp</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:lines">1</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:text">@string/long_string</item>
+
+    </style>
+
+    <style name="LongBtn" parent="@style/TextAppearanceBlack16">
+        <item name="android:drawablePadding">10dp</item>
+        <item name="android:drawableRight">@drawable/checkmark</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:gravity">right|bottom</item>
+        <item name="android:lines">1</item>
+        <item name="android:text">Go to more then</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">#f00</item>
+    </style>
+
     <style name="TextAppearanceBlack32" parent="@style/TextAppearanceBlack">
         <item name="android:textSize">32sp</item>
     </style>

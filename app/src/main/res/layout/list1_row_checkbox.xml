@@ -15,7 +15,7 @@
 
     tools:text="Hello World"
     tools:checked="true"
-    android:button="@drawable/checkline"
+    android:button="@drawable/checkmark_sel"
     />
 
 <!--

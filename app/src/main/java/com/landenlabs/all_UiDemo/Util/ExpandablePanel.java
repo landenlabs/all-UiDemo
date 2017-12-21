@@ -358,7 +358,7 @@ public class ExpandablePanel extends LinearLayout {
                     mContent.setLayoutParams(lp);
                 }
             } else {
-                Log.d("fxx","applyTransformation ignored");
+                // Log.d("fxx","applyTransformation ignored");
             }
 
         }

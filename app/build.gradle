@@ -12,8 +12,8 @@ android {
         applicationId 'com.landenlabs.all_uidemo'
         minSdkVersion 17
         targetSdkVersion 25
-        versionName '1.08'
-        versionCode 108
+        versionName '1.09'
+        versionCode 109
 
         // renderscriptTargetApi 23
         // renderscriptSupportModeEnabled true
@@ -93,8 +93,6 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.2.0'
     compile 'com.android.support:percent:25.2.0'
     compile 'com.android.support:design:25.2.0'
-
     compile 'com.google.android.gms:play-services-analytics:9.6.1'
-
     compile 'net.hockeyapp.android:HockeySDK:4.1.1'
 }

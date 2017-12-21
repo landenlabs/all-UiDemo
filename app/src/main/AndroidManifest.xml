@@ -4,6 +4,8 @@
     android:installLocation="auto"
     package="com.landenlabs.all_UiDemo" >
 
+    <uses-permission android:name="android.permission.VIBRATE" />
+
     <application
         android:allowBackup="true"
         android:installLocation="auto"
@@ -15,6 +17,7 @@
             android:name="com.landenlabs.all_UiDemo.MainActivity"
             android:configChanges="orientation|screenSize"
             android:label="@string/app_name" >
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
