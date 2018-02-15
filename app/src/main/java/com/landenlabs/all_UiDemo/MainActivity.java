@@ -40,6 +40,7 @@ import android.view.MenuItem;
 import android.view.SubMenu;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.landenlabs.all_UiDemo.Util.AppCrash;
 import com.landenlabs.all_UiDemo.Util.GoogleAnalyticsHelper;
@@ -230,6 +231,8 @@ public class MainActivity extends ActionBarActivity    {
             new PageItem( "Checkbox Left",  R.layout.page_checkbox_left ),
 
             new PageItem( "Animated Vector",  R.layout.page_animated_vector_drawable ),
+            new PageItem( "Animation",  R.layout.page_animation ),
+            new PageItem( "Anim Bg", R.layout.page_anim_bg_frag),
 
             new PageItem( "SeekBar", R.layout.page_seekbar),
 
@@ -246,7 +249,6 @@ public class MainActivity extends ActionBarActivity    {
 
             new PageItem( "GL Cube", R.layout.page_glcube_frag),
             new PageItem( "Graph Line", R.layout.page_graphline_frag),
-            new PageItem( "Anim Bg", R.layout.page_anim_bg_frag),
 
             new PageItem( "View Shadows", R.layout.page_shadows),
             new PageItem( "Render Blur", R.layout.page_renderscript)
@@ -307,9 +309,16 @@ public class MainActivity extends ActionBarActivity    {
                 LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             m_pageNum = getArguments().getInt(ARG_page_number);
             int layout =  mItems[m_pageNum].mLayout;
-            View rootView = inflater.inflate(layout, container, false);
-
-            return rootView;
+            try {
+                View rootView = inflater.inflate(layout, container, false);
+                return rootView;
+            } catch (Exception ex) {
+                View rootView = inflater.inflate(R.layout.page_exception,  container, false);
+                rootView.setId(View.generateViewId());
+                TextView tv = Ui.viewById(rootView, R.id.exception_text);
+                tv.setText(ex.getLocalizedMessage() + "\n" + ex.getCause() + "\n Maybe due to device API not compatible\n");
+                return rootView;
+            }
         }
     }
 }

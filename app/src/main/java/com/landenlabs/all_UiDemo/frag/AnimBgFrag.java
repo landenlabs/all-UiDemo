@@ -51,7 +51,7 @@ import com.landenlabs.all_UiDemo.Util.TextProgressBar;
 
 public class AnimBgFrag  extends UiFragment implements View.OnClickListener {
 
-    View                mRootView;
+    View  mRootView;
 
 
     // http://stackoverflow.com/questions/27671653/background-animation-with-repeat

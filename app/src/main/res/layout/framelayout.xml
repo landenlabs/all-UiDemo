@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+
+    <TextView
+        android:layout_below="@+id/textBar"
+        android:layout_width="320dp"
+        android:layout_height="320dp"
+        android:layout_gravity="top"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+
+        android:background="@android:color/holo_green_dark"
+        android:clickable="true"
+        android:stateListAnimator="@anim/press"
+        android:text="320x320 z=5"
+        android:translationZ="5dp" />
+
+    <TextView
+        android:layout_below="@+id/textBar"
+        android:layout_width="260dp"
+        android:layout_height="260dp"
+        android:layout_gravity="top"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="40dp"
+
+        android:background="@android:color/holo_blue_dark"
+        android:clickable="true"
+        android:stateListAnimator="@anim/press"
+        android:text="260x260 z=5"
+        android:translationZ="5dp" />
+
+    <TextView
+        android:layout_below="@+id/textBar"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="top"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="60dp"
+
+        android:background="@android:color/darker_gray"
+        android:clickable="true"
+        android:stateListAnimator="@anim/press"
+        android:text="200x200 z=5\n[ TextView ]"
+        android:translationZ="5dp" />
+
+
+
+
+
+</FrameLayout>

@@ -232,6 +232,114 @@
 
             </LinearLayout>
 
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#ccc"
+                android:gravity="center"
+                android:text="bound left group 50%"
+                android:textAppearance="@style/TextAppearanceBlack20" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.landenlabs.all_UiDemo.Util.BoundedLinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#f5f"
+                    android:orientation="vertical"
+                    app:bounded_widthPercent="0.5">
+
+                    <TextView
+                        style="@style/LongText"
+                        android:text="2 left left"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        style="@style/LongText"
+                        android:text="4 left left left left"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        style="@style/LongText"
+                        android:text="3 left left left"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </com.landenlabs.all_UiDemo.Util.BoundedLinearLayout>
+
+                <TextView
+                    style="@style/LongText"
+                    android:text="8 right right right right right right right right"
+                    android:lines="4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#ccc"
+                android:gravity="center"
+                android:text="bound middle group 50%"
+                android:textAppearance="@style/TextAppearanceBlack20" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/LongText"
+                    android:text="5 left left left left left"
+                    android:lines="5"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content" />
+
+                <com.landenlabs.all_UiDemo.Util.BoundedLinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#f5f"
+                    android:orientation="vertical"
+                    app:bounded_widthPercent="0.5">
+
+                    <TextView
+                        style="@style/LongText"
+                        android:text="2 left left"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        style="@style/LongText"
+                        android:text="1 left"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        style="@style/LongText"
+                        android:text="4 left left left left"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </com.landenlabs.all_UiDemo.Util.BoundedLinearLayout>
+
+                <TextView
+                    style="@style/LongText"
+                    android:text="5 right right right right right"
+                    android:lines="5"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -344,6 +452,7 @@
                     android:textAppearance="@style/TextAppearanceBlack20" />
 
             </LinearLayout>
+
         </LinearLayout>
     </ScrollView>
 
