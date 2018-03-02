@@ -85,6 +85,111 @@
                 android:layout_column="2"
                 android:text="" />
 
+
+            <ToggleButton
+                android:id="@+id/animation_scaleX"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:layout_gravity="fill"
+                android:layout_marginTop="10dp"
+                android:background="#ccc"
+                android:gravity="center"
+                android:textOff="ScaleX Out"
+                android:textOn="ScaleX In"
+                android:textSize="16dp" />
+
+            <ImageView
+                android:layout_width="@dimen/grid_layout_image_width"
+                android:layout_height="@dimen/grid_layout_image_height"
+                android:layout_column="1"
+                android:src="@drawable/image_e" />
+
+            <TextView
+                android:layout_width="@dimen/grid_layout_image_width"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_column="2"
+                android:text="" />
+
+
+            <ToggleButton
+                android:id="@+id/animation_translateX"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:layout_gravity="fill"
+                android:layout_marginTop="10dp"
+                android:background="#ccc"
+                android:gravity="center"
+                android:textOff="TransX Out"
+                android:textOn="TransX In"
+                android:textSize="16dp" />
+
+            <ImageView
+                android:layout_width="@dimen/grid_layout_image_width"
+                android:layout_height="@dimen/grid_layout_image_height"
+                android:layout_column="1"
+                android:src="@drawable/image_e" />
+
+            <TextView
+                android:layout_width="@dimen/grid_layout_image_width"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_column="2"
+                android:text="" />
+
+            <ToggleButton
+                android:id="@+id/animation_slideR"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:layout_gravity="fill"
+                android:layout_marginTop="10dp"
+                android:background="#ccc"
+                android:gravity="center"
+                android:textOff="SlideR Out"
+                android:textOn="SlideR In"
+                android:textSize="16dp" />
+
+            <ImageView
+                android:layout_width="@dimen/grid_layout_image_width"
+                android:layout_height="@dimen/grid_layout_image_height"
+                android:layout_column="1"
+                android:src="@drawable/image_e" />
+
+            <TextView
+                android:layout_width="@dimen/grid_layout_image_width"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_column="2"
+                android:text="" />
+
+            <ToggleButton
+                android:id="@+id/animation_slideL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:layout_gravity="fill"
+                android:layout_marginTop="10dp"
+                android:background="#ccc"
+                android:gravity="center"
+                android:textOff="SlideL Out"
+                android:textOn="SlideL In"
+                android:textSize="16dp" />
+
+            <ImageView
+                android:layout_width="@dimen/grid_layout_image_width"
+                android:layout_height="@dimen/grid_layout_image_height"
+                android:layout_column="1"
+                android:src="@drawable/image_e" />
+
+            <TextView
+                android:layout_width="@dimen/grid_layout_image_width"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_column="2"
+                android:text="" />
         </GridLayout>
     </ScrollView>
 
