@@ -36,6 +36,9 @@
         <attr name="bounded_height" format="dimension" />
         <attr name="bounded_widthPercent" format="float" />
         <attr name="bounded_heightPercent" format="float" />
+        <attr name="bounded_enabled" format="boolean" />
+        <attr name="bounded_aspectWdivH" format="float" />
+        <attr name="bounded_include" format="reference" />
     </declare-styleable>
 
 </resources>

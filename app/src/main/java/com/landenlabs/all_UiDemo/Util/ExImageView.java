@@ -71,6 +71,22 @@ public class ExImageView extends ImageView {
         return mImageResID;
     }
 
+
+    /**
+     * Adjust width and/or height first by percent then by pixels.
+     *
+     * @param widthMeasureSpec
+     * @param heightMeasureSpec
+     */
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        int measuredWidth = MeasureSpec.getSize(widthMeasureSpec);
+        int measuredHeight = MeasureSpec.getSize(heightMeasureSpec);
+        Log.d("foo", String.format("Res:%d W:%d H:%d Measured w:%d H:%d",
+                mImageResID, getWidth(), getHeight(), measuredWidth, measuredHeight));
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+    }
+
     @Override
     protected void onDraw(Canvas canvas) {
         long startMillis = System.currentTimeMillis();

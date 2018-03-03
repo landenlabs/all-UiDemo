@@ -223,6 +223,7 @@ public class MainActivity extends ActionBarActivity    {
 
             new PageItem( "RadioBtn Tabs", R.layout.page_radio_btns),
             new PageItem( "RadioBtn List", R.layout.page_radio_list),
+            new PageItem( "TextView+Image", R.layout.page_textviews),
             new PageItem( "CkBox List", R.layout.page_list1),       // min api 21
             new PageItem( "Custom List",  R.layout.page_anim_list ),
 
