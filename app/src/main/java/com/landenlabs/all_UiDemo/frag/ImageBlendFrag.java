@@ -21,6 +21,7 @@
  */
 package com.landenlabs.all_UiDemo.frag;
 
+import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -29,7 +30,10 @@ import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.graphics.drawable.DrawableCompat;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -147,7 +151,6 @@ public class ImageBlendFrag  extends UiFragment implements View.OnClickListener 
                 ImageView imageView = (ImageView)view;
                 imageView.setColorFilter(null);
 
-                PorterDuff.Mode mode = (PorterDuff.Mode)imageView.getTag();
                 Bitmap srcBm = BitmapFactory.decodeResource(getResources(), imageSrcRes);
                 Bitmap dstBm = BitmapFactory.decodeResource(getResources(), imageDstRes);
                 Bitmap resultBm = Bitmap.createBitmap(srcBm.getWidth(), srcBm.getHeight(), Bitmap.Config.ARGB_8888);
@@ -157,11 +160,17 @@ public class ImageBlendFrag  extends UiFragment implements View.OnClickListener 
                 Rect srcRect = new Rect(0, 0, srcBm.getWidth(), srcBm.getHeight());
                 resultCanvas.drawBitmap(srcBm, 0, 0, paint);
 
-                paint.setXfermode(new PorterDuffXfermode(mode));
-                Rect dstRect = new Rect(0, 0, dstBm.getWidth(), dstBm.getHeight());
-                resultCanvas.drawBitmap(dstBm, dstRect, srcRect, paint);
+                if (imageView.getTag() != null) {
+                    PorterDuff.Mode mode = (PorterDuff.Mode) imageView.getTag();
+                    paint.setXfermode(new PorterDuffXfermode(mode));
 
-                imageView.setImageBitmap(resultBm);
+                    Rect dstRect = new Rect(0, 0, dstBm.getWidth(), dstBm.getHeight());
+                    resultCanvas.drawBitmap(dstBm, dstRect, srcRect, paint);
+
+                    imageView.setImageBitmap(resultBm);
+                } else {
+        //            imageView.setImageBitmap(srcBm);
+                }
             }
         }
     }
@@ -186,6 +195,14 @@ public class ImageBlendFrag  extends UiFragment implements View.OnClickListener 
         addImage(PorterDuff.Mode.MULTIPLY);
         addImage(PorterDuff.Mode.SCREEN);
         addImage(PorterDuff.Mode.XOR);
+
+        addBlend(0xff404040, PorterDuff.Mode.MULTIPLY);
+        addBlend(0xff808080, PorterDuff.Mode.MULTIPLY);
+        addBlend(0xffc0c0c0, PorterDuff.Mode.MULTIPLY);
+
+        addBlend(0x40ffffff, PorterDuff.Mode.MULTIPLY);
+        addBlend(0x80ffffff, PorterDuff.Mode.MULTIPLY);
+        addBlend(0xc0ffffff, PorterDuff.Mode.MULTIPLY);
     }
 
     private void addImage(PorterDuff.Mode mode) {
@@ -203,5 +220,42 @@ public class ImageBlendFrag  extends UiFragment implements View.OnClickListener 
         mImageHolder.addView(iv);
         iv.setColorFilter(mColor, mode);
         iv.setTag(mode);
+    }
+
+    private void addBlend(int blendColor, PorterDuff.Mode mode) {
+        try {
+            TextView tv = new TextView(mImageHolder.getContext());
+            tv.setBackgroundResource(R.color.rowtx);
+            tv.setGravity(Gravity.CENTER);
+            // tv.setTextAppearance(R.style.TextAppearanceWhite20);
+            tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
+            tv.setTextColor(Color.WHITE);
+            tv.setText(String.format("Tint %X ", blendColor) + mode.toString());
+            tv.setPadding(5, 5, 5, 5);
+            mImageHolder.addView(tv);
+            ImageView iv = new ImageView(mImageHolder.getContext());
+            iv.setBackgroundResource(R.color.row0);
+            iv.setImageResource(R.drawable.image100);
+         //   iv.setColorFilter(mColor, mode);
+         //   iv.setTag(mode);
+            mImageHolder.addView(iv);
+
+            ColorStateList colorStateList = new ColorStateList(
+                    new int[][]{ new int[]{}},
+                    new int[]{  blendColor}
+            );
+
+            if (Build.VERSION.SDK_INT >= 21) {
+                iv.getDrawable().setTintList(colorStateList);
+                iv.getDrawable().setTintMode(mode);
+            } else {
+                Drawable drawable = DrawableCompat.wrap(iv.getDrawable());
+                DrawableCompat.setTintList(drawable.mutate(), colorStateList);
+                DrawableCompat.setTintMode(drawable.mutate(), mode);
+            }
+            // iv.setTag(null);
+        } catch (Exception ex) {
+            throw ex;
+        }
     }
 }

@@ -6,7 +6,8 @@
     <string name="page2Title" translatable="false">Page2</string>
     <string name="page3Title" translatable="false">Page3</string>
 
-   <string name="imageButton" translatable="false">Image\nButton</string>
+   <string name="imageButtonWrapWidth" translatable="false">Wrap\nWidth</string>
+   <string name="imageButtonWrapHeight" translatable="false">wrap\nHeight</string>
 
     <string name="textItems" translatable="false">Two\nText Rows</string>
 

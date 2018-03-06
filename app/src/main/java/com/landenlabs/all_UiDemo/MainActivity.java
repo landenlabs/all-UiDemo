@@ -240,6 +240,7 @@ public class MainActivity extends ActionBarActivity    {
             new PageItem( "Relative Layout",  R.layout.page_rellayout ),
             new PageItem( "Other Layout",  R.layout.page_otherlayout_frag ),
             new PageItem( "Bounded views", R.layout.page_bounded_size),
+            new PageItem( "Scaled Btn", R.layout.page_scaled_image_btn),
             new PageItem( "Layout Anim",  R.layout.page_layout_anim ),
             new PageItem( "Full Screen",  R.layout.page_fullscreen ),
 
