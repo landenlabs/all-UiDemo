@@ -190,6 +190,85 @@
                 android:layout_gravity="center"
                 android:layout_column="2"
                 android:text="" />
+
+            <ToggleButton
+            android:id="@+id/animation_rot360"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:layout_gravity="fill"
+            android:layout_marginTop="10dp"
+            android:background="#ccc"
+            android:gravity="center"
+            android:textOff="Rotate 360"
+            android:textOn="Rotate -360"
+            android:textSize="16dp" />
+
+            <ImageView
+                android:layout_width="@dimen/grid_layout_image_width"
+                android:layout_height="@dimen/grid_layout_image_height"
+                android:layout_column="1"
+                android:src="@drawable/image_e" />
+
+            <TextView
+                android:layout_width="@dimen/grid_layout_image_width"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_column="2"
+                android:text="" />
+
+            <ToggleButton
+                android:id="@+id/animation_rot180"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:layout_gravity="fill"
+                android:layout_marginTop="10dp"
+                android:background="#ccc"
+                android:gravity="center"
+                android:textOff="Rotate 180"
+                android:textOn="Rotate -180"
+                android:textSize="16dp" />
+
+            <ImageView
+                android:layout_width="@dimen/grid_layout_image_width"
+                android:layout_height="@dimen/grid_layout_image_height"
+                android:layout_column="1"
+                android:src="@drawable/image_e" />
+
+            <TextView
+                android:layout_width="@dimen/grid_layout_image_width"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_column="2"
+                android:text="" />
+
+
+            <ToggleButton
+                android:id="@+id/animation_rot90"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:layout_gravity="fill"
+                android:layout_marginTop="10dp"
+                android:background="#ccc"
+                android:gravity="center"
+                android:textOff="Rotate 90"
+                android:textOn="Rotate -90"
+                android:textSize="16dp" />
+
+            <ImageView
+                android:layout_width="@dimen/grid_layout_image_width"
+                android:layout_height="@dimen/grid_layout_image_height"
+                android:layout_column="1"
+                android:src="@drawable/image_e" />
+
+            <TextView
+                android:layout_width="@dimen/grid_layout_image_width"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_column="2"
+                android:text="" />
         </GridLayout>
     </ScrollView>
 

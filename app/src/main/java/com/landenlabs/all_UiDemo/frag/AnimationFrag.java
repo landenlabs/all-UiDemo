@@ -173,6 +173,29 @@ public class AnimationFrag  extends UiFragment implements View.OnClickListener {
                 }
                 break;
 
+            case R.id.animation_rot360:
+                if (tb.isChecked()) {
+                    target.animate().rotationBy(360).setDuration(2000).start();
+                } else {
+                    target.animate().rotationBy(-360).setDuration(2000).start();
+                }
+                break;
+            case R.id.animation_rot180:
+                if (tb.isChecked()) {
+                    target.animate().rotationBy(180).setDuration(2000).start();
+                } else {
+                    target.animate().rotationBy(-180).setDuration(2000).start();
+                }
+                break;
+
+            case R.id.animation_rot90:
+                if (tb.isChecked()) {
+                    target.animate().rotationBy(90).setDuration(2000).start();
+                } else {
+                    target.animate().rotationBy(-90).setDuration(2000).start();
+                }
+                break;
+
             case R.id.get_alpha:
                 getAlpha();
                 break;
