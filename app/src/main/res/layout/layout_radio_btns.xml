@@ -21,11 +21,9 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:background="#d0d0ff"
         android:gravity="center"
-        android:padding="10dp"
-        android:text="-- RadioGroup in Code --"
+        android:layout_marginTop="20dp"
+        android:text="-- RadioGroup in Code #1 --"
         android:textSize="16dp" />
 
     <RadioGroup
@@ -41,9 +39,13 @@
         android:paddingTop="10dp"
         android:showDividers="middle" />
 
-    <Space
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="20px" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="-- RadioGroup in Code #2 --"
+        android:textSize="16dp" />
 
     <HorizontalScrollView
         android:layout_width="match_parent"
@@ -63,10 +65,8 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:background="#d0d0ff"
+        android:layout_marginTop="20dp"
         android:gravity="center"
-        android:padding="10dp"
         android:text="-- RadioGroup in XML --"
         android:textSize="16dp" />
 
@@ -116,10 +116,8 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:background="#d0d0ff"
+        android:layout_marginTop="20dp"
         android:gravity="center"
-        android:padding="10dp"
         android:text="-- TabLayout in XML --"
         android:textSize="16dp" />
 

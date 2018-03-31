@@ -107,7 +107,6 @@ public class AnimationFrag  extends UiFragment implements View.OnClickListener {
         ToggleButton tb = cast2(ToggleButton.class, view);
         final View target =  cast2(View.class, view.getTag());
 
-
         switch (view.getId()) {
             case R.id.animation_fade1:
                 showAnimStatus(target); // Can wire up before animate set.
@@ -193,6 +192,23 @@ public class AnimationFrag  extends UiFragment implements View.OnClickListener {
                     target.animate().rotationBy(90).setDuration(2000).start();
                 } else {
                     target.animate().rotationBy(-90).setDuration(2000).start();
+                }
+                break;
+
+            case R.id.animation_rot90x:
+                if (tb.isChecked()) {
+                    target.animate().rotationXBy(90).setDuration(2000).start();
+                } else {
+                    target.animate().rotationXBy(-90).setDuration(2000).start();
+                }
+                break;
+
+
+            case R.id.animation_rot90y:
+                if (tb.isChecked()) {
+                    target.animate().rotationYBy(90).setDuration(2000).start();
+                } else {
+                    target.animate().rotationYBy(-90).setDuration(2000).start();
                 }
                 break;
 

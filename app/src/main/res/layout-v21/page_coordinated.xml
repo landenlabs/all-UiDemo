@@ -22,7 +22,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#c080ff"
+            android:background="#8c8f"
             android:gravity="center"
             android:text="Coordinated layout\nScroll and bottom bar hides\nRequires API 21\n"
             android:textColor="@android:color/black"

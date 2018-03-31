@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -11,7 +12,7 @@
         android:layout_margin="20dp"
         android:background="#d0d0ff"
         android:padding="10dp"
-        android:text="- Scrolling TextViews -" />
+        android:text="- Scrolling TextViews and Images -" />
 
 
     <ScrollView
@@ -27,6 +28,22 @@
             android:orientation="vertical"
             android:layout_height="wrap_content">
 
+            <RadioButton
+                android:checked="true"
+                android:id="@+id/RadioBtn0"
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:layout_margin="20dp"
+                android:adjustViewBounds="true"
+                android:background="#c0c0ff"
+                android:button="@drawable/scr_home"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="10dp"
+                android:scaleType="fitCenter"
+                android:text="0 RadioBtn"
+                app:srcCompat="@drawable/image_e" />
+
             <TextView
                 android:clickable="true"
                 android:id="@+id/TextView0"
@@ -35,7 +52,7 @@
                 android:layout_margin="20dp"
                 android:background="@drawable/image_e"
                 android:padding="10dp"
-                android:text="TextView img bg" />
+                android:text="1 TextView img bg" />
 
             <TextView
                 android:clickable="true"
@@ -45,7 +62,7 @@
                 android:layout_margin="20dp"
                 android:foreground="@drawable/image_e"
                 android:padding="10dp"
-                android:text="TextView img fg" />
+                android:text="2 TextView img fg" />
 
             <TextView
                 android:clickable="true"
@@ -55,7 +72,7 @@
                 android:layout_margin="20dp"
                 android:padding="10dp"
                 android:drawableTop="@drawable/image_e"
-                android:text="TextView img Top" />
+                android:text="3 TextView img Top" />
 
             <TextView
                 android:clickable="true"
@@ -70,7 +87,7 @@
                 android:gravity="center"
                 android:background="@drawable/round_border_sel"
                 android:drawableTop="@drawable/scr_home"
-                android:text="TextView img + sel" />
+                android:text="4 TextView img + sel" />
 
             <Button
                 android:clickable="true"
@@ -81,7 +98,7 @@
                 android:drawableTop="@drawable/image_e"
                 android:gravity="center"
                 android:padding="10dp"
-                android:text="Button Top" />
+                android:text="5 Button Top" />
 
             <Button
                 android:clickable="true"
@@ -93,7 +110,7 @@
                 android:drawableTop="@drawable/image_e"
                 android:gravity="center"
                 android:padding="10dp"
-                android:text="Button Top + Sel" />
+                android:text="6 Button Top + Sel" />
 
 
             <CheckBox
@@ -107,7 +124,7 @@
                 android:clickable="true"
                 android:drawableTop="@drawable/image_e"
                 android:padding="5dp"
-                android:text="checkbox wrap Top" />
+                android:text="7 checkbox wrap Top" />
 
 
             <CheckBox
@@ -121,7 +138,7 @@
                 android:drawableTop="@drawable/image_e"
                 android:gravity="center"
                 android:padding="0dp"
-                android:text="cb w=100 p=0dp" />
+                android:text="8 cb w=100 p=0dp" />
 
             <CheckBox
                 android:id="@+id/Checkbox100p5"
@@ -134,7 +151,7 @@
                 android:gravity="center"
                 android:drawableTop="@drawable/scr_home"
                 android:padding="5dp"
-                android:text="cb w=100 p=5dp" />
+                android:text="9 cb w=100 p=5dp" />
 
             <CheckBox
                 android:id="@+id/Checkbox200p5"
@@ -147,7 +164,7 @@
                 android:gravity="center"
                 android:drawableTop="@drawable/scr_home"
                 android:padding="5dp"
-                android:text="cb w=w00 p=5dp" />
+                android:text="10 cb w=w200 p=5dp" />
 
             <CheckBox
                 android:id="@+id/Checkbox100p10"
@@ -160,7 +177,7 @@
                 android:gravity="center"
                 android:drawableTop="@drawable/scr_home"
                 android:padding="10dp"
-                android:text="cb w=100 p=10dp" />
+                android:text="11 cb w=100 p=10dp" />
 
             <CheckBox
                 android:clickable="true"
@@ -172,7 +189,7 @@
                 android:background="@drawable/round_border_sel"
                 android:button="@drawable/image_e"
                 android:padding="35dp"
-                android:text="checkbox btn" />
+                android:text="12 checkbox btn" />
 
 
             <TextView
@@ -184,7 +201,7 @@
                 android:drawableBottom="@drawable/image_e"
                 android:gravity="center"
                 android:padding="10dp"
-                android:text="TextView Bottom" />
+                android:text="13 TextView Bottom" />
 
             <Button
                 android:clickable="true"
@@ -195,7 +212,7 @@
                 android:drawableLeft="@drawable/image_e"
                 android:drawableRight="@drawable/image_e"
                 android:padding="10dp"
-                android:text="Left Button Right" />
+                android:text="14 Left Button Right" />
 
             <TextView
                 android:clickable="true"
@@ -206,7 +223,7 @@
                 android:background="#c0c0ff"
                 android:drawableRight="@drawable/image_e"
                 android:padding="10dp"
-                android:text="TextView right" />
+                android:text="15 TextView right" />
 
 
         </LinearLayout>

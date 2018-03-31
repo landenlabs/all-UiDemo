@@ -12,7 +12,7 @@
         android:layout_margin="5dp"
         android:background="#d0d0ff"
         android:padding="5dp"
-        android:text="- Image scale types -" />
+        android:text="- Image Blend Modes -" />
 
     <TextView
         android:id="@+id/bottom"
