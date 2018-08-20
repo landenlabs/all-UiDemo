@@ -1,147 +1,180 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     android:orientation="vertical">
-    <!--
-     adds/removes extra space at top.
-     android:fitsSystemWindows="true"
-     -->
 
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/top.appbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_behavior="com.landenlabs.all_UiDemo.Util.BottomAppBarLayoutBehavior"
-        tools:background="#888">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#c080ff"
-            android:gravity="center"
-            android:text="Coordinated layout\nScroll and bottom bar hides\nRequires API 21\n"
-            android:textColor="@android:color/black"
-            android:textSize="14dp" />
-    </android.support.design.widget.AppBarLayout>
-
-    <ListView
-        android:id="@+id/coordinator_list"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:entries="@array/states"
-        android:choiceMode="singleChoice"
+    <TextView
         android:clickable="true"
-        android:listSelector="@drawable/list_selector"
-        android:nestedScrollingEnabled="true" />
-
-    <!--
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        app:layout_anchorGravity="bottom|right|end"
-        app:layout_anchorGravity="bottom|end"
-     -->
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/materialup.appbar"
+        android:textSize="30sp"
+        android:gravity="center"
+        android:text="TextView bg tRipple"
+        android:background="@drawable/transparent_ripple"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        app:layout_behavior="com.landenlabs.all_UiDemo.Util.BottomAppBarLayoutBehavior"
-        tools:background="#888">
+        tools:ignore="KeyboardInaccessibleWidget" />
 
-        <!--
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            app:layout_behavior="android.support.design.widget.BottomSheetBehavior"
+    <TextView
+        android:clickable="true"
+        android:textSize="30sp"
+        android:gravity="center"
+        android:text="TextView bg borderless"
+        android:background="@drawable/btn_states"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:layout_behavior="android.support.design.widget.BottomSheetBehavior"
-            app:tabIndicatorColor="?android:attr/textColorPrimaryInverse"
-            app:tabSelectedTextColor="?android:attr/textColorPrimaryInverse"
-        -->
-        <android.support.design.widget.TabLayout
-            android:id="@+id/bottom_tab_holder"
-            android:layout_width="fill_parent"
+    <TextView
+        android:clickable="true"
+        android:textSize="30sp"
+        android:gravity="center"
+        android:textColor="#fff"
+        android:text="TextView fg borderless"
+        android:background="#222"
+        android:foreground="@drawable/btn_states"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:clickable="true"
+        android:textSize="30sp"
+        android:gravity="center"
+        android:text="Button"
+        android:background="@drawable/transparent_ripple"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:clickable="true"
+        android:textSize="30sp"
+        android:gravity="center"
+        android:text="Button bg borderless"
+        android:background="@drawable/btn_states"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="KeyboardInaccessibleWidget" />
+
+    <Button
+        android:clickable="true"
+        android:textSize="30sp"
+        android:gravity="center"
+        android:textColor="#fff"
+        android:text="Button fg borderless"
+        android:background="#222"
+        android:foreground="@drawable/btn_states"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ToggleButton
+        android:clickable="true"
+        android:textSize="30sp"
+        android:gravity="center"
+        android:textOff="Toggle bg tRipple"
+        android:background="@drawable/transparent_ripple"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ToggleButton
+        android:clickable="true"
+        android:textSize="30sp"
+        android:gravity="center"
+        android:textOff="Toggle bg borderless"
+        android:background="@drawable/btn_states"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ToggleButton
+        android:clickable="true"
+        android:textSize="30sp"
+        android:gravity="center"
+        android:textColor="#fff"
+        android:textOff="Toggle fg"
+        android:background="#222"
+        android:foreground="@drawable/btn_states"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/bottom_tab_holder"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="0dp"
+        app:layout_scrollFlags="scroll|enterAlways"
+        app:tabIndicatorHeight="4dp">
+
+        <android.support.design.widget.TabItem
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:minHeight="0dp"
-            app:layout_scrollFlags="scroll|enterAlways"
-            app:tabIndicatorHeight="4dp">
+            android:layout_weight="1"
+            android:icon="@drawable/scr_home"
+            android:text="Home" />
 
-            <android.support.design.widget.TabItem
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:icon="@drawable/scr_home"
-                android:text="Home" />
-
-            <android.support.design.widget.TabItem
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:icon="@drawable/scr_hourly"
-                android:text="Hourly" />
-
-            <android.support.design.widget.TabItem
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:icon="@drawable/scr_daily"
-                android:text="Daily" />
-
-            <android.support.design.widget.TabItem
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:icon="@drawable/scr_map"
-                android:text="Map" />
-
-        </android.support.design.widget.TabLayout>
-
-        <RadioGroup
-
-            android:layout_width="match_parent"
+        <android.support.design.widget.TabItem
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="#555"
-            android:gravity="fill_horizontal"
-            android:orientation="horizontal"
-            android:paddingBottom="10dp"
-            android:paddingTop="10dp">
+            android:layout_weight="1"
+            android:icon="@drawable/scr_hourly"
+            android:text="Hourly" />
 
-            <RadioButton
-                android:id="@+id/tabHome"
-                style="@style/RadioTab"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableTop="@drawable/tab_home"
-                android:text="Home" />
+        <android.support.design.widget.TabItem
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:icon="@drawable/scr_daily"
+            android:text="Daily" />
 
-            <RadioButton
-                android:id="@+id/tabMap"
-                style="@style/RadioTab"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableTop="@drawable/tab_map"
-                android:text="Map" />
+        <android.support.design.widget.TabItem
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:icon="@drawable/scr_map"
+            android:text="Map" />
 
-            <RadioButton
-                android:id="@+id/tabHourly"
-                style="@style/RadioTab"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableTop="@drawable/tab_hourly"
-                android:text="Hourly" />
+    </android.support.design.widget.TabLayout>
 
-            <RadioButton
-                android:id="@+id/tabDaily"
-                style="@style/RadioTab"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableTop="@drawable/tab_daily"
-                android:text="Daily" />
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#555"
+        android:gravity="fill_horizontal"
+        android:orientation="horizontal"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp">
 
-        </RadioGroup>
-    </android.support.design.widget.AppBarLayout>
+        <RadioButton
+            android:id="@+id/tabHome"
+            style="@style/RadioTab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/tab_home"
+            android:text="Home" />
 
-</android.support.design.widget.CoordinatorLayout>
+        <RadioButton
+            android:id="@+id/tabMap"
+            style="@style/RadioTab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/tab_map"
+            android:text="Map" />
+
+        <RadioButton
+            android:id="@+id/tabHourly"
+            style="@style/RadioTab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/tab_hourly"
+            android:text="Hourly" />
+
+        <RadioButton
+            android:id="@+id/tabDaily"
+            style="@style/RadioTab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/tab_daily"
+            android:text="Daily" />
+
+    </RadioGroup>
+</LinearLayout>

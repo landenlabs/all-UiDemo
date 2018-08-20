@@ -66,8 +66,6 @@ public class GoogleAnalyticsHelper {
 
     /**
      * Send Screen tracker and update last sent time.
-     *
-     * @param screenName
      */
     public void sendScreen(String screenName) {
         mTracker.setScreenName(screenName);
@@ -75,16 +73,12 @@ public class GoogleAnalyticsHelper {
         try {
             HitBuilders.ScreenViewBuilder hitBuilders = new HitBuilders.ScreenViewBuilder();
             mTracker.send(hitBuilders.build());
-        } catch (Exception ex) {
+        } catch (Exception ignored) {
         }
     }
 
     /**
      * Send Event if enabled and screen event has been sent.
-     *
-     * @param cat
-     * @param action
-     * @param label
      */
     public void sendEvent(String cat, String action, String label) {
         try {
@@ -96,7 +90,7 @@ public class GoogleAnalyticsHelper {
 
             mTracker.send(eventBuilder.build());
 
-        } catch (Exception ex) {
+        } catch (Exception ignored) {
         }
     }
 }

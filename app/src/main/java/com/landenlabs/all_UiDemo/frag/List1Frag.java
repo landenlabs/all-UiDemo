@@ -1,30 +1,9 @@
-/**
- * Copyright (c) 2015 Dennis Lang (LanDen Labs) landenlabs@gmail.com
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
- * associated documentation files (the "Software"), to deal in the Software without restriction, including
- * without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the
- * following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all copies or substantial
- * portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT
- * LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
- * NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
- * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
- * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- *
- * @author Dennis Lang  (3/21/2015)
- * @see http://landenlabs.com
- *
- */
 package com.landenlabs.all_UiDemo.frag;
 
 import android.animation.AnimatorInflater;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,11 +40,11 @@ public class List1Frag  extends UiFragment implements CompoundButton.OnCheckedCh
     private View mRootView;
     private TextView mTopTitle;
     private ListView mListView;
-    int mRowLayoutRes = R.layout.list1_row_checkbox;
-    int mCurrentIdx = -1;
+    @SuppressWarnings("FieldCanBeLocal")
+    private int mRowLayoutRes = R.layout.list1_row_checkbox;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mRootView = inflater.inflate(R.layout.list1, container, false);
 
         setup();
@@ -94,19 +73,21 @@ public class List1Frag  extends UiFragment implements CompoundButton.OnCheckedCh
         }
     }
 
-    void setRowList(int id) {
+    private void setRowList(int id) {
         switch (id) {
             case R.id.row_ckBoxRb:
                 mTopTitle.setText("CheckBox (single)");
                 mRowLayoutRes = R.layout.list1_row_checkbox;
                 mListView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-                mListView.setAdapter(new ArrayAdapter<String>(mRootView.getContext(), mRowLayoutRes, mListStrings));
+                mListView.setAdapter(
+                        new ArrayAdapter<>(mRootView.getContext(), mRowLayoutRes, mListStrings));
                 break;
             case R.id.row_ckTxBoxRb:
                 mTopTitle.setText("CheckTextBox (single)");
                 mRowLayoutRes = R.layout.list1_row_checktextbox;
                 mListView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-                mListView.setAdapter(new ArrayAdapter<String>(mRootView.getContext(), mRowLayoutRes, mListStrings));
+                mListView.setAdapter(
+                        new ArrayAdapter<>(mRootView.getContext(), mRowLayoutRes, mListStrings));
                 break;
 
 
@@ -114,53 +95,61 @@ public class List1Frag  extends UiFragment implements CompoundButton.OnCheckedCh
                 mTopTitle.setText("Simple List");
                 mRowLayoutRes = android.R.layout.simple_list_item_1;
                 mListView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-                mListView.setAdapter(new ArrayAdapter<String>(mRootView.getContext(), mRowLayoutRes, mListStrings));
+                mListView.setAdapter(
+                        new ArrayAdapter<>(mRootView.getContext(), mRowLayoutRes, mListStrings));
                 break;
             case R.id.row_simpleChk1:
                 mTopTitle.setText("Simple Checked (single)");
                 mRowLayoutRes = android.R.layout.simple_list_item_checked;
                 mListView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-                mListView.setAdapter(new ArrayAdapter<String>(mRootView.getContext(), mRowLayoutRes, mListStrings));
+                mListView.setAdapter(
+                        new ArrayAdapter<>(mRootView.getContext(), mRowLayoutRes, mListStrings));
                 break;
 
             case R.id.row_singleChoice1:
                 mTopTitle.setText("Single Choice (single)");
                 mRowLayoutRes = android.R.layout.simple_list_item_single_choice;
                 mListView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-                mListView.setAdapter(new ArrayAdapter<String>(mRootView.getContext(), mRowLayoutRes, mListStrings));
+                mListView.setAdapter(
+                        new ArrayAdapter<>(mRootView.getContext(), mRowLayoutRes, mListStrings));
                 break;
             case R.id.row_multiChoice1:
                 mTopTitle.setText("Multi Choice (multi)");
                 mRowLayoutRes = android.R.layout.simple_list_item_multiple_choice;
                 mListView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
-                mListView.setAdapter(new ArrayAdapter<String>(mRootView.getContext(), mRowLayoutRes, mListStrings));
+                mListView.setAdapter(
+                        new ArrayAdapter<>(mRootView.getContext(), mRowLayoutRes, mListStrings));
                 break;
 
             case R.id.row_activatedList1:
                 mTopTitle.setText("Activated (single)");
                 mRowLayoutRes = android.R.layout.simple_list_item_activated_1;
                 mListView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-                mListView.setAdapter(new ArrayAdapter<String>(mRootView.getContext(), mRowLayoutRes, mListStrings));
+                mListView.setAdapter(
+                        new ArrayAdapter<>(mRootView.getContext(), mRowLayoutRes, mListStrings));
                 break;
             case R.id.row_selectable:
                 mTopTitle.setText("Selectable (single)");
                 mRowLayoutRes = android.R.layout.simple_selectable_list_item;
                 mListView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-                mListView.setAdapter(new ArrayAdapter<String>(mRootView.getContext(), mRowLayoutRes, mListStrings));
+                mListView.setAdapter(
+                        new ArrayAdapter<>(mRootView.getContext(), mRowLayoutRes, mListStrings));
                 break;
 
             case R.id.row_spinnerItem:
                 mTopTitle.setText("SpinnerItem");
                 mRowLayoutRes = android.R.layout.simple_spinner_item;
                 mListView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-                mListView.setAdapter(new ArrayAdapter<String>(mRootView.getContext(), mRowLayoutRes, mListStrings));
+                mListView.setAdapter(
+                        new ArrayAdapter<>(mRootView.getContext(), mRowLayoutRes, mListStrings));
                 break;
 
             case R.id.row_spinner_dropdown:
                 mTopTitle.setText("SpinnerDropDown");
                 mRowLayoutRes = android.R.layout.simple_spinner_dropdown_item;
                 mListView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-                mListView.setAdapter(new ArrayAdapter<String>(mRootView.getContext(), mRowLayoutRes, mListStrings));
+                mListView.setAdapter(
+                        new ArrayAdapter<>(mRootView.getContext(), mRowLayoutRes, mListStrings));
                 break;
 
             default:

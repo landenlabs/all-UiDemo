@@ -22,6 +22,7 @@ import android.graphics.Canvas;
 import android.graphics.ColorFilter;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.view.Gravity;
 
@@ -45,8 +46,8 @@ import java.io.IOException;
  * @attr ref android.R.styleable#ScaleImage_scaleGravity
  * @attr ref android.R.styleable#ScaleImage_drawable
  */
-public class ScaleImage extends Drawable implements Drawable.Callback {
-    private ScaleState mScaleState;
+class ScaleImage extends Drawable implements Drawable.Callback {
+    private final ScaleState mScaleState;
     private boolean mMutated;
     private final Rect mTmpRect = new Rect();
 
@@ -86,7 +87,7 @@ public class ScaleImage extends Drawable implements Drawable.Callback {
     }
 
     @Override
-    public void inflate(Resources r, XmlPullParser parser, AttributeSet attrs)
+    public void inflate(@NonNull Resources r, @NonNull XmlPullParser parser, @NonNull AttributeSet attrs)
             throws XmlPullParserException, IOException {
         super.inflate(r, parser, attrs);
 
@@ -128,16 +129,16 @@ public class ScaleImage extends Drawable implements Drawable.Callback {
     }
 
     @Override
-    public void invalidateDrawable(Drawable who) {
+    public void invalidateDrawable(@NonNull Drawable who) {
     }
 
     @Override
-    public void scheduleDrawable(Drawable who, Runnable what, long when) {
+    public void scheduleDrawable(@NonNull Drawable who, @NonNull Runnable what, long when) {
 
     }
 
     @Override
-    public void unscheduleDrawable(Drawable who, Runnable what) {
+    public void unscheduleDrawable(@NonNull Drawable who, @NonNull Runnable what) {
 
     }
 
@@ -166,7 +167,7 @@ public class ScaleImage extends Drawable implements Drawable.Callback {
     // overrides from Drawable
 
     @Override
-    public void draw(Canvas canvas) {
+    public void draw(@NonNull Canvas canvas) {
         if (mScaleState.mDrawable.getLevel() != 0)
             mScaleState.mDrawable.draw(canvas);
     }
@@ -179,7 +180,7 @@ public class ScaleImage extends Drawable implements Drawable.Callback {
     }
 
     @Override
-    public boolean getPadding(Rect padding) {
+    public boolean getPadding(@NonNull Rect padding) {
         // XXX need to adjust padding!
         return mScaleState.mDrawable.getPadding(padding);
     }
@@ -265,6 +266,7 @@ public class ScaleImage extends Drawable implements Drawable.Callback {
         return null;
     }
 
+    @NonNull
     @Override
     public Drawable mutate() {
         if (!mMutated && super.mutate() == this) {
@@ -286,10 +288,13 @@ public class ScaleImage extends Drawable implements Drawable.Callback {
 
         ScaleState(ScaleState orig, ScaleImage owner, Resources res) {
             if (orig != null) {
-                if (res != null) {
-                    mDrawable = orig.mDrawable.getConstantState().newDrawable(res);
-                } else {
-                    mDrawable = orig.mDrawable.getConstantState().newDrawable();
+                Drawable.ConstantState constantState = orig.mDrawable.getConstantState();
+                if (constantState != null) {
+                    if (res != null) {
+                        mDrawable = constantState.newDrawable(res);
+                    } else {
+                        mDrawable = constantState.newDrawable();
+                    }
                 }
                 mDrawable.setCallback(owner);
                 mScaleWidth = orig.mScaleWidth;

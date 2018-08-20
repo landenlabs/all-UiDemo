@@ -1,9 +1,5 @@
 package com.landenlabs.all_UiDemo.Util;
 
-/**
- * Created by Dennis Lang on 3/28/17.
- */
-
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -17,7 +13,8 @@ import android.widget.ProgressBar;
  */
 public class TextProgressBar extends ProgressBar {
     private String text;
-    private Paint textPaint;
+    private final Paint textPaint;
+    private  Rect bounds = new Rect();
 
     public TextProgressBar(Context context) {
         super(context);
@@ -44,7 +41,7 @@ public class TextProgressBar extends ProgressBar {
     protected synchronized void onDraw(Canvas canvas) {
         // First draw the regular progress bar, then custom draw our text
         super.onDraw(canvas);
-        Rect bounds = new Rect();
+
         textPaint.getTextBounds(text, 0, text.length(), bounds);
         int x = getWidth() / 2 - bounds.centerX();
         int y = getHeight() / 2 - bounds.centerY();

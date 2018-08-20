@@ -114,7 +114,6 @@
                 android:id="@+id/switchCompat1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
                 android:background="@drawable/transparent_ripple"
                 android:text="Tint\nTrack Thumb"
                 android:textColor="#ff00ff"

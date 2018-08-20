@@ -38,7 +38,8 @@
                 android:layout_height="wrap_content"
                 android:background="#ccf"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:baselineAligned="false">
 
                 <include
                     layout="@layout/image_text_wrap_height"
@@ -85,7 +86,8 @@
                 android:layout_height="wrap_content"
                 android:background="#fcc"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:baselineAligned="false">
 
                 <include
                     layout="@layout/image_text_wrap_height"

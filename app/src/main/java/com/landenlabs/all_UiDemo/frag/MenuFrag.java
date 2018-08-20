@@ -1,30 +1,10 @@
-/**
- * Copyright (c) 2015 Dennis Lang (LanDen Labs) landenlabs@gmail.com
- * <p/>
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
- * associated documentation files (the "Software"), to deal in the Software without restriction, including
- * without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the
- * following conditions:
- * <p/>
- * The above copyright notice and this permission notice shall be included in all copies or substantial
- * portions of the Software.
- * <p/>
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT
- * LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
- * NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
- * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
- * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- *
- * @author Dennis Lang  (3/21/2015)
- * @see http://landenlabs.com
- */
 package com.landenlabs.all_UiDemo.frag;
 
 import android.animation.AnimatorInflater;
 import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,22 +36,22 @@ public class MenuFrag extends UiFragment
     private View mRootView;
     private ViewGroup mListVg;
     private WeakReference<MainActivity> mMainActivityWeakRef;
-    private UiSplashScreen mUiSplashScreen = new UiSplashScreen();
+    private final UiSplashScreen mUiSplashScreen = new UiSplashScreen();
 
     private static boolean mDidSplash = false;
-    private static int FIRST_MENU_PAGE = 1;
+    private static final int FIRST_MENU_PAGE = 1;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mRootView = inflater.inflate(R.layout.menu_frag, container, false);
 
         View page = Ui.viewById(mRootView, R.id.menu_page);
         page.setOnClickListener(this);
 
         MainActivity mainActivity = (MainActivity) getActivity();
-        mMainActivityWeakRef = new WeakReference<MainActivity>(mainActivity);
+        mMainActivityWeakRef = new WeakReference<>(mainActivity);
 
-        if (mDidSplash == false) {
+        if (!mDidSplash) {
 
             mUiSplashScreen.show(mRootView);
             mDidSplash = true;
@@ -79,7 +59,7 @@ public class MenuFrag extends UiFragment
             mUiSplashScreen.hide();
         }
 
-        setupGrid(fixPageItems(mMainActivityWeakRef.get().getPageItems()));
+        setupGrid(fixPageItems(MainActivity.getPageItems()));
 
         Ui.viewById(mRootView, R.id.menu_page_grid_btn).setOnClickListener(this);
         Ui.viewById(mRootView, R.id.menu_page_list_btn).setOnClickListener(this);
@@ -92,7 +72,7 @@ public class MenuFrag extends UiFragment
     @Override
     public void onResume() {
         super.onResume();
-        setupGrid(fixPageItems(mMainActivityWeakRef.get().getPageItems()));
+        setupGrid(fixPageItems(MainActivity.getPageItems()));
     }
 
     // =============================================================================================
@@ -127,7 +107,7 @@ public class MenuFrag extends UiFragment
                 mListVg.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        mMainActivityWeakRef.get().selectPage(idx.intValue() + FIRST_MENU_PAGE);
+                        mMainActivityWeakRef.get().selectPage(idx + FIRST_MENU_PAGE);
                     }
                 }, 500);
                 return;
@@ -140,10 +120,10 @@ public class MenuFrag extends UiFragment
                 mUiSplashScreen.hide();
                 break;
             case R.id.menu_page_grid_btn:
-                setupGrid(fixPageItems(mMainActivityWeakRef.get().getPageItems()));
+                setupGrid(fixPageItems(MainActivity.getPageItems()));
                 break;
             case R.id.menu_page_list_btn:
-                setupList(fixPageItems(mMainActivityWeakRef.get().getPageItems()));
+                setupList(fixPageItems(MainActivity.getPageItems()));
                 break;
         }
     }
@@ -168,7 +148,7 @@ public class MenuFrag extends UiFragment
             textView.setTextColor(0xff202020);
             textView.setTextSize(18.0f);
             textView.setBackgroundResource(R.drawable.shadow1);
-            textView.setTag(new Integer(idx++));
+            textView.setTag(idx++);
 
             mListVg.addView(textView);
 
@@ -211,11 +191,11 @@ public class MenuFrag extends UiFragment
     // =============================================================================================
     // Adapter
 
-    public class GridAdapter extends BaseAdapter {
+    class GridAdapter extends BaseAdapter {
         final private Context mContext;
         final private PageItem[] mPageItems;
 
-        public GridAdapter(Context context, PageItem[] pageItems) {
+        GridAdapter(Context context, PageItem[] pageItems) {
             mContext = context;
             mPageItems = pageItems;
         }
@@ -255,7 +235,7 @@ public class MenuFrag extends UiFragment
             }
 
             itemView.setText(mPageItems[position].mTitle);
-            itemView.setTag(new Integer(position));
+            itemView.setTag(position);
             itemView.setOnClickListener(MenuFrag.this);
 
             return itemView;

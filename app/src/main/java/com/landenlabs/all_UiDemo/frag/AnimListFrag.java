@@ -1,26 +1,3 @@
-/**
- * Copyright (c) 2015 Dennis Lang (LanDen Labs) landenlabs@gmail.com
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
- * associated documentation files (the "Software"), to deal in the Software without restriction, including
- * without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the
- * following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all copies or substantial
- * portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT
- * LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
- * NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
- * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
- * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- *
- * @author Dennis Lang  (3/21/2015)
- * @see http://landenlabs.com
- *
- */
-
 package com.landenlabs.all_UiDemo.frag;
 
 import android.animation.AnimatorSet;
@@ -28,6 +5,7 @@ import android.animation.ObjectAnimator;
 import android.animation.TypeEvaluator;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,9 +30,9 @@ import java.util.List;
 public class AnimListFrag  extends UiFragment {
 
     // ---- Timer ----
-    private Handler m_handler = new Handler();
-    private int mDurationMsec = 3000;
-    private Runnable m_updateElapsedTimeTask = new Runnable() {
+    private final Handler m_handler = new Handler();
+    private final int mDurationMsec = 3000;
+    private final Runnable m_updateElapsedTimeTask = new Runnable() {
         public void run() {
             animateIt();
             m_handler.postDelayed(this, mDurationMsec);   // Re-execute after msec.
@@ -66,7 +44,8 @@ public class AnimListFrag  extends UiFragment {
             "Jackfruit", "Mango", "Olive", "Pear", "Sugar-apple");
 
     // ---- Local Data ----
-    private float mCameraDist = 192000;
+    @SuppressWarnings("FieldCanBeLocal")
+    private final float mCameraDist = 192000;
     private int mCurrentIdx = 0;
     private View mRootView;
     private TextView mTitle1;
@@ -78,7 +57,7 @@ public class AnimListFrag  extends UiFragment {
     private final TypeEvaluator<Float> mAngleSync = new FloatEvaluator();
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mRootView = inflater.inflate(R.layout.anim_list, container, false);
 
         setup();
@@ -115,7 +94,8 @@ public class AnimListFrag  extends UiFragment {
           fails to set state. Moving selector into list_row solves the problem.
           See advance()
         */
-        mListView.setAdapter(new ArrayAdapter<String>(mRootView.getContext(), R.layout.list_row, mListStrings));
+        mListView.setAdapter(
+                new ArrayAdapter<>(mRootView.getContext(), R.layout.list_row, mListStrings));
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
@@ -129,7 +109,7 @@ public class AnimListFrag  extends UiFragment {
     /**
      * Start animation.
      */
-    public void animateIt() {
+    private void animateIt() {
         advance();
 
         // Compute begin and end angle (degrees).
@@ -182,7 +162,7 @@ public class AnimListFrag  extends UiFragment {
     /**
      * Modify angle so both edges are in sync.
      */
-    public class FloatEvaluator implements TypeEvaluator<Float> {
+    class FloatEvaluator implements TypeEvaluator<Float> {
         public Float evaluate(float fraction, Float startValue,  Float endValue) {
 
             // Assume non-zero start is a reverse animation..
@@ -198,8 +178,7 @@ public class AnimListFrag  extends UiFragment {
             if (startValue != 0)
                 percent = 1 - percent;
 
-            float degrees2 = startValue + ((endValue - startValue) * percent);
-            return degrees2;
+            return startValue + ((endValue - startValue) * percent);
         }
     }
 }

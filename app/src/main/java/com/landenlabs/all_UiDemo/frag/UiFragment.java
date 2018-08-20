@@ -23,12 +23,18 @@
 
 package com.landenlabs.all_UiDemo.frag;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
+import android.view.Window;
+
+import java.util.Objects;
 
 /**
  * Created by Dennis Lang on 7/8/16.
@@ -38,9 +44,37 @@ import android.util.Log;
  */
 public abstract class UiFragment extends Fragment {
 
-    public abstract int getFragId();
-    public abstract String getName();
+    protected abstract int getFragId();
+    protected abstract String getName();
     public abstract String getDescription();
+
+
+    @NonNull
+    Context getContextSafe() {
+        return Objects.requireNonNull(this.getContext());
+    }
+    @NonNull
+    private Activity getActivitySafe() {
+        return Objects.requireNonNull(getActivity());
+    }
+
+    @NonNull
+    private android.support.v4.app.FragmentManager getFragmentMgrSafe() {
+        return Objects.requireNonNull(getFragmentManager());
+    }
+
+    @NonNull
+    <T> T getServiceSafe(String service) {
+        //noinspection unchecked
+        return (T)Objects.requireNonNull(getActivitySafe().getSystemService(service));
+    }
+
+    @SuppressWarnings("unused")
+    @NonNull
+    Window getWindow() {
+        return Objects.requireNonNull(getActivitySafe().getWindow());
+    }
+
 
     @Override
     public void onDestroyView()
@@ -52,23 +86,24 @@ public abstract class UiFragment extends Fragment {
         if (! getRetainInstance()) {
             // Required to prevent duplicate id when Fragment re-created.
             int fragId = getFragId();
-            Fragment fragment = (getFragmentManager().findFragmentById(fragId));
+            Fragment fragment = getFragmentMgrSafe().findFragmentById(fragId);
             if (fragment != null) {
-                FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                FragmentTransaction ft = getFragmentMgrSafe().beginTransaction();
                 ft.remove(fragment);
-                ft.commit();
+                ft.commitAllowingStateLoss();
             }
         }
     }
 
     Resources.Theme getTheme() {
-        return this.getContext().getTheme();
+        return getContextSafe().getTheme();
     }
 
     Drawable getDrawable(int resId) {
         if (Build.VERSION.SDK_INT >= 21) {
             return getResources().getDrawable(resId, getTheme());
+        } else {
+            return getResources().getDrawable(resId);
         }
-        return getResources().getDrawable(resId);
     }
 }

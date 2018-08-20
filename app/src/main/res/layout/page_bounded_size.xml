@@ -53,7 +53,7 @@
                     android:layout_height="wrap_content"
                     android:background="#58f"
                     android:orientation="horizontal"
-                    app:bounded_width="200dp">
+                    app:width="200dp">
 
                     <TextView
                         style="@style/LongText"
@@ -80,7 +80,7 @@
                     android:layout_height="wrap_content"
                     android:background="#85f"
                     android:orientation="horizontal"
-                    app:bounded_width="250dp">
+                    app:width="250dp">
 
                     <TextView
                         style="@style/LongText"
@@ -104,7 +104,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    app:bounded_width="300dp">
+                    app:width="300dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -138,7 +138,7 @@
                     android:layout_height="wrap_content"
                     android:background="#85f"
                     android:orientation="horizontal"
-                    app:bounded_widthPercent="0.3">
+                    app:widthPercent="0.3">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -164,7 +164,7 @@
                     android:layout_height="wrap_content"
                     android:background="#58f"
                     android:orientation="horizontal"
-                    app:bounded_widthPercent="0.4">
+                    app:widthPercent="0.4">
 
                     <TextView
                         style="@style/LongText"
@@ -175,7 +175,7 @@
 
                 <Button
                     style="@style/LongBtn"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="#f00" />
@@ -192,7 +192,7 @@
                     android:layout_height="wrap_content"
                     android:background="#85f"
                     android:orientation="horizontal"
-                    app:bounded_widthPercent="0.5">
+                    app:widthPercent="0.5">
 
                     <TextView
                         style="@style/LongText"
@@ -218,7 +218,7 @@
                     android:layout_height="wrap_content"
                     android:background="#f5f"
                     android:orientation="horizontal"
-                    app:bounded_widthPercent="0.8">
+                    app:widthPercent="0.8">
 
                     <TextView
                         style="@style/LongText"
@@ -254,7 +254,7 @@
                     android:layout_height="wrap_content"
                     android:background="#f5f"
                     android:orientation="vertical"
-                    app:bounded_widthPercent="0.5">
+                    app:widthPercent="0.5">
 
                     <TextView
                         style="@style/LongText"
@@ -311,7 +311,7 @@
                     android:layout_height="wrap_content"
                     android:background="#f5f"
                     android:orientation="vertical"
-                    app:bounded_widthPercent="0.5">
+                    app:widthPercent="0.5">
 
                     <TextView
                         style="@style/LongText"
@@ -377,7 +377,7 @@
                             android:layout_height="wrap_content"
                             android:background="#58f"
                             android:orientation="horizontal"
-                            app:bounded_widthPercent="0.4">
+                            app:widthPercent="0.4">
 
                             <TextView
                                 style="@style/LongText"
@@ -403,7 +403,7 @@
                             android:layout_height="wrap_content"
                             android:background="#85f"
                             android:orientation="horizontal"
-                            app:bounded_widthPercent="0.5">
+                            app:widthPercent="0.5">
 
                             <TextView
                                 style="@style/LongText"
@@ -429,7 +429,7 @@
                             android:layout_height="wrap_content"
                             android:background="#f5f"
                             android:orientation="horizontal"
-                            app:bounded_widthPercent="0.8">
+                            app:widthPercent="0.8">
 
                             <TextView
                                 style="@style/LongText"

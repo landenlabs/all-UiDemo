@@ -1,25 +1,3 @@
-/**
- * Copyright (c) 2015 Dennis Lang (LanDen Labs) landenlabs@gmail.com
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
- * associated documentation files (the "Software"), to deal in the Software without restriction, including
- * without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the
- * following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all copies or substantial
- * portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT
- * LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
- * NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
- * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
- * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- *
- * @author Dennis Lang  (3/21/2015)
- * @see http://landenlabs.com
- *
- */
 package com.landenlabs.all_UiDemo.frag;
 
 import android.content.res.ColorStateList;
@@ -28,6 +6,7 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.StateListDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.graphics.drawable.DrawableCompat;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -48,11 +27,11 @@ import com.landenlabs.all_UiDemo.Ui;
 
 public class RadioBtnFrag  extends UiFragment {
 
-    View mRootView;
+    private View mRootView;
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mRootView = inflater.inflate(R.layout.layout_radio_btns, container, false);
 
         setup();
@@ -115,11 +94,11 @@ public class RadioBtnFrag  extends UiFragment {
             RadioButton button = new RadioButton(tabHolder.getContext());
 
             String resName = "tab_" + pageName.toLowerCase();
-            int resID = getResources().getIdentifier(resName, "drawable", this.getContext().getPackageName());
+            int resID = getResources().getIdentifier(resName, "drawable", getContextSafe().getPackageName());
             Drawable tabBtnIcon = getResources().getDrawable(resID);
             if (tabBtnIcon != null) {
 
-                if (tabBtnIcon != null && Build.VERSION.SDK_INT >= 21) {
+                if (Build.VERSION.SDK_INT >= 21) {
                     tabBtnIcon.setTintMode(PorterDuff.Mode.MULTIPLY);
                     tabBtnIcon.setTintList(colorStateList);
                 } else {

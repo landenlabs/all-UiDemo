@@ -1,26 +1,3 @@
-
-/**
- * Copyright (c) 2015 Dennis Lang (LanDen Labs) landenlabs@gmail.com
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
- * associated documentation files (the "Software"), to deal in the Software without restriction, including
- * without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the
- * following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all copies or substantial
- * portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT
- * LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
- * NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
- * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
- * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- *
- * @author Dennis Lang  (3/21/2015)
- * @see http://landenlabs.com
- *
- */
 package com.landenlabs.all_UiDemo.frag;
 
 import android.content.Context;
@@ -29,6 +6,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -51,19 +29,23 @@ import java.util.ArrayList;
  * @see <a href="http://landenlabs.com/android/index-m.html"> author's web-site </a>
  */
 
+@SuppressWarnings({"FieldCanBeLocal", "unused"})
 public class GraphLineFrag  extends UiFragment implements View.OnClickListener {
 
-    View        mRootView;
-    ViewGroup   mGraphView;
+    private View        mRootView;
+    private ViewGroup   mGraphView;
+
 
     // =============================================================================================
     public static class LineView extends View {
 
-        float mXScale = 5;
+        final float mXScale = 5;
         float mLineWidth = 2;
         int   mColor = Color.RED;
 
-        ArrayList<Float> mPoints = new ArrayList<>();
+        private final Paint paint = new Paint();
+        private final Path path = new Path();
+        private final ArrayList<Float> mPoints = new ArrayList<>();
 
         public LineView(Context context) {
             super(context);
@@ -73,15 +55,12 @@ public class GraphLineFrag  extends UiFragment implements View.OnClickListener {
         protected void onDraw(Canvas canvas) {
             super.onDraw(canvas);
 
-            Paint paint = new Paint();
             paint.setColor(mColor);
             paint.setStrokeWidth(mLineWidth);
             paint.setStyle(Paint.Style.STROKE);
 
             if (!mPoints.isEmpty()) {
-                Path path = new Path();
                 path.moveTo(0, mPoints.get(0));
-
                 for (int idx = 1; idx < mPoints.size(); idx++) {
                     path.lineTo(idx * mXScale, mPoints.get(idx));
                 }
@@ -93,7 +72,7 @@ public class GraphLineFrag  extends UiFragment implements View.OnClickListener {
 
     // =============================================================================================
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mRootView = inflater.inflate(R.layout.graphline_frag, container, false);
 
         setup();
@@ -124,9 +103,9 @@ public class GraphLineFrag  extends UiFragment implements View.OnClickListener {
         }
     }
 
-    LineView mLineView1;
-    LineView mLineView2;
-    Runnable mAddPoints;
+    private LineView mLineView1;
+    private LineView mLineView2;
+    private Runnable mAddPoints;
 
     private void setup() {
         mGraphView = Ui.viewById(mRootView, R.id.graph_line_surfaceview);
@@ -141,6 +120,7 @@ public class GraphLineFrag  extends UiFragment implements View.OnClickListener {
         final int maxPoints = 100;
         final int maxRange = 400;
         try {
+            //noinspection PointlessArithmeticExpression
             mLineView1 = createLine(mGraphView, lp, 0xff801010, 2, updateMill*1, maxPoints, maxRange/2);
             mLineView2 = createLine(mGraphView, lp, 0xff108010, 4, updateMill*2, maxPoints, maxRange);
         } catch (Exception ex) {

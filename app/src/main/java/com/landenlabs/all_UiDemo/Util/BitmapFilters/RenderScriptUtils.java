@@ -1,32 +1,9 @@
-/**
- * Copyright (c) 2015 Dennis Lang (LanDen Labs) landenlabs@gmail.com
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
- * associated documentation files (the "Software"), to deal in the Software without restriction, including
- * without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the
- * following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all copies or substantial
- * portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT
- * LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
- * NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
- * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
- * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- *
- * @author Dennis Lang  (3/21/2015)
- * @see http://landenlabs.com
- *
- */
 package com.landenlabs.all_UiDemo.Util.BitmapFilters;
 
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.renderscript.Allocation;
 import android.renderscript.Element;
-import android.renderscript.RSRuntimeException;
 import android.renderscript.RenderScript;
 import android.util.Log;
 
@@ -55,10 +32,10 @@ public class RenderScriptUtils {
      */
     public static class Blur implements IBlur {
 
-        private RenderScript mRS;
+        private final RenderScript mRS;
 
-        private ScriptC_horzblur mHorizontalScript;
-        private ScriptC_vertblur mVerticalScript;
+        private final ScriptC_horzblur mHorizontalScript;
+        private final ScriptC_vertblur mVerticalScript;
 
         public Blur(Context context) {
             mRS = RenderScript.create(context);
@@ -74,8 +51,6 @@ public class RenderScriptUtils {
 
             try {
                 blur(src, dst, radius);
-            } catch (RSRuntimeException ex) {
-                Log.e(TAG, "Blur :: renderScript crashed", ex);
             } catch (Exception ex) {
                 Log.e(TAG, "Blur :: renderScript crashed", ex);
             }
@@ -152,10 +127,10 @@ public class RenderScriptUtils {
      * @author Dennis Lang
      *
      */
-    public static class Tint {
+    static class Tint {
 
-        private RenderScript mRS;
-        private ScriptC_tint mTintScript;
+        private final RenderScript mRS;
+        private final ScriptC_tint mTintScript;
 
         public Tint(Context context) {
             mRS = RenderScript.create(context);
@@ -192,22 +167,22 @@ public class RenderScriptUtils {
     }
 
     // Get alpha from 32bit color
-    public static float getA(int argb) {
+    private static float getA(int argb) {
         return ((argb >> 24) & 0xff) / 255.0f;
     }
 
     // Get red from 32bit color
-    public static float getR(int argb) {
+    private static float getR(int argb) {
         return ((argb >> 16) & 0xff) / 255.0f;
     }
 
     // Get green from 32bit color
-    public static float getG(int argb) {
+    private static float getG(int argb) {
         return ((argb >> 8) & 0xff) / 255.0f;
     }
 
     // Get blue from 32bit color
-    public static float getB(int argb) {
-        return ((argb >> 0) & 0xff) / 255.0f;
+    private static float getB(int argb) {
+        return (argb & 0xff) / 255.0f;
     }
 }

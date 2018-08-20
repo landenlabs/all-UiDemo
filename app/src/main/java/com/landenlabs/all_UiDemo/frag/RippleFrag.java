@@ -6,6 +6,7 @@ import android.graphics.drawable.RippleDrawable;
 import android.graphics.drawable.StateListDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,7 +20,7 @@ import com.landenlabs.all_UiDemo.R;
  */
 public class RippleFrag extends UiFragment implements View.OnClickListener {
 
-    public class DbgStateListDrawable extends StateListDrawable {
+    private class DbgStateListDrawable extends StateListDrawable {
         @Override
         public boolean selectDrawable(int idx) {
             Log.d("foo", "SelectDrawable " + idx);
@@ -32,7 +33,7 @@ public class RippleFrag extends UiFragment implements View.OnClickListener {
     private ListView mList1View;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mRootView = inflater.inflate(R.layout.ripple_frag, container, false);
 
         setup();
@@ -100,7 +101,9 @@ public class RippleFrag extends UiFragment implements View.OnClickListener {
         int selectionBgColor = 0xffff0000;
         ColorDrawable selectionBgDrawable = new ColorDrawable(selectionBgColor);
 
-        if (Build.VERSION.SDK_INT >= 21) {
+        //noinspection ConstantConditions
+        if (mListView != null) {
+            if (Build.VERSION.SDK_INT >= 21) {
                 /*
                 <ripple
                      xmlns:android="http://schemas.android.com/apk/res/android"
@@ -110,19 +113,20 @@ public class RippleFrag extends UiFragment implements View.OnClickListener {
                     <item android:id="@android:id/mask" android:drawable="@android:color/white" />
                  </ripple>
                  */
-            // ColorStateList colorStateList = new ColorStateList(
-            //         new int[][] { new int[]{} },
-            //         new int[] { 0x40ffffff }  );
-            ColorStateList colorStateList = ColorStateList.valueOf(0x40ffffff); // ripple color
-            RippleDrawable rippleDrawable = new RippleDrawable(colorStateList, selectionBgDrawable, null);
-            mListView.setSelector(rippleDrawable);
-        } else   {
-            // StateListDrawable stateListDrawable = new StateListDrawable();
-            // stateListDrawable.addState(new int[]{}, drawableItemBg));
-            // mDrawerListView.setSelector(stateListDrawable);
-            mListView.setSelector(selectionBgDrawable);
+                // ColorStateList colorStateList = new ColorStateList(
+                //         new int[][] { new int[]{} },
+                //         new int[] { 0x40ffffff }  );
+                ColorStateList colorStateList = ColorStateList.valueOf(0x40ffffff); // ripple color
+                RippleDrawable rippleDrawable =
+                        new RippleDrawable(colorStateList, selectionBgDrawable, null);
+                mListView.setSelector(rippleDrawable);
+            } else {
+                // StateListDrawable stateListDrawable = new StateListDrawable();
+                // stateListDrawable.addState(new int[]{}, drawableItemBg));
+                // mDrawerListView.setSelector(stateListDrawable);
+                mListView.setSelector(selectionBgDrawable);
+            }
         }
-
 
 
 

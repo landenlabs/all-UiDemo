@@ -1,31 +1,11 @@
-/**
- * Copyright (c) 2015 Dennis Lang (LanDen Labs) landenlabs@gmail.com
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
- * associated documentation files (the "Software"), to deal in the Software without restriction, including
- * without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the
- * following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all copies or substantial
- * portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT
- * LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
- * NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
- * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
- * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- *
- * @author Dennis Lang  (3/21/2015)
- * @see http://landenlabs.com
- *
- */
 package com.landenlabs.all_UiDemo.frag;
 
 import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
 import android.opengl.GLU;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,13 +32,12 @@ import javax.microedition.khronos.opengles.GL10;
 
 public class GlLineFrag  extends UiFragment implements View.OnClickListener {
 
-    View mRootView;
-    GLSurfaceView mGlSurfaceView;
+    private View mRootView;
 
     // =============================================================================================
 
     static class Line {
-        private FloatBuffer VertexBuffer;
+        private final FloatBuffer VertexBuffer;
 
         private final String VertexShaderCode =
                 // This matrix member variable provides a hook to manipulate
@@ -78,14 +57,14 @@ public class GlLineFrag  extends UiFragment implements View.OnClickListener {
                         "  gl_FragColor = vColor;" +
                         "}";
 
-        protected int GlProgram;
-        protected int PositionHandle;
-        protected int ColorHandle;
-        protected int MVPMatrixHandle;
+        final int GlProgram;
+        int PositionHandle;
+        int ColorHandle;
+        int MVPMatrixHandle;
 
         // number of coordinates per vertex in this array
         static final int COORDS_PER_VERTEX = 3;
-        static float LineCoords[] = {
+        static final float[] LineCoords = {
                 0.0f, 0.0f, 0.0f,
                 1.0f, 0.0f, 0.0f
         };
@@ -94,9 +73,9 @@ public class GlLineFrag  extends UiFragment implements View.OnClickListener {
         private final int VertexStride = COORDS_PER_VERTEX * 4; // 4 bytes per vertex
 
         // Set color with red, green, blue and alpha (opacity) values
-        float color[] = { 0.0f, 0.0f, 0.0f, 1.0f };
+        final float[] color = { 0.0f, 0.0f, 0.0f, 1.0f };
 
-        public Line() {
+        Line() {
             // initialize vertex byte buffer for shape coordinates
             ByteBuffer bb = ByteBuffer.allocateDirect(
                     // (number of coordinate values * 4 bytes per float)
@@ -120,7 +99,8 @@ public class GlLineFrag  extends UiFragment implements View.OnClickListener {
             GLES20.glLinkProgram(GlProgram);                  // creates OpenGL ES program executables
         }
 
-        public void SetVerts(float v0, float v1, float v2, float v3, float v4, float v5) {
+        @SuppressWarnings("SameParameterValue")
+        void SetVerts(float v0, float v1, float v2, float v3, float v4, float v5) {
             LineCoords[0] = v0;
             LineCoords[1] = v1;
             LineCoords[2] = v2;
@@ -133,13 +113,15 @@ public class GlLineFrag  extends UiFragment implements View.OnClickListener {
             VertexBuffer.position(0);
         }
 
-        public void SetColor(float red, float green, float blue, float alpha) {
+        @SuppressWarnings("SameParameterValue")
+        void SetColor(float red, float green, float blue, float alpha) {
             color[0] = red;
             color[1] = green;
             color[2] = blue;
             color[3] = alpha;
         }
 
+        @SuppressWarnings("unused")
         public void draw(float[] mvpMatrix) {
             // Add program to OpenGL ES environment
             GLES20.glUseProgram(GlProgram);
@@ -220,10 +202,11 @@ public class GlLineFrag  extends UiFragment implements View.OnClickListener {
             // vertLine.draw(mvpMatrix);
         }
 
-        public static void checkGlError(String msg) {
-
+        static void checkGlError(String msg) {
+            Log.e("GlLineFrag", msg);
         }
-        public static int loadShader(int type, String shaderCode) {
+
+        static int loadShader(int type, String shaderCode) {
             int shader = GLES20.glCreateShader(type);
             GLES20.glShaderSource(shader, shaderCode);
             GLES20.glCompileShader(shader);
@@ -233,7 +216,7 @@ public class GlLineFrag  extends UiFragment implements View.OnClickListener {
 
     // =============================================================================================
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mRootView = inflater.inflate(R.layout.glline_frag, container, false);
 
         setup();
@@ -265,7 +248,7 @@ public class GlLineFrag  extends UiFragment implements View.OnClickListener {
     }
 
     private void setup() {
-        mGlSurfaceView = Ui.viewById(mRootView, R.id.gl_line_surfaceview);
+        GLSurfaceView mGlSurfaceView = Ui.viewById(mRootView, R.id.gl_line_surfaceview);
         mGlSurfaceView.setRenderer(new GraphRenderer());
 
         // Ui.viewById(mRootView, R.id.scroll_add).setOnClickListener(this);

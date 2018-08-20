@@ -1,24 +1,3 @@
-/**
- * Copyright (c) 2015 Dennis Lang (LanDen Labs) landenlabs@gmail.com
- * <p/>
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
- * associated documentation files (the "Software"), to deal in the Software without restriction, including
- * without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the
- * following conditions:
- * <p/>
- * The above copyright notice and this permission notice shall be included in all copies or substantial
- * portions of the Software.
- * <p/>
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT
- * LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
- * NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
- * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
- * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- *
- * @author Dennis Lang  (3/21/2015)
- * @see http://landenlabs.com
- */
 package com.landenlabs.all_UiDemo.frag;
 
 import android.content.res.ColorStateList;
@@ -34,6 +13,7 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.ScaleDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.graphics.drawable.DrawableCompat;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -51,13 +31,14 @@ import com.landenlabs.all_UiDemo.Ui;
  * @see <a href="http://landenlabs.com/android/index-m.html"> author's web-site </a>
  */
 
+
 public class ImageScalesFrag  extends UiFragment implements View.OnClickListener  {
 
-    View mRootView;
-    ViewGroup mImageHolder;
+    private View mRootView;
+    private ViewGroup mImageHolder;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mRootView = inflater.inflate(R.layout.image_scales, container, false);
 
         setup();
@@ -106,12 +87,12 @@ public class ImageScalesFrag  extends UiFragment implements View.OnClickListener
         }
     }
 
-    ImageView mUpperLeftFill;
-    ImageView mLowerLeftFill;
-    View mCenterFill;
-    Bitmap mPrevBm1;
-    Bitmap mPrevBm2;
-    Bitmap mPrevBm3;
+    private ImageView mUpperLeftFill;
+    private ImageView mLowerLeftFill;
+    private View mCenterFill;
+    private Bitmap mPrevBm1;
+    private Bitmap mPrevBm2;
+    private Bitmap mPrevBm3;
 
     private void setup() {
         mImageHolder = Ui.viewById(mRootView, R.id.image_holder);
@@ -137,6 +118,7 @@ public class ImageScalesFrag  extends UiFragment implements View.OnClickListener
     }
 
     private void setImage(ImageView imageView, int imageRes) {
+        //noinspection ConstantConditions,ConstantConditions,PointlessBooleanExpression
         if (false &&  imageRes == R.drawable.scr_home) {
             // ScaleDrawable does nothing.
             setScaledVector(imageView, imageRes);
@@ -145,6 +127,7 @@ public class ImageScalesFrag  extends UiFragment implements View.OnClickListener
         }
     }
 
+    @SuppressWarnings({"SingleStatementInBlock", "ConstantConditions"})
     private void setScaledVector(ImageView imageView, int imageRes) {
 
         Drawable rawDrawable;
@@ -162,12 +145,14 @@ public class ImageScalesFrag  extends UiFragment implements View.OnClickListener
         */
 
         // ScaleDrawable does nothing !!!!
+        //noinspection ConstantIfStatement
         if (false) {
             ScaleDrawable scaleDrawable = new ScaleDrawable(rawDrawable, Gravity.TOP | Gravity.LEFT, 2.0f, 0.8f);
             scaleDrawable.setLevel(8000);
             drawable = scaleDrawable.getDrawable();
         }
 
+        //noinspection ConstantIfStatement
         if (false) {
             int tintColor = 0x80ff0000;
             ColorStateList colorStateList = new ColorStateList(
@@ -274,12 +259,12 @@ public class ImageScalesFrag  extends UiFragment implements View.OnClickListener
                 Bitmap bmImage = bmDrawable.getBitmap();
 
                 prevScaled = scaleCenterCrop(bmImage, screenWidthPx, viewHeightPx);
-                view.setBackgroundDrawable(new BitmapDrawable(prevScaled));
+                view.setBackground(new BitmapDrawable(getResources(), prevScaled));
             } else {
 
                 // TODO - compute scale factor from screenWidthPx and viewHeightx
                 Drawable scaleDrawable = new ScaleDrawable(bgImage, Gravity.NO_GRAVITY, 1.0f, 0.1f);
-                view.setBackgroundDrawable(scaleDrawable);
+                view.setBackground(scaleDrawable);
             }
         }
 
@@ -288,11 +273,9 @@ public class ImageScalesFrag  extends UiFragment implements View.OnClickListener
 
     /**
      * Scale using Center Crop (source scaled till filling both new dimensions)
-     * @param source
-     * @param newWidth
-     * @param newHeight
      * @return Center Crop scaled image.
      */
+    @SuppressWarnings("unused")
     public static Bitmap scaleCenterCrop2(Bitmap source, int newWidth, int newHeight) {
         int sourceWidth = source.getWidth();
         int sourceHeight = source.getHeight();
@@ -328,7 +311,7 @@ public class ImageScalesFrag  extends UiFragment implements View.OnClickListener
         return null;
     }
 
-    public static Bitmap scaleCenterCrop(Bitmap source,  int newWidth, int newHeight) {
+    private static Bitmap scaleCenterCrop(Bitmap source, int newWidth, int newHeight) {
         int sourceWidth = source.getWidth();
         int sourceHeight = source.getHeight();
 

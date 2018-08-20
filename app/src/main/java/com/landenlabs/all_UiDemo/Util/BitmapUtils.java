@@ -1,25 +1,3 @@
-/**
- * Copyright (c) 2015 Dennis Lang (LanDen Labs) landenlabs@gmail.com
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
- * associated documentation files (the "Software"), to deal in the Software without restriction, including
- * without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the
- * following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all copies or substantial
- * portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT
- * LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
- * NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
- * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
- * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- *
- * @author Dennis Lang  (3/21/2015)
- * @see http://landenlabs.com
- *
- */
 package com.landenlabs.all_UiDemo.Util;
 
 import android.content.Context;
@@ -99,7 +77,7 @@ public class BitmapUtils {
      *            JPEG bitmap to convert
      * @return {@link Bitmap} in ARGB8888 format
      */
-    public static Bitmap convertBitmapFormatToARGB888(Bitmap img) {
+    private static Bitmap convertBitmapFormatToARGB888(Bitmap img) {
         int numPixels = img.getWidth() * img.getHeight();
         int[] pixels = new int[numPixels];
 
@@ -133,16 +111,6 @@ public class BitmapUtils {
 
         if (null == bitmap) {
             return null;
-        }
-
-        /**
-         * Support render script library has bug with blur effect on down
-         * versions than <code>Build.VERSION_CODES.JELLY_BEAN</code>. To fix
-         * this bug need convert bitmap format to
-         * <code>Bitmap.Config.ARGB_8888</code>.
-         */
-        if (android.os.Build.VERSION.SDK_INT <= android.os.Build.VERSION_CODES.JELLY_BEAN) {
-            bitmap = convertBitmapFormatToARGB888(bitmap);
         }
 
         Bitmap blurBitmap = bitmap.copy(bitmap.getConfig(), true);
@@ -181,14 +149,6 @@ public class BitmapUtils {
 
     /**
      * Create darkened version of input drawable offset.
-     *
-     * @param res
-     * @param inImage
-     * @param offsetX
-     * @param offsetY
-     * @param blurRadius   Not currently used.
-     * @param shadowColor
-     * @return
      */
     public static BitmapDrawable shadowImage(Resources res, Drawable inImage, int offsetX, int offsetY, float blurRadius, int shadowColor) {
 
@@ -211,15 +171,9 @@ public class BitmapUtils {
 
     /**
      * Draw input bitmap in shadow color and offset. Assumes offset is positive.
-     *
-     * @param inBitmap
-     * @param offsetX
-     * @param offsetY
-     * @param blurRadius        Not used
-     * @param shadowColor
-     * @return
      */
-    public static Bitmap shadowBitmap(Bitmap inBitmap, int offsetX, int offsetY, float blurRadius, int shadowColor) {
+    private static Bitmap shadowBitmap(Bitmap inBitmap, int offsetX, int offsetY, float blurRadius,
+            int shadowColor) {
 
         int imgWidth = inBitmap.getWidth();
         int imgHeight = inBitmap.getHeight();

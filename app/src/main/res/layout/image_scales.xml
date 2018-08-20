@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--suppress DeprecatedClassUsageInspection -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="10dp">
@@ -32,9 +34,8 @@
 
         <RadioGroup
 
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/title"
             android:background="#e0e0ff"
             android:orientation="horizontal">
 
@@ -438,7 +439,8 @@
                 android:background="@color/row0"
                 android:clickable="true"
                 android:src="@drawable/image200"
-                android:stateListAnimator="@anim/press" />
+                android:stateListAnimator="@anim/press"
+                tools:ignore="KeyboardInaccessibleWidget" />
 
 
         </LinearLayout>

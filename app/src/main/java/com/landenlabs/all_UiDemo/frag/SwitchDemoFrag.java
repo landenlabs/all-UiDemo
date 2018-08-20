@@ -23,6 +23,7 @@
 package com.landenlabs.all_UiDemo.frag;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,10 +44,10 @@ import java.util.List;
 public class SwitchDemoFrag  extends UiFragment implements View.OnClickListener  {
 
     private View mRootView;
-    private List<View> mViewList = new ArrayList<>();
+    private final List<View> mViewList = new ArrayList<>();
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mRootView = inflater.inflate(R.layout.switch_demo, container, false);
         setup();
         return mRootView;

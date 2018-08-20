@@ -28,6 +28,7 @@ import android.app.AlertDialog;
 import android.content.res.Resources;
 import android.graphics.Outline;
 import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.FragmentActivity;
 import android.util.DisplayMetrics;
 import android.view.View;
@@ -48,13 +49,14 @@ public class Ui {
 
     @SuppressWarnings("unchecked")
     public static <E extends View> E needViewById(View rootView, int id) {
-        E foundView = (E)rootView.findViewById(id);
+        E foundView = rootView.findViewById(id);
         if (foundView == null)
             throw new NullPointerException("layout resource missing");
         return foundView;
     }
 
     public static <E extends View> E viewById(FragmentActivity fact, int id) {
+        //noinspection unchecked
         return (E) fact.findViewById(id);
     }
 
@@ -79,7 +81,7 @@ public class Ui {
                 .setNegativeButton("Close", null)
                 .show();
         dialog.setCanceledOnTouchOutside(true);
-        TextView textView = (TextView) dialog.findViewById(android.R.id.message);
+        TextView textView = dialog.findViewById(android.R.id.message);
         textView.setSingleLine(false);
         textView.setTextSize(20);
         return dialog;
@@ -112,12 +114,10 @@ public class Ui {
 
         if (Build.VERSION.SDK_INT >= 21) {
             view.setOutlineProvider(new ViewOutlineProvider() {
+                @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
                 @Override
                 public void getOutline(View view, Outline outline) {
-
-                    if (Build.VERSION.SDK_INT >= 21) {
-                        outline.setRect(0, 0, width, height);
-                    }
+                    outline.setRect(0, 0, width, height);
                 }
             });
         }

@@ -27,12 +27,13 @@ import android.content.pm.ApplicationInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -54,7 +55,8 @@ import com.landenlabs.all_UiDemo.Util.UncaughtExceptionHandler;
  * @author Dennis Lang (LanDen Labs)
  * @see <a href="http://landenlabs.com/android/index-m.html"> author's web-site </a>
  */
-public class MainActivity extends ActionBarActivity    {
+@SuppressWarnings("ConstantIfStatement")
+public class MainActivity extends AppCompatActivity {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -64,17 +66,16 @@ public class MainActivity extends ActionBarActivity    {
      * may be best to switch to a
      * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
-    SectionsPagerAdapter mSectionsPagerAdapter;
+    private SectionsPagerAdapter mSectionsPagerAdapter;
 
-    ViewPager mViewPager;
-    ActionBar mActionBar;
+    private ViewPager mViewPager;
+    private ActionBar mActionBar;
 
-    static final String STATE_ADAPTER = "secPageAdapter";
-    Parcelable mAdapterParcelable;
+    private Parcelable mAdapterParcelable;
 
-    GoogleAnalyticsHelper mAnalytics;
+    private GoogleAnalyticsHelper mAnalytics;
 
-    public static boolean isDebug(ApplicationInfo appInfo) {
+    private static boolean isDebug(ApplicationInfo appInfo) {
         return ((appInfo.flags & ApplicationInfo.FLAG_DEBUGGABLE) != 0);
     }
 
@@ -101,7 +102,7 @@ public class MainActivity extends ActionBarActivity    {
         }
 
         // Set up the ViewPager with the sections adapter.
-        mViewPager = (ViewPager) findViewById(R.id.pager);
+        mViewPager = findViewById(R.id.pager);
         mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -120,6 +121,7 @@ public class MainActivity extends ActionBarActivity    {
         });
     }
 
+    @SuppressWarnings({"SingleStatementInBlock", "ConstantConditions"})
     @Override
     protected void onResume() {
         super.onResume();
@@ -146,11 +148,12 @@ public class MainActivity extends ActionBarActivity    {
             mAdapterParcelable = mSectionsPagerAdapter.saveState();
         mSectionsPagerAdapter = null;
         if (mViewPager != null)
-             mViewPager.setAdapter(mSectionsPagerAdapter);
+             mViewPager.setAdapter(null);
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
     }
 
     @Override
@@ -202,7 +205,7 @@ public class MainActivity extends ActionBarActivity    {
 
     // =============================================================================================
 
-    static final PageItem[] mItems = new PageItem[] {
+    private static final PageItem[] mItems = new PageItem[] {
 
             new PageItem( "Menu", R.layout.page_menu_frag),
 
@@ -210,6 +213,7 @@ public class MainActivity extends ActionBarActivity    {
 
             // new PageItem( "DrawerLayout", R.layout.page_drawer_layout),
             new PageItem( "Scroll Resize", R.layout.page_scroll_resize),
+            new PageItem( "Expand List", R.layout.page_expandable_list),
 
             new PageItem( "Assorted", R.layout.page_assorted),
             new PageItem( "Text Alignment", R.layout.page_text),
@@ -248,6 +252,7 @@ public class MainActivity extends ActionBarActivity    {
             new PageItem( "ElevShadow (API21)",  R.layout.page_elevation ),
             new PageItem( "Coordinated (API21)", R.layout.page_coordinated ),
             new PageItem( "TabLayout (API21)", R.layout.page_tablayout),
+            new PageItem( "Ripple", R.layout.page_ripple),
 
             new PageItem( "GL Cube", R.layout.page_glcube_frag),
             new PageItem( "Graph Line", R.layout.page_graphline_frag),
@@ -262,9 +267,9 @@ public class MainActivity extends ActionBarActivity    {
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
      * one of the sections/tabs/pages.
      */
-    public class SectionsPagerAdapter extends FragmentPagerAdapter {
+    class SectionsPagerAdapter extends FragmentPagerAdapter {
 
-        public SectionsPagerAdapter(FragmentManager fm) {
+        SectionsPagerAdapter(FragmentManager fm) {
             super(fm);
 
             // ActionBar actionBar = getActionBar();
@@ -297,7 +302,7 @@ public class MainActivity extends ActionBarActivity    {
         int m_pageNum = 0;
 
         // Returns a new instance of this fragment for the given section  number.
-        public static PageFragment newInstance(int sectionNumber) {
+        static PageFragment newInstance(int sectionNumber) {
             PageFragment fragment = new PageFragment();
 
             Bundle args = new Bundle();
@@ -308,12 +313,11 @@ public class MainActivity extends ActionBarActivity    {
 
         @Override
         public View onCreateView(
-                LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-            m_pageNum = getArguments().getInt(ARG_page_number);
+                @NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+            m_pageNum = (getArguments() == null) ? 0 : getArguments().getInt(ARG_page_number);
             int layout =  mItems[m_pageNum].mLayout;
             try {
-                View rootView = inflater.inflate(layout, container, false);
-                return rootView;
+                return inflater.inflate(layout, container, false);
             } catch (Exception ex) {
                 View rootView = inflater.inflate(R.layout.page_exception,  container, false);
                 rootView.setId(View.generateViewId());

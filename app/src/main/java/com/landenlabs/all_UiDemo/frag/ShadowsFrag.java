@@ -1,32 +1,10 @@
-/**
- * Copyright (c) 2015 Dennis Lang (LanDen Labs) landenlabs@gmail.com
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
- * associated documentation files (the "Software"), to deal in the Software without restriction, including
- * without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the
- * following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all copies or substantial
- * portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT
- * LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
- * NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
- * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
- * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- *
- * @author Dennis Lang  (3/21/2015)
- * @see http://landenlabs.com
- *
- */
 package com.landenlabs.all_UiDemo.frag;
 
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
-import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -48,42 +26,58 @@ import com.landenlabs.all_UiDemo.Util.CompatSeekBar;
  * @see <a href="http://landenlabs.com/android/index-m.html"> author's web-site </a>
  */
 
+@SuppressWarnings("FieldCanBeLocal")
 public class ShadowsFrag  extends UiFragment
         implements SeekBar.OnSeekBarChangeListener, View.OnClickListener {
 
-    View mRootView;
+    private View mRootView;
 
-    TextView textSizeLbl, textColorLbl, textBgColorLbl;
-    SeekBar textSizeSb, textColorSb, textBgColorSb;
+    private TextView textSizeLbl;
+    private TextView textColorLbl;
+    private TextView textBgColorLbl;
+    private SeekBar textSizeSb;
+    private SeekBar textColorSb;
+    private SeekBar textBgColorSb;
 
-    TextView radiusLbl, offsetXLbl, offsetYLbl, shadowColorLbl, shadowAlphaLbl;
-    SeekBar radiusSb, offsetXSb, offsetYSb, shadowColorSb, shadowAlphaSb;
+    private TextView radiusLbl;
+    private TextView offsetXLbl;
+    private TextView offsetYLbl;
+    private TextView shadowColorLbl;
+    private TextView shadowAlphaLbl;
+    private SeekBar radiusSb;
+    private SeekBar offsetXSb;
+    private SeekBar offsetYSb;
+    private SeekBar shadowColorSb;
+    private SeekBar shadowAlphaSb;
 
-    TextView shadowText1, shadowText2, shadowText3;
-    ImageView shadowImage1, shadowImage2;
-    View shadowView;
+    private TextView shadowText1;
+    private TextView shadowText2;
+    private TextView shadowText3;
+    private ImageView shadowImage1;
+    private ImageView shadowImage2;
+    private View shadowView;
 
-    final int seekMax = 255;
+    private final int seekMax = 255;
 
-    int textSize = 50;
-    final int maxTextSize = 100;
-    int textColorIdx = 0;
-    int textBgColor = 0xff;
-    int textColors[] = new int[] { Color.WHITE, Color.GRAY, Color.BLACK, Color.RED, Color.GREEN, Color.BLUE };
-    final int maxTextColorIdx = textColors.length-1;
+    private int textSize = 50;
+    private final int maxTextSize = 100;
+    private int textColorIdx = 0;
+    private int textBgColor = 0xff;
+    private final int[] textColors = new int[] { Color.WHITE, Color.GRAY, Color.BLACK, Color.RED, Color.GREEN, Color.BLUE };
+    private final int maxTextColorIdx = textColors.length-1;
 
-    int radius = 10;
-    final int maxRadius = 25;
-    int offsetX = 10;
-    int maxOffset = 25;
-    int offsetY = 10;
-    final int maxShadowColor = 255;
-    int shadowColor = 0;
-    int shadowAlpha = 0xff;
+    private int radius = 10;
+    private final int maxRadius = 25;
+    private int offsetX = 10;
+    private final int maxOffset = 25;
+    private int offsetY = 10;
+    private final int maxShadowColor = 255;
+    private int shadowColor = 0;
+    private int shadowAlpha = 0xff;
 
-    boolean mProcessChange = true;
+    private boolean mProcessChange = true;
 
-    public  static int ArrayFind(int[] array, int find) {
+    private static int ArrayFind(int[] array, int find) {
         for (int idx = 0; idx < array.length; idx++){
             if (array[idx] == find)
                 return idx;
@@ -93,7 +87,7 @@ public class ShadowsFrag  extends UiFragment
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mRootView = inflater.inflate(R.layout.shadows_frag, container, false);
 
         setup();
@@ -196,7 +190,7 @@ public class ShadowsFrag  extends UiFragment
 
     private void setNegSb(SeekBar seekBar, int value, int maxValue) {
         int maxValue2 = maxValue*2;
-        int iVal = (int)((maxValue + value) * seekMax/maxValue2);
+        int iVal = (maxValue + value) * seekMax/maxValue2;
         seekBar.setProgress(iVal);
     }
     private int getNegSb(SeekBar seekBar, int maxValue) {
@@ -237,7 +231,7 @@ public class ShadowsFrag  extends UiFragment
             shadowText.setBackgroundColor(Color.rgb(textBgColor, textBgColor, textBgColor));
             shadowText.setShadowLayer(radius, offsetX, offsetY, shadowColorARGB);
             shadowText.setText(String.format("%s\nR=%d X=%d\nA=%d C=%d",
-                this.getResources().getString(R.string.shadow_text).toString(),
+                    this.getResources().getString(R.string.shadow_text),
                 radius,  offsetX,
                 shadowAlpha, shadowColor));
         } else if (shadowView instanceof ImageView) {
@@ -307,13 +301,11 @@ public class ShadowsFrag  extends UiFragment
             textColorIdx = Math.max(0, ArrayFind(textColors, textColor));
             textBgColor = ((ColorDrawable)shadowText.getBackground()).getColor() & 255;
 
-            if (Build.VERSION.SDK_INT >= 16) {
-                shadowColor = shadowText.getShadowColor() & 255;
-                shadowAlpha = shadowText.getShadowColor() >> 24;
-                offsetX = (int) shadowText.getShadowDx();
-                offsetY = (int) shadowText.getShadowDy();
-                radius = (int) shadowText.getShadowRadius();
-            }
+            shadowColor = shadowText.getShadowColor() & 255;
+            shadowAlpha = shadowText.getShadowColor() >> 24;
+            offsetX = (int) shadowText.getShadowDx();
+            offsetY = (int) shadowText.getShadowDy();
+            radius = (int) shadowText.getShadowRadius();
         } else if (shadowView instanceof  ImageView) {
             ImageView shadowImage = (ImageView)shadowView;
             textSize = shadowImage.getWidth() / 2;
@@ -321,7 +313,7 @@ public class ShadowsFrag  extends UiFragment
 
         String msg = String.format(
                 "Tag:%s\nTextSize: %d\nTextColorIdx:%d\nTextBgColor:%d\nShadowColor:%d\nShadowAlpha:%d\nOffset:%d,%d\nRadius:%d\n",
-                ((String)shadowView.getTag()),
+                shadowView.getTag(),
                 textSize, textColorIdx, textBgColor, shadowColor, shadowAlpha, offsetX, offsetY, radius);
         // Toast.makeText(this.getActivity(), msg, Toast.LENGTH_SHORT).show();
 

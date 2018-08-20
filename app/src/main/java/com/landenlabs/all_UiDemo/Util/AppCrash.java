@@ -44,12 +44,13 @@ import java.lang.ref.WeakReference;
 
 public class AppCrash extends CrashManagerListener {
 
-    Context mContext;
+    private final Context mContext;
 
-    public AppCrash(Context context) {
+    private AppCrash(Context context) {
         mContext = context;
     }
 
+    @SuppressWarnings("UnnecessaryLocalVariable")
     public static void initalize(Application application, boolean isDebug) {
         Context context = application;
         int keyResId = context.getResources().getIdentifier("hockeyapp_key", "string", context.getPackageName());
@@ -76,7 +77,7 @@ public class AppCrash extends CrashManagerListener {
             crashMetaData.setUserDescription(context.getApplicationInfo().processName);
             crashMetaData.setUserID(context.getPackageName());
             CrashManager.handleUserInput(CrashManagerUserInput.CrashManagerUserInputAlwaysSend, crashMetaData, hockeyAppCrashListener,
-                    new WeakReference<Context>(context), false);
+                    new WeakReference<>(context), false);
             CrashManager.execute(context, hockeyAppCrashListener);
 
             MetricsManager.register((Application)context, HOCKEY_APP_ID);
@@ -106,7 +107,6 @@ public class AppCrash extends CrashManagerListener {
 
     /**
      * Please all Log 'errors' in description.
-     * @return
      */
     public String getDescription() {
         String description = "";

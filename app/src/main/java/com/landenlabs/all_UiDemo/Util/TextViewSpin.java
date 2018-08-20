@@ -18,7 +18,7 @@ public class TextViewSpin extends TextView {
 
     private LinearInterpolator mInterpolator;
     private Animation mAnimation;
-    private int animResid = R.anim.rotate1;
+    private final int animResid = R.anim.rotate1;
 
     public TextViewSpin(Context context) {
         super(context);

@@ -1,26 +1,3 @@
-/**
- * Copyright (c) 2017 Dennis Lang (LanDen Labs) landenlabs@gmail.com
- * <p>
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
- * associated documentation files (the "Software"), to deal in the Software without restriction, including
- * without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the
- * following conditions:
- * <p>
- * The above copyright notice and this permission notice shall be included in all copies or substantial
- * portions of the Software.
- * <p>
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT
- * LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
- * NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
- * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
- * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- *
- * @author Dennis Lang  (1/10/2017)
- * @see http://landenlabs.com
- */
-
-
 package com.landenlabs.all_UiDemo.Util;
 
 import android.content.Context;
@@ -31,17 +8,6 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.landenlabs.all_UiDemo.R;
-
-/**
- * Implementation of a bounded LinearLayout adds four new parameters
- * to limit the maximum bounds.
- *
- * @attr ref R.styleable#BoundedView_bounded_widthPercent
- * @attr ref R.styleable#BoundedView_bounded_heightPercent
- *
- * @attr ref R.styleable#BoundedView_bounded_width
- * @attr ref R.styleable#BoundedView_bounded_height
- */
 
 /**
  * A LinearLayout which can resize up to a maximum height or width.
@@ -65,8 +31,8 @@ import com.landenlabs.all_UiDemo.R;
  *      &lt;com.wsi.android.weather.ui.widget.BoundedLinearLayout
  *          android:layout_width="wrap_contents"
  *          android:layout_height="wrap_contents"
- *          app:bounded_widthPercent="0.8"
- *          app:bounded_width="200dp">
+ *          app:widthPercent="0.8"
+ *          app:width="200dp">
  *          &lt;TextView
  *              android:layout_width="wrap_content"
  *              android:layout_height="wrap_content" />
@@ -79,7 +45,7 @@ public class BoundedLinearLayout extends LinearLayout {
     private final int mBoundedHeightPixel;      // max height
     private final float mBoundedWidthPercent;
     private final float mBoundedHeightPercent;
-    private boolean mEnabled = true;
+    private final boolean mEnabled;
     private final float mAspectWdivH;
     private final int mIncludeLayoutResId;
 
@@ -98,14 +64,14 @@ public class BoundedLinearLayout extends LinearLayout {
 
     public BoundedLinearLayout(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs);
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.BoundedView, defStyle, MAX_INT);
-        mBoundedWidthPixel = a.getDimensionPixelSize(R.styleable.BoundedView_bounded_width, MAX_INT);
-        mBoundedHeightPixel = a.getDimensionPixelSize(R.styleable.BoundedView_bounded_height, MAX_INT);
-        mBoundedWidthPercent = a.getFloat(R.styleable.BoundedView_bounded_widthPercent, 1);
-        mBoundedHeightPercent = a.getFloat(R.styleable.BoundedView_bounded_heightPercent, 1);
-        mEnabled = a.getBoolean(R.styleable.BoundedView_bounded_enabled, true);
-        mAspectWdivH = a.getFloat(R.styleable.BoundedView_bounded_aspectWdivH, 0);
-        mIncludeLayoutResId = a.getResourceId(R.styleable.BoundedView_bounded_include, -1);
+        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.BoundedLinearLayout, defStyle, MAX_INT);
+        mBoundedWidthPixel = a.getDimensionPixelSize(R.styleable.BoundedLinearLayout_width, MAX_INT);
+        mBoundedHeightPixel = a.getDimensionPixelSize(R.styleable.BoundedLinearLayout_height, MAX_INT);
+        mBoundedWidthPercent = a.getFloat(R.styleable.BoundedLinearLayout_widthPercent, 1);
+        mBoundedHeightPercent = a.getFloat(R.styleable.BoundedLinearLayout_heightPercent, 1);
+        mEnabled = a.getBoolean(R.styleable.BoundedLinearLayout_enabled, true);
+        mAspectWdivH = a.getFloat(R.styleable.BoundedLinearLayout_aspectWdivH, 0);
+        mIncludeLayoutResId = a.getResourceId(R.styleable.BoundedLinearLayout_include, -1);
 
         a.recycle();
         init(context);
@@ -113,22 +79,21 @@ public class BoundedLinearLayout extends LinearLayout {
 
     public BoundedLinearLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.BoundedView, 0, 0);
-        mBoundedWidthPixel = a.getDimensionPixelSize(R.styleable.BoundedView_bounded_width, MAX_INT);
-        mBoundedHeightPixel = a.getDimensionPixelSize(R.styleable.BoundedView_bounded_height, MAX_INT);
-        mBoundedWidthPercent = a.getFloat(R.styleable.BoundedView_bounded_widthPercent, 1);
-        mBoundedHeightPercent = a.getFloat(R.styleable.BoundedView_bounded_heightPercent, 1);
-        mEnabled = a.getBoolean(R.styleable.BoundedView_bounded_enabled, true);
-        mAspectWdivH = a.getFloat(R.styleable.BoundedView_bounded_aspectWdivH, 0);
-        mIncludeLayoutResId = a.getResourceId(R.styleable.BoundedView_bounded_include, -1);
+        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.BoundedLinearLayout, 0, 0);
+        mBoundedWidthPixel = a.getDimensionPixelSize(R.styleable.BoundedLinearLayout_width, MAX_INT);
+        mBoundedHeightPixel = a.getDimensionPixelSize(R.styleable.BoundedLinearLayout_height, MAX_INT);
+        mBoundedWidthPercent = a.getFloat(R.styleable.BoundedLinearLayout_widthPercent, 1);
+        mBoundedHeightPercent = a.getFloat(R.styleable.BoundedLinearLayout_heightPercent, 1);
+        mEnabled = a.getBoolean(R.styleable.BoundedLinearLayout_enabled, true);
+        mAspectWdivH = a.getFloat(R.styleable.BoundedLinearLayout_aspectWdivH, 0);
+        mIncludeLayoutResId = a.getResourceId(R.styleable.BoundedLinearLayout_include, -1);
 
         a.recycle();
         init(context);
     }
 
     private void init(Context context) {
-        LayoutInflater inflater = (LayoutInflater) context
-                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        LayoutInflater inflater = SysUtils.getServiceSafe(context, Context.LAYOUT_INFLATER_SERVICE);
         if (mIncludeLayoutResId > 0) {
             View view = inflater.inflate(mIncludeLayoutResId, this);
             this.addView(view);
@@ -137,17 +102,12 @@ public class BoundedLinearLayout extends LinearLayout {
 
     /**
      * Adjust width and/or height first by percent then by pixels.
-     *
-     * @param widthMeasureSpec
-     * @param heightMeasureSpec
      */
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         if (mEnabled) {
-            int orgWidth;
-            int orgHeight;
-            int measuredWidth = orgWidth = MeasureSpec.getSize(widthMeasureSpec);
-            int measuredHeight = orgHeight = MeasureSpec.getSize(heightMeasureSpec);
+            int measuredWidth = MeasureSpec.getSize(widthMeasureSpec);
+            int measuredHeight = MeasureSpec.getSize(heightMeasureSpec);
 
             // Adjust width to max of percent of parent.
             int percentWidth = Math.round(measuredWidth * mBoundedWidthPercent);
@@ -198,16 +158,6 @@ public class BoundedLinearLayout extends LinearLayout {
                 }
             }
 
-            /*
-            if (measuredHeight > 0 && measuredHeight != orgHeight) {
-                heightMeasureSpec =
-                        MeasureSpec.makeMeasureSpec(measuredHeight, MeasureSpec.AT_MOST);
-            }
-            if (measuredWidth > 0 && measuredWidth != orgWidth) {
-                widthMeasureSpec =
-                        MeasureSpec.makeMeasureSpec(measuredWidth, MeasureSpec.AT_MOST);
-            }
-            */
         }
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }

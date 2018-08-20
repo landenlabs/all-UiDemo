@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/traffic_layer_control"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
     android:layout_margin="5dp"
@@ -9,7 +8,6 @@
     android:padding="5dp">
 
     <TextView
-        android:id="@+id/traffic_layer_control_item_text"
         style="@style/TextAppearanceBlack20"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -21,7 +19,6 @@
 
     <ImageView
         android:layout_weight="1"
-        android:id="@+id/image_text_image"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_gravity="center"

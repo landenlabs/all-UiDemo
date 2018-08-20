@@ -33,7 +33,7 @@
         android:dividerHeight="1dp"
         android:divider="#402040"
         android:listSelector="@drawable/list_selector"
-        tools:listitem="@layout/list1_row_checkbox" />
+        tools:listitem="@layout/list1_row_checkbox"
         />
 
 

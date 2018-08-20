@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="#4000"
+    android:elevation="10dp"
+    android:orientation="horizontal"
+    android:padding="8dp">
+
+    <android.support.v4.widget.Space
+        android:layout_width="10dp"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:textColor="#f88"
+        android:textSize="20dp"
+        tools:text="Group: " />
+
+    <TextView
+        android:id="@+id/exp_group1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#fff"
+        android:textSize="20dp"
+        tools:text="Test Text " />
+
+    <!-- Have to disable focusable on all elements used inside ExpandableList
+    to allow ExpandableList to handle default expand/collapse actions
+    and honor attached click listeners such as setOnChildClickListener
+    -->
+    <Button
+        android:id="@+id/exp_group2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:background="@drawable/round_border3"
+        android:focusable="false"
+        android:foreground="@drawable/ripple_boarderless"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:text="Silly Button1"
+        android:textAllCaps="false"
+        android:textColor="#333"
+        android:textSize="18sp"
+        android:textStyle="normal" />
+
+</LinearLayout>

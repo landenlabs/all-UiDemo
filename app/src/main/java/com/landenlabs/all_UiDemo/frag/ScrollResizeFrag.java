@@ -1,28 +1,7 @@
-/**
- * Copyright (c) 2015 Dennis Lang (LanDen Labs) landenlabs@gmail.com
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
- * associated documentation files (the "Software"), to deal in the Software without restriction, including
- * without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the
- * following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all copies or substantial
- * portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT
- * LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
- * NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
- * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
- * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- *
- * @author Dennis Lang  (3/21/2015)
- * @see http://landenlabs.com
- *
- */
 package com.landenlabs.all_UiDemo.frag;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,16 +20,15 @@ import com.landenlabs.all_UiDemo.Ui;
 
 public class ScrollResizeFrag  extends UiFragment implements View.OnClickListener {
 
-    View mRootView;
-    ViewGroup mDataHolder;
-    ScrollView mScrollView;
-    TextView mScrollIdxView;
-    String[] mDataArray;
-    int mDataIdx = 0;
-    final int DataStartCnt = 5;
+    private View mRootView;
+    private ViewGroup mDataHolder;
+    private ScrollView mScrollView;
+    private TextView mScrollIdxView;
+    private String[] mDataArray;
+    private int mDataIdx = 0;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mRootView = inflater.inflate(R.layout.layout_scroll_resize, container, false);
 
         setup();
@@ -94,7 +72,8 @@ public class ScrollResizeFrag  extends UiFragment implements View.OnClickListene
         mScrollView = Ui.viewById(mRootView, R.id.resizing_scrollview);
         mScrollIdxView = Ui.viewById(mRootView, R.id.scroll_idx);
 
-        while (mDataIdx < DataStartCnt)
+        int dataStartCnt = 5;
+        while (mDataIdx < dataStartCnt)
             addItem();
     }
 

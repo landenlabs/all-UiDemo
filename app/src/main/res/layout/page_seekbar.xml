@@ -278,7 +278,7 @@
                     android:progressDrawable="@android:drawable/progress_horizontal"
                     android:thumb="@drawable/tick_circle" />
 
-            </com.landenlabs.all_UiDemo.Util.ExpandablePanel>>
+            </com.landenlabs.all_UiDemo.Util.ExpandablePanel>
 
             <Button
                 android:id="@+id/expandBtn4"

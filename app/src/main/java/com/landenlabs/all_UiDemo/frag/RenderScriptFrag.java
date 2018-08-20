@@ -1,26 +1,3 @@
-
-/**
- * Copyright (c) 2015 Dennis Lang (LanDen Labs) landenlabs@gmail.com
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
- * associated documentation files (the "Software"), to deal in the Software without restriction, including
- * without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the
- * following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all copies or substantial
- * portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT
- * LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
- * NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
- * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
- * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- *
- * @author Dennis Lang  (3/21/2015)
- * @see http://landenlabs.com
- *
- */
 package com.landenlabs.all_UiDemo.frag;
 
 import android.app.ActivityManager;
@@ -31,8 +8,8 @@ import android.graphics.Point;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.LayoutInflater;
@@ -61,34 +38,41 @@ import com.landenlabs.all_UiDemo.Util.BitmapUtils;
 public class RenderScriptFrag  extends UiFragment
         implements SeekBar.OnSeekBarChangeListener, View.OnClickListener {
 
-    View mRootView;
-    ViewGroup mImageScroller;
+    private View mRootView;
+    private ViewGroup mImageScroller;
     
-    TextView mRadiusTv, mScaleTv;
-    SeekBar mRadiusSb, mScaleSb;
+    private TextView mRadiusTv;
+    private TextView mScaleTv;
+    private SeekBar mRadiusSb;
+    private SeekBar mScaleSb;
 
-    ImageView mImage1, mImage2, mImage3;
-    TextView mTime1Tv, mTime2Tv, mImageDimTv;
-    TextView mMemTv;
+    private ImageView mImage1;
+    private ImageView mImage2;
+    private ImageView mImage3;
+    private TextView mTime1Tv;
+    private TextView mTime2Tv;
+    private TextView mImageDimTv;
+    private TextView mMemTv;
 
-    CheckBox mCustomBlurCk, mStdBlurCk;
+    private CheckBox mCustomBlurCk;
+    private CheckBox mStdBlurCk;
 
-    final int mSeekMax = 255;
-    final int mMaxRadius = 255;
-    int mRadius = 10;
+    private final int mSeekMax = 255;
+    private final int mMaxRadius = 255;
+    private int mRadius = 10;
 
-    final int mMaxScale = 100;
-    int mScale = 10;
+    private final int mMaxScale = 100;
+    private int mScale = 10;
 
-    RenderScriptUtils.Blur mBlur;
-    Bitmap  mSrcBitmap;
+    private RenderScriptUtils.Blur mBlur;
+    private Bitmap  mSrcBitmap;
 
     /**
      * GPS location processing async task.
      *
      * @author Maksym Trostyanchuk
      */
-    private class BlurAsyncTask extends AsyncTask<Void, Void, Bitmap> {
+    private static class BlurAsyncTask extends AsyncTask<Void, Void, Bitmap> {
 
         private final IBlur mBlur;
         private final Bitmap mInBitmap;
@@ -114,6 +98,7 @@ public class RenderScriptFrag  extends UiFragment
         }
     }
 
+    /*
     public  static int ArrayFind(int[] array, int find) {
         for (int idx = 0; idx < array.length; idx++){
             if (array[idx] == find)
@@ -122,9 +107,10 @@ public class RenderScriptFrag  extends UiFragment
 
         return -1;
     }
+    */
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mRootView = inflater.inflate(R.layout.renderscript_frag, container, false);
 
         setup();
@@ -148,7 +134,7 @@ public class RenderScriptFrag  extends UiFragment
 
 
     private void setup() {
-        final View titleView = Ui.viewById(mRootView, R.id.title);
+        // final View titleView = Ui.viewById(mRootView, R.id.title);
         
         mImageScroller = Ui.viewById(mRootView, R.id.rs_scroller);
         mTime1Tv = Ui.viewById(mRootView, R.id.rs_blur1Time);
@@ -203,12 +189,12 @@ public class RenderScriptFrag  extends UiFragment
         mScale = getPosSb(mScaleSb, mMaxScale);
         mScaleTv.setText(String.format("Scale:%d %%", mScale));
 
-        WindowManager wm = (WindowManager) this.getContext().getSystemService(Context.WINDOW_SERVICE);
+        WindowManager wm = getServiceSafe(Context.WINDOW_SERVICE);
         Display display = wm.getDefaultDisplay();
         Point size = new Point();
         display.getSize(size);
         int displayWidth = size.x;
-        int displayHeight = size.y;
+        // int displayHeight = size.y;
 
         ViewGroup.LayoutParams lp = mImageScroller.getLayoutParams();
         lp.height = displayWidth * mScale / 100;
@@ -269,14 +255,9 @@ public class RenderScriptFrag  extends UiFragment
                 }
 
                 ActivityManager.MemoryInfo mi = new ActivityManager.MemoryInfo();
-                ActivityManager activityManager = (ActivityManager)
-                        getActivity().getSystemService(Context.ACTIVITY_SERVICE);
+                ActivityManager activityManager = getServiceSafe(Context.ACTIVITY_SERVICE);
                 activityManager.getMemoryInfo(mi);
-                if (Build.VERSION.SDK_INT > 15) {
-                    mMemTv.setText(String.format("Mem Avail:%,d Free:%,d", mi.availMem, mi.totalMem - mi.availMem));
-                } else {
-                    mMemTv.setText(String.format("Mem Avail:%,%d ", mi.availMem));
-                }
+                mMemTv.setText(String.format("Mem Avail:%,d Free:%,d", mi.availMem, mi.totalMem - mi.availMem));
 
                 progress.dismiss();
             }

@@ -1,30 +1,9 @@
-/**
- * Copyright (c) 2015 Dennis Lang (LanDen Labs) landenlabs@gmail.com
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
- * associated documentation files (the "Software"), to deal in the Software without restriction, including
- * without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the
- * following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all copies or substantial
- * portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT
- * LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
- * NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
- * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
- * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- *
- * @author Dennis Lang  (3/21/2015)
- * @see http://landenlabs.com
- *
- */
 package com.landenlabs.all_UiDemo.frag;
 
 import android.opengl.GLSurfaceView;
 import android.opengl.GLU;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,17 +27,16 @@ import javax.microedition.khronos.opengles.GL10;
 
 public class GlCubeFrag  extends UiFragment implements View.OnClickListener {
 
-    View mRootView;
-    GLSurfaceView mGlSurfaceView;
+    private View mRootView;
 
 
     // =============================================================================================
     //
     //  https://gist.github.com/ybakos/4151696
     //
-    public class DemoRenderer implements GLSurfaceView.Renderer {
+    class DemoRenderer implements GLSurfaceView.Renderer {
 
-        private Cube cube = new Cube();
+        private final Cube cube = new Cube();
         private float rotation;
 
 
@@ -106,11 +84,11 @@ public class GlCubeFrag  extends UiFragment implements View.OnClickListener {
 
     class Cube {
 
-        private FloatBuffer mVertexBuffer;
-        private FloatBuffer mColorBuffer;
-        private ByteBuffer mIndexBuffer;
+        private final FloatBuffer mVertexBuffer;
+        private final FloatBuffer mColorBuffer;
+        private final ByteBuffer mIndexBuffer;
 
-        private float vertices[] = {
+        private final float[] vertices = {
                 -1.0f, -1.0f, -1.0f,
                 1.0f, -1.0f, -1.0f,
                 1.0f, 1.0f, -1.0f,
@@ -120,7 +98,7 @@ public class GlCubeFrag  extends UiFragment implements View.OnClickListener {
                 1.0f, 1.0f, 1.0f,
                 -1.0f, 1.0f, 1.0f
         };
-        private float colors[] = {
+        private final float[] colors = {
                 0.0f, 1.0f, 0.0f, 1.0f,
                 0.0f, 1.0f, 0.0f, 1.0f,
                 1.0f, 0.5f, 0.0f, 1.0f,
@@ -131,7 +109,7 @@ public class GlCubeFrag  extends UiFragment implements View.OnClickListener {
                 1.0f, 0.0f, 1.0f, 1.0f
         };
 
-        private byte indices[] = {
+        private final byte[] indices = {
                 0, 4, 5, 0, 5, 1,
                 1, 5, 6, 1, 6, 2,
                 2, 6, 7, 2, 7, 3,
@@ -140,7 +118,7 @@ public class GlCubeFrag  extends UiFragment implements View.OnClickListener {
                 3, 0, 1, 3, 1, 2
         };
 
-        public Cube() {
+        Cube() {
             ByteBuffer byteBuf = ByteBuffer.allocateDirect(vertices.length * 4);
             byteBuf.order(ByteOrder.nativeOrder());
             mVertexBuffer = byteBuf.asFloatBuffer();
@@ -158,7 +136,7 @@ public class GlCubeFrag  extends UiFragment implements View.OnClickListener {
             mIndexBuffer.position(0);
         }
 
-        public void draw(GL10 gl) {
+        void draw(GL10 gl) {
             gl.glFrontFace(GL10.GL_CW);
 
             gl.glVertexPointer(3, GL10.GL_FLOAT, 0, mVertexBuffer);
@@ -178,7 +156,7 @@ public class GlCubeFrag  extends UiFragment implements View.OnClickListener {
 
     // =========================================================================================
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mRootView = inflater.inflate(R.layout.glcube_frag, container, false);
 
         setup();
@@ -210,7 +188,7 @@ public class GlCubeFrag  extends UiFragment implements View.OnClickListener {
     }
 
     private void setup() {
-        mGlSurfaceView = Ui.viewById(mRootView, R.id.gl_cube_surfaceview);
+        GLSurfaceView mGlSurfaceView = Ui.viewById(mRootView, R.id.gl_cube_surfaceview);
         mGlSurfaceView.setRenderer(new DemoRenderer());
 
         // Ui.viewById(mRootView, R.id.scroll_add).setOnClickListener(this);

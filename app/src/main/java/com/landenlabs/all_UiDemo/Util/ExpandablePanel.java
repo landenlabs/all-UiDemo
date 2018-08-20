@@ -41,26 +41,26 @@ import com.landenlabs.all_UiDemo.R;
 
 public class ExpandablePanel extends LinearLayout {
 
-    protected int mHandleId;
-    protected int mContentId;
+    private int mHandleId;
+    private int mContentId;
 
     // Contains references to the handle and content views
-    protected View mHandle;
-    protected View mContent;
+    private View mHandle;
+    private View mContent;
 
     // Does the panel start expanded?
-    protected boolean mExpanded = false;
+    private boolean mExpanded = false;
     // The height of the content when collapsed
-    protected int mCollapsedDim = 0;
+    private int mCollapsedDim = 0;
     // The full expanded dimension of the content (calculated)
-    protected int mContentDim = 0;
+    private int mContentDim = 0;
     // How long the expand animation takes
-    protected int mAnimationDuration = 0;
+    private int mAnimationDuration = 0;
 
-    protected ExpandAnimation mAnimation = new ExpandAnimation();
+    private final ExpandAnimation mAnimation = new ExpandAnimation();
 
     // Listener that gets fired onExpand and onCollapse
-    protected OnExpandListener mListener;
+    private OnExpandListener mListener;
 
     public ExpandablePanel(Context context) {
         this(context, null);
@@ -271,8 +271,8 @@ public class ExpandablePanel extends LinearLayout {
     /**
      * Simple OnExpandListener interface
      */
-    public interface OnExpandListener {
-        public void onExpand(View handle, View content);
+    protected interface OnExpandListener {
+        void onExpand(View handle, View content);
 
         public void onCollapse(View handle, View content);
     }
@@ -323,7 +323,7 @@ public class ExpandablePanel extends LinearLayout {
         private int mDeltaDim;
         private int mOrientation;
 
-        public ExpandAnimation() {
+        ExpandAnimation() {
         }
 
         public ExpandAnimation(int startDim, int endDim, int orientation) {
@@ -332,7 +332,7 @@ public class ExpandablePanel extends LinearLayout {
             mOrientation = orientation;
         }
 
-        public void setStartEndOrientation(int startDim, int endDim, int orientation) {
+        void setStartEndOrientation(int startDim, int endDim, int orientation) {
             mStartDim = startDim;
             mDeltaDim = endDim - startDim;
             mOrientation = orientation;
@@ -344,7 +344,7 @@ public class ExpandablePanel extends LinearLayout {
             if (mDeltaDim != 0) {
                 android.view.ViewGroup.LayoutParams lp = mContent.getLayoutParams();
                 int value = (int) (mStartDim + mDeltaDim * interpolatedTime);
-                boolean change = false;
+                boolean change;
                 if (mOrientation == VERTICAL) {
                     change = (value != lp.height);
                     lp.height = value;
@@ -357,9 +357,9 @@ public class ExpandablePanel extends LinearLayout {
                             "applyTransformation startDim=" + mStartDim + " deltaDim=" + mDeltaDim + " value=" + value);
                     mContent.setLayoutParams(lp);
                 }
-            } else {
+            } // else {
                 // Log.d("fxx","applyTransformation ignored");
-            }
+            // }
 
         }
 

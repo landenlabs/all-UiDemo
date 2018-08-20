@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ecc"
@@ -142,7 +143,8 @@
                 android:layout_height="@dimen/grid_layout_image_height"
                 android:clickable="true"
                 android:src="@drawable/image_s"
-                android:stateListAnimator="@anim/press" />
+                android:stateListAnimator="@anim/press"
+                tools:ignore="KeyboardInaccessibleWidget" />
 
 
             <TextView

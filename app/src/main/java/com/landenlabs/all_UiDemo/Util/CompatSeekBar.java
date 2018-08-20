@@ -1,26 +1,3 @@
-/**
- * Copyright (c) 2017 Dennis Lang (LanDen Labs) landenlabs@gmail.com
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
- * associated documentation files (the "Software"), to deal in the Software without restriction, including
- * without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the
- * following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all copies or substantial
- * portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT
- * LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
- * NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
- * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
- * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- *
- * @author Dennis Lang  (1/10/2017)
- * @see http://landenlabs.com
- *
- */
-
 package com.landenlabs.all_UiDemo.Util;
 
 import android.content.Context;
@@ -44,16 +21,16 @@ import com.landenlabs.all_UiDemo.R;
 
 public class CompatSeekBar extends android.support.v7.widget.AppCompatSeekBar {
 
-    Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.FILTER_BITMAP_FLAG);
+    private final Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.FILTER_BITMAP_FLAG);
 
-    int mTickColor = 0xc0c08080;
-    float mMinTic = 0;
-    float mMaxTic = getMax();
-    float mTickStep = 10;
-    float mTickWidth = 20;
-    boolean mTickUnder = false;
+    private int mTickColor = 0xc0c08080;
+    private float mMinTic = 0;
+    private float mMaxTic = getMax();
+    private float mTickStep = 10;
+    private float mTickWidth = 20;
+    private boolean mTickUnder = false;
 
-    Drawable mTickMarkDr;
+    private Drawable mTickMarkDr;
 
 
     public CompatSeekBar(Context context) {
@@ -105,19 +82,19 @@ public class CompatSeekBar extends android.support.v7.widget.AppCompatSeekBar {
         // mMaxTic = getMax();
 
         TypedArray a = getContext().obtainStyledAttributes(attrs,
-                R.styleable.custom_SeekBar, defStyleAttr,
+                R.styleable.CompatSeekBar, defStyleAttr,
                 android.R.style.Widget_SeekBar);
 
-        mMinTic = a.getInt(R.styleable.custom_SeekBar_tickMin, 0);
-        mMaxTic = a.getInt(R.styleable.custom_SeekBar_tickMax, getMax());
-        mTickStep = a.getInt(R.styleable.custom_SeekBar_tickStep, getMax());
+        mMinTic = a.getInt(R.styleable.CompatSeekBar_tickMin, 0);
+        mMaxTic = a.getInt(R.styleable.CompatSeekBar_tickMax, getMax());
+        mTickStep = a.getInt(R.styleable.CompatSeekBar_tickStep, getMax());
 
-        mTickWidth = a.getInt(R.styleable.custom_SeekBar_tickWidth, 20);
-        mTickUnder = a.getBoolean(R.styleable.custom_SeekBar_tickUnder, false);
+        mTickWidth = a.getInt(R.styleable.CompatSeekBar_tickWidth, 20);
+        mTickUnder = a.getBoolean(R.styleable.CompatSeekBar_tickUnder, false);
 
-        int tickMark = a.getResourceId(R.styleable.custom_SeekBar_tickMarker, -1);
+        int tickMark = a.getResourceId(R.styleable.CompatSeekBar_tickMarker, -1);
         int defColor = (tickMark == -1) ? 0xff101010 : 0;
-        mTickColor = a.getColor(R.styleable.custom_SeekBar_tickColor, defColor);
+        mTickColor = a.getColor(R.styleable.CompatSeekBar_tickColor, defColor);
 
         a.recycle();
 
@@ -128,8 +105,7 @@ public class CompatSeekBar extends android.support.v7.widget.AppCompatSeekBar {
 
     @Override
     protected synchronized void onDraw(Canvas canvas) {
-        if (!isInEditMode()) {
-        }
+        //  isInEditMode()
 
         if (mTickUnder)
             drawTicks(canvas);
@@ -140,7 +116,7 @@ public class CompatSeekBar extends android.support.v7.widget.AppCompatSeekBar {
             drawTicks(canvas);
     }
 
-    protected  void drawTicks(Canvas canvas) {
+    private void drawTicks(Canvas canvas) {
 
         if (mTickWidth > 0 && (mTickColor != 0 || mTickMarkDr != null)) {
             float dX = mTickWidth / 2;
@@ -164,7 +140,7 @@ public class CompatSeekBar extends android.support.v7.widget.AppCompatSeekBar {
         }
     }
 
-    protected  void drawTick(Canvas canvas, RectF rectF, Paint paint) {
+    private void drawTick(Canvas canvas, RectF rectF, Paint paint) {
         if (mTickMarkDr == null) {
             if (mTickColor != 0) {
                 paint.setColor(mTickColor);

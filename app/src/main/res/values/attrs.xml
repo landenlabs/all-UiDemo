@@ -15,8 +15,8 @@
     </declare-styleable>
 
 
-    <attr name="custom_SeekBarStyle" format="reference" />
-    <declare-styleable name="custom_SeekBar">
+    <attr name="CompatSeekBar" format="reference" />
+    <declare-styleable name="CompatSeekBar">
 
         <attr name="tickMin" format="integer" />
         <attr name="tickMax" format="integer" />
@@ -31,14 +31,14 @@
     </declare-styleable>
 
 
-    <declare-styleable name="BoundedView">
-        <attr name="bounded_width" format="dimension" />
-        <attr name="bounded_height" format="dimension" />
-        <attr name="bounded_widthPercent" format="float" />
-        <attr name="bounded_heightPercent" format="float" />
-        <attr name="bounded_enabled" format="boolean" />
-        <attr name="bounded_aspectWdivH" format="float" />
-        <attr name="bounded_include" format="reference" />
+    <declare-styleable name="BoundedLinearLayout">
+        <attr name="width" format="dimension" />
+        <attr name="height" format="dimension" />
+        <attr name="widthPercent" format="float" />
+        <attr name="heightPercent" format="float" />
+        <attr name="enabled" format="boolean" />
+        <attr name="aspectWdivH" format="float" />
+        <attr name="include" format="reference" />
     </declare-styleable>
 
 </resources>

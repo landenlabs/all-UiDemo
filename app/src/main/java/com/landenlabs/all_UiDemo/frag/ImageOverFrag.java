@@ -1,25 +1,3 @@
-/**
- * Copyright (c) 2015 Dennis Lang (LanDen Labs) landenlabs@gmail.com
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
- * associated documentation files (the "Software"), to deal in the Software without restriction, including
- * without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the
- * following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all copies or substantial
- * portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT
- * LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
- * NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
- * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
- * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- *
- * @author Dennis Lang  (3/21/2015)
- * @see http://landenlabs.com
- *
- */
 package com.landenlabs.all_UiDemo.frag;
 
 import android.graphics.Bitmap;
@@ -37,6 +15,7 @@ import android.graphics.RectF;
 import android.graphics.Shader;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,48 +35,64 @@ import com.landenlabs.all_UiDemo.Ui;
  * @see <a href="http://landenlabs.com/android/index-m.html"> author's web-site </a>
  */
 
+//noinspection ConstantConditions
 public class ImageOverFrag  extends UiFragment
         implements SeekBar.OnSeekBarChangeListener, View.OnClickListener {
 
-    View mRootView;
+    private View mRootView;
 
     enum Filters { NoFilter, EmbossFilter, BlurFilter }
-    Filters filters = Filters.BlurFilter;
+    private Filters filters = Filters.BlurFilter;
 
-    enum ShaderType { NoShader, GradientShader };
-    ShaderType shaderType = ShaderType.NoShader;
+    enum ShaderType { NoShader, GradientShader }
+    private ShaderType shaderType = ShaderType.NoShader;
 
-    SeekBar graySb, alphaSb, strokeWidthSb;
-    TextView grayLbl, alphaLbl, strokeWidthLbl;
+    private SeekBar graySb;
+    private SeekBar alphaSb;
+    private SeekBar strokeWidthSb;
+    private TextView grayLbl;
+    private TextView alphaLbl;
+    private TextView strokeWidthLbl;
 
-    View lightHolder;
-    SeekBar lightx, lighty, lightz;
-    SeekBar radius, ambientSb, specularSb;
-    TextView lightxLbl, lightyLbl, lightzLbl, radiusLbl;
-    TextView ambientTv, specularTv;
+    private View lightHolder;
+    private SeekBar lightx;
+    private SeekBar lighty;
+    private SeekBar lightz;
+    private SeekBar radius;
+    private SeekBar ambientSb;
+    private SeekBar specularSb;
+    private TextView lightxLbl;
+    private TextView lightyLbl;
+    private TextView lightzLbl;
+    private TextView radiusLbl;
+    private TextView ambientTv;
+    private TextView specularTv;
 
-    CheckBox drawClosedCb, shaderGradientCb;
+    private CheckBox drawClosedCb;
+    private CheckBox shaderGradientCb;
 
-    int maxRadius = 100;
-    int maxXYZ = 10;
-    int seekMax = 100;
+    private final int maxRadius = 100;
+    private final int maxXYZ = 10;
+    private final int seekMax = 100;
 
-    int alpha = 255;
-    int gray = 128;
-    int lx = 3, ly =3, lz = 3;
-    int rad = 20;
-    float ambient = 0.2f;    // 0..1
-    float maxAmbient = 1.0f;
-    float specular = 2.0f;    // 0..?
-    float maxSpecular = 5.0f;
-    float maxStrokeWidth = 200.0f;
-    float strokeWidth = 60.0f;
+    private int alpha = 255;
+    private int gray = 128;
+    private int lx = 3;
+    private int ly =3;
+    private int lz = 3;
+    private int rad = 20;
+    private float ambient = 0.2f;    // 0..1
+    private final float maxAmbient = 1.0f;
+    private float specular = 2.0f;    // 0..?
+    private final float maxSpecular = 5.0f;
+    private final float maxStrokeWidth = 200.0f;
+    private float strokeWidth = 60.0f;
 
-    PorterDuff.Mode portDuffMode = PorterDuff.Mode.MULTIPLY;
-    Paint.Style paintStyle = Paint.Style.STROKE;
+    private PorterDuff.Mode portDuffMode = PorterDuff.Mode.MULTIPLY;
+    private final Paint.Style paintStyle = Paint.Style.STROKE;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mRootView = inflater.inflate(R.layout.image_over, container, false);
 
         setup();
@@ -246,6 +241,9 @@ public class ImageOverFrag  extends UiFragment
         // --------------- draw round box
 
         boolean drawRoundedCorners = false;
+
+
+        //noinspection ConstantConditions
         if (drawRoundedCorners) {
             // We're just reusing xferPaint to paint a normal looking rounded box, the 80.f
             // is the amount we're rounding by.
@@ -258,6 +256,7 @@ public class ImageOverFrag  extends UiFragment
         float notchWidth = notchCenter / 2;
 
         boolean drawNotch = true;
+        //noinspection ConstantConditions,ConstantConditions
         if (drawNotch) {
             Path notchPath = new Path();
             notchPath.moveTo(0, 0);
@@ -281,6 +280,7 @@ public class ImageOverFrag  extends UiFragment
         // resultCanvas.drawBitmap(canvasDrawable, 0, 0, xferPaint);
 
         boolean doDrawNotchShadow = true;
+        //noinspection ConstantConditions,ConstantConditions
         if (doDrawNotchShadow) {
             drawNotchShadow(resultCanvas, grayColor, notchCenter, notchWidth, imgWidth, strokeWidth);
         }
@@ -291,6 +291,7 @@ public class ImageOverFrag  extends UiFragment
         topView.setImageBitmap(result);
     }
 
+    @SuppressWarnings("SuspiciousNameCombination")
     private void drawNotchShadow(Canvas canvas, int color, float notchCenter, float notchWidth,
                                  float pathWidth, float strokeWidth) {
 
@@ -327,7 +328,7 @@ public class ImageOverFrag  extends UiFragment
 
 
         int shadowWidth = (int)(notchWidth*2);
-        Shader rshader = null;
+        Shader rshader;
         switch (shaderType) {
             default:
                 break;

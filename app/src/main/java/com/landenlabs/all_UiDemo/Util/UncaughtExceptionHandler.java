@@ -35,7 +35,7 @@ public class UncaughtExceptionHandler implements Thread.UncaughtExceptionHandler
     private static final String ERROR_REPORT_FORMAT = "yyyy.MM.dd HH:mm:ss z";
     private SimpleDateFormat format = new SimpleDateFormat(ERROR_REPORT_FORMAT);
 
-    private Thread.UncaughtExceptionHandler originalHandler;
+    private final Thread.UncaughtExceptionHandler originalHandler;
 
     /**
      * Creates a reporter instance

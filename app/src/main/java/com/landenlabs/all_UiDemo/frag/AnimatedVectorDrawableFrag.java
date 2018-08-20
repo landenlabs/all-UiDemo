@@ -1,6 +1,7 @@
 package com.landenlabs.all_UiDemo.frag;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,10 +20,10 @@ public class AnimatedVectorDrawableFrag
         extends UiFragment
         implements View.OnClickListener{
 
-        View mRootView;
+        private View mRootView;
 
         @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             mRootView = inflater.inflate(R.layout.animated_vector_drawable_frag, container, false);
 
             setup();

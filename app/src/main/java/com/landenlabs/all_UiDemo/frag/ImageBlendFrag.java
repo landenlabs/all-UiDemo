@@ -1,24 +1,3 @@
-/**
- * Copyright (c) 2015 Dennis Lang (LanDen Labs) landenlabs@gmail.com
- * <p/>
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
- * associated documentation files (the "Software"), to deal in the Software without restriction, including
- * without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the
- * following conditions:
- * <p/>
- * The above copyright notice and this permission notice shall be included in all copies or substantial
- * portions of the Software.
- * <p/>
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT
- * LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
- * NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
- * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
- * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- *
- * @author Dennis Lang  (3/21/2015)
- * @see http://landenlabs.com
- */
 package com.landenlabs.all_UiDemo.frag;
 
 import android.content.res.ColorStateList;
@@ -33,7 +12,9 @@ import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.graphics.drawable.DrawableCompat;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -54,13 +35,13 @@ import com.landenlabs.all_UiDemo.Ui;
 
 public class ImageBlendFrag  extends UiFragment implements View.OnClickListener  {
 
-    View mRootView;
-    ViewGroup mImageHolder;
-    int mColor = Color.RED;
-    int mSrcImg = R.drawable.image100;
+    private View mRootView;
+    private ViewGroup mImageHolder;
+    private int mColor = Color.RED;
+    private final int mSrcImg = R.drawable.image100;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mRootView = inflater.inflate(R.layout.image_blend, container, false);
 
         setup();
@@ -168,17 +149,14 @@ public class ImageBlendFrag  extends UiFragment implements View.OnClickListener 
                     resultCanvas.drawBitmap(dstBm, dstRect, srcRect, paint);
 
                     imageView.setImageBitmap(resultBm);
-                } else {
-        //            imageView.setImageBitmap(srcBm);
-                }
+                } // else {
+                 //  imageView.setImageBitmap(srcBm);
+                // }
             }
         }
     }
 
     private void addImages() {
-        TextView tv;
-        ImageView iv;
-
         addImage(PorterDuff.Mode.SRC);
         addImage(PorterDuff.Mode.DST);
         addImage(PorterDuff.Mode.SRC_IN);
@@ -222,6 +200,7 @@ public class ImageBlendFrag  extends UiFragment implements View.OnClickListener 
         iv.setTag(mode);
     }
 
+    @SuppressWarnings("SameParameterValue")
     private void addBlend(int blendColor, PorterDuff.Mode mode) {
         try {
             TextView tv = new TextView(mImageHolder.getContext());
@@ -255,6 +234,7 @@ public class ImageBlendFrag  extends UiFragment implements View.OnClickListener 
             }
             // iv.setTag(null);
         } catch (Exception ex) {
+            Log.e("ImageBlendFrag", ex.getMessage());
             throw ex;
         }
     }

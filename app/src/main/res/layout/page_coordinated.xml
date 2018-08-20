@@ -48,7 +48,7 @@
             android:choiceMode="singleChoice"
             android:clickable="true"
             android:listSelector="@drawable/list_selector"
-            />
+            tools:ignore="KeyboardInaccessibleWidget" />
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 

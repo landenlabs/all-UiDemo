@@ -12,7 +12,9 @@
         android:icon="@mipmap/ic_uidemo"
         android:roundIcon="@mipmap/ic_uidemo_round"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:supportsRtl="false"
+        android:theme="@style/AppTheme"
+        android:fullBackupContent="@xml/backup_descriptor">
 
         <activity
             android:name="com.landenlabs.all_UiDemo.MainActivity"

@@ -37,7 +37,8 @@
         android:choiceMode="singleChoice"
         android:clickable="true"
         android:listSelector="@drawable/list_selector"
-        android:nestedScrollingEnabled="true" />
+        android:nestedScrollingEnabled="true"
+        android:focusable="true" />
 
     <!--
         app:layout_behavior="@string/appbar_scrolling_view_behavior"

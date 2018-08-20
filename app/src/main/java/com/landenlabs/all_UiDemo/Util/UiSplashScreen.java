@@ -51,7 +51,7 @@ public class UiSplashScreen {
 
     /**
      * Show animated splash screen.
-     * @see http://landenlabs.com
+     * See http://landenlabs.com
      */
     public void show(View context) {
         final int fadeinMsec = 2000;
