@@ -177,7 +177,7 @@ public class List1Frag  extends UiFragment implements CompoundButton.OnCheckedCh
                                     int position, long id) {
                 // String itemStr = listView.getItemAtPosition(position).toString();
                 // title.setText(itemStr);
-                mCurrentIdx = position;
+                // mCurrentIdx = position;
                 if(Build.VERSION.SDK_INT >= 21) {
                     view.setStateListAnimator(AnimatorInflater.loadStateListAnimator(view.getContext(), R.anim.press));
                 }
