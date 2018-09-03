@@ -10,8 +10,11 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.LayerDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.DrawableRes;
+import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 import android.support.v4.graphics.drawable.DrawableCompat;
 import android.util.Log;
@@ -30,7 +33,7 @@ import com.landenlabs.all_UiDemo.Ui;
  * Demonstrate Image Blend using PorterDuff modes.
  *
  * @author Dennis Lang (LanDen Labs)
- * @see <a href="http://landenlabs.com/android/index-m.html"> author's web-site </a>
+ * @see <a href="http://landenlabs.com/android"> author's web-site </a>
  */
 
 public class ImageBlendFrag  extends UiFragment implements View.OnClickListener  {
@@ -120,7 +123,9 @@ public class ImageBlendFrag  extends UiFragment implements View.OnClickListener 
                 ImageView imageView = (ImageView)view;
                 imageView.setImageResource(imageRes);
                 PorterDuff.Mode mode = (PorterDuff.Mode)imageView.getTag();
-                imageView.setColorFilter(mColor, mode);
+                if (mode != null) {
+                    imageView.setColorFilter(mColor, mode);
+                }
             }
         }
     }
@@ -181,6 +186,8 @@ public class ImageBlendFrag  extends UiFragment implements View.OnClickListener 
         addBlend(0x40ffffff, PorterDuff.Mode.MULTIPLY);
         addBlend(0x80ffffff, PorterDuff.Mode.MULTIPLY);
         addBlend(0xc0ffffff, PorterDuff.Mode.MULTIPLY);
+
+        // addLayerImage( R.drawable.lightenLayer, R.id.overlay, PorterDuff.Mode.LIGHTEN);
     }
 
     private void addImage(PorterDuff.Mode mode) {
@@ -198,6 +205,29 @@ public class ImageBlendFrag  extends UiFragment implements View.OnClickListener 
         mImageHolder.addView(iv);
         iv.setColorFilter(mColor, mode);
         iv.setTag(mode);
+    }
+
+    private void addLayerImage(@DrawableRes int drawableRes, @IdRes int layerId, PorterDuff.Mode mode) {
+        // https://stackoverflow.com/questions/35399637/porter-duff-different-behavior-for-different-shapes
+
+        TextView tv = new TextView(mImageHolder.getContext());
+        tv.setBackgroundResource(R.color.rowtx);
+        tv.setGravity(Gravity.CENTER);
+        // tv.setTextAppearance(R.style.TextAppearanceWhite20);
+        tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
+        tv.setTextColor(Color.WHITE);
+        tv.setText("Layer " + mode.toString());
+        tv.setPadding(5,5,5,5);
+        mImageHolder.addView(tv);
+        ImageView iv = new ImageView(mImageHolder.getContext());
+        iv.setBackgroundResource(drawableRes);
+        if (iv.getBackground() instanceof LayerDrawable) {
+            LayerDrawable background = LayerDrawable.class.cast(iv.getBackground());
+            background.findDrawableByLayerId(layerId).setColorFilter(mColor, mode);
+        }
+        mImageHolder.addView(iv);
+        // iv.setColorFilter(mColor, mode);
+        // iv.setTag(mode);
     }
 
     @SuppressWarnings("SameParameterValue")

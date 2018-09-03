@@ -12,7 +12,7 @@ import com.landenlabs.all_UiDemo.R;
  * Demonstrate Checkbox ui components with checkmark on right margin.
  *
  * @author Dennis Lang (LanDen Labs)
- * @see <a href="http://landenlabs.com/android/index-m.html"> author's web-site </a>
+ * @see <a href="http://landenlabs.com/android"> author's web-site </a>
  */
 public class CheckboxRightDemoFrag extends CheckboxDemoFrag {
     @Override

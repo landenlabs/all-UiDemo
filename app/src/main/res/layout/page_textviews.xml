@@ -64,7 +64,8 @@
                 android:layout_margin="20dp"
                 android:foreground="@drawable/image_e"
                 android:padding="10dp"
-                android:text="2 TextView img fg" />
+                android:text="2 TextView img fg"
+                android:focusable="true" />
 
             <TextView
                 android:clickable="true"
@@ -90,7 +91,8 @@
                 android:gravity="center"
                 android:background="@drawable/round_border_sel"
                 android:drawableTop="@drawable/scr_home"
-                android:text="4 TextView img + sel" />
+                android:text="4 TextView img + sel"
+                android:focusable="true" />
 
             <Button
                 android:clickable="true"
@@ -101,7 +103,8 @@
                 android:drawableTop="@drawable/image_e"
                 android:gravity="center"
                 android:padding="10dp"
-                android:text="5 Button Top" />
+                android:text="5 Button Top"
+                android:focusable="true" />
 
             <Button
                 android:clickable="true"
@@ -113,7 +116,8 @@
                 android:drawableTop="@drawable/image_e"
                 android:gravity="center"
                 android:padding="10dp"
-                android:text="6 Button Top + Sel" />
+                android:text="6 Button Top + Sel"
+                android:focusable="true" />
 
 
             <CheckBox
@@ -127,7 +131,8 @@
                 android:clickable="true"
                 android:drawableTop="@drawable/image_e"
                 android:padding="5dp"
-                android:text="7 checkbox wrap Top" />
+                android:text="7 checkbox wrap Top"
+                android:focusable="true" />
 
 
             <CheckBox
@@ -141,7 +146,8 @@
                 android:drawableTop="@drawable/image_e"
                 android:gravity="center"
                 android:padding="0dp"
-                android:text="8 cb w=100 p=0dp" />
+                android:text="8 cb w=100 p=0dp"
+                android:focusable="true" />
 
             <CheckBox
                 android:id="@+id/Checkbox100p5"
@@ -154,7 +160,8 @@
                 android:gravity="center"
                 android:drawableTop="@drawable/scr_home"
                 android:padding="5dp"
-                android:text="9 cb w=100 p=5dp" />
+                android:text="9 cb w=100 p=5dp"
+                android:focusable="true" />
 
             <CheckBox
                 android:id="@+id/Checkbox200p5"
@@ -167,7 +174,8 @@
                 android:gravity="center"
                 android:drawableTop="@drawable/scr_home"
                 android:padding="5dp"
-                android:text="10 cb w=w200 p=5dp" />
+                android:text="10 cb w=w200 p=5dp"
+                android:focusable="true" />
 
             <CheckBox
                 android:id="@+id/Checkbox100p10"
@@ -180,7 +188,8 @@
                 android:gravity="center"
                 android:drawableTop="@drawable/scr_home"
                 android:padding="10dp"
-                android:text="11 cb w=100 p=10dp" />
+                android:text="11 cb w=100 p=10dp"
+                android:focusable="true" />
 
             <CheckBox
                 android:clickable="true"
@@ -192,7 +201,8 @@
                 android:background="@drawable/round_border_sel"
                 android:button="@drawable/image_e"
                 android:padding="35dp"
-                android:text="12 checkbox btn" />
+                android:text="12 checkbox btn"
+                android:focusable="true" />
 
 
             <TextView
@@ -204,7 +214,8 @@
                 android:drawableBottom="@drawable/image_e"
                 android:gravity="center"
                 android:padding="10dp"
-                android:text="13 TextView Bottom" />
+                android:text="13 TextView Bottom"
+                android:focusable="true" />
 
             <Button
                 android:clickable="true"
@@ -215,7 +226,8 @@
                 android:drawableLeft="@drawable/image_e"
                 android:drawableRight="@drawable/image_e"
                 android:padding="10dp"
-                android:text="14 Left Button Right" />
+                android:text="14 Left Button Right"
+                android:focusable="true" />
 
             <TextView
                 android:clickable="true"
@@ -226,7 +238,8 @@
                 android:background="#c0c0ff"
                 android:drawableRight="@drawable/image_e"
                 android:padding="10dp"
-                android:text="15 TextView right" />
+                android:text="15 TextView right"
+                android:focusable="true" />
 
 
         </LinearLayout>

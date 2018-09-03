@@ -8,6 +8,7 @@ import android.support.v7.widget.AppCompatCheckedTextView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
@@ -23,11 +24,10 @@ import java.util.List;
  * Demonstrate Image Scale modes.
  *
  * @author Dennis Lang (LanDen Labs)
- * @see <a href="http://landenlabs.com/android/index-m.html"> author's web-site </a>
+ * @see <a href="http://landenlabs.com/android"> author's web-site </a>
  */
 
 public class FullScreenFrag  extends UiFragment implements View.OnClickListener  {
-
 
     private final List<String> mListStrings = Arrays.asList(
             "FullScreen",
@@ -38,7 +38,10 @@ public class FullScreenFrag  extends UiFragment implements View.OnClickListener 
             "Layout Stable",
             "Light Status Bar",
             "Low Profile",
-            "Visible"
+            "Visible",
+
+            "Add Bar Bg",    //  getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            "Add Bar Clear"  //                           .addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
             );
 
     // ---- Local Data ----
@@ -97,7 +100,7 @@ public class FullScreenFrag  extends UiFragment implements View.OnClickListener 
                 // String itemStr = listView.getItemAtPosition(position).toString();
                 // title.setText(itemStr);
                 if(Build.VERSION.SDK_INT >= 21) {
-                    view.setStateListAnimator(AnimatorInflater.loadStateListAnimator(view.getContext(), R.anim.press));
+                    view.setStateListAnimator(AnimatorInflater.loadStateListAnimator(view.getContext(), R.animator.press));
                 }
                 view.setPressed(true);
             }
@@ -107,7 +110,28 @@ public class FullScreenFrag  extends UiFragment implements View.OnClickListener 
         listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
         listView.setAdapter(new ArrayAdapter<>(mRootView.getContext(), mRowLayoutRes, mListStrings));
 
+        int originalFlags = getWindow().getAttributes().flags;
+
+        /*
+        // TODO - set toggle state based on initial flag state.
+        int pos = mListStrings.lastIndexOf("Add Bar Bg");
+
+        This does not work because listAdapter will remake ui view objects, need a custom adapter.
+
+        Object item = listView.getAdapter().getView(pos, null, listView);
+        if (item instanceof Checkable) {
+            boolean on = isBitSet(originalFlags, WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            ((Checkable)listView.getAdapter().getItem(pos)).setChecked(on);
+        }
+
+        if (isBitSet(originalFlags, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)) {
+        }
+        */
         return listView;
+    }
+
+    private static boolean isBitSet(int val, int bits) {
+        return (val & bits) == bits;
     }
 
     private void setSystemUiVisibility(ListView listView) {
@@ -150,6 +174,28 @@ public class FullScreenFrag  extends UiFragment implements View.OnClickListener 
                         break;
                     case "Visible":
                         visualFlags |= View.SYSTEM_UI_FLAG_VISIBLE;
+                        break;
+                }
+                switch (str) {
+                    case "Add Bar Bg":
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+                            if (cb.isChecked()) {
+                                getWindowSafe().addFlags(
+                                        WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+                            } else {
+                                getWindowSafe().clearFlags(
+                                        WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+                            }
+                        break;
+                    case "Add Bar Clear":
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+                            if (cb.isChecked()) {
+                                getWindowSafe().addFlags(
+                                        WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+                            } else {
+                                getWindowSafe().clearFlags(
+                                        WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+                            }
                         break;
                 }
             }

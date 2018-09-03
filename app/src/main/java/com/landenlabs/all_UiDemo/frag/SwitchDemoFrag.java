@@ -39,7 +39,7 @@ import java.util.List;
  * Demonstrate Toggle and Switch  ui components.
  *
  * @author Dennis Lang (LanDen Labs)
- * @see <a href="http://landenlabs.com/android/index-m.html"> author's web-site </a>
+ * @see <a href="http://landenlabs.com/android"> author's web-site </a>
  */
 public class SwitchDemoFrag  extends UiFragment implements View.OnClickListener  {
 

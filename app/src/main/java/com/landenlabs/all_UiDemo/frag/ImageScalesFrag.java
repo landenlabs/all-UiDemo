@@ -28,7 +28,7 @@ import com.landenlabs.all_UiDemo.Ui;
  * Demonstrate Image Scale modes.
  *
  * @author Dennis Lang (LanDen Labs)
- * @see <a href="http://landenlabs.com/android/index-m.html"> author's web-site </a>
+ * @see <a href="http://landenlabs.com/android"> author's web-site </a>
  */
 
 
@@ -111,7 +111,9 @@ public class ImageScalesFrag  extends UiFragment implements View.OnClickListener
         mImageHolder.post(new Runnable() {
             @Override
             public void run() {
-                setImage(R.drawable.image200);
+                if (!ImageScalesFrag.this.isDetached()) {
+                    setImage(R.drawable.image200);
+                }
             }
         });
 

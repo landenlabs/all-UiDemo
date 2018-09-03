@@ -32,7 +32,7 @@ import com.landenlabs.all_UiDemo.Ui;
  * Demonstrate overlapping images with notch cut out of top image.
  *
  * @author Dennis Lang (LanDen Labs)
- * @see <a href="http://landenlabs.com/android/index-m.html"> author's web-site </a>
+ * @see <a href="http://landenlabs.com/android"> author's web-site </a>
  */
 
 //noinspection ConstantConditions

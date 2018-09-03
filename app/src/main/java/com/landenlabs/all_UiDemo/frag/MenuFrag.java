@@ -26,7 +26,7 @@ import java.util.Arrays;
  * Demonstrate Image Scale modes.
  *
  * @author Dennis Lang (LanDen Labs)
- * @see <a href="http://landenlabs.com/android/index-m.html"> author's web-site </a>
+ * @see <a href="http://landenlabs.com/android"> author's web-site </a>
  */
 
 public class MenuFrag extends UiFragment
@@ -225,7 +225,7 @@ public class MenuFrag extends UiFragment
 
                 if (Build.VERSION.SDK_INT >= 21) {
                     itemView.setElevation(10);
-                    itemView.setStateListAnimator(AnimatorInflater.loadStateListAnimator(mContext, R.anim.press));
+                    itemView.setStateListAnimator(AnimatorInflater.loadStateListAnimator(mContext, R.animator.press));
 
                     itemView.setBackgroundResource(R.drawable.round_border_sel);
                     Ui.setRectOutline(itemView);

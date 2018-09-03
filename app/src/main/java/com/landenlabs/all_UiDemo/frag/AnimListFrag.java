@@ -25,7 +25,7 @@ import java.util.List;
  * Using rotation (R) only.   See ActivityObjAnimListRT for alternate look.
  *
  * @author Dennis Lang (LanDen Labs)
- * @see <a href="http://landenlabs.com/android/index-m.html"> author's web-site </a>
+ * @see <a href="http://landenlabs.com/android"> author's web-site </a>
  */
 public class AnimListFrag  extends UiFragment {
 

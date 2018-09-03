@@ -40,7 +40,7 @@ import java.util.Objects;
  * Created by Dennis Lang on 7/8/16.
  *
  * @author Dennis Lang (LanDen Labs)
- * @see <a href="http://landenlabs.com/android/index-m.html"> author's web-site </a>
+ * @see <a href="http://landenlabs.com/android"> author's web-site </a>
  */
 public abstract class UiFragment extends Fragment {
 
@@ -56,6 +56,10 @@ public abstract class UiFragment extends Fragment {
     @NonNull
     private Activity getActivitySafe() {
         return Objects.requireNonNull(getActivity());
+    }
+
+    public Window getWindowSafe() {
+        return Objects.requireNonNull(getActivitySafe().getWindow());
     }
 
     @NonNull

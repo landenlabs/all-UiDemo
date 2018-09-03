@@ -38,6 +38,9 @@ import com.landenlabs.all_UiDemo.R;
  *              android:layout_height="wrap_content" />
  *      &lt;/com.wsi.android.weather.ui.widget.BoundedLinearLayout>
  * </pre>
+ *
+ * @author Dennis Lang (LanDen Labs)
+ * @see <a href="http://landenlabs.com/android"> author's web-site </a>
  */
 public class BoundedLinearLayout extends LinearLayout {
 

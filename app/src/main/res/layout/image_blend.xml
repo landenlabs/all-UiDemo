@@ -42,7 +42,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:stateListAnimator="@anim/press"
+                android:stateListAnimator="@animator/press"
                 android:text="Red" />
 
             <RadioButton
@@ -50,7 +50,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:stateListAnimator="@anim/press"
+                android:stateListAnimator="@animator/press"
                 android:text="Grn" />
 
             <RadioButton
@@ -58,7 +58,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:stateListAnimator="@anim/press"
+                android:stateListAnimator="@animator/press"
                 android:text="Blu" />
 
             <RadioButton
@@ -66,7 +66,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:stateListAnimator="@anim/press"
+                android:stateListAnimator="@animator/press"
                 android:text="Img1" />
 
             <RadioButton
@@ -74,7 +74,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:stateListAnimator="@anim/press"
+                android:stateListAnimator="@animator/press"
                 android:text="Img2" />
 
             <RadioButton
@@ -83,7 +83,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:checked="true"
-                android:stateListAnimator="@anim/press"
+                android:stateListAnimator="@animator/press"
                 android:text="Img3" />
 
             <RadioButton
@@ -91,7 +91,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:stateListAnimator="@anim/press"
+                android:stateListAnimator="@animator/press"
                 android:text="Img4" />
         </RadioGroup>
     </HorizontalScrollView>
@@ -126,7 +126,7 @@
                 android:background="@color/row0"
                 android:clickable="true"
                 android:src="@drawable/image200"
-                android:stateListAnimator="@anim/press"
+                android:stateListAnimator="@animator/press"
                 tools:ignore="KeyboardInaccessibleWidget" />
 
 

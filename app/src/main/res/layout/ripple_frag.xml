@@ -23,7 +23,8 @@
         android:text="TextView bg borderless"
         android:background="@drawable/btn_states"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:focusable="true" />
 
     <TextView
         android:clickable="true"
@@ -34,7 +35,8 @@
         android:background="#222"
         android:foreground="@drawable/btn_states"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:focusable="true" />
 
     <Button
         android:clickable="true"
@@ -43,7 +45,8 @@
         android:text="Button"
         android:background="@drawable/transparent_ripple"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:focusable="true" />
 
     <Button
         android:clickable="true"
@@ -64,7 +67,8 @@
         android:background="#222"
         android:foreground="@drawable/btn_states"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:focusable="true" />
 
     <ToggleButton
         android:clickable="true"
@@ -73,7 +77,8 @@
         android:textOff="Toggle bg tRipple"
         android:background="@drawable/transparent_ripple"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:focusable="true" />
 
     <ToggleButton
         android:clickable="true"
@@ -82,7 +87,8 @@
         android:textOff="Toggle bg borderless"
         android:background="@drawable/btn_states"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:focusable="true" />
 
     <ToggleButton
         android:clickable="true"
@@ -93,7 +99,8 @@
         android:background="#222"
         android:foreground="@drawable/btn_states"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:focusable="true" />
 
 
 

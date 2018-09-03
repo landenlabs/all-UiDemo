@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -10,11 +11,11 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
         android:background="#d0d0ff"
         android:gravity="center"
-        android:textColor="@android:color/black"
-        android:text="- Misc View Objs -" />
+        android:padding="10dp"
+        android:text="- Misc View Objs -"
+        android:textColor="@android:color/black" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -27,62 +28,217 @@
             android:background="#ccc"
             android:orientation="vertical">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#fcc"
+                android:orientation="horizontal">
+
+                <com.landenlabs.all_UiDemo.Util.BlendImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    app:background="@drawable/image_c"
+                    app:foreground="@drawable/animated_vec1"
+                    app:mode="ADD" />
+
+                <com.landenlabs.all_UiDemo.Util.BlendImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    app:background="@drawable/image_c"
+                    app:foreground="@drawable/animated_vec1"
+                    app:mode="XOR" />
+
+                <com.landenlabs.all_UiDemo.Util.BlendImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    app:background="@drawable/image_c"
+                    app:foreground="@drawable/animated_vec1"
+                    app:mode="LIGHTEN" />
+
+                <com.landenlabs.all_UiDemo.Util.BlendImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    app:background="@drawable/image_c"
+                    app:foreground="@drawable/animated_vec1"
+                    app:mode="DST_IN" />
+
+                <com.landenlabs.all_UiDemo.Util.BlendImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    app:background="@drawable/image_c"
+                    app:foreground="@drawable/animated_vec1"
+                    app:mode="SRC_IN" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#88f"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/p0ImageButton1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:clickable="true"
+                    android:foreground="@drawable/ripple_boarderless"
+                    android:src="@drawable/image100"
+                    android:stateListAnimator="@animator/press" />
+
+                <ImageView
+                    android:id="@+id/p0ImageView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="#0f0"
+                    android:clickable="true"
+                    android:foreground="@drawable/ripple_boarderless"
+                    android:src="@drawable/image100_m20"
+                    android:stateListAnimator="@animator/press" />
+
+                <ImageView
+                    android:id="@+id/p0ImageView22"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="#0ff"
+                    android:clickable="true"
+                    android:foreground="@drawable/ripple_boarderless"
+                    android:src="@drawable/image100_m20"
+                    android:stateListAnimator="@animator/press" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:background="#f8f"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/p0ImageView12"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:background="#60f0"
+                    android:clickable="true"
+                    android:foreground="@drawable/ripple_boarderless"
+                    android:src="@drawable/image100_m20" />
+
+                <SeekBar
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="2"
+                    android:background="#333" />
+
+                <ImageView
+                    android:id="@+id/p0ImageView13"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:background="#6484"
+                    android:clickable="true"
+                    android:foreground="@drawable/ripple_boarderless"
+                    android:src="@drawable/scr_hourly_m20" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#88f"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:layout_weight="1"
+                    android:background="#844"
+                    android:button="@drawable/checkmark_sel_m20"
+                    android:checked="true"
+                    android:clickable="true"
+                    android:foreground="@drawable/ripple_boarderless"
+                    android:gravity="center" />
+
+                <CheckBox
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:layout_weight="1"
+                    android:background="#844"
+                    android:button="@drawable/checkmark_sel_m20"
+                    android:checked="true"
+                    android:clickable="true"
+                    android:foreground="@drawable/ripple_boarderless"
+                    android:gravity="center" />
+
+                <CheckBox
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:layout_weight="1"
+                    android:background="#844"
+                    android:button="@drawable/checkmark_sel_m20"
+                    android:checked="true"
+                    android:clickable="true"
+                    android:foreground="@drawable/ripple_boarderless"
+                    android:gravity="center" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#88f"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/p0CheckBox13"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:layout_weight="1"
+                    android:background="#844"
+                    android:button="@drawable/checkmark_sel"
+                    android:checked="true"
+                    android:clickable="true"
+                    android:foreground="@drawable/ripple_boarderless"
+                    android:gravity="center" />
+
+                <CheckBox
+                    android:id="@+id/p0CheckBox3"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#333"
+                    android:button="@null"
+                    android:checked="true"
+                    android:clickable="true"
+                    android:drawableRight="@drawable/checkmark_sel"
+                    android:foreground="@drawable/ripple_boarderless" />
+
+                <CheckBox
+                    android:id="@+id/p0CheckBox4"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="20dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/checkmark_sel"
+                    android:button="@null"
+                    android:checked="true"
+                    android:clickable="true"
+                    android:foreground="@drawable/ripple_boarderless"
+                    android:padding="20dp" />
+            </LinearLayout>
 
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/thumba9"
+                android:gravity="center"
                 android:text="1234567890"
                 android:textColor="#000"
-                android:textSize="20sp"
-                android:gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/thumba9"/>
-
-            <ProgressBar
-                style="?android:attr/progressBarStyleSmall"
-                android:indeterminate="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                />
-
-            <ProgressBar
-                style="?android:attr/progressBarStyleSmallTitle"
-                android:indeterminate="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                />
-            <ProgressBar
-                style="?android:attr/progressBarStyle"
-                android:indeterminate="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                />
-            <ProgressBar
-                style="?android:attr/progressBarStyleLarge"
-                android:indeterminate="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                />
-
-            <ProgressBar
-                style="?android:attr/progressBarStyleLarge"
-                android:indeterminate="true"
-                android:progressDrawable="@drawable/circle_progress1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                />
-
-            <ProgressBar
-                style="?android:attr/progressBarStyleHorizontal"
-                android:indeterminate="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                />
-
-            <com.landenlabs.all_UiDemo.Util.TextProgressBar
-                android:id="@+id/textProgressBar1"
-                android:text="123"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/p0TextView"
@@ -102,7 +258,7 @@
 
             <!--
             style="?android:attr/buttonStyleSmall"
-             android:stateListAnimator="@anim/press"
+             android:stateListAnimator="@animator/press"
             -->
             <Button
                 android:id="@+id/p0Button1"
@@ -127,7 +283,7 @@
                     android:id="@+id/p0RadioButton1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:stateListAnimator="@anim/press"
+                    android:stateListAnimator="@animator/press"
                     android:text="RadioBtn Full" />
 
                 <RadioButton
@@ -135,7 +291,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
-                    android:stateListAnimator="@anim/press"
+                    android:stateListAnimator="@animator/press"
                     android:text="RadioBtn Wrap" />
             </RadioGroup>
 
@@ -150,7 +306,7 @@
                     android:id="@+id/p0CheckBox"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:stateListAnimator="@anim/press"
+                    android:stateListAnimator="@animator/press"
                     android:text="CheckBox Full" />
 
                 <CheckBox
@@ -158,7 +314,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
-                    android:stateListAnimator="@anim/press"
+                    android:stateListAnimator="@animator/press"
                     android:text="CheckBox wrap" />
 
             </GridLayout>
@@ -177,6 +333,7 @@
                     android:checkMark="@drawable/checkmark_sel"
                     android:checked="true"
                     android:clickable="true"
+                    android:focusable="true"
                     android:text="CheckTextBox Full"
                     tools:checked="true" />
 
@@ -187,6 +344,7 @@
                     android:checkMark="@drawable/checkmark_sel"
                     android:checked="true"
                     android:clickable="true"
+                    android:focusable="true"
                     android:text="CheckTextBox wrap"
                     tools:checked="true" />
             </LinearLayout>
@@ -195,7 +353,7 @@
                 android:id="@+id/o0ToggleButton1"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:stateListAnimator="@anim/press"
+                android:stateListAnimator="@animator/press"
                 android:text="New ToggleButton" />
 
             <ToggleButton
@@ -203,17 +361,52 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
-                android:stateListAnimator="@anim/press"
+                android:stateListAnimator="@animator/press"
                 android:text="New ToggleButton" />
 
-            <ImageButton
-                android:id="@+id/p0ImageButton1"
+
+            <ProgressBar
+                style="?android:attr/progressBarStyleSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/image100"
-                android:stateListAnimator="@anim/press" />
+                android:indeterminate="true" />
 
+            <ProgressBar
+                style="?android:attr/progressBarStyleSmallTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminate="true" />
 
+            <ProgressBar
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminate="true" />
+
+            <ProgressBar
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminate="true" />
+
+            <ProgressBar
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminate="true"
+                android:progressDrawable="@drawable/circle_progress1" />
+
+            <ProgressBar
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminate="true" />
+
+            <com.landenlabs.all_UiDemo.Util.TextProgressBar
+                android:id="@+id/textProgressBar1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="123" />
         </LinearLayout>
     </ScrollView>
 

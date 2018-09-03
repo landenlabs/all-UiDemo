@@ -28,7 +28,7 @@ import java.util.List;
  * and most of the standard pre-built list row layouts.
  *
  * @author Dennis Lang (LanDen Labs)
- * @see <a href="http://landenlabs.com/android/index-m.html"> author's web-site </a>
+ * @see <a href="http://landenlabs.com/android"> author's web-site </a>
  */
 public class List1Frag  extends UiFragment implements CompoundButton.OnCheckedChangeListener {
 
@@ -179,7 +179,7 @@ public class List1Frag  extends UiFragment implements CompoundButton.OnCheckedCh
                 // title.setText(itemStr);
                 // mCurrentIdx = position;
                 if(Build.VERSION.SDK_INT >= 21) {
-                    view.setStateListAnimator(AnimatorInflater.loadStateListAnimator(view.getContext(), R.anim.press));
+                    view.setStateListAnimator(AnimatorInflater.loadStateListAnimator(view.getContext(), R.animator.press));
                 }
                 view.setPressed(true);
             }

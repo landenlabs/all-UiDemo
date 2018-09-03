@@ -42,7 +42,7 @@
             android:clickable="true"
             android:scaleType="fitXY"
             android:src="@drawable/grid"
-            android:stateListAnimator="@anim/press"
+            android:stateListAnimator="@animator/press"
             tools:ignore="KeyboardInaccessibleWidget" />
 
         <ImageView
@@ -55,7 +55,8 @@
             android:clickable="true"
             android:scaleType="fitXY"
             android:src="@drawable/paper_pink"
-            android:stateListAnimator="@anim/press" />
+            android:stateListAnimator="@animator/press"
+            android:focusable="true" />
 
         <RadioGroup
             android:id="@+id/imagePaintRG"

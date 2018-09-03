@@ -44,7 +44,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:stateListAnimator="@anim/press"
+                android:stateListAnimator="@animator/press"
                 android:text="50x50" />
 
             <RadioButton
@@ -52,7 +52,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:stateListAnimator="@anim/press"
+                android:stateListAnimator="@animator/press"
                 android:text="220x124 (16:9)" />
 
             <RadioButton
@@ -60,7 +60,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:stateListAnimator="@anim/press"
+                android:stateListAnimator="@animator/press"
                 android:text="Vector" />
 
             <RadioButton
@@ -68,7 +68,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:stateListAnimator="@anim/press"
+                android:stateListAnimator="@animator/press"
                 android:text="100x300" />
 
             <RadioButton
@@ -76,7 +76,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:stateListAnimator="@anim/press"
+                android:stateListAnimator="@animator/press"
                 android:text="300x100" />
 
             <RadioButton
@@ -85,7 +85,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:checked="true"
-                android:stateListAnimator="@anim/press"
+                android:stateListAnimator="@animator/press"
                 android:text="200x200" />
 
             <RadioButton
@@ -93,7 +93,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:stateListAnimator="@anim/press"
+                android:stateListAnimator="@animator/press"
                 android:text="400x400" />
         </RadioGroup>
     </HorizontalScrollView>
@@ -171,7 +171,8 @@
                 android:clickable="true"
                 android:scaleType="fitStart"
                 android:src="@drawable/image200"
-                android:stateListAnimator="@anim/press" />
+                android:stateListAnimator="@animator/press"
+                android:focusable="true" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -190,7 +191,8 @@
                 android:clickable="true"
                 android:scaleType="fitEnd"
                 android:src="@drawable/image200"
-                android:stateListAnimator="@anim/press" />
+                android:stateListAnimator="@animator/press"
+                android:focusable="true" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -209,7 +211,8 @@
                 android:clickable="true"
                 android:scaleType="fitCenter"
                 android:src="@drawable/image200"
-                android:stateListAnimator="@anim/press" />
+                android:stateListAnimator="@animator/press"
+                android:focusable="true" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -228,7 +231,8 @@
                 android:clickable="true"
                 android:scaleType="center"
                 android:src="@drawable/image200"
-                android:stateListAnimator="@anim/press" />
+                android:stateListAnimator="@animator/press"
+                android:focusable="true" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -247,7 +251,8 @@
                 android:clickable="true"
                 android:scaleType="centerInside"
                 android:src="@drawable/image200"
-                android:stateListAnimator="@anim/press" />
+                android:stateListAnimator="@animator/press"
+                android:focusable="true" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -266,7 +271,8 @@
                 android:clickable="true"
                 android:scaleType="centerCrop"
                 android:src="@drawable/image200"
-                android:stateListAnimator="@anim/press" />
+                android:stateListAnimator="@animator/press"
+                android:focusable="true" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -285,7 +291,8 @@
                 android:clickable="true"
                 android:scaleType="centerCrop"
                 android:src="@drawable/image200"
-                android:stateListAnimator="@anim/press" />
+                android:stateListAnimator="@animator/press"
+                android:focusable="true" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -304,7 +311,8 @@
                 android:clickable="true"
                 android:scaleType="fitXY"
                 android:src="@drawable/image200"
-                android:stateListAnimator="@anim/press" />
+                android:stateListAnimator="@animator/press"
+                android:focusable="true" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -324,7 +332,8 @@
                 android:clickable="true"
                 android:scaleType="matrix"
                 android:src="@drawable/image200"
-                android:stateListAnimator="@anim/press" />
+                android:stateListAnimator="@animator/press"
+                android:focusable="true" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -344,7 +353,8 @@
                 android:clickable="true"
                 android:scaleType="matrix"
                 android:src="@drawable/image200"
-                android:stateListAnimator="@anim/press" />
+                android:stateListAnimator="@animator/press"
+                android:focusable="true" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -363,7 +373,8 @@
                 android:background="@color/row0"
                 android:clickable="true"
                 android:src="@drawable/image200"
-                android:stateListAnimator="@anim/press" />
+                android:stateListAnimator="@animator/press"
+                android:focusable="true" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -384,7 +395,8 @@
                 android:background="@color/row1"
                 android:clickable="true"
                 android:src="@drawable/image200"
-                android:stateListAnimator="@anim/press" />
+                android:stateListAnimator="@animator/press"
+                android:focusable="true" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -405,7 +417,8 @@
                 android:background="@color/row0"
                 android:clickable="true"
                 android:src="@drawable/image200"
-                android:stateListAnimator="@anim/press" />
+                android:stateListAnimator="@animator/press"
+                android:focusable="true" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -422,7 +435,8 @@
                 android:background="@color/row1"
                 android:clickable="true"
                 android:src="@drawable/image200"
-                android:stateListAnimator="@anim/press" />
+                android:stateListAnimator="@animator/press"
+                android:focusable="true" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -439,7 +453,7 @@
                 android:background="@color/row0"
                 android:clickable="true"
                 android:src="@drawable/image200"
-                android:stateListAnimator="@anim/press"
+                android:stateListAnimator="@animator/press"
                 tools:ignore="KeyboardInaccessibleWidget" />
 
 

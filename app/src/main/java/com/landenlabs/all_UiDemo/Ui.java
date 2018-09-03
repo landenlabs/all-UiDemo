@@ -38,7 +38,7 @@ import android.widget.TextView;
 /**
  * Created by Dennis Lang on 8/27/2015.
  * @author Dennis Lang (LanDen Labs)
- * @see <a href="http://landenlabs.com/android/index-m.html"> author's web-site </a>
+ * @see <a href="http://landenlabs.com/android"> author's web-site </a>
  */
 public class Ui {
 

@@ -195,7 +195,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/buttonHeight"
                 android:background="@drawable/transparent_ripple"
-                android:clickable="true">
+                android:clickable="true"
+                android:focusable="true">
 
                 <ImageButton
 

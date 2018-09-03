@@ -48,7 +48,8 @@
                 android:background="@drawable/ripple_boarderless"
                 android:clickable="true"
                 android:src="@drawable/image_e"
-                android:stateListAnimator="@anim/press" />
+                android:stateListAnimator="@animator/press"
+                android:focusable="true" />
 
 
             <ImageView
@@ -57,7 +58,8 @@
                 android:background="@drawable/ripple_boarderless"
                 android:clickable="true"
                 android:src="@drawable/image_c"
-                android:stateListAnimator="@anim/press" />
+                android:stateListAnimator="@animator/press"
+                android:focusable="true" />
 
 
             <!-- outlineProvider required if no background set -->
@@ -67,7 +69,8 @@
                 android:clickable="true"
                 android:outlineProvider="bounds"
                 android:src="@drawable/image_c"
-                android:stateListAnimator="@anim/press" />
+                android:stateListAnimator="@animator/press"
+                android:focusable="true" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -90,7 +93,8 @@
                 android:background="@drawable/image_e"
                 android:clickable="true"
                 android:src="@drawable/ripple_boarderless"
-                android:stateListAnimator="@anim/press" />
+                android:stateListAnimator="@animator/press"
+                android:focusable="true" />
 
             <ImageView
                 android:layout_width="@dimen/grid_layout_image_width"
@@ -98,7 +102,8 @@
                 android:background="@drawable/image_f"
                 android:clickable="true"
                 android:src="@drawable/ripple_boarderless"
-                android:stateListAnimator="@anim/press" />
+                android:stateListAnimator="@animator/press"
+                android:focusable="true" />
 
             <ImageView
                 android:layout_width="@dimen/grid_layout_image_width"
@@ -106,7 +111,8 @@
                 android:background="@drawable/image_f"
                 android:clickable="true"
                 android:outlineProvider="bounds"
-                android:stateListAnimator="@anim/press" />
+                android:stateListAnimator="@animator/press"
+                android:focusable="true" />
 
 
             <TextView
@@ -129,21 +135,23 @@
                 android:layout_row="5"
                 android:clickable="true"
                 android:src="@drawable/image_e"
-                android:stateListAnimator="@anim/press" />
+                android:stateListAnimator="@animator/press"
+                android:focusable="true" />
 
             <ImageButton
                 android:layout_width="@dimen/grid_layout_image_width"
                 android:layout_height="@dimen/grid_layout_image_height"
                 android:clickable="true"
                 android:src="@drawable/image_s"
-                android:stateListAnimator="@anim/press" />
+                android:stateListAnimator="@animator/press"
+                android:focusable="true" />
 
             <ImageButton
                 android:layout_width="@dimen/grid_layout_image_width"
                 android:layout_height="@dimen/grid_layout_image_height"
                 android:clickable="true"
                 android:src="@drawable/image_s"
-                android:stateListAnimator="@anim/press"
+                android:stateListAnimator="@animator/press"
                 tools:ignore="KeyboardInaccessibleWidget" />
 
 
@@ -169,7 +177,8 @@
                 android:text="Btn-A"
                 android:background="@drawable/ripple_boarderless"
                 android:clickable="true"
-                android:stateListAnimator="@anim/press" />
+                android:stateListAnimator="@animator/press"
+                android:focusable="true" />
 
             <Button
                 android:text="Btn-B"
@@ -177,7 +186,8 @@
                 android:layout_height="@dimen/grid_layout_image_height"
                 android:background="#cfc"
                 android:clickable="true"
-                android:stateListAnimator="@anim/press" />
+                android:stateListAnimator="@animator/press"
+                android:focusable="true" />
 
             <Button
                 android:text="Btn-C"
@@ -186,7 +196,8 @@
                 android:outlineProvider="bounds"
                 android:background="@drawable/image_c"
                 android:clickable="true"
-                android:stateListAnimator="@anim/press" />
+                android:stateListAnimator="@animator/press"
+                android:focusable="true" />
 
             <TextView
             android:layout_width="match_parent"
@@ -211,7 +222,8 @@
                 android:background="@drawable/ripple_boarderless"
 
                 android:clickable="true"
-                android:stateListAnimator="@anim/press" />
+                android:stateListAnimator="@animator/press"
+                android:focusable="true" />
 
             <TextView
                 android:gravity="center"
@@ -220,7 +232,8 @@
                 android:text="Txt-B"
                 android:background="#cfc"
                 android:clickable="true"
-                android:stateListAnimator="@anim/press" />
+                android:stateListAnimator="@animator/press"
+                android:focusable="true" />
 
             <TextView
                 android:gravity="center"
@@ -230,7 +243,8 @@
                 android:background="@drawable/image_c"
                 android:clickable="true"
                 android:outlineProvider="bounds"
-                android:stateListAnimator="@anim/press" />
+                android:stateListAnimator="@animator/press"
+                android:focusable="true" />
 
 
             <TextView
@@ -256,8 +270,8 @@
                 android:button="@null"
                 android:background="@drawable/ripple_boarderless"
                 android:clickable="true"
-                android:stateListAnimator="@anim/press"
-                 />
+                android:stateListAnimator="@animator/press"
+                android:focusable="true" />
 
             <RadioButton
                 android:gravity="center"
@@ -267,7 +281,8 @@
                 android:button="@drawable/transparent_ripple"
                 android:background="#cfc"
                 android:clickable="true"
-                android:stateListAnimator="@anim/press" />
+                android:stateListAnimator="@animator/press"
+                android:focusable="true" />
 
             <RadioButton
                 android:gravity="center"
@@ -277,7 +292,8 @@
                 android:background="@drawable/image_c"
                 android:button="@drawable/ripple_boarderless"
                 android:clickable="true"
-                android:stateListAnimator="@anim/press" />
+                android:stateListAnimator="@animator/press"
+                android:focusable="true" />
 
         </GridLayout>
 

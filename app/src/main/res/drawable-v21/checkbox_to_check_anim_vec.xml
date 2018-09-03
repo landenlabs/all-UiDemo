@@ -18,11 +18,11 @@
                  android:drawable="@drawable/checkbox_unchecked_vec">
     <target
         android:name="icon_null"
-        android:animation="@anim/ic_checkbox_to_checked_icon_null_animation" />
+        android:animation="@animator/ic_checkbox_to_checked_icon_null_animation" />
     <target
         android:name="box_outer_merged"
-        android:animation="@anim/ic_checkbox_to_checked_box_outer_merged_animation" />
+        android:animation="@animator/ic_checkbox_to_checked_box_outer_merged_animation" />
     <target
         android:name="box_inner_merged"
-        android:animation="@anim/ic_checkbox_to_checked_box_inner_merged_animation" />
+        android:animation="@animator/ic_checkbox_to_checked_box_inner_merged_animation" />
 </animated-vector>

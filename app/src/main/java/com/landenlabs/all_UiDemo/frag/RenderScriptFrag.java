@@ -32,7 +32,7 @@ import com.landenlabs.all_UiDemo.Util.BitmapUtils;
  * Demonstrate view shadows.
  *
  * @author Dennis Lang (LanDen Labs)
- * @see <a href="http://landenlabs.com/android/index-m.html"> author's web-site </a>
+ * @see <a href="http://landenlabs.com/android"> author's web-site </a>
  */
 
 public class RenderScriptFrag  extends UiFragment
@@ -68,9 +68,7 @@ public class RenderScriptFrag  extends UiFragment
     private Bitmap  mSrcBitmap;
 
     /**
-     * GPS location processing async task.
-     *
-     * @author Maksym Trostyanchuk
+     * Blur image in thread.
      */
     private static class BlurAsyncTask extends AsyncTask<Void, Void, Bitmap> {
 
@@ -97,17 +95,6 @@ public class RenderScriptFrag  extends UiFragment
             mImageView.setImageBitmap(outBitmap);
         }
     }
-
-    /*
-    public  static int ArrayFind(int[] array, int find) {
-        for (int idx = 0; idx < array.length; idx++){
-            if (array[idx] == find)
-                return idx;
-        }
-
-        return -1;
-    }
-    */
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

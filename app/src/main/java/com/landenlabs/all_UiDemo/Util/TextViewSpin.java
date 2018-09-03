@@ -11,7 +11,9 @@ import android.widget.TextView;
 import com.landenlabs.all_UiDemo.R;
 
 /**
- * Created by Dennis Lang on 3/28/17.
+ * @author Dennis Lang (LanDen Labs)
+ *
+ * @see <a href="http://landenlabs.com/android"> author's web-site </a>
  */
 
 public class TextViewSpin extends TextView {

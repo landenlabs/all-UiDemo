@@ -1,5 +1,4 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#303030"
@@ -16,16 +15,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
-            <!--
-               android:drawableRight="?android:attr/listChoiceIndicatorMultiple"
-               android:drawableRight="@drawacheckbox_anim_selanim"
-
-               android:drawableRight="@drawable/state_test"
-               android:drawableTop="@drawable/state_test"
-               android:drawableLeft="@drawable/state_test"
-               android:drawableBottom="@drawable/state_test"
-            -->
 
             <Button
                 android:id="@+id/p2Button1"
@@ -110,7 +99,7 @@
                 android:checked="true"
                 android:drawableRight="@drawable/checkpath_anim_sel"
                 android:gravity="left|center_vertical"
-                android:text="AppCompatCheckBox  22"
+                android:text="AppCompatCheckBox"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/buttonTextSize" />
 
@@ -118,6 +107,7 @@
                 android:id="@+id/p2Checkbox3"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/buttonHeight"
+                android:background="@drawable/transparent_ripple"
                 android:checkMark="@drawable/checkmark_sel"
                 android:checked="true"
                 android:gravity="left|center_vertical"
@@ -130,10 +120,11 @@
                 android:id="@+id/p2Checkbox4"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/buttonHeight"
+                android:background="@drawable/transparent_ripple"
                 android:checkMark="@drawable/checkpath_anim_sel"
                 android:checked="true"
                 android:gravity="left|center_vertical"
-                android:text="CheckedTextView 22"
+                android:text="CheckedTextView"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/buttonTextSize" />
 
@@ -169,14 +160,13 @@
                 android:textOn="ToggleButtonOn"
                 android:textSize="@dimen/buttonTextSize" />
 
-            <!--
             <ToggleButton
                 android:id="@+id/p2ToggleButton2"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/buttonHeight"
                 android:background="@drawable/transparent_ripple"
                 android:checked="true"
-                android:drawableRight="@drawacheckbox_anim_selanim"
+                android:drawableRight="@drawable/checkbox_anim_sel"
                 android:gravity="center_vertical|left"
                 android:textAllCaps="false"
 
@@ -184,14 +174,14 @@
                 android:textOff="ToggleBtnnAnimOff"
                 android:textOn="ToggleBtnnAnimOn"
                 android:textSize="@dimen/buttonTextSize" />
-            -->
 
             <RelativeLayout
                 android:id="@+id/p2ImageButton1"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/buttonHeight"
+                android:background="@drawable/transparent_ripple"
                 android:clickable="true"
-                tools:ignore="KeyboardInaccessibleWidget">
+                android:focusable="true">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -268,7 +258,7 @@
 
                 android:textSize="@dimen/buttonTextSize"
                 android:thumb="@drawable/checkmark_sel"
-                android:track="@drawable/image_off" />
+                android:track="@null" />
 
             <!-- android:background="@android:drawable/checkbox_on_background" -->
             <android.support.v7.widget.SwitchCompat

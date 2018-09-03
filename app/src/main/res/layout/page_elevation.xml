@@ -45,9 +45,10 @@
                 android:background="@android:color/holo_green_dark"
                 android:clickable="true"
                 android:elevation="0dp"
-                android:stateListAnimator="@anim/press"
+                android:stateListAnimator="@animator/press"
                 android:text="200x50 elv=0 \n[ TextView ]"
-                android:translationZ="0dp" />
+                android:translationZ="0dp"
+                android:focusable="true" />
 
 
             <TextView
@@ -61,9 +62,10 @@
                 android:background="@android:color/darker_gray"
                 android:clickable="true"
                 android:elevation="30dp"
-                android:stateListAnimator="@anim/press"
+                android:stateListAnimator="@animator/press"
                 android:text="200x200 elv=30 z=5\n[ TextView ]"
-                android:translationZ="5dp" />
+                android:translationZ="5dp"
+                android:focusable="true" />
 
             <TextView
                 android:layout_below="@+id/textBar"
@@ -76,9 +78,10 @@
                 android:background="@android:color/holo_blue_dark"
                 android:clickable="true"
                 android:elevation="20dp"
-                android:stateListAnimator="@anim/press"
+                android:stateListAnimator="@animator/press"
                 android:text="260x260 elv=20 z=5"
-                android:translationZ="5dp" />
+                android:translationZ="5dp"
+                android:focusable="true" />
 
             <TextView
                 android:layout_below="@+id/textBar"
@@ -91,7 +94,7 @@
                 android:background="@android:color/holo_green_dark"
                 android:clickable="true"
                 android:elevation="10dp"
-                android:stateListAnimator="@anim/press"
+                android:stateListAnimator="@animator/press"
                 android:text="320x320 elv=10 z=5"
                 android:translationZ="5dp"
                 tools:ignore="KeyboardInaccessibleWidget" />
@@ -110,9 +113,10 @@
 
                 android:elevation="5dp"
                 android:gravity="top"
-                android:stateListAnimator="@anim/press"
+                android:stateListAnimator="@animator/press"
                 android:text="200x200 elv=5 z=5\n[ Button ]"
-                android:translationZ="5dp" />
+                android:translationZ="5dp"
+                android:focusable="true" />
 
             <Button
                 android:layout_below="@+id/textBar"
@@ -126,9 +130,10 @@
                 android:clickable="true"
                 android:elevation="4dp"
                 android:gravity="top"
-                android:stateListAnimator="@anim/press"
+                android:stateListAnimator="@animator/press"
                 android:text="260x260 elv=4 z=5"
-                android:translationZ="5dp" />
+                android:translationZ="5dp"
+                android:focusable="true" />
 
             <Button
                 android:layout_below="@+id/textBar"
@@ -142,9 +147,10 @@
                 android:clickable="true"
                 android:elevation="3dp"
                 android:gravity="top"
-                android:stateListAnimator="@anim/press"
+                android:stateListAnimator="@animator/press"
                 android:text="320x320 elv=3 z=5"
-                android:translationZ="5dp" />
+                android:translationZ="5dp"
+                android:focusable="true" />
         </RelativeLayout>
 
     </ScrollView>

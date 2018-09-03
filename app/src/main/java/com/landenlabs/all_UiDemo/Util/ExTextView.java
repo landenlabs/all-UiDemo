@@ -23,7 +23,8 @@ import com.landenlabs.all_UiDemo.R;
  * <br>
  * decenders disabled shrinks height to baseline
  *
- * Created by Dennis Lang on 5/19/16.
+ * @author Dennis Lang (LanDen Labs)
+ * @see <a href="http://landenlabs.com/android"> author's web-site </a>
  */
 
 public class ExTextView extends TextView {

@@ -32,7 +32,8 @@ import com.google.android.gms.analytics.Tracker;
 /**
  * Google Analytics helper class.
  *
- * @author Dennis Lang
+ * @author Dennis Lang (LanDen Labs)
+ * @see <a href="http://landenlabs.com/android"> author's web-site </a>
  */
 public class GoogleAnalyticsHelper {
     private final Context mContext;

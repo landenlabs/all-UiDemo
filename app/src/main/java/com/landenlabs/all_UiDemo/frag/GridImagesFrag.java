@@ -20,7 +20,7 @@ import com.landenlabs.all_UiDemo.Ui;
  * Demonstrate grid layout of images.
  *
  * @author Dennis Lang (LanDen Labs)
- * @see <a href="http://landenlabs.com/android/index-m.html"> author's web-site </a>
+ * @see <a href="http://landenlabs.com/android"> author's web-site </a>
  */
 
 public class GridImagesFrag  extends UiFragment   {
@@ -103,7 +103,7 @@ public class GridImagesFrag  extends UiFragment   {
                     }
                 });
                 if (Build.VERSION.SDK_INT >= 21) {
-                    imageView.setStateListAnimator(AnimatorInflater.loadStateListAnimator(mContext, R.anim.press));
+                    imageView.setStateListAnimator(AnimatorInflater.loadStateListAnimator(mContext, R.animator.press));
                 }
             } else {
                 imageView = (ImageView) convertView;

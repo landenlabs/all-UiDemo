@@ -1,5 +1,4 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#303030"
@@ -120,9 +119,10 @@
                 android:id="@+id/p2Checkbox3"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/buttonHeight"
+                android:background="@drawable/transparent_ripple"
                 android:checkMark="@null"
-                android:checked="true"
                 android:drawableLeft="@drawable/checkmark_sel"
+                android:checked="true"
                 android:gravity="end|center_vertical"
                 android:text="AppCompatCheckedTextView"
                 android:textColor="@android:color/white"
@@ -133,9 +133,10 @@
                 android:id="@+id/p2Checkbox4"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/buttonHeight"
+                android:background="@drawable/transparent_ripple"
                 android:checkMark="@null"
-                android:checked="true"
                 android:drawableLeft="@drawable/checkmark_sel"
+                android:checked="true"
                 android:gravity="end|center_vertical"
                 android:text="CheckedTextView"
                 android:textColor="@android:color/white"
@@ -174,14 +175,13 @@
                 android:textOn="ToggleButtonOn"
                 android:textSize="@dimen/buttonTextSize" />
 
-            <!--
             <ToggleButton
                 android:id="@+id/p2ToggleButton2"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/buttonHeight"
                 android:background="@drawable/transparent_ripple"
                 android:checked="true"
-                android:drawableLeft="@drawacheckbox_anim_selanim"
+                android:drawableLeft="@drawable/checkbox_anim_sel"
                 android:gravity="center_vertical|right"
                 android:textAllCaps="false"
 
@@ -189,14 +189,14 @@
                 android:textOff="ToggleBtnnAnimOff"
                 android:textOn="ToggleBtnnAnimOn"
                 android:textSize="@dimen/buttonTextSize" />
-    -->
 
             <RelativeLayout
                 android:id="@+id/p2ImageButton1"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/buttonHeight"
+                android:background="@drawable/transparent_ripple"
                 android:clickable="true"
-                tools:ignore="KeyboardInaccessibleWidget">
+                android:focusable="true">
 
                 <ImageButton
 

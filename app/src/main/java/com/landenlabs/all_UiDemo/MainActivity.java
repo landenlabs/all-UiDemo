@@ -53,7 +53,7 @@ import com.landenlabs.all_UiDemo.Util.UncaughtExceptionHandler;
  * Main Activity to Ui Demo app.
  *
  * @author Dennis Lang (LanDen Labs)
- * @see <a href="http://landenlabs.com/android/index-m.html"> author's web-site </a>
+ * @see <a href="http://landenlabs.com/android"> author's web-site </a>
  */
 @SuppressWarnings("ConstantIfStatement")
 public class MainActivity extends AppCompatActivity {
@@ -75,6 +75,9 @@ public class MainActivity extends AppCompatActivity {
 
     private GoogleAnalyticsHelper mAnalytics;
 
+    private UncaughtExceptionHandler m_uncaughtExceptionHandler;
+
+
     private static boolean isDebug(ApplicationInfo appInfo) {
         return ((appInfo.flags & ApplicationInfo.FLAG_DEBUGGABLE) != 0);
     }
@@ -85,7 +88,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         boolean DEBUG = isDebug(getApplicationInfo());
-        new UncaughtExceptionHandler();
         AppCrash.initalize(getApplication(), DEBUG);
         mAnalytics = new GoogleAnalyticsHelper(getApplication(), DEBUG);
 
@@ -119,6 +121,12 @@ public class MainActivity extends AppCompatActivity {
             public void onPageScrollStateChanged(int state) {
             }
         });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        m_uncaughtExceptionHandler = new UncaughtExceptionHandler(this);
     }
 
     @SuppressWarnings({"SingleStatementInBlock", "ConstantConditions"})
@@ -242,6 +250,7 @@ public class MainActivity extends AppCompatActivity {
             new PageItem( "SeekBar", R.layout.page_seekbar),
 
             new PageItem( "Relative Layout",  R.layout.page_rellayout ),
+            new PageItem( "Constraint Layout ", R.layout.page_contraintlayout_frag),
             new PageItem( "Other Layout",  R.layout.page_otherlayout_frag ),
             new PageItem( "Bounded views", R.layout.page_bounded_size),
             new PageItem( "Scaled Btn", R.layout.page_scaled_image_btn),

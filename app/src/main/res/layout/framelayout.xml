@@ -13,9 +13,10 @@
 
         android:background="@android:color/holo_green_dark"
         android:clickable="true"
-        android:stateListAnimator="@anim/press"
+        android:stateListAnimator="@animator/press"
         android:text="320x320 z=5"
-        android:translationZ="5dp" />
+        android:translationZ="5dp"
+        android:focusable="true" />
 
     <TextView
         android:layout_width="260dp"
@@ -26,7 +27,7 @@
 
         android:background="@android:color/holo_blue_dark"
         android:clickable="true"
-        android:stateListAnimator="@anim/press"
+        android:stateListAnimator="@animator/press"
         android:text="260x260 z=5"
         android:translationZ="5dp"
         tools:ignore="KeyboardInaccessibleWidget" />
@@ -40,9 +41,10 @@
 
         android:background="@android:color/darker_gray"
         android:clickable="true"
-        android:stateListAnimator="@anim/press"
+        android:stateListAnimator="@animator/press"
         android:text="200x200 z=5\n[ TextView ]"
-        android:translationZ="5dp" />
+        android:translationZ="5dp"
+        android:focusable="true" />
 
 
 
