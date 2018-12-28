@@ -232,12 +232,14 @@ public class MainActivity extends AppCompatActivity {
             new PageItem( "Image Scales", R.layout.page_image_scales),
             new PageItem( "Image Overlap",  R.layout.page_image_over ),
             new PageItem( "Image Blend",  R.layout.page_image_blend ),
+            new PageItem( "Drawables",  R.layout.page_drawables ),
 
             new PageItem( "RadioBtn Tabs", R.layout.page_radio_btns),
             new PageItem( "RadioBtn List", R.layout.page_radio_list),
             new PageItem( "TextView+Image", R.layout.page_textviews),
             new PageItem( "CkBox List", R.layout.page_list1),       // min api 21
             new PageItem( "Custom List",  R.layout.page_anim_list ),
+            new PageItem( "RecyclerView", R.layout.page_recyclerview),
 
             new PageItem( "Toggle/Switch",  R.layout.page_switches),
             new PageItem( "Checkbox Right",  R.layout.page_checkbox_right ),

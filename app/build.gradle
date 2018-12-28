@@ -6,7 +6,7 @@ android {
     signingConfigs {
         release
     }
-    compileSdkVersion 27
+    compileSdkVersion 28
 
     // As of gradle 3.x this is no longer needed.
     // buildToolsVersion '26.0.2'
@@ -14,9 +14,9 @@ android {
     defaultConfig {
         applicationId 'com.landenlabs.all_uidemo'
         minSdkVersion 19
-        targetSdkVersion 27
-        versionName '1.10'
-        versionCode 110
+        targetSdkVersion 28
+        versionName '1.11'
+        versionCode 111
 
         // renderscriptTargetApi 23
         // renderscriptSupportModeEnabled true
@@ -101,15 +101,20 @@ android {
     android.signingConfigs.release.keyAlias props.keyAlias
     android.signingConfigs.release.keyPassword props.keyAliasPassword
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'com.android.support:appcompat-v7:27.1.1'
-    implementation 'com.android.support:percent:27.1.1'
-    implementation 'com.android.support:design:27.1.1'
-
-    implementation 'com.google.android.gms:play-services-analytics:16.0.1'
-    implementation 'net.hockeyapp.android:HockeySDK:5.1.0'
-    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support:support-v4:28.0.0'
+    implementation 'com.android.support:support-media-compat:28.0.0'
+    implementation 'com.android.support:percent:28.0.0'
+    implementation 'com.android.support:design:28.0.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    implementation 'com.google.android.gms:play-services-analytics:16.0.6'
+    implementation 'net.hockeyapp.android:HockeySDK:5.1.1'
 }

@@ -147,6 +147,7 @@ public class MenuFrag extends UiFragment
             textView.setText(item.mTitle);
             textView.setTextColor(0xff202020);
             textView.setTextSize(18.0f);
+            textView.setAllCaps(false);
             textView.setBackgroundResource(R.drawable.shadow1);
             textView.setTag(idx++);
 
@@ -234,6 +235,7 @@ public class MenuFrag extends UiFragment
                 itemView = (Button) convertView;
             }
 
+            itemView.setAllCaps(false);
             itemView.setText(mPageItems[position].mTitle);
             itemView.setTag(position);
             itemView.setOnClickListener(MenuFrag.this);
