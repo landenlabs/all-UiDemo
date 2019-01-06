@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/squares10"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/dragText"
+        android:text="Click and Drag image, start drag down"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/dragView"
+        android:tint="@color/drag_colors"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_margin="124dp"
+        android:src="@drawable/scr_hourly_m20" />
+
+    <ImageView
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:tint="#fff"
+        android:id="@+id/dragZoomIn"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:src="@drawable/ic_zoom_in" />
+
+    <ImageView
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/dragZoomIn"
+        android:tint="#fff"
+        android:id="@+id/dragZoomOut"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:src="@drawable/ic_zoom_out" />
+
+</RelativeLayout>

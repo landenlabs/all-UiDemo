@@ -1,7 +1,7 @@
 package com.landenlabs.all_UiDemo;
 
 /*
- * Copyright (c) 2015 Dennis Lang (LanDen Labs) landenlabs@gmail.com
+ * Copyright (c) 2019 Dennis Lang (LanDen Labs) landenlabs@gmail.com
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
  * associated documentation files (the "Software"), to deal in the Software without restriction, including
@@ -250,6 +250,8 @@ public class MainActivity extends AppCompatActivity {
             new PageItem( "Anim Bg", R.layout.page_anim_bg_frag),
 
             new PageItem( "SeekBar", R.layout.page_seekbar),
+            new PageItem( "Screen Draw", R.layout.page_screen),
+            new PageItem( "DragView", R.layout.page_dragview),
 
             new PageItem( "Relative Layout",  R.layout.page_rellayout ),
             new PageItem( "Constraint Layout ", R.layout.page_contraintlayout_frag),

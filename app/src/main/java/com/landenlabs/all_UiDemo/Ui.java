@@ -1,5 +1,7 @@
+package com.landenlabs.all_UiDemo;
+
 /*
- * Copyright (c) 2015 Dennis Lang (LanDen Labs) landenlabs@gmail.com
+ * Copyright (c) 2019 Dennis Lang (LanDen Labs) landenlabs@gmail.com
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
  * associated documentation files (the "Software"), to deal in the Software without restriction, including
@@ -21,10 +23,10 @@
  *
  */
 
-package com.landenlabs.all_UiDemo;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Outline;
 import android.os.Build;
@@ -33,7 +35,10 @@ import android.support.v4.app.FragmentActivity;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewOutlineProvider;
+import android.view.WindowManager;
 import android.widget.TextView;
+
+import com.landenlabs.all_UiDemo.Util.SysUtils;
 
 /**
  * Created by Dennis Lang on 8/27/2015.
@@ -106,6 +111,16 @@ public class Ui {
 
     public static int dpToPx(int dp) {
         return (int)(dp *  Resources.getSystem().getDisplayMetrics().density);
+    }
+
+    /**
+     * @return DisplayMetrics
+     */
+    public static DisplayMetrics getDisplayMetrics(Context context) {
+        DisplayMetrics dm = new DisplayMetrics();
+        WindowManager winMgr = SysUtils.getServiceSafe(context, Context.WINDOW_SERVICE);
+        winMgr.getDefaultDisplay().getMetrics(dm);
+        return dm;
     }
 
     public static void setRectOutline(View view) {

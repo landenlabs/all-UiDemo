@@ -70,7 +70,7 @@
             <ListView
                 android:id="@+id/sysuilist1"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="#e0a020"
                 android:choiceMode="multipleChoice"
@@ -87,7 +87,7 @@
             <ListView
                 android:id="@+id/sysuilist2"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="#a0e020"
                 android:choiceMode="multipleChoice"
