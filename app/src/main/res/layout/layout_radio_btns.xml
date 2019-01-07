@@ -18,141 +18,247 @@
         android:text="- Tabs built from Radio Btns -" />
 
 
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_marginTop="20dp"
-        android:text="-- RadioGroup in Code #1 --"
-        android:textSize="16dp" />
+        android:layout_height="match_parent">
 
-    <RadioGroup
-        android:id="@+id/tab_holder1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#fff"
-        android:contextClickable="true"
-        android:divider="?android:attr/dividerHorizontal"
-        android:gravity="fill_horizontal"
-        android:orientation="horizontal"
-        android:paddingBottom="10dp"
-        android:paddingTop="10dp"
-        android:showDividers="middle" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:text="-- RadioGroup in Code #2 --"
-        android:textSize="16dp" />
-
-    <HorizontalScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <RadioGroup
-            android:id="@+id/tab_holder2"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#fff"
-            android:divider="?android:attr/dividerHorizontal"
-            android:orientation="horizontal"
-            android:padding="10dp"
-            android:showDividers="middle" />
-    </HorizontalScrollView>
+            android:orientation="vertical">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:text="-- RadioGroup in XML --"
-        android:textSize="16dp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:text="-- RadioGroup in Code #1 --"
+                android:textSize="16dp" />
 
-    <RadioGroup
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#555"
-        android:gravity="fill_horizontal"
-        android:orientation="horizontal"
-        android:paddingBottom="10dp"
-        android:paddingTop="10dp">
+            <RadioGroup
+                android:id="@+id/tab_holder1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#fff"
+                android:contextClickable="true"
+                android:divider="?android:attr/dividerHorizontal"
+                android:gravity="fill_horizontal"
+                android:orientation="horizontal"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:showDividers="middle" />
 
-        <RadioButton
-            android:id="@+id/tabHome"
-            style="@style/RadioTab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawableTop="@drawable/tab_home"
-            android:text="Home" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:text="-- RadioGroup in Code #2 --"
+                android:textSize="16dp" />
 
-        <RadioButton
-            android:id="@+id/tabMap"
-            style="@style/RadioTab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawableTop="@drawable/tab_map"
-            android:text="Map" />
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-        <RadioButton
-            android:id="@+id/tabHourly"
-            style="@style/RadioTab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawableTop="@drawable/tab_hourly"
-            android:text="Hourly" />
+                <RadioGroup
+                    android:id="@+id/tab_holder2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#fff"
+                    android:divider="?android:attr/dividerHorizontal"
+                    android:orientation="horizontal"
+                    android:padding="10dp"
+                    android:showDividers="middle" />
+            </HorizontalScrollView>
 
-        <RadioButton
-            android:id="@+id/tabDaily"
-            style="@style/RadioTab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawableTop="@drawable/tab_daily"
-            android:text="Daily" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:text="-- RadioGroup in XML --"
+                android:textSize="16dp" />
 
-    </RadioGroup>
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#555"
+                android:gravity="fill_horizontal"
+                android:orientation="horizontal"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:text="-- TabLayout in XML --"
-        android:textSize="16dp" />
+                <RadioButton
+                    android:id="@+id/tabHome"
+                    style="@style/RadioTab"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableTop="@drawable/tab_home"
+                    android:text="Home" />
 
-    <android.support.design.widget.TabLayout
-        style="@style/ScrollTabStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#444"
-        app:tabGravity="fill"
-        app:tabIndicatorHeight="3dp">
+                <RadioButton
+                    android:id="@+id/tabMap"
+                    style="@style/RadioTab"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableTop="@drawable/tab_map"
+                    android:text="Map" />
 
-        <android.support.design.widget.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:icon="@drawable/scr_home"
-            android:text="Home" />
+                <RadioButton
+                    android:id="@+id/tabHourly"
+                    style="@style/RadioTab"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableTop="@drawable/tab_hourly"
+                    android:text="Hourly" />
 
-        <android.support.design.widget.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:icon="@drawable/scr_hourly"
-            android:text="Hourly" />
+                <RadioButton
+                    android:id="@+id/tabDaily"
+                    style="@style/RadioTab"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableTop="@drawable/tab_daily"
+                    android:text="Daily" />
 
-        <android.support.design.widget.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:icon="@drawable/scr_daily"
-            android:text="Daily" />
+            </RadioGroup>
 
-        <android.support.design.widget.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:icon="@drawable/scr_map"
-            android:text="Map" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:text="-- TabLayout in XML --"
+                android:textSize="16dp" />
 
-    </android.support.design.widget.TabLayout>
+            <android.support.design.widget.TabLayout
+                style="@style/ScrollTabStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#444"
+                app:tabGravity="fill"
+                app:tabIndicatorHeight="3dp">
+
+                <android.support.design.widget.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:icon="@drawable/scr_home"
+                    android:text="Home" />
+
+                <android.support.design.widget.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:icon="@drawable/scr_hourly"
+                    android:text="Hourly" />
+
+                <android.support.design.widget.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:icon="@drawable/scr_daily"
+                    android:text="Daily" />
+
+                <android.support.design.widget.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:icon="@drawable/scr_map"
+                    android:text="Map" />
+
+            </android.support.design.widget.TabLayout>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:text="-- TabPair in XML --"
+                android:textSize="16dp" />
+
+            <!-- The following TabLayout and HorizontalScrollView are paired together in code.
+               Change/dragging one, changes the other. -->
+            <android.support.design.widget.TabLayout
+                android:id="@+id/dragHscrollTab"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/dragHscroll"
+                app:layout_scrollFlags="scroll|enterAlways"
+                app:tabGravity="fill"
+                app:tabIndicatorHeight="4dp"
+                app:tabMaxWidth="0dp"
+                app:tabTextColor="#000">
+
+                <android.support.design.widget.TabItem
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Home" />
+
+                <android.support.design.widget.TabItem
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Hourly" />
+
+                <android.support.design.widget.TabItem
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Daily" />
+
+                <android.support.design.widget.TabItem
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Map" />
+
+            </android.support.design.widget.TabLayout>
+
+            <HorizontalScrollView
+                android:id="@+id/dragHscroll"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_above="@+id/dragZoomIn"
+                android:scrollbars="none"
+                android:background="@drawable/round_border_transparent">
+
+                <LinearLayout
+                    android:id="@+id/dragHscrollHolder"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <!-- Pair with Home tab, custom size -->
+                    <include
+                        layout="@layout/hscroll_panel1"
+                        android:layout_width="800dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="20dp" />
+
+                    <!-- Pair with Hourly tab, custom size -->
+                    <include
+                        layout="@layout/hscroll_panel2"
+                        android:layout_width="600dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="20dp" />
+
+                    <!-- Pair with Daily tab, default size -->
+                    <include
+                        layout="@layout/hscroll_panel1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="20dp" />
+
+                    <!-- Pair with Map tab, default size -->
+                    <include
+                        layout="@layout/hscroll_panel2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="20dp" />
+
+                </LinearLayout>
+
+            </HorizontalScrollView>
+
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

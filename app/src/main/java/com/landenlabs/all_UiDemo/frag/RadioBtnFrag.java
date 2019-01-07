@@ -40,6 +40,7 @@ import android.widget.RadioGroup;
 
 import com.landenlabs.all_UiDemo.R;
 import com.landenlabs.all_UiDemo.Ui;
+import com.landenlabs.all_UiDemo.Util.TabPair;
 
 /**
  * Demonstrate Radio Buttons
@@ -83,6 +84,9 @@ public class RadioBtnFrag  extends UiFragment {
         addTabBar(Ui.<RadioGroup>viewById(mRootView, R.id.tab_holder2), 0f, 10);
         addTabBar(Ui.<RadioGroup>viewById(mRootView, R.id.tab_holder2), 0f, 10);
         addTabBar(Ui.<RadioGroup>viewById(mRootView, R.id.tab_holder2), 0f, 10);
+
+        TabPair.init(Ui.viewById(mRootView, R.id.dragHscrollTab),
+                Ui.viewById(mRootView, R.id.dragHscroll));
     }
 
     private void addTabBar(RadioGroup tabHolder, float weight, int padding) {

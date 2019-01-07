@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/squares10"
@@ -113,7 +112,7 @@
         android:id="@+id/dragHlayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/dragHscrollTab"
+        android:layout_above="@+id/dragZoomIn"
         android:background="@drawable/round_border_transparent"
         android:orientation="horizontal"
         >
@@ -122,96 +121,14 @@
             layout="@layout/hscroll_panel1"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_margin="20dp" />
+            android:layout_margin="40dp" />
 
         <include
             layout="@layout/hscroll_panel2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="20dp" />
+            android:layout_margin="40dp" />
     </LinearLayout>
 
-
-    <android.support.design.widget.TabLayout
-        android:id="@+id/dragHscrollTab"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/dragHscroll"
-        app:layout_scrollFlags="scroll|enterAlways"
-        app:tabGravity="fill"
-        app:tabIndicatorHeight="4dp"
-        app:tabMaxWidth="0dp"
-        app:tabTextColor="#fff">
-
-        <android.support.design.widget.TabItem
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Home" />
-
-        <android.support.design.widget.TabItem
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Hourly" />
-
-        <android.support.design.widget.TabItem
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Daily" />
-
-        <android.support.design.widget.TabItem
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Map" />
-
-    </android.support.design.widget.TabLayout>
-
-    <HorizontalScrollView
-        android:id="@+id/dragHscroll"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_above="@+id/dragZoomIn"
-        android:background="@drawable/round_border_transparent"
-        android:padding="5dp" >
-
-        <LinearLayout
-            android:id="@+id/dragHscrollHolder"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:background="@drawable/round_border_transparent"
-            android:orientation="horizontal"
-            android:padding="5dp">
-
-            <include
-                layout="@layout/hscroll_panel1"
-                android:layout_width="800dp"
-                android:layout_height="match_parent"
-                android:layout_margin="20dp" />
-
-            <include
-                layout="@layout/hscroll_panel2"
-                android:layout_width="600dp"
-                android:layout_height="match_parent"
-                android:layout_margin="20dp" />
-
-            <include
-                layout="@layout/hscroll_panel1"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="20dp" />
-
-            <include
-                layout="@layout/hscroll_panel2"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="20dp" />
-
-        </LinearLayout>
-
-
-    </HorizontalScrollView>
 
 </RelativeLayout>
