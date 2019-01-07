@@ -114,15 +114,6 @@ public class ScreenFrag extends UiFragment {
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-
-        // Checks the orientation of the screen
-        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            Ui.viewById(m_layout, R.id.touch_pos).setVisibility(View.INVISIBLE);
-            Ui.viewById(m_layout, R.id.grid_size).setVisibility(View.INVISIBLE);
-        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
-            Ui.viewById(m_layout, R.id.touch_pos).setVisibility(View.VISIBLE);
-            Ui.viewById(m_layout, R.id.grid_size).setVisibility(View.VISIBLE);
-        }
         updateView();
     }
 

@@ -23,12 +23,17 @@ package com.landenlabs.all_UiDemo.frag;
  *
  */
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.TabLayout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.HorizontalScrollView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -46,6 +51,7 @@ public class DragViewFrag extends UiFragment implements View.OnClickListener, Vi
     // ---- Local Data ----
     private View mRootView;
     private View mDragView;
+    private ViewGroup mDragHscrollHolder;
     private TextView mDragText;
     private int xDelta;
     private int yDelta;
@@ -135,11 +141,137 @@ public class DragViewFrag extends UiFragment implements View.OnClickListener, Vi
     }
 
 
+    @SuppressLint("ClickableViewAccessibility")
     private void setup() {
         mDragView = Ui.viewById(mRootView, R.id.dragView);
         mDragText = Ui.viewById(mRootView, R.id.dragText);
         mDragView.setOnTouchListener(this);
         Ui.viewById(mRootView, R.id.dragZoomIn).setOnClickListener(this);
         Ui.viewById(mRootView, R.id.dragZoomOut).setOnClickListener(this);
+
+        setOnTouch(Ui.viewById(mRootView, R.id.dragHlayout));
+
+        mDragHscrollHolder = Ui.viewById(mRootView, R.id.dragHscrollHolder);
+        mDragHscrollHolder.post(new Runnable() {
+            @Override
+            public void run() {
+                setWidth(mDragHscrollHolder);
+            }
+        });
+
+        HorizontalScrollView hScrollView = Ui.viewById(mRootView, R.id.dragHscroll);
+
+        TabLayout tabLayout = Ui.viewById(mRootView, R.id.dragHscrollTab);
+
+        hScrollView.setOnTouchListener(new View.OnTouchListener(){
+            @Override
+            public boolean onTouch(View view, MotionEvent event) {
+                int scrollX = view.getScrollX();
+                int scrollY = view.getScrollY();
+
+                int pos = 0;
+                // float offset = (float)scrollX / hScrollView.getWidth();
+                float offset = HScrollPercentAt(hScrollView, scrollX);
+                Log.d("xxDen", String.format("X=%d  Y=%d pos=%d off=%f", scrollX, scrollY, pos, offset));
+
+                tabLayout.setScrollPosition(0, offset, false);
+                return false;
+            }
+        });
+
+        tabLayout.addOnTabSelectedListener(new TabLayout.BaseOnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                int x = hScrollView.getScrollX();
+                int y = hScrollView.getScrollY();
+                // hScrollView.scrollTo(tab.getPosition() * screenWidthPx, y);
+                hScrollView.scrollTo( getSumWidth(mDragHscrollHolder, tab.getPosition()), y);
+                Log.d("xxDen", String.format("Tab X=%d pos=%d", x, tab.getPosition()));
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+            }
+        });
+    }
+
+    private void setOnTouch(ViewGroup viewGroup) {
+        int cnt = viewGroup.getChildCount();
+        for (int idx = 0; idx < cnt; idx++) {
+            viewGroup.getChildAt(idx).setOnTouchListener(this);
+        }
+    }
+
+    private float HScrollPercentAt(HorizontalScrollView hScrollView, int pos) {
+        ViewGroup scrollHolder = (ViewGroup)hScrollView.getChildAt(0);
+        int cnt = scrollHolder.getChildCount();
+        int sumWidth = 0;
+        int itemWidth = 1;
+        float percent = 0;
+        for (int idx = 0; idx < cnt; idx++) {
+            View view = scrollHolder.getChildAt(idx);
+            LinearLayout.LayoutParams
+                    lparm = (LinearLayout.LayoutParams)view.getLayoutParams();
+            itemWidth = lparm.leftMargin + lparm.rightMargin;
+            itemWidth += view.getWidth();
+            if (pos < sumWidth + itemWidth)
+                break;
+            sumWidth += itemWidth;
+            percent += 1;
+        }
+        percent += (float)(pos - sumWidth) / itemWidth;
+        return percent;
+    }
+
+    private int getSumWidth(ViewGroup scrollHolder, int pos) {
+        // int cnt = viewGroup.getChildCount();
+        /*
+        FrameLayout.LayoutParams parm =
+        (FrameLayout.LayoutParams)viewGroup.getLayoutParams();
+        int margin = parm.leftMargin + parm.rightMargin;
+        margin = viewGroup.getPaddingLeft() + viewGroup.getPaddingRight();
+        */
+
+        int sumWidth = 0;
+        for (int idx = 0; idx < pos; idx++) {
+            View view = scrollHolder.getChildAt(idx);
+            LinearLayout.LayoutParams
+                lparm = (LinearLayout.LayoutParams)view.getLayoutParams();
+            sumWidth += lparm.leftMargin + lparm.rightMargin;
+            sumWidth += view.getWidth();
+        }
+        return sumWidth;
+    }
+
+    private void setWidth(ViewGroup scrollHolder) {
+        ViewGroup parentContainer = (ViewGroup)scrollHolder.getParent();
+        int parentWidth = parentContainer.getWidth() -  parentContainer.getPaddingLeft() - parentContainer.getPaddingRight();
+
+        int cnt = scrollHolder.getChildCount();
+        for (int idx = 0; idx < cnt; idx++) {
+            View view = scrollHolder.getChildAt(idx);
+            LinearLayout.LayoutParams parm =
+                    (LinearLayout.LayoutParams)view.getLayoutParams();
+            int width = view.getWidth();
+            width = Math.max(parentWidth - parm.leftMargin - parm.rightMargin, width);
+            parm.width = width;
+            view.setLayoutParams(parm);
+
+            /*
+            LinearLayout.LayoutParams parm =
+                    (LinearLayout.LayoutParams)view.getLayoutParams();
+            int w = view.getWidth();
+            w = view.getMeasuredWidth();
+            int p = view.getPaddingLeft() + view.getPaddingRight();
+            parm.width = viewGroup.getWidth();
+            parm.width = childWidth;
+
+            view.setLayoutParams(parm);
+            */
+        }
     }
 }
