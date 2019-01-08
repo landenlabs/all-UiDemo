@@ -23,7 +23,10 @@ package com.landenlabs.all_UiDemo.Util;
  *
  */
 
+import android.annotation.SuppressLint;
+import android.os.Build;
 import android.support.design.widget.TabLayout;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,8 +36,10 @@ import android.widget.LinearLayout;
 /**
  * Pair a Tablayout with HorizontalScrollView
  */
+@SuppressWarnings("Convert2Lambda")
 public class TabPair {
 
+    @SuppressLint("ClickableViewAccessibility")
     public static void init(TabLayout tabLayout, HorizontalScrollView hScrollView ) {
         ViewGroup dragHscrollHolder = (ViewGroup)hScrollView.getChildAt(0);
 
@@ -45,16 +50,29 @@ public class TabPair {
             }
         });
 
-        hScrollView.setOnTouchListener(new View.OnTouchListener(){
-            @Override
-            public boolean onTouch(View view, MotionEvent event) {
-                int scrollX = view.getScrollX();
-                float offset = HScrollPercentAt(hScrollView, scrollX);
-                // Log.d("xxDen", String.format("X=%d  off=%f", scrollX, offset));
-                tabLayout.setScrollPosition(0, offset, false);
-                return false;
-            }
-        });
+        if (Build.VERSION.SDK_INT >= 23) {
+            hScrollView.setOnScrollChangeListener(new View.OnScrollChangeListener() {
+                @Override
+                public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX,
+                        int oldScrollY) {
+                    // int scrollX = view.getScrollX();
+                    float offset = HScrollPercentAt(hScrollView, scrollX);
+                    Log.d("xxDen", String.format("X=%d  off=%f", scrollX, offset));
+                    tabLayout.setScrollPosition(0, offset, false);
+                }
+            });
+        } else {
+            hScrollView.setOnTouchListener(new View.OnTouchListener(){
+                @Override
+                public boolean onTouch(View view, MotionEvent event) {
+                    int scrollX = view.getScrollX();
+                    float offset = HScrollPercentAt(hScrollView, scrollX);
+                    Log.d("xxDen", String.format("X=%d  off=%f", scrollX, offset));
+                    tabLayout.setScrollPosition(0, offset, false);
+                    return false;
+                }
+            });
+        }
 
         tabLayout.addOnTabSelectedListener(new TabLayout.BaseOnTabSelectedListener() {
             @Override
