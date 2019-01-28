@@ -30,48 +30,48 @@ Demonstrate various Ui Components (useful to see how they change on different AP
 <a name="menu"></a>
 **Ui Demo Menu** 
 
-![ScreenShot](https://raw.github.com/landenlabs2/all_UiDemo/master/screenshots/uidemo-menu.png)
+![ScreenShot](https://raw.githubusercontent.com/landenlabs/all_UiDemo/master/screenshots/uidemo-menu.jpg)
 [To Top](#table)
 ---
 <a name="switches"></a>
 **Switches** 
 
-![ScreenShot](http://landenlabs.com/android/uicomponents/switches.gif)
+![ScreenShot](https://raw.github.com/landenlabs/all_UiDemo/master/screenshots/switches.gif)
 
 [To Top](#table)
 ---
 <a name="checkboxes-right"></a>
 **Checkboxes right side**
  
-![ScreenShot](http://landenlabs.com/android/uicomponents/checkright.gif)
+![ScreenShot](https://raw.github.com/landenlabs/all_UiDemo/master/screenshots/checkright.gif)
 
 [To Top](#table)
 ---
 <a name="lists"></a>
 **Lists**
 
-![ScreenShot](http://landenlabs.com/android/uicomponents/lists.gif)
+![ScreenShot](https://raw.github.com/landenlabs/all_UiDemo/master/screenshots/lists.gif)
 
 [To Top](#table)
 ---
 <a name="list-animation"></a>
 Press state list animation elevation change 
 
-![ScreenShot](http://landenlabs.com/android/uicomponents/elevation.gif)
+![ScreenShot](https://raw.github.com/landenlabs/all_UiDemo/master/screenshots/elevation.gif)
 
 [To Top](#table)
 ---
 <a name="text"></a>
 **Text**
 
-![ScreenShot](https://raw.github.com/landenlabs2/all_UiDemo/master/screenshots/page1-text.png)
+![ScreenShot](https://raw.github.com/landenlabs/all_UiDemo/master/screenshots/page1-text.png)
 
 [To Top](#table)
 ---
 <a name="text-size"></a>
 **Text Size** 
 
-![ScreenShot](https://raw.github.com/landenlabs2/all_UiDemo/master/screenshots/uidemo-textsize.jpg)
+![ScreenShot](https://raw.github.com/landenlabs/all_UiDemo/master/screenshots/uidemo-textsize.jpg)
 
 [To Top](#table)
 ---
