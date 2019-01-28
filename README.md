@@ -30,20 +30,20 @@ Demonstrate various Ui Components (useful to see how they change on different AP
 <a name="menu"></a>
 **Ui Demo Menu** 
 
-![ScreenShot](https://raw.githubusercontent.com/landenlabs/all_UiDemo/master/screenshots/uidemo-menu.jpg)
+![ScreenShot](https://github.com/landenlabs/all_UiDemo/tree/master/screenshots/uidemo-menu.jpg)
 [To Top](#table)
 ---
 <a name="switches"></a>
 **Switches** 
 
-![ScreenShot](https://raw.github.com/landenlabs/all_UiDemo/master/screenshots/switches.gif)
+![ScreenShot](https://github.com/landenlabs/all_UiDemo/tree/master/screenshots/switches.gif)
 
 [To Top](#table)
 ---
 <a name="checkboxes-right"></a>
 **Checkboxes right side**
  
-![ScreenShot](https://raw.github.com/landenlabs/all_UiDemo/master/screenshots/checkright.gif)
+![ScreenShot](https://github.com/landenlabs/all_UiDemo/tree/master/screenshots/checkright.gif)
 
 [To Top](#table)
 ---
