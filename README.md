@@ -85,7 +85,7 @@ Press state list animation elevation change
 <a name="anim-bg"></a>
 **Animaged Background Image** 
 
-![ScreenShot](https://raw.github.com/landenlabs2/all_UiDemo/master/screenshots/uidemo-anim-bg.gif)
+![ScreenShot](https://github.com/landenlabs/all_UiDemo/tree/master/screenshots/uidemo-anim-bg.gif)
 
 [To Top](#table)
 
@@ -93,28 +93,28 @@ Press state list animation elevation change
 <a name="blur"></a>
 **Blur Image** 
 
-![ScreenShot](https://raw.github.com/landenlabs2/all_UiDemo/master/screenshots/uidemo-blur1.jpg)
+![ScreenShot](https://github.com/landenlabs/all_UiDemo/tree/master/screenshots/uidemo-blur1.jpg)
 
 [To Top](#table)
 ---
 <a name="elev-shadow"></a>
 **Elevation Shadows** 
 
-![ScreenShot](https://raw.github.com/landenlabs2/all_UiDemo/master/screenshots/uidemo-elev-shadow.gif)
+![ScreenShot](https://github.com/landenlabs/all_UiDemo/tree/master/screenshots/uidemo-elev-shadow.gif)
 
 [To Top](#table)
 ---
 <a name="text-shadow"></a>
 **Text Shadow** 
 
-![ScreenShot](https://raw.github.com/landenlabs2/all_UiDemo/master/screenshots/uidemo-text-shadow.jpg)
+![ScreenShot](https://github.com/landenlabs/all_UiDemo/tree/master/screenshots/uidemo-text-shadow.jpg)
 
 [To Top](#table)
 ---
 <a name="line-graph"></a>
 **Line Graph** 
 
-![ScreenShot](https://raw.github.com/landenlabs2/all_UiDemo/master/screenshots/uidemo-graph.gif)
+![ScreenShot](https://github.com/landenlabs/all_UiDemo/tree/master/screenshots/uidemo-graph.gif)
 
 [To Top](#table)
 ---
@@ -122,7 +122,7 @@ Press state list animation elevation change
 **List Animation with scrolling bar** 
 
              
-![ScreenShot](https://raw.github.com/landenlabs2/all_UiDemo/master/screenshots/uidemo-list-anim.gif)
+![ScreenShot](https://github.com/landenlabs/all_UiDemo/tree/master/screenshots/uidemo-list-anim.gif)
 
 [To Top](#table)
 
@@ -130,13 +130,13 @@ Press state list animation elevation change
 <a name="opengl"></a>
 **OpenGL spinning cube** 
 
-![ScreenShot](https://raw.github.com/landenlabs2/all_UiDemo/master/screenshots/uidemo-opengl.gif)
+![ScreenShot](https://github.com/landenlabs/all_UiDemo/tree/master/screenshots/uidemo-opengl.gif)
 
 [To Top](#table)
 ---
 <a name="rellayout"></a>
 **Relative Layout** 
 
-![ScreenShot](https://raw.github.com/landenlabs2/all_UiDemo/master/screenshots/uidemo-rellayout.jpg)
+![ScreenShot](https://github.com/landenlabs/all_UiDemo/tree/master/screenshots/uidemo-rellayout.jpg)
 
 [To Top](#table)
