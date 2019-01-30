@@ -67,7 +67,7 @@ public class DrawablesFrag  extends UiFragment  {
 
     @Override
     public String getName() {
-        return "Drawables";
+        return "Tint Drawables";
     }
 
     @Override
@@ -102,7 +102,7 @@ public class DrawablesFrag  extends UiFragment  {
 
         // Vector Drawable - tint does not work.
         if (true) {
-            Drawable drawable3 = ContextCompat.getDrawable(getContext(), R.drawable.scr_hourly);
+            Drawable drawable3 = ContextCompat.getDrawable(getContext(), R.drawable.shadow7);
             // drawable3.setColorFilter(colorFilter);  // Does not work.
             if (Build.VERSION.SDK_INT >= 21) {
                 drawable3.setTint(tintColor);
@@ -111,7 +111,7 @@ public class DrawablesFrag  extends UiFragment  {
             view3.setImageDrawable(drawable3);
             // view3.setBackgroundDrawable(drawable3);
         } else {
-            Drawable drawable3 = ContextCompat.getDrawable(getContext(), R.drawable.scr_hourly);
+            Drawable drawable3 = ContextCompat.getDrawable(getContext(), R.drawable.shadow7);
             DrawableCompat.setTint(drawable3, tintColor);
             ImageView view3 = Ui.viewById(mRootView, R.id.drawables_3);
             view3.setImageDrawable(drawable3);
