@@ -36,21 +36,21 @@ Demonstrate various Ui Components (useful to see how they change on different AP
 <a name="switches"></a>
 **Switches** 
 
-![picture](screenshots/switches.gif)
+![picture](http://landenlabs.com/android/uicomponents/switches.gif)
 
 [To Top](#table)
 ---
 <a name="checkboxes-right"></a>
 **Checkboxes right side**
  
-![picture](screenshots/checkright.gif)
+![picture](http://landenlabs.com/android/uicomponents/checkright.gif)
 
 [To Top](#table)
 ---
 <a name="lists"></a>
 **Lists**
 
-![picture](screenshots/lists.gif)
+![picture](http://landenlabs.com/android/uicomponents/lists.gif)
 
 [To Top](#table)
 ---
