@@ -30,62 +30,62 @@ Demonstrate various Ui Components (useful to see how they change on different AP
 <a name="menu"></a>
 **Ui Demo Menu** 
 
-![ScreenShot](https://github.com/landenlabs/all_UiDemo/tree/master/screenshots/uidemo-menu.jpg)
+![picture](screenshots/uidemo-menu.jpg)
 [To Top](#table)
 ---
 <a name="switches"></a>
 **Switches** 
 
-![ScreenShot](https://github.com/landenlabs/all_UiDemo/tree/master/screenshots/switches.gif)
+![picture](screenshots/switches.gif)
 
 [To Top](#table)
 ---
 <a name="checkboxes-right"></a>
 **Checkboxes right side**
  
-![ScreenShot](https://github.com/landenlabs/all_UiDemo/tree/master/screenshots/checkright.gif)
+![picture](screenshots/checkright.gif)
 
 [To Top](#table)
 ---
 <a name="lists"></a>
 **Lists**
 
-![ScreenShot](https://github.com/landenlabs/all_UiDemo/tree/master/screenshots/lists.gif)
+![picture](screenshots/lists.gif)
 
 [To Top](#table)
 ---
 <a name="list-animation"></a>
 Press state list animation elevation change 
 
-![ScreenShot](https://github.com/landenlabs/all_UiDemo/tree/master/screenshots/elevation.gif)
+![ScreenShot](screenshots/elevation.gif)
 
 [To Top](#table)
 ---
 <a name="text"></a>
 **Text**
 
-![ScreenShot](https://github.com/landenlabs/all_UiDemo/tree/master/screenshots/page1-text.png)
+![ScreenShot](screenshots/page1-text.png)
 
 [To Top](#table)
 ---
 <a name="text-size"></a>
 **Text Size** 
 
-![ScreenShot](https://github.com/landenlabs/all_UiDemo/tree/master/screenshots/uidemo-textsize.jpg)
+![ScreenShot](screenshots/uidemo-textsize.jpg)
 
 [To Top](#table)
 ---
 <a name="imagescale"></a>
 **Image ScaleType** 
 
-![ScreenShot](https://github.com/landenlabs/all_UiDemo/tree/master/screenshots/uidemo-imagescale.jpg)
+![ScreenShot](screenshots/uidemo-imagescale.jpg)
 
 [To Top](#table)
 ---
 <a name="anim-bg"></a>
 **Animaged Background Image** 
 
-![ScreenShot](https://github.com/landenlabs/all_UiDemo/tree/master/screenshots/uidemo-anim-bg.gif)
+![ScreenShot](screenshots/uidemo-anim-bg.gif)
 
 [To Top](#table)
 
@@ -93,28 +93,28 @@ Press state list animation elevation change
 <a name="blur"></a>
 **Blur Image** 
 
-![ScreenShot](https://github.com/landenlabs/all_UiDemo/tree/master/screenshots/uidemo-blur1.jpg)
+![ScreenShot](screenshots/uidemo-blur1.jpg)
 
 [To Top](#table)
 ---
 <a name="elev-shadow"></a>
 **Elevation Shadows** 
 
-![ScreenShot](https://github.com/landenlabs/all_UiDemo/tree/master/screenshots/uidemo-elev-shadow.gif)
+![ScreenShot](screenshots/uidemo-elev-shadow.gif)
 
 [To Top](#table)
 ---
 <a name="text-shadow"></a>
 **Text Shadow** 
 
-![ScreenShot](https://github.com/landenlabs/all_UiDemo/tree/master/screenshots/uidemo-text-shadow.jpg)
+![ScreenShot](screenshots/uidemo-text-shadow.jpg)
 
 [To Top](#table)
 ---
 <a name="line-graph"></a>
 **Line Graph** 
 
-![ScreenShot](https://github.com/landenlabs/all_UiDemo/tree/master/screenshots/uidemo-graph.gif)
+![ScreenShot](uidemo-graph.gif)
 
 [To Top](#table)
 ---
@@ -122,7 +122,7 @@ Press state list animation elevation change
 **List Animation with scrolling bar** 
 
              
-![ScreenShot](https://github.com/landenlabs/all_UiDemo/tree/master/screenshots/uidemo-list-anim.gif)
+![ScreenShot](screenshots/uidemo-list-anim.gif)
 
 [To Top](#table)
 
@@ -130,13 +130,13 @@ Press state list animation elevation change
 <a name="opengl"></a>
 **OpenGL spinning cube** 
 
-![ScreenShot](https://github.com/landenlabs/all_UiDemo/tree/master/screenshots/uidemo-opengl.gif)
+![ScreenShot](screenshots/uidemo-opengl.gif)
 
 [To Top](#table)
 ---
 <a name="rellayout"></a>
 **Relative Layout** 
 
-![ScreenShot](https://github.com/landenlabs/all_UiDemo/tree/master/screenshots/uidemo-rellayout.jpg)
+![ScreenShot](screenshots/uidemo-rellayout.jpg)
 
 [To Top](#table)

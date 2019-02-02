@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:background="#eef"
+    app:cardCornerRadius="10dp"
+    android:elevation="10dp"
+    app:cardElevation="10dp"
+    android:stateListAnimator="@animator/press"
+    android:padding="15dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#1000"
+            android:padding="1dp"
+            android:textSize="18sp"
+            tools:text="Planet Name" />
+
+        <TextView
+            android:id="@+id/txtDistance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            tools:text="Distance" />
+
+        <TextView
+            android:id="@+id/txtGravity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            tools:text="Gravity" />
+
+        <TextView
+            android:id="@+id/txtDiameter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            tools:text="Diameter" />
+    </LinearLayout>
+</android.support.v7.widget.CardView>

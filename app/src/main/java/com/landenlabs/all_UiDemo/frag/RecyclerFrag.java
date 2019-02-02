@@ -1,7 +1,9 @@
 package com.landenlabs.all_UiDemo.frag;
 
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -86,6 +88,22 @@ public class RecyclerFrag  extends UiFragment {
         mAdapter = new ScrollAdapter(getContext(), mScrollItems);
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setHasFixedSize(false);
+
+        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        LinearLayoutManager layoutMgr =
+                new LinearLayoutManager(mRecyclerView.getContext(), LinearLayoutManager.VERTICAL,
+                        false);
+        mRecyclerView.setLayoutManager(layoutMgr);
+
+        int gapBetween = 40;
+        mRecyclerView.addItemDecoration(new RecyclerView.ItemDecoration() {
+
+            @Override
+            public void getItemOffsets(@NonNull Rect outRect, @NonNull View view, @NonNull
+                    RecyclerView parent,  @NonNull RecyclerView.State state) {
+                outRect.set(0, gapBetween, 0, gapBetween);
+            }
+        });
 
         createListData();
     }

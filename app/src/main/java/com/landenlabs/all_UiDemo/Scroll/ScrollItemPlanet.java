@@ -39,18 +39,23 @@ public class ScrollItemPlanet extends ScrollItem {
     private int distanceFromSun;
     private int gravity;
     private int diameter;
+    private int layout;
+    private static int cardCnt = 0;
 
     public ScrollItemPlanet(String planetName, int distanceFromSun, int gravity, int diameter) {
         this.planetName = planetName;
         this.distanceFromSun = distanceFromSun;
         this.gravity = gravity;
         this.diameter = diameter;
+        this.layout = ((cardCnt&1) == 1) ? R.layout.scroll_item_planet : R.layout.scroll_item_card;
+
+        cardCnt++;
     }
 
     @Override
     public ScrollItemPlanetHolder onCreateViewHolder(@NonNull ViewGroup parent, int position) {
         View view = LayoutInflater
-                .from(parent.getContext()).inflate(R.layout.scroll_item_planet, parent, false);
+                .from(parent.getContext()).inflate(layout, parent, false);
         return new ScrollItemPlanetHolder(view);
     }
 
