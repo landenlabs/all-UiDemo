@@ -260,6 +260,7 @@ public class MainActivity extends AppCompatActivity {
             new PageItem( "Scaled Btn", R.layout.page_scaled_image_btn),
             new PageItem( "Layout Anim",  R.layout.page_layout_anim ),
             new PageItem( "Full Screen",  R.layout.page_fullscreen ),
+            new PageItem( "Rotate Screen", R.layout.page_rotatescreen ),
 
             // API 21
             new PageItem( "ElevShadow (API21)",  R.layout.page_elevation ),

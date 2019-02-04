@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Rotate Screen Orientation"
+        android:textSize="26sp" />
+
+    <RadioGroup
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/rot_unspecified"
+            android:text="Unspecified"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            />
+
+        <RadioButton
+            android:id="@+id/rot_portrait"
+            android:text="Portrait"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+        <RadioButton
+            android:id="@+id/rot_portrait_reverse"
+            android:text="Portrait Reverse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+        <RadioButton
+            android:id="@+id/rot_landscape"
+            android:text="Landscape"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+        <RadioButton
+            android:id="@+id/rot_landscape_reverse"
+            android:text="Landscape Reverse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+
+        <RadioButton
+            android:id="@+id/rot_behind"
+            android:text="Behind"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+        <RadioButton
+            android:id="@+id/rot_full_sensor"
+            android:text="Full Sensor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+        <RadioButton
+            android:id="@+id/rot_full_user"
+            android:text="Full User"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+        <RadioButton
+            android:id="@+id/rot_sensor"
+            android:text="Full Sensor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+    </RadioGroup>
+
+    <ImageView
+        android:background="#333"
+        android:src="@drawable/scr_home"
+        android:layout_width="128dp"
+        android:layout_height="128dp" />
+
+    <ImageView
+        android:background="#844"
+        android:src="@drawable/image_a"
+        android:layout_width="128dp"
+        android:layout_height="128dp" />
+
+</LinearLayout>
