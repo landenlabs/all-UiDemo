@@ -45,10 +45,10 @@ import java.util.List;
 
 /**
  * Demonstrate rotating Two Views using  ObjectAnimators (slide look)
- * Using rotation (R) only.   See ActivityObjAnimListRT for alternate look.
  *
  * @author Dennis Lang (LanDen Labs)
  * @see <a href="http://landenlabs.com/android"> author's web-site </a>
+ * @see <a href="http://landenlabs.com/android/flip-animation/index.html"> Flip animation</a>
  */
 public class AnimListFrag  extends UiFragment {
 

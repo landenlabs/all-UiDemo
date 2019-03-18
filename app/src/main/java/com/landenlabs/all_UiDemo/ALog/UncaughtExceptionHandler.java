@@ -1,4 +1,4 @@
-package com.landenlabs.all_UiDemo.Util;
+package com.landenlabs.all_UiDemo.ALog;
 
 /*
  * Copyright (c) 2019 Dennis Lang (LanDen Labs) landenlabs@gmail.com
@@ -48,7 +48,7 @@ import java.io.Writer;
  * @author Dennis Lang (LanDen Labs)
  * @see <a href="http://landenlabs.com/android"> author's web-site </a>
  */
-@SuppressWarnings("Convert2Lambda")
+@SuppressWarnings({"Convert2Lambda", "StringBufferReplaceableByString"})
 public class UncaughtExceptionHandler implements Thread.UncaughtExceptionHandler {
 
     private final Context context;
@@ -84,8 +84,8 @@ public class UncaughtExceptionHandler implements Thread.UncaughtExceptionHandler
     public void uncaughtException(Thread thread, Throwable ex) {
 
         String stackTrace = Log.getStackTraceString(ex);
-        Log.d("UncaughtException", stackTrace);
-        Log.e("UncaughtException", ex.getLocalizedMessage(), ex);
+        ALog.d.tagMsg(this,  stackTrace);
+        ALog.e.tagMsg(this,  ex.getLocalizedMessage(), ex);
 
         saveCrashReport(thread, ex);
 

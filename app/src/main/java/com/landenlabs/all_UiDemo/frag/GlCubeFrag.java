@@ -42,7 +42,7 @@ import javax.microedition.khronos.opengles.GL10;
 
 
 /**
- * Demonstrate Scrollview resizing with views above and below.
+ * Demonstrate OpenGL cube
  *
  * @author Dennis Lang (LanDen Labs)
  * @see <a href="http://landenlabs.com/android"> author's web-site </a>

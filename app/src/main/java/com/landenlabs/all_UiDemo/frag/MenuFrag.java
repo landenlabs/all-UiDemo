@@ -46,7 +46,7 @@ import java.lang.ref.WeakReference;
 import java.util.Arrays;
 
 /**
- * Demonstrate Image Scale modes.
+ * Demonstrate page of Menu items (icons or list layout)
  *
  * @author Dennis Lang (LanDen Labs)
  * @see <a href="http://landenlabs.com/android"> author's web-site </a>

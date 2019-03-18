@@ -25,18 +25,20 @@ package com.landenlabs.all_UiDemo.frag;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Checkable;
 import android.widget.CompoundButton;
 
+import com.landenlabs.all_UiDemo.ALog.ALog;
 import com.landenlabs.all_UiDemo.R;
 import com.landenlabs.all_UiDemo.Ui;
 
 /**
- * Created by Dennis Lang on 10/5/17.
+ *  Animate vector checkmarks
+ *
+ *  @author Dennis Lang  (3/21/2015)
  */
 
 public class AnimatedVectorDrawableFrag
@@ -72,16 +74,16 @@ public class AnimatedVectorDrawableFrag
     public void onClick(View view) {
         if (view instanceof CompoundButton) {
             // The CompoundButton objects, such as CheckBox and Toggle will auto toggle their state
-            Log.d("fxx", "a checked=" + ((CompoundButton) view).isChecked() + " selected=" + view.isSelected());
+            ALog.d.tagMsg(this, "a checked=", ((CompoundButton) view).isChecked(), " selected=", view.isSelected());
         } else {
             // Most views will not automatically change their state on click.
             if (view instanceof Checkable) {
                 ((Checkable) view).toggle();
                 view.setSelected(((Checkable) view).isChecked());
-                Log.d("fxx", "b checked=" + ((Checkable) view).isChecked() + " selected=" + view.isSelected());
+                ALog.d.tagMsg(this,"b checked=", ((Checkable) view).isChecked(), " selected=", view.isSelected());
             } else {
                 view.setSelected(!view.isSelected());
-                Log.d("fxx", "b selected=" + view.isSelected());
+                ALog.d.tagMsg(this, "b selected=",  view.isSelected());
             }
         }
     }

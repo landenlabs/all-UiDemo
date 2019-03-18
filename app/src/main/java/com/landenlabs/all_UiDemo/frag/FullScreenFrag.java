@@ -44,7 +44,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Demonstrate Image Scale modes.
+ * Demonstrate use of setSystemUiVisibility()
  *
  * @author Dennis Lang (LanDen Labs)
  * @see <a href="http://landenlabs.com/android"> author's web-site </a>

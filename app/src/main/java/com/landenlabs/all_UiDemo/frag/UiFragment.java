@@ -54,13 +54,14 @@ import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.Window;
+
+import com.landenlabs.all_UiDemo.ALog.ALog;
 
 import java.util.Objects;
 
 /**
- * Created by Dennis Lang on 7/8/16.
+ * Base page fragment for UI Demo app.
  *
  * @author Dennis Lang (LanDen Labs)
  * @see <a href="http://landenlabs.com/android"> author's web-site </a>
@@ -106,7 +107,7 @@ public abstract class UiFragment extends Fragment {
     @Override
     public void onDestroyView()
     {
-        Log.d("foo", "onDestroyView id=" + getName() + " #" + getFragId());
+        ALog.d.tagMsg(this,  "onDestroyView id=" ,  getName() ,  " #" ,  getFragId());
 
         super.onDestroyView();
 

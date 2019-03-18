@@ -40,7 +40,6 @@ import android.support.annotation.DrawableRes;
 import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 import android.support.v4.graphics.drawable.DrawableCompat;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -49,6 +48,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.landenlabs.all_UiDemo.ALog.ALog;
 import com.landenlabs.all_UiDemo.R;
 import com.landenlabs.all_UiDemo.Ui;
 
@@ -287,7 +287,7 @@ public class ImageBlendFrag  extends UiFragment implements View.OnClickListener 
             }
             // iv.setTag(null);
         } catch (Exception ex) {
-            Log.e("ImageBlendFrag", ex.getMessage());
+            ALog.e.tagMsg(this,  ex.getMessage());
             throw ex;
         }
     }

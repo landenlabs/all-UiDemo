@@ -51,13 +51,13 @@ import android.content.res.TypedArray;
 import android.os.Build;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.Transformation;
 import android.widget.LinearLayout;
 
+import com.landenlabs.all_UiDemo.ALog.ALog;
 import com.landenlabs.all_UiDemo.R;
 
 // Original version from https://github.com/krishnalalstha/ExpandableLayout
@@ -148,17 +148,17 @@ public class ExpandablePanel extends LinearLayout {
         mAnimation.setAnimationListener(new Animation.AnimationListener() {
                 @Override
                 public void onAnimationStart(Animation animation) {
-                    Log.i("fxx", "onAnimationStart");
+                    ALog.i.tagMsg(this,  "onAnimationStart");
                 }
 
                 @Override
                 public void onAnimationEnd(Animation animation) {
-                    Log.i("fxx", "onAnimationEnd");
+                    ALog.i.tagMsg(this,  "onAnimationEnd");
                 }
 
                 @Override
                 public void onAnimationRepeat(Animation animation) {
-                    Log.i("fxx", "onAnimationRepeat");
+                    ALog.i.tagMsg(this,  "onAnimationRepeat");
                 }
             }
         );
@@ -376,12 +376,12 @@ public class ExpandablePanel extends LinearLayout {
                     lp.width = value;
                 }
                 if (change) {
-                    Log.d("fxx",
+                    ALog.d.tagMsg(this,
                             "applyTransformation startDim=" + mStartDim + " deltaDim=" + mDeltaDim + " value=" + value);
                     mContent.setLayoutParams(lp);
                 }
             } // else {
-                // Log.d("fxx","applyTransformation ignored");
+                // ALog.d.tagMsg(this, "applyTransformation ignored");
             // }
 
         }

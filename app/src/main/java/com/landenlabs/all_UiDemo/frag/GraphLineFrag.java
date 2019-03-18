@@ -30,12 +30,12 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
+import com.landenlabs.all_UiDemo.ALog.ALog;
 import com.landenlabs.all_UiDemo.R;
 import com.landenlabs.all_UiDemo.Ui;
 
@@ -46,7 +46,7 @@ import java.util.ArrayList;
 
 
 /**
- * Demonstrate Scrollview resizing with views above and below.
+ * Demonstrate Scrollview Line Graph (chart).
  *
  * @author Dennis Lang (LanDen Labs)
  * @see <a href="http://landenlabs.com/android"> author's web-site </a>
@@ -147,7 +147,7 @@ public class GraphLineFrag  extends UiFragment implements View.OnClickListener {
             mLineView1 = createLine(mGraphView, lp, 0xff801010, 2, updateMill*1, maxPoints, maxRange/2);
             mLineView2 = createLine(mGraphView, lp, 0xff108010, 4, updateMill*2, maxPoints, maxRange);
         } catch (Exception ex) {
-            Log.e("GraphLineFrag", ex.getLocalizedMessage(), ex);
+            ALog.e.tagMsg(this, ex);
         }
 
         // Ui.viewById(mRootView, R.id.scroll_add).setOnClickListener(this);

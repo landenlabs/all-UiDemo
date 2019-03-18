@@ -29,8 +29,9 @@ import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.os.Build;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.widget.ImageView;
+
+import com.landenlabs.all_UiDemo.ALog.ALog;
 
 /**
  * Debug version of ImageView to log scaling of images.
@@ -81,7 +82,7 @@ public class ExImageView extends ImageView {
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         int measuredWidth = MeasureSpec.getSize(widthMeasureSpec);
         int measuredHeight = MeasureSpec.getSize(heightMeasureSpec);
-        Log.d("foo", String.format("Res:%d W:%d H:%d Measured w:%d H:%d",
+        ALog.d.tagMsg(this,  String.format("Res:%d W:%d H:%d Measured w:%d H:%d",
                 mImageResID, getWidth(), getHeight(), measuredWidth, measuredHeight));
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
@@ -92,7 +93,7 @@ public class ExImageView extends ImageView {
         try {
             super.onDraw(canvas);
         } catch (Exception ex) {
-            Log.e("foo", ex.getLocalizedMessage() + "\n" + getContentDescription() + " id=" + mImageResID, ex);
+            ALog.e.tagMsg(this,  ex.getLocalizedMessage(), "\n" ,  getContentDescription(),  " id=",  mImageResID, ex);
             return;
         }
         long endMillis = System.currentTimeMillis();
@@ -104,7 +105,7 @@ public class ExImageView extends ImageView {
             float scaleX = values[Matrix.MSCALE_X];
             float scaleY = values[Matrix.MSCALE_Y];
 
-            Log.d("foo", String.format("Res:%d W:%d H:%d Scale X:%.2f Y:%.2f",
+            ALog.d.tagMsg(this,  String.format("Res:%d W:%d H:%d Scale X:%.2f Y:%.2f",
                     mImageResID, getWidth(), getHeight(), scaleX, scaleY));
         }
     }

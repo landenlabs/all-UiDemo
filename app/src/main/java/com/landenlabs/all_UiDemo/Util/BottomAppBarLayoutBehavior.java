@@ -31,9 +31,10 @@ import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPropertyAnimatorListener;
 import android.support.v4.view.animation.FastOutSlowInInterpolator;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 import android.view.animation.Interpolator;
+
+import com.landenlabs.all_UiDemo.ALog.ALog;
 
 /**
  * Dennis Lang on 5/17/16.
@@ -69,7 +70,7 @@ public class BottomAppBarLayoutBehavior extends CoordinatorLayout.Behavior<AppBa
             View target, int dx, int dy, @NonNull
             int[] consumed) {
         super.onNestedPreScroll(coordinatorLayout, child, target, dx, dy, consumed);
-        Log.d("foo", "onNestedPreScroll dy=" + dy + " consumed[1]=" + consumed[1]);
+        ALog.d.tagMsg(this,  "onNestedPreScroll dy=", dy, " consumed[1]=" ,  consumed[1]);
 
         if (dy > 0 && !this.mIsAnimatingOut && child.getVisibility() == View.VISIBLE) {
             animateOut(child);
@@ -83,7 +84,7 @@ public class BottomAppBarLayoutBehavior extends CoordinatorLayout.Behavior<AppBa
             @NonNull CoordinatorLayout coordinatorLayout, @NonNull AppBarLayout child, @NonNull
             View target) {
         super.onStopNestedScroll(coordinatorLayout, child, target);
-        Log.d("foo", "StopNestedScroll");
+        ALog.d.tagMsg(this,  "StopNestedScroll");
     }
 
     /*
@@ -107,7 +108,7 @@ public class BottomAppBarLayoutBehavior extends CoordinatorLayout.Behavior<AppBa
         super.onNestedScroll(coordinatorLayout, child, target, dxConsumed, dyConsumed, dxUnconsumed,
                 dyUnconsumed);
 
-        Log.d("foo", "dyConsumed=" + dyConsumed + " dyUnconsumed=" + dyUnconsumed);
+        ALog.d.tagMsg(this,  "dyConsumed=", dyConsumed, " dyUnconsumed=",  dyUnconsumed);
 
         /*
         if (dyConsumed > 0 && !this.mIsAnimatingOut && child.getVisibility() == View.VISIBLE) {

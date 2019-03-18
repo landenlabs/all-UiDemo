@@ -26,12 +26,13 @@ package com.landenlabs.all_UiDemo.Util;
 import android.annotation.SuppressLint;
 import android.os.Build;
 import android.support.design.widget.TabLayout;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
+
+import com.landenlabs.all_UiDemo.ALog.ALog;
 
 /**
  * Pair a Tablayout with HorizontalScrollView
@@ -57,7 +58,7 @@ public class TabPair {
                         int oldScrollY) {
                     // int scrollX = view.getScrollX();
                     float offset = HScrollPercentAt(hScrollView, scrollX);
-                    Log.d("xxDen", String.format("X=%d  off=%f", scrollX, offset));
+                    ALog.d.tagMsg(this,  String.format("X=%d  off=%f", scrollX, offset));
                     tabLayout.setScrollPosition(0, offset, false);
                 }
             });
@@ -67,7 +68,7 @@ public class TabPair {
                 public boolean onTouch(View view, MotionEvent event) {
                     int scrollX = view.getScrollX();
                     float offset = HScrollPercentAt(hScrollView, scrollX);
-                    Log.d("xxDen", String.format("X=%d  off=%f", scrollX, offset));
+                    ALog.d.tagMsg(this,  String.format("X=%d  off=%f", scrollX, offset));
                     tabLayout.setScrollPosition(0, offset, false);
                     return false;
                 }

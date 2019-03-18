@@ -23,7 +23,9 @@ package com.landenlabs.all_UiDemo;
  *
  */
 
+import android.content.Intent;
 import android.content.pm.ApplicationInfo;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -34,7 +36,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -43,14 +45,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.landenlabs.all_UiDemo.ALog.ALog;
+import com.landenlabs.all_UiDemo.ALog.UncaughtExceptionHandler;
 import com.landenlabs.all_UiDemo.Util.AppCrash;
 import com.landenlabs.all_UiDemo.Util.GoogleAnalyticsHelper;
 import com.landenlabs.all_UiDemo.Util.PageItem;
-import com.landenlabs.all_UiDemo.Util.UncaughtExceptionHandler;
 
 
 /**
  * Main Activity to Ui Demo app.
+ *
+ * App can be started with deep link
+ *   adb shell am start -W -a android.intent.action.VIEW -d "landenlabs://alluidemo/page1"
  *
  * @author Dennis Lang (LanDen Labs)
  * @see <a href="http://landenlabs.com/android"> author's web-site </a>
@@ -72,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
     private ActionBar mActionBar;
 
     private Parcelable mAdapterParcelable;
+    private int mStartPageIdx = -1; // -1 = menu, else 0...n-1 pages
 
     private GoogleAnalyticsHelper mAnalytics;
 
@@ -83,12 +90,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // ---------------------------------------------------------------------------------------------
+    //  App can be started with deep link
+    //    adb shell am start -W -a android.intent.action.VIEW -d "landenlabs://alluidemo/page1"
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         boolean DEBUG = isDebug(getApplicationInfo());
         AppCrash.initalize(getApplication(), DEBUG);
+        ALog.minLevel = (DEBUG ? ALog.VERBOSE : ALog.NOLOGGING);
         mAnalytics = new GoogleAnalyticsHelper(getApplication(), DEBUG);
 
         setContentView(R.layout.activity_main);
@@ -121,6 +131,24 @@ public class MainActivity extends AppCompatActivity {
             public void onPageScrollStateChanged(int state) {
             }
         });
+
+        // App can be started with deep link.
+        //    adb shell am start -W -a android.intent.action.VIEW -d "landenlabs://alluidemo/page1"
+        Intent intent = getIntent();
+        String action = intent.getAction();
+        Uri data = intent.getData();
+        ALog.d.tagMsg(this, "create action=", action, " data=", data);
+        if (data != null) {
+            String page = data.getPath();   // ex:  /page1
+            if (!TextUtils.isEmpty(page) && page.startsWith("/page")) {
+                page = page.replace("/page", "");
+                try {
+                    mStartPageIdx = Integer.parseInt(page);
+                    ALog.d.tagMsg(this, "create select page=", mStartPageIdx);
+                } catch (NumberFormatException ignore) {
+                }
+            }
+        }
     }
 
     @Override
@@ -134,7 +162,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         if (mViewPager != null && mViewPager.getAdapter() == null) {
-            Log.d("foo", "onResume");
             // Create the adapter that will return a fragment for each page.
             mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
             mViewPager.setAdapter(mSectionsPagerAdapter);
@@ -145,13 +172,17 @@ public class MainActivity extends AppCompatActivity {
             if (mAdapterParcelable != null) {
                 mSectionsPagerAdapter.restoreState(mAdapterParcelable, null);
             }
+
+            if (mStartPageIdx >= 0 && mStartPageIdx < mSectionsPagerAdapter.getCount()) {
+                ALog.d.tagMsg(this, "Select page=", mStartPageIdx);
+                selectPage(mStartPageIdx);
+            }
         }
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        Log.d("foo", "onPause");
         if (mSectionsPagerAdapter != null)
             mAdapterParcelable = mSectionsPagerAdapter.saveState();
         mSectionsPagerAdapter = null;
@@ -164,16 +195,18 @@ public class MainActivity extends AppCompatActivity {
         super.onSaveInstanceState(outState);
     }
 
+    SubMenu mPageMenu;
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
 
-        SubMenu pageMenu = menu.addSubMenu("Pages...");
+        mPageMenu = menu.addSubMenu("Pages...");
         int groupId = 1;
         int itemId = 100;
         for (PageItem item : mItems) {
-            pageMenu.add(groupId, itemId, itemId, item.mTitle);
+            mPageMenu.add(groupId, itemId, itemId, item.mTitle);
             itemId++;
         }
         return true;
@@ -329,6 +362,7 @@ public class MainActivity extends AppCompatActivity {
         public View onCreateView(
                 @NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             m_pageNum = (getArguments() == null) ? 0 : getArguments().getInt(ARG_page_number);
+
             int layout =  mItems[m_pageNum].mLayout;
             try {
                 return inflater.inflate(layout, container, false);

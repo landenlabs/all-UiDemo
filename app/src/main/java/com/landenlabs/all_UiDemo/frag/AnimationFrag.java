@@ -45,7 +45,7 @@ import com.landenlabs.all_UiDemo.Ui;
  * @see <a href="http://landenlabs.com/android"> author's web-site </a>
  */
 
-@SuppressWarnings("FieldCanBeLocal")
+@SuppressWarnings({"FieldCanBeLocal", "Convert2Lambda", "unused"})
 public class AnimationFrag  extends UiFragment implements View.OnClickListener {
 
     private View mRootView;
@@ -155,7 +155,7 @@ public class AnimationFrag  extends UiFragment implements View.OnClickListener {
             case R.id.animation_slideR:
                 if (tb.isChecked()) {
                     int w = target.getWidth();
-                    target.animate().scaleX(0).translationX(w/2).setDuration(2000).start();
+                    target.animate().scaleX(0).translationX(w/2f).setDuration(2000).start();
                 } else {
                     target.animate().scaleX(1).translationX(0).setDuration(2000).start();
                 }
@@ -165,7 +165,7 @@ public class AnimationFrag  extends UiFragment implements View.OnClickListener {
             case R.id.animation_slideL:
                 if (tb.isChecked()) {
                     int w = target.getWidth();
-                    target.animate().scaleX(0).translationX(-w/2).setDuration(2000).start();
+                    target.animate().scaleX(0).translationX(-w/2f).setDuration(2000).start();
                 } else {
                     target.animate().scaleX(1).translationX(0).setDuration(2000).start();
                 }
@@ -270,7 +270,7 @@ public class AnimationFrag  extends UiFragment implements View.OnClickListener {
         int childCnt = gridLayout.getChildCount();
 
         for (int idx = 0; idx < childCnt; idx += colCnt) {
-            View child = gridLayout.getChildAt(idx);
+            // View child = gridLayout.getChildAt(idx);
             View target = gridLayout.getChildAt(idx+1);
             TextView status = cast2(TextView.class, gridLayout.getChildAt(idx+2));
 

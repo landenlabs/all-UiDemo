@@ -48,6 +48,7 @@ import com.landenlabs.all_UiDemo.Util.TextViewSpin;
  * @see <a href="http://landenlabs.com/android"> author's web-site </a>
  */
 
+@SuppressWarnings("ALL")
 public class AnimBgFrag  extends UiFragment implements View.OnClickListener {
 
     private View  mRootView;
@@ -116,7 +117,7 @@ public class AnimBgFrag  extends UiFragment implements View.OnClickListener {
     @SuppressWarnings("unused")
     private float mScaleFactor;
 
-    private TextProgressBar     mTextProgress1;
+    private TextProgressBar mTextProgress1;
     private TextViewSpin mTextProgress2;
     private TextViewSpin mTextProgress3;
 
@@ -248,7 +249,7 @@ public class AnimBgFrag  extends UiFragment implements View.OnClickListener {
                 float x = direction.getX(value, displayRect);
                 float y = direction.getY(value, displayRect);
                 matrix.postTranslate(x, y);
-                // Log.d("foo", String.format("x=%.0f, y=%.0f w=%.0f", x, y, displayRect.width()));
+                // ALog.d.tagMsg(this,  String.format("x=%.0f, y=%.0f w=%.0f", x, y, displayRect.width()));
 
                 imageView.setImageMatrix(matrix);
             }

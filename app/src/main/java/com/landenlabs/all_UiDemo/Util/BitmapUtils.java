@@ -39,7 +39,8 @@ import android.renderscript.Element;
 import android.renderscript.RSRuntimeException;
 import android.renderscript.RenderScript;
 import android.renderscript.ScriptIntrinsicBlur;
-import android.util.Log;
+
+import com.landenlabs.all_UiDemo.ALog.ALog;
 
 /**
  * Created by Dennis Lang on 8/8/16.
@@ -266,7 +267,7 @@ public class BitmapUtils {
         int h = bitmap.getHeight();
 
         int[] pix = new int[w * h];
-        Log.e("pix", w + " " + h + " " + pix.length);
+        ALog.e.tagMsg(this,  w, " ", h, " " ,  pix.length);
         bitmap.getPixels(pix, 0, w, 0, 0, w, h);
 
         int wm = w - 1;
@@ -452,7 +453,7 @@ public class BitmapUtils {
             }
         }
 
-        Log.e("pix", w + " " + h + " " + pix.length);
+        ALog.e.tagMsg(this,  w, " ", h, " " ,  pix.length);
         bitmap.setPixels(pix, 0, w, 0, 0, w, h);
 
         return (bitmap);

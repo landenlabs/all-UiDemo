@@ -30,23 +30,26 @@ import android.graphics.drawable.StateListDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import com.landenlabs.all_UiDemo.ALog.ALog;
 import com.landenlabs.all_UiDemo.R;
 
 /**
- * Created by Dennis Lang on 7/21/16.
+ * Demonstrate ripple on various views using different settings.
+ *
+ * @author Dennis Lang (LanDen Labs)
+ * @see <a href="http://landenlabs.com/android"> author's web-site </a>
  */
 public class RippleFrag extends UiFragment implements View.OnClickListener {
 
     private class DbgStateListDrawable extends StateListDrawable {
         @Override
         public boolean selectDrawable(int idx) {
-            Log.d("foo", "SelectDrawable " + idx);
+            ALog.d.tagMsg(this,  "SelectDrawable " ,  idx);
             return super.selectDrawable(idx);
         }
     }

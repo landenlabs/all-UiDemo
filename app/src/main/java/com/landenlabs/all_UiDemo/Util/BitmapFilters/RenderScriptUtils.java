@@ -28,8 +28,8 @@ import android.graphics.Bitmap;
 import android.renderscript.Allocation;
 import android.renderscript.Element;
 import android.renderscript.RenderScript;
-import android.util.Log;
 
+import com.landenlabs.all_UiDemo.ALog.ALog;
 import com.landenlabs.all_UiDemo.R;
 import com.landenlabs.all_UiDemo.Util.ScriptC_horzblur;
 import com.landenlabs.all_UiDemo.Util.ScriptC_tint;
@@ -75,7 +75,7 @@ public class RenderScriptUtils {
             try {
                 blur(src, dst, radius);
             } catch (Exception ex) {
-                Log.e(TAG, "Blur :: renderScript crashed", ex);
+                ALog.e.tagMsg(this,  "Blur :: renderScript crashed", ex);
             }
             return dst;
         }

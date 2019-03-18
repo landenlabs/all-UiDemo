@@ -53,7 +53,6 @@ public class RadioBtnFrag  extends UiFragment {
 
     private View mRootView;
 
-
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mRootView = inflater.inflate(R.layout.layout_radio_btns, container, false);
@@ -61,8 +60,6 @@ public class RadioBtnFrag  extends UiFragment {
         setup();
         return mRootView;
     }
-
-
 
     @Override
     public int getFragId() {

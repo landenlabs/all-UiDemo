@@ -32,7 +32,7 @@ import android.view.ViewGroup;
 import com.landenlabs.all_UiDemo.R;
 
 /**
- * Demonstrate grid layout of images.
+ * Demonstrate Relative layout and Gravity.
  *
  * @author Dennis Lang (LanDen Labs)
  * @see <a href="http://landenlabs.com/android"> author's web-site </a>

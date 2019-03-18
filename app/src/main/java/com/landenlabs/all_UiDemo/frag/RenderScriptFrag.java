@@ -52,7 +52,7 @@ import com.landenlabs.all_UiDemo.Util.BitmapUtils;
 
 
 /**
- * Demonstrate view shadows.
+ * Demonstrate blur using RenderScript.
  *
  * @author Dennis Lang (LanDen Labs)
  * @see <a href="http://landenlabs.com/android"> author's web-site </a>

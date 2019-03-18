@@ -28,11 +28,11 @@ import android.opengl.GLSurfaceView;
 import android.opengl.GLU;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.landenlabs.all_UiDemo.ALog.ALog;
 import com.landenlabs.all_UiDemo.R;
 import com.landenlabs.all_UiDemo.Ui;
 
@@ -42,12 +42,8 @@ import java.nio.FloatBuffer;
 
 import javax.microedition.khronos.opengles.GL10;
 
-
-// import javax.microedition.khronos.opengles.GL10;
-
-
 /**
- * Demonstrate Scrollview resizing with views above and below.
+ * Demonstrate OpenGL Line
  *
  * @author Dennis Lang (LanDen Labs)
  * @see <a href="http://landenlabs.com/android"> author's web-site </a>
@@ -226,7 +222,7 @@ public class GlLineFrag  extends UiFragment implements View.OnClickListener {
         }
 
         static void checkGlError(String msg) {
-            Log.e("GlLineFrag", msg);
+            ALog.e.tagMsg("GlLineFrag",  msg);
         }
 
         static int loadShader(int type, String shaderCode) {
