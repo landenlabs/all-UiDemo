@@ -47,7 +47,21 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/location_screen_add_spacer_height"
-        android:scrollbars="none">
+        style="@style/scrollbar_shape_style"
+        >
+
+        <!--
+         android:fadeScrollbars="false"
+        android:fadingEdge="none"
+
+        android:scrollbarDefaultDelayBeforeFade="@integer/scrollbar_fade_delay"
+        android:scrollbarFadeDuration="@integer/scrollbar_fade_delay"
+        android:scrollIndicators="right"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:scrollbarSize="20dp"
+        android:scrollbarStyle="insideInset"
+        android:scrollbars="vertical"
+        -->
 
         <LinearLayout
             android:layout_width="match_parent"

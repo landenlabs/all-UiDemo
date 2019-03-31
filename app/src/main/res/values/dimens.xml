@@ -21,4 +21,7 @@
     <dimen name="location_screen_hint_height">96dp</dimen>
     <dimen name="location_screen_add_spacer_height">94dp</dimen>
     <dimen name="location_screen_add_spacer_height_minus">-94dp</dimen>
+
+
+    <integer name="scrollbar_fade_delay">500000</integer>
 </resources>

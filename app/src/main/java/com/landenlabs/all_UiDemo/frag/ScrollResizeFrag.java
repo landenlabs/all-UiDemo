@@ -90,6 +90,13 @@ public class ScrollResizeFrag  extends UiFragment implements View.OnClickListene
         mDataHolder = Ui.viewById(mRootView, R.id.scroll_holder);
         mDataArray = getResources().getStringArray(R.array.states);
 
+        ScrollView scrollView = Ui.viewById(mRootView, R.id.resizing_scrollview);
+        scrollView.setScrollbarFadingEnabled(false);
+        scrollView.setVerticalScrollBarEnabled(true);
+        scrollView.setVerticalFadingEdgeEnabled(false);
+        // scrollView.setScrollIndicators(SCROLL_INDICATOR_RIGHT, -1);
+
+
         Ui.viewById(mRootView, R.id.scroll_add).setOnClickListener(this);
         Ui.viewById(mRootView, R.id.scroll_del).setOnClickListener(this);
         mScrollView = Ui.viewById(mRootView, R.id.resizing_scrollview);

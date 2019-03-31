@@ -1,0 +1,84 @@
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt">
+    <aapt:attr name="android:drawable">
+        <vector xmlns:android="http://schemas.android.com/apk/res/android"
+            android:width="64dp"
+            android:height="64dp"
+            android:viewportWidth="64"
+            android:viewportHeight="64">
+
+            <path
+                android:name="cloud_bg"
+                android:fillColor="#0076c0"
+                android:pathData="M50.51,13.25a11.86,11.86 0,0 0,-4.1 0.72,16.46 16.46,0 0,0 -31.18,3.77 10.15,10.15 0,0 0,-3.67 -0.69,10.45 10.45,0 0,0 0,20.9H50.51a12.35,12.35 0,0 0,0 -24.7Z"
+                android:strokeWidth="1"
+                android:strokeColor="#fff" />
+
+
+            <group android:name="lightning_group">
+                <path
+                    android:name="lightning_fg"
+                    android:fillColor="#f6bb18"
+                    android:pathData="M37.3,34.89l-11.95,0l-2.76,9.73l4.93,0l-1.95,16.61l15.78,-19.97l-5.64,0l1.59,-6.37z"
+                    android:strokeWidth="1"
+                    android:strokeColor="#fff" />
+            </group>
+
+            <group android:name="cloud_group">
+                <path
+                    android:name="cloud"
+                    android:fillColor="#0076c0"
+                    android:pathData="M50.51,13.25a11.86,11.86 0,0 0,-4.1 0.72,16.46 16.46,0 0,0 -31.18,3.77 10.15,10.15 0,0 0,-3.67 -0.69,10.45 10.45,0 0,0 0,20.9H50.51a12.35,12.35 0,0 0,0 -24.7Z"
+                    android:strokeWidth="1"
+                    android:strokeColor="#fff" />
+            </group>
+        </vector>
+    </aapt:attr>
+
+    <target android:name="lightning_group">
+        <aapt:attr name="android:animation">
+            <set>
+                <objectAnimator
+                    android:duration="1500"
+                    android:propertyName="scaleY"
+                    android:repeatCount="infinite"
+                    android:repeatMode="reverse"
+                    android:valueFrom="0.6"
+                    android:valueTo="1.0"
+                    android:valueType="floatType" />
+
+                <objectAnimator
+                    android:duration="3000"
+                    android:propertyName="scaleX"
+                    android:repeatCount="infinite"
+                    android:repeatMode="reverse"
+                    android:valueFrom="0.9"
+                    android:valueTo="1.1"
+                    android:valueType="floatType" />
+            </set>
+        </aapt:attr>
+    </target>
+
+    <target android:name="cloud_group">
+        <aapt:attr name="android:animation">
+            <set>
+                <objectAnimator
+                    android:duration="3000"
+                    android:propertyName="scaleX"
+                    android:repeatCount="infinite"
+                    android:repeatMode="reverse"
+                    android:valueFrom="0.85"
+                    android:valueTo="1.01"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="2000"
+                    android:propertyName="scaleY"
+                    android:repeatCount="infinite"
+                    android:repeatMode="reverse"
+                    android:valueFrom="0.85"
+                    android:valueTo="1.01"
+                    android:valueType="floatType" />
+            </set>
+        </aapt:attr>
+    </target>
+</animated-vector>

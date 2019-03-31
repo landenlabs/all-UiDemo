@@ -52,6 +52,27 @@
                 android:checkMark="@drawable/checkpath256_anim_sel_scale"
                 />
 
+
+            <ImageView
+                android:id="@+id/avd_wx1_anim"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:src="@drawable/anim_wx1_vec"
+                />
+
+            <ImageView
+                android:id="@+id/avd_wx2_anim"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:src="@drawable/anim_wx2_vec"
+                />
+            <ImageView
+                android:id="@+id/avd_wx31_anim"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:src="@drawable/anim_wx31_vec"
+                />
+
         </LinearLayout>
     </ScrollView>
 

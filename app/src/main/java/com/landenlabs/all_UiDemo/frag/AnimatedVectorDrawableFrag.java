@@ -23,13 +23,18 @@ package com.landenlabs.all_UiDemo.frag;
  *
  */
 
+import android.graphics.drawable.AnimatedVectorDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.graphics.drawable.AnimatedVectorDrawableCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Checkable;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 
 import com.landenlabs.all_UiDemo.ALog.ALog;
 import com.landenlabs.all_UiDemo.R;
@@ -74,7 +79,10 @@ public class AnimatedVectorDrawableFrag
     public void onClick(View view) {
         if (view instanceof CompoundButton) {
             // The CompoundButton objects, such as CheckBox and Toggle will auto toggle their state
-            ALog.d.tagMsg(this, "a checked=", ((CompoundButton) view).isChecked(), " selected=", view.isSelected());
+            ALog.d.tagMsg(this, "a checked=", ((CompoundButton) view).isChecked(), " selected=",
+                    view.isSelected());
+        } if (view instanceof ImageView) {
+            animate(view);
         } else {
             // Most views will not automatically change their state on click.
             if (view instanceof Checkable) {
@@ -88,11 +96,30 @@ public class AnimatedVectorDrawableFrag
         }
     }
 
+    private void animate(View view) {
+        ImageView v = (ImageView) view;
+        Drawable d = v.getDrawable();
+        if (Build.VERSION.SDK_INT >= 21) {
+            if (d instanceof AnimatedVectorDrawable) {
+                AnimatedVectorDrawable avd = (AnimatedVectorDrawable) d;
+                avd.start();
+                return;
+            }
+        }
+
+        if (d instanceof AnimatedVectorDrawableCompat) {
+            AnimatedVectorDrawableCompat avd = (AnimatedVectorDrawableCompat) d;
+            avd.start();
+        }
+    }
 
     private void setup() {
         Ui.viewById(mRootView, R.id.avd_check1).setOnClickListener(this);
         Ui.viewById(mRootView, R.id.avd_check2).setOnClickListener(this);
         Ui.viewById(mRootView, R.id.avd_check3).setOnClickListener(this);
+        animate(Ui.viewById(mRootView, R.id.avd_wx1_anim));
+        animate(Ui.viewById(mRootView, R.id.avd_wx2_anim));
+        animate(Ui.viewById(mRootView, R.id.avd_wx31_anim));
     }
 
 }
