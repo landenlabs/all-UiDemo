@@ -29,6 +29,36 @@
             android:orientation="vertical"
             android:layout_height="wrap_content">
 
+            <!--  Text how text centers over background and foreground images. -->
+            <TextView
+                android:text="A"
+                android:foreground="@drawable/circle"
+                android:textSize="32sp"
+                android:gravity="center"
+                android:layout_width="40dp"
+                android:layout_height="40dp" />
+            <TextView
+                android:text="A"
+                android:foreground="@drawable/circle"
+                android:textSize="32sp"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:text="A"
+                android:background="@drawable/circle"
+                android:textSize="32sp"
+                android:gravity="center"
+                android:layout_width="40dp"
+                android:layout_height="40dp" />
+            <TextView
+                android:text="A"
+                android:background="@drawable/circle"
+                android:textSize="32sp"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
             <RadioButton
                 android:checked="true"
                 android:id="@+id/RadioBtn0"

@@ -1,0 +1,42 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="48"
+    android:viewportHeight="48">
+
+    <!-- Debug Red Box for coverage -->
+    <path
+        android:pathData="M0,0 48,0 48,48, 0,48, 0,0"
+        android:strokeWidth="1"
+        android:strokeColor="#f00"/>
+
+    <!-- Slight shift to right to compenstate for TextView not centering -->
+    <path
+        android:pathData="M24,24m-10,0a10,10 0,0 0,20 0a10,10 0,0 0,-20 0"
+        android:strokeWidth="1"
+        android:strokeColor="#ccc"/>
+
+    <path
+        android:pathData="M24,24m-20,0a20,20 0,0 0,40 0a20,20 0,0 0,-40 0"
+        android:strokeWidth="1"
+        android:strokeColor="#ccc"/>
+
+    <path
+        android:pathData="M0,0 48,48"
+        android:strokeWidth="1"
+        android:strokeColor="#0f0"/>
+    <path
+        android:pathData="M48,0 0,48"
+        android:strokeWidth="1"
+        android:strokeColor="#0f0"/>
+
+    <path
+        android:pathData="M24,0 24,48"
+        android:strokeWidth="1"
+        android:strokeColor="#0ff"/>
+
+    <path
+        android:pathData="M0,24 48,24"
+        android:strokeWidth="1"
+        android:strokeColor="#0ff"/>
+</vector>
