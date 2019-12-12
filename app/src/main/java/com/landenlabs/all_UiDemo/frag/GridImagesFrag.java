@@ -25,17 +25,23 @@ package com.landenlabs.all_UiDemo.frag;
 
 import android.animation.AnimatorInflater;
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.transition.AutoTransition;
+import android.transition.Transition;
+import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.landenlabs.all_UiDemo.ALog.ALog;
 import com.landenlabs.all_UiDemo.R;
 import com.landenlabs.all_UiDemo.Ui;
 
@@ -49,6 +55,8 @@ import com.landenlabs.all_UiDemo.Ui;
 public class GridImagesFrag  extends UiFragment   {
 
     private View mRootView;
+    RadioGroup mRadioGroup;
+    int dimPx = 85;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -86,6 +94,9 @@ public class GridImagesFrag  extends UiFragment   {
             }
         });
         */
+
+        mRadioGroup = Ui.needViewById(mRootView, R.id.grid_image_rg);
+
     }
 
     class ImageAdapter extends BaseAdapter {
@@ -113,7 +124,7 @@ public class GridImagesFrag  extends UiFragment   {
             if (convertView == null) {
                 // if it's not recycled, initialize some attributes
                 imageView = new ImageView(mContext);
-                imageView.setLayoutParams(new GridView.LayoutParams(85, 85));
+                imageView.setLayoutParams(new GridView.LayoutParams(dimPx, dimPx));
                 imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
                 imageView.setPadding(8, 8, 8, 8);
 
@@ -123,6 +134,22 @@ public class GridImagesFrag  extends UiFragment   {
                     @Override
                     public void onClick(View view) {
                         Toast.makeText(view.getContext(), "Grid Pos:" + pos,  Toast.LENGTH_SHORT).show();
+                        int ckId = mRadioGroup.getCheckedRadioButtonId();
+
+                        try {
+                            switch (ckId) {
+                                case R.id.grid_image_statelist:
+                                    break;
+                                case R.id.grid_image_scale1:
+                                case R.id.grid_image_scale2:
+                                case R.id.grid_image_down:
+                                case R.id.grid_image_reset:
+                                    scaleImage(view, ckId, pos);
+                                    break;
+                            }
+                        } catch (Exception ex) {
+                            ALog.w.msg(ex.getMessage());
+                        }
                     }
                 });
                 if (Build.VERSION.SDK_INT >= 21) {
@@ -132,16 +159,64 @@ public class GridImagesFrag  extends UiFragment   {
                 imageView = (ImageView) convertView;
             }
 
-            // if (Build.VERSION.SDK_INT >= 21) {
-                // imageView.setElevation((position & 1) != 0 ? 0 : 10);
-            // }
-
-        //    if ((position & 1) != 0)
-        //        imageView.setImageResource(mThumbIds[position]);
-        //    else
-                imageView.setBackgroundResource(mThumbIds[position]);
-
+            // Image must be set in background to ue stateList animation
+            imageView.setBackgroundResource(mThumbIds[position]);
             return imageView;
+        }
+
+        private void scaleImage(View view, int id, int pos) {
+            ImageView imgView = (ImageView)view;
+            imgView.setImageResource(mThumbIds[pos]);
+            ViewGroup.LayoutParams params = view.getLayoutParams();
+            Transition autoTransition;
+            int incr = 80;
+            switch (id) {
+                case R.id.grid_image_scale1:
+                    imgView.setBackgroundColor(Color.RED);
+                    params.width += incr;
+                    params.height += incr;
+                    view.setLayoutParams(params);
+                    break;
+
+                case R.id.grid_image_scale2:
+                    imgView.setBackgroundColor(Color.GREEN);
+                    autoTransition = new AutoTransition();
+                    autoTransition.setDuration(3000);
+
+                    // With this overload you can control actual transition animation
+                    TransitionManager.beginDelayedTransition((ViewGroup) mRootView, autoTransition);
+                    // After `beginDelayedTransition()` function perform changes to the layout
+                    // Transitions framework will detect those changes and perform appropriate animations
+                    params.width += incr;
+                    params.height += incr;
+                    view.requestLayout();
+                    view.invalidate();
+                    break;
+
+                case R.id.grid_image_down:
+                    if (params.width > incr) {
+                        imgView.setBackgroundColor(Color.GREEN);
+                        autoTransition = new AutoTransition();
+                        autoTransition.setDuration(3000);
+
+                        // With this overload you can control actual transition animation
+                        TransitionManager.beginDelayedTransition((ViewGroup) mRootView, autoTransition);
+                        // After `beginDelayedTransition()` function perform changes to the layout
+                        // Transitions framework will detect those changes and perform appropriate animations
+                        params.width -= incr;
+                        params.height -= incr;
+                        view.requestLayout();
+                        view.invalidate();
+                    }
+                    break;
+
+                case R.id.grid_image_reset:
+                    params.width = dimPx;
+                    params.height = dimPx;
+                    view.setLayoutParams(params);
+                    imgView.setBackgroundColor(Color.TRANSPARENT);
+                    break;
+            }
         }
 
         // references to our images

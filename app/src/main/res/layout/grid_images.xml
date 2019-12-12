@@ -18,7 +18,7 @@
         android:id="@+id/gridview"
         android:background="#c0c0c0"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:columnWidth="90dp"
         android:gravity="center"
         android:horizontalSpacing="10dp"
@@ -26,5 +26,40 @@
         android:padding="10dp"
         android:stretchMode="columnWidth"
         android:verticalSpacing="10dp" />
+
+    <RadioGroup
+        android:id="@+id/grid_image_rg"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/grid_image_statelist"
+            android:checked="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="State"/>
+        <RadioButton
+            android:id="@+id/grid_image_scale1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Scale1"/>
+        <RadioButton
+            android:id="@+id/grid_image_scale2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Scale2"/>
+        <RadioButton
+            android:id="@+id/grid_image_down"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Down"/>
+        <RadioButton
+            android:id="@+id/grid_image_reset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Reset"/>
+    </RadioGroup>
 
 </LinearLayout>

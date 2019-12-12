@@ -23,7 +23,12 @@ package com.landenlabs.all_UiDemo.frag;
  *
  */
 
+import android.animation.ObjectAnimator;
+import android.graphics.drawable.AnimatedVectorDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,6 +37,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.Transformation;
 import android.widget.GridLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
@@ -50,6 +56,7 @@ public class AnimationFrag  extends UiFragment implements View.OnClickListener {
 
     private View mRootView;
     private TextView mStatus;
+    private  Drawable anim1, anim2;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -79,15 +86,18 @@ public class AnimationFrag  extends UiFragment implements View.OnClickListener {
         mStatus = Ui.viewById(mRootView, R.id.show_alpha);
         GridLayout gridLayout = Ui.viewById(mRootView, R.id.animation_grid);
 
+        anim1 = getDrawable(R.drawable.anim_grady1);
+        anim2 = getDrawable(R.drawable.anim_grady2);
+
         int colCnt = gridLayout.getColumnCount();
         int childCnt = gridLayout.getChildCount();
 
         for (int idx = 0; idx < childCnt; idx += colCnt) {
             View child = gridLayout.getChildAt(idx);
             child.setOnClickListener(this);
-            View target = gridLayout.getChildAt(idx+1);
-            child.setTag(target );
-            View status = gridLayout.getChildAt(idx+2);
+            View target = gridLayout.getChildAt(idx + 1);
+            child.setTag(target);
+            View status = gridLayout.getChildAt(idx + 2);
             target.setTag(status);
         }
     }
@@ -95,8 +105,16 @@ public class AnimationFrag  extends UiFragment implements View.OnClickListener {
     private Animation loadAnimation(int id) {
         Animation animation = AnimationUtils.loadAnimation(getActivity(), id);
         animation.setFillAfter(true);
-        return  animation;
+        return animation;
     }
+
+    @DrawableRes
+    int[] nextAnimDrawRes = new int[] {
+        R.drawable.anim_grady1,
+        R.drawable.anim_grady2
+    };
+    int nextIdx = 0;
+
 
     @Override
     public void onClick(View view) {
@@ -132,6 +150,22 @@ public class AnimationFrag  extends UiFragment implements View.OnClickListener {
                 }
                 showAnimStatus(target); // wire up status after animation set.
                 target.startAnimation(target.getAnimation());
+                break;
+
+            case R.id.animation_gradY:
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    ImageView imageView = (ImageView)target;
+                    // if (imageView.getBackground() instanceof AnimatedVectorDrawable) {
+                        imageView.setImageResource(nextAnimDrawRes[nextIdx++]);
+                        nextIdx = nextIdx % nextAnimDrawRes.length;
+                        AnimatedVectorDrawable avd = (AnimatedVectorDrawable)imageView.getDrawable();
+                        avd.start();
+                    // }
+                } else {
+                    ObjectAnimator anim = ObjectAnimator.ofFloat(target, "alpha", 0.0f, 1.0f);
+                    anim.setDuration(3000); // duration 3 seconds
+                    anim.start();
+                }
                 break;
 
             case R.id.animation_scaleX:

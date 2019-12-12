@@ -1,232 +1,174 @@
-<animated-vector
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:aapt="http://schemas.android.com/aapt">
+<?xml version="1.0" encoding="utf-8"?>
+<!-- See animated version in drawable-v21 -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="64dp"
+    android:height="64dp"
+    android:viewportWidth="64"
+    android:viewportHeight="64">
 
-    <aapt:attr name="android:drawable">
-        <vector
-            android:width="64dp"
-            android:height="64dp"
-            android:viewportWidth="64"
-            android:viewportHeight="64">
+    <path
+        android:name="sun_border"
+        android:fillColor="#00000000"
+        android:pathData="M16.55,31.33a14.97,15.28 0,1 0,29.94 0a14.97,15.28 0,1 0,-29.94 0z"
+        android:strokeWidth="1"
+        android:strokeColor="#fff" />
 
+    <group
+        android:name="long_line_group"
+        android:pivotX="32"
+        android:pivotY="32">
 
-            <path
-                android:name="sun_border"
-                android:fillColor="#00000000"
-                android:pathData="M16.55,31.33a14.97,15.28 0,1 0,29.94 0a14.97,15.28 0,1 0,-29.94 0z"
-                android:strokeWidth="1"
-                android:strokeColor="#fff" />
-
-            <group android:name="long_line_group"
-                android:pivotX="32"
-                android:pivotY="32"
-                >
-
-                <path
-                    android:name="line_00"
-                    android:fillColor="#fff"
-                    android:pathData="M31.54,1.85L31.51,12.47"
-                    android:strokeWidth="1"
-                    android:strokeColor="#fff"
-                    android:strokeLineCap="round"
-                    android:strokeLineJoin="round" />
-                <path
-                    android:name="line_02"
-                    android:fillColor="#fff"
-                    android:pathData="M44.33,18.27L51.16,10.27"
-                    android:strokeWidth="1"
-                    android:strokeColor="#fff"
-                    android:strokeLineCap="round"
-                    android:strokeLineJoin="round" />
-                <path
-                    android:name="line_04"
-                    android:fillColor="#fff"
-                    android:pathData="M60.94,31.38L49.74,31.27"
-                    android:strokeWidth="1"
-                    android:strokeColor="#fff"
-                    android:strokeLineCap="round"
-                    android:strokeLineJoin="round" />
-                <path
-                    android:name="line_06"
-                    android:fillColor="#fff"
-                    android:pathData="M52.62,52.06L44.3,44.4"
-                    android:strokeWidth="1"
-                    android:strokeColor="#fff"
-                    android:strokeLineCap="round"
-                    android:strokeLineJoin="round" />
-                <path
-                    android:name="line_08"
-                    android:fillColor="#fff"
-                    android:pathData="M31.51,60.83L31.54,50.21"
-                    android:strokeWidth="1"
-                    android:strokeColor="#fff"
-                    android:strokeLineCap="round"
-                    android:strokeLineJoin="round" />
-                <path
-                    android:name="line_10"
-                    android:fillColor="#fff"
-                    android:pathData="M11.73,52.41L18.57,44.4"
-                    android:strokeWidth="1"
-                    android:strokeColor="#fff"
-                    android:strokeLineCap="round"
-                    android:strokeLineJoin="round" />
-                <path
-                    android:name="line_12"
-                    android:fillColor="#fff"
-                    android:pathData="M1.94,31.27L13.14,31.38"
-                    android:strokeWidth="1"
-                    android:strokeColor="#fff"
-                    android:strokeLineCap="round"
-                    android:strokeLineJoin="round" />
-                <path
-                    android:name="line_14"
-                    android:fillColor="#fff"
-                    android:pathData="M10.25,10.27L18.57,17.92"
-                    android:strokeWidth="1"
-                    android:strokeColor="#fff"
-                    android:strokeLineCap="round"
-                    android:strokeLineJoin="round" />
-            </group>
+        <path
+            android:name="line_00"
+            android:fillColor="#fff"
+            android:pathData="M31.54,1.85L31.51,12.47"
+            android:strokeWidth="1"
+            android:strokeColor="#fff"
+            android:strokeLineCap="round"
+            android:strokeLineJoin="round" />
+        <path
+            android:name="line_02"
+            android:fillColor="#fff"
+            android:pathData="M44.33,18.27L51.16,10.27"
+            android:strokeWidth="1"
+            android:strokeColor="#fff"
+            android:strokeLineCap="round"
+            android:strokeLineJoin="round" />
+        <path
+            android:name="line_04"
+            android:fillColor="#fff"
+            android:pathData="M60.94,31.38L49.74,31.27"
+            android:strokeWidth="1"
+            android:strokeColor="#fff"
+            android:strokeLineCap="round"
+            android:strokeLineJoin="round" />
+        <path
+            android:name="line_06"
+            android:fillColor="#fff"
+            android:pathData="M52.62,52.06L44.3,44.4"
+            android:strokeWidth="1"
+            android:strokeColor="#fff"
+            android:strokeLineCap="round"
+            android:strokeLineJoin="round" />
+        <path
+            android:name="line_08"
+            android:fillColor="#fff"
+            android:pathData="M31.51,60.83L31.54,50.21"
+            android:strokeWidth="1"
+            android:strokeColor="#fff"
+            android:strokeLineCap="round"
+            android:strokeLineJoin="round" />
+        <path
+            android:name="line_10"
+            android:fillColor="#fff"
+            android:pathData="M11.73,52.41L18.57,44.4"
+            android:strokeWidth="1"
+            android:strokeColor="#fff"
+            android:strokeLineCap="round"
+            android:strokeLineJoin="round" />
+        <path
+            android:name="line_12"
+            android:fillColor="#fff"
+            android:pathData="M1.94,31.27L13.14,31.38"
+            android:strokeWidth="1"
+            android:strokeColor="#fff"
+            android:strokeLineCap="round"
+            android:strokeLineJoin="round" />
+        <path
+            android:name="line_14"
+            android:fillColor="#fff"
+            android:pathData="M10.25,10.27L18.57,17.92"
+            android:strokeWidth="1"
+            android:strokeColor="#fff"
+            android:strokeLineCap="round"
+            android:strokeLineJoin="round" />
+    </group>
 
 
-            <group android:name="short_line_group"
-                android:pivotX="32"
-                android:pivotY="32"
-                >
+    <group
+        android:name="short_line_group"
+        android:pivotX="32"
+        android:pivotY="32">
 
-            <path
-                android:name="line_01"
-                android:fillColor="#fff"
-                android:pathData="M40.97,9.52L38.72,13.57"
-                android:strokeWidth="1"
-                android:strokeColor="#fff"
-                android:strokeLineCap="round"
-                android:strokeLineJoin="round" />
+        <path
+            android:name="line_01"
+            android:fillColor="#fff"
+            android:pathData="M40.97,9.52L38.72,13.57"
+            android:strokeWidth="1"
+            android:strokeColor="#fff"
+            android:strokeLineCap="round"
+            android:strokeLineJoin="round" />
 
-            <path
-                android:name="line_03"
-                android:fillColor="#fff"
-                android:pathData="M49.01,23.76L53.13,21.77"
-                android:strokeWidth="1"
-                android:strokeColor="#fff"
-                android:strokeLineCap="round"
-                android:strokeLineJoin="round" />
+        <path
+            android:name="line_03"
+            android:fillColor="#fff"
+            android:pathData="M49.01,23.76L53.13,21.77"
+            android:strokeWidth="1"
+            android:strokeColor="#fff"
+            android:strokeLineCap="round"
+            android:strokeLineJoin="round" />
 
-            <path
-                android:name="line_05"
-                android:fillColor="#fff"
-                android:pathData="M49.15,38.71L53.45,40.27"
-                android:strokeWidth="1"
-                android:strokeColor="#fff"
-                android:strokeLineCap="round"
-                android:strokeLineJoin="round" />
+        <path
+            android:name="line_05"
+            android:fillColor="#fff"
+            android:pathData="M49.15,38.71L53.45,40.27"
+            android:strokeWidth="1"
+            android:strokeColor="#fff"
+            android:strokeLineCap="round"
+            android:strokeLineJoin="round" />
 
-            <path
-                android:name="line_07"
-                android:fillColor="#fff"
-                android:pathData="M39.08,49.04L41.04,53.25"
-                android:strokeWidth="1"
-                android:strokeColor="#fff"
-                android:strokeLineCap="round"
-                android:strokeLineJoin="round" />
-            <path
-                android:name="line_09"
-                android:fillColor="#fff"
-                android:pathData="M22.66,53.22L24.69,49.04"
-                android:strokeWidth="1"
-                android:strokeColor="#fff"
-                android:strokeLineCap="round"
-                android:strokeLineJoin="round" />
+        <path
+            android:name="line_07"
+            android:fillColor="#fff"
+            android:pathData="M39.08,49.04L41.04,53.25"
+            android:strokeWidth="1"
+            android:strokeColor="#fff"
+            android:strokeLineCap="round"
+            android:strokeLineJoin="round" />
+        <path
+            android:name="line_09"
+            android:fillColor="#fff"
+            android:pathData="M22.66,53.22L24.69,49.04"
+            android:strokeWidth="1"
+            android:strokeColor="#fff"
+            android:strokeLineCap="round"
+            android:strokeLineJoin="round" />
 
-            <path
-                android:name="line_11"
-                android:fillColor="#fff"
-                android:pathData="M13.87,38.71L9.74,40.7"
-                android:strokeWidth="1"
-                android:strokeColor="#fff"
-                android:strokeLineCap="round"
-                android:strokeLineJoin="round" />
+        <path
+            android:name="line_11"
+            android:fillColor="#fff"
+            android:pathData="M13.87,38.71L9.74,40.7"
+            android:strokeWidth="1"
+            android:strokeColor="#fff"
+            android:strokeLineCap="round"
+            android:strokeLineJoin="round" />
 
-            <path
-                android:name="line3_13"
-                android:fillColor="#fff"
-                android:pathData="M13.73,23.34L9.43,21.77"
-                android:strokeWidth="1"
-                android:strokeColor="#fff"
-                android:strokeLineCap="round"
-                android:strokeLineJoin="round" />
+        <path
+            android:name="line3_13"
+            android:fillColor="#fff"
+            android:pathData="M13.73,23.34L9.43,21.77"
+            android:strokeWidth="1"
+            android:strokeColor="#fff"
+            android:strokeLineCap="round"
+            android:strokeLineJoin="round" />
 
-            <path
-                android:name="line_15"
-                android:fillColor="#fff"
-                android:pathData="M24.44,13.73L22.48,9.52"
-                android:strokeWidth="1"
-                android:strokeColor="#fff"
-                android:strokeLineCap="round"
-                android:strokeLineJoin="round" />
-            </group>
+        <path
+            android:name="line_15"
+            android:fillColor="#fff"
+            android:pathData="M24.44,13.73L22.48,9.52"
+            android:strokeWidth="1"
+            android:strokeColor="#fff"
+            android:strokeLineCap="round"
+            android:strokeLineJoin="round" />
+    </group>
 
-            <group android:name="sun_center_group"
-                android:pivotX="32"
-                android:pivotY="32"
-                >
-                <path
-                    android:name="sun_center"
-                    android:fillColor="#f6bb18"
-                    android:pathData="M16.55,31.33a14.97,15.28 0,1 0,29.94 0a14.97,15.28 0,1 0,-29.94 0z" />
-            </group>
-        </vector>
-    </aapt:attr>
-
-    <target android:name="sun_center_group">
-        <aapt:attr name="android:animation">
-            <set>
-                <objectAnimator
-                    android:duration="1500"
-                    android:propertyName="scaleY"
-                    android:repeatCount="infinite"
-                    android:repeatMode="reverse"
-                    android:valueFrom="0.8"
-                    android:valueTo="1.2"
-                    android:valueType="floatType" />
-
-                <objectAnimator
-                    android:duration="1500"
-                    android:propertyName="scaleX"
-                    android:repeatCount="infinite"
-                    android:repeatMode="reverse"
-                    android:valueFrom="0.8"
-                    android:valueTo="1.2"
-                    android:valueType="floatType" />
-            </set>
-        </aapt:attr>
-    </target>
-
-
-    <target android:name="short_line_group">
-        <aapt:attr name="android:animation">
-            <set>
-                <objectAnimator
-                    android:duration="1000"
-                    android:propertyName="scaleY"
-                    android:repeatCount="infinite"
-                    android:repeatMode="reverse"
-                    android:valueFrom="0.8"
-                    android:valueTo="1.2"
-                    android:valueType="floatType" />
-
-                <objectAnimator
-                    android:duration="1000"
-                    android:propertyName="scaleX"
-                    android:repeatCount="infinite"
-                    android:repeatMode="reverse"
-                    android:valueFrom="0.8"
-                    android:valueTo="1.2"
-                    android:valueType="floatType" />
-            </set>
-        </aapt:attr>
-    </target>
-
-
-</animated-vector>
-
+    <group
+        android:name="sun_center_group"
+        android:pivotX="32"
+        android:pivotY="32">
+        <path
+            android:name="sun_center"
+            android:fillColor="#f6bb18"
+            android:pathData="M16.55,31.33a14.97,15.28 0,1 0,29.94 0a14.97,15.28 0,1 0,-29.94 0z" />
+    </group>
+</vector>

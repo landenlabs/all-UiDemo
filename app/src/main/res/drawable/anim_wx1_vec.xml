@@ -1,157 +1,97 @@
-<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:aapt="http://schemas.android.com/aapt">
-    <aapt:attr name="android:drawable">
-        <vector xmlns:android="http://schemas.android.com/apk/res/android"
-            android:width="64dp"
-            android:height="64dp"
-            android:viewportWidth="64"
-            android:viewportHeight="64">
+<?xml version="1.0" encoding="utf-8"?>
+<!-- See animated version in drawable-v21 -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="64dp"
+    android:height="64dp"
+    android:viewportWidth="64"
+    android:viewportHeight="64">
 
-            <path
-                android:name="cloud_bg"
-                android:fillColor="#0076c0"
-                android:pathData="M50.51,13.25a11.86,11.86 0,0 0,-4.1 0.72,16.46 16.46,0 0,0 -31.18,3.77 10.15,10.15 0,0 0,-3.67 -0.69,10.45 10.45,0 0,0 0,20.9H50.51a12.35,12.35 0,0 0,0 -24.7Z"
-                android:strokeWidth="1"
-                android:strokeColor="#fff" />
+    <path
+        android:name="cloud_bg"
+        android:fillColor="#0076c0"
+        android:pathData="M50.51,13.25a11.86,11.86 0,0 0,-4.1 0.72,16.46 16.46,0 0,0 -31.18,3.77 10.15,10.15 0,0 0,-3.67 -0.69,10.45 10.45,0 0,0 0,20.9H50.51a12.35,12.35 0,0 0,0 -24.7Z"
+        android:strokeWidth="1"
+        android:strokeColor="#fff" />
 
-            <path
-                android:name="line2"
-                android:fillColor="#00000000"
-                android:pathData="M24.48,38.43L24.52,55.32"
-                android:strokeWidth="0.7"
-                android:strokeColor="#fff"
-                android:strokeLineCap="round"
-                android:strokeLineJoin="round" />
-            <path
-                android:name="line3"
-                android:fillColor="#00000000"
-                android:pathData="M39.63,38.43L39.68,55.32"
-                android:strokeWidth="0.7"
-                android:strokeColor="#fff"
-                android:strokeLineCap="round"
-                android:strokeLineJoin="round" />
+    <path
+        android:name="line2"
+        android:fillColor="#00000000"
+        android:pathData="M24.48,38.43L24.52,55.32"
+        android:strokeWidth="0.7"
+        android:strokeColor="#fff"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+    <path
+        android:name="line3"
+        android:fillColor="#00000000"
+        android:pathData="M39.63,38.43L39.68,55.32"
+        android:strokeWidth="0.7"
+        android:strokeColor="#fff"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
 
 
-            <group android:name="drop2_group">
-                <path
-                    android:name="line_mid_short"
-                    android:fillColor="#00000000"
-                    android:pathData="M32.08,38.36L32.12,46.62"
-                    android:strokeWidth="0.7"
-                    android:strokeColor="#fff"
-                    android:strokeLineCap="round"
-                    android:strokeLineJoin="round" />
-                <path
-                    android:name="dot3"
-                    android:fillColor="#fff"
-                    android:pathData="M47.59,53.36m-1.5,0a1.5,1.5 0,1 1,3 0a1.5,1.5 0,1 1,-3 0" />
+    <group android:name="drop2_group">
+        <path
+            android:name="line_mid_short"
+            android:fillColor="#00000000"
+            android:pathData="M32.08,38.36L32.12,46.62"
+            android:strokeWidth="0.7"
+            android:strokeColor="#fff"
+            android:strokeLineCap="round"
+            android:strokeLineJoin="round" />
+        <path
+            android:name="dot3"
+            android:fillColor="#fff"
+            android:pathData="M47.59,53.36m-1.5,0a1.5,1.5 0,1 1,3 0a1.5,1.5 0,1 1,-3 0" />
 
-                <path
-                    android:name="drop2"
-                    android:fillColor="#0076c0"
-                    android:pathData="M60.16,47.22c0,2.36 -1.22,3.58 -2.72,3.58s-2.72,-1.22 -2.72,-3.58 2.72,-6.33 2.72,-6.33S60.16,44.86 60.16,47.22Z"
-                    android:strokeWidth="0.7"
-                    android:strokeColor="#fff" />
-            </group>
+        <path
+            android:name="drop2"
+            android:fillColor="#0076c0"
+            android:pathData="M60.16,47.22c0,2.36 -1.22,3.58 -2.72,3.58s-2.72,-1.22 -2.72,-3.58 2.72,-6.33 2.72,-6.33S60.16,44.86 60.16,47.22Z"
+            android:strokeWidth="0.7"
+            android:strokeColor="#fff" />
+    </group>
 
-            <group android:name="drop1_group">
+    <group android:name="drop1_group">
 
-                <path
-                    android:name="dot1"
-                    android:fillColor="#fff"
-                    android:pathData="M14.59,53.36m-1.5,0a1.5,1.5 0,1 1,3 0a1.5,1.5 0,1 1,-3 0" />
+        <path
+            android:name="dot1"
+            android:fillColor="#fff"
+            android:pathData="M14.59,53.36m-1.5,0a1.5,1.5 0,1 1,3 0a1.5,1.5 0,1 1,-3 0" />
 
-                <path
-                    android:name="drop1"
-                    android:fillColor="#0076c0"
-                    android:pathData="M34.76,56.14c0,2.36 -1.22,3.58 -2.72,3.58s-2.72,-1.22 -2.72,-3.58S32,49.82 32,49.82 34.76,53.79 34.76,56.14Z"
-                    android:strokeWidth="0.7"
-                    android:strokeColor="#fff" />
-            </group>
+        <path
+            android:name="drop1"
+            android:fillColor="#0076c0"
+            android:pathData="M34.76,56.14c0,2.36 -1.22,3.58 -2.72,3.58s-2.72,-1.22 -2.72,-3.58S32,49.82 32,49.82 34.76,53.79 34.76,56.14Z"
+            android:strokeWidth="0.7"
+            android:strokeColor="#fff" />
+    </group>
 
-            <group android:name="drop3_group">
-                <path
-                    android:name="dot2"
-                    android:fillColor="#fff"
-                    android:pathData="M17.27,43.78m-2,0a2,2 0,1 1,4 0a2,2 0,1 1,-4 0" />
+    <group android:name="drop3_group">
+        <path
+            android:name="dot2"
+            android:fillColor="#fff"
+            android:pathData="M17.27,43.78m-2,0a2,2 0,1 1,4 0a2,2 0,1 1,-4 0" />
 
-                <path
-                    android:name="dot4"
-                    android:fillColor="#fff"
-                    android:pathData="M45.55,43.78m-2,0a2,2 0,1 1,4 0a2,2 0,1 1,-4 0" />
+        <path
+            android:name="dot4"
+            android:fillColor="#fff"
+            android:pathData="M45.55,43.78m-2,0a2,2 0,1 1,4 0a2,2 0,1 1,-4 0" />
 
-                <path
-                    android:name="drop3"
-                    android:fillColor="#0076c0"
-                    android:pathData="M9.71,47.22c0,2.36 -1.22,3.58 -2.73,3.58s-2.72,-1.22 -2.72,-3.58S7,40.89 7,40.89 9.71,44.86 9.71,47.22Z"
-                    android:strokeWidth="0.7"
-                    android:strokeColor="#fff" />
-            </group>
-            <group android:name="cloud_group">
-            <path
-                android:name="cloud"
-                android:fillColor="#0076c0"
-                android:pathData="M50.51,13.25a11.86,11.86 0,0 0,-4.1 0.72,16.46 16.46,0 0,0 -31.18,3.77 10.15,10.15 0,0 0,-3.67 -0.69,10.45 10.45,0 0,0 0,20.9H50.51a12.35,12.35 0,0 0,0 -24.7Z"
-                android:strokeWidth="1"
-                android:strokeColor="#fff" />
-            </group>
-        </vector>
-    </aapt:attr>
-
-    <target android:name="drop1_group">
-        <aapt:attr name="android:animation">
-            <objectAnimator
-                android:duration="1500"
-                android:propertyName="translateY"
-                android:repeatCount="infinite"
-                android:valueFrom="-20"
-                android:valueTo="24"
-                android:valueType="floatType" />
-        </aapt:attr>
-    </target>
-
-    <target android:name="drop2_group">
-        <aapt:attr name="android:animation">
-            <objectAnimator
-                android:duration="2000"
-                android:propertyName="translateY"
-                android:repeatCount="infinite"
-                android:valueFrom="-20"
-                android:valueTo="24"
-                android:valueType="floatType" />
-        </aapt:attr>
-    </target>
-    <target android:name="drop3_group">
-        <aapt:attr name="android:animation">
-            <objectAnimator
-                android:duration="1000"
-                android:propertyName="translateY"
-                android:repeatCount="infinite"
-                android:valueFrom="-20"
-                android:valueTo="24"
-                android:valueType="floatType" />
-        </aapt:attr>
-    </target>
-    <target android:name="cloud_group">
-        <aapt:attr name="android:animation">
-            <set>
-            <objectAnimator
-                android:duration="3000"
-                android:propertyName="scaleX"
-                android:repeatCount="infinite"
-                android:repeatMode="reverse"
-                android:valueFrom="0.95"
-                android:valueTo="1.01"
-                android:valueType="floatType" />
-            <objectAnimator
-                android:duration="2000"
-                android:propertyName="scaleY"
-                android:repeatCount="infinite"
-                android:repeatMode="reverse"
-                android:valueFrom="0.95"
-                android:valueTo="1.01"
-                android:valueType="floatType" />
-            </set>
-        </aapt:attr>
-    </target>
-</animated-vector>
+        <path
+            android:name="drop3"
+            android:fillColor="#0076c0"
+            android:pathData="M9.71,47.22c0,2.36 -1.22,3.58 -2.73,3.58s-2.72,-1.22 -2.72,-3.58S7,40.89 7,40.89 9.71,44.86 9.71,47.22Z"
+            android:strokeWidth="0.7"
+            android:strokeColor="#fff" />
+    </group>
+    <group android:name="cloud_group">
+        <path
+            android:name="cloud"
+            android:fillColor="#0076c0"
+            android:pathData="M50.51,13.25a11.86,11.86 0,0 0,-4.1 0.72,16.46 16.46,0 0,0 -31.18,3.77 10.15,10.15 0,0 0,-3.67 -0.69,10.45 10.45,0 0,0 0,20.9H50.51a12.35,12.35 0,0 0,0 -24.7Z"
+            android:strokeWidth="1"
+            android:strokeColor="#fff" />
+    </group>
+</vector>

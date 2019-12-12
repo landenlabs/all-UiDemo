@@ -1,46 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<animated-vector
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:aapt="http://schemas.android.com/aapt" >
-    <aapt:attr name="android:drawable">
-        <vector xmlns:android="http://schemas.android.com/apk/res/android"
-            android:height="64dp"
-            android:width="64dp"
-            android:viewportHeight="100"
-            android:viewportWidth="100" >
-            <group
-                android:name="rotationGroup"
-                android:pivotX="50.0"
-                android:pivotY="50.0"
-                android:rotation="45.0" >
-                <path
-                    android:name="v"
-                    android:fillColor="#ff88ff"
-                    android:pathData="M50,70 l 0,-70 70,70 0,0 -70,70z" />
-            </group>
-        </vector>
-    </aapt:attr>
-
-    <target android:name="rotationGroup"> *
-        <aapt:attr name="android:animation">
-            <objectAnimator
-                android:duration="6000"
-                android:propertyName="rotation"
-                android:valueFrom="0"
-                android:valueTo="360" />
-        </aapt:attr>
-    </target>
-
-    <target android:name="v" >
-        <aapt:attr name="android:animation">
-            <set>
-                <objectAnimator
-                    android:duration="3000"
-                    android:propertyName="pathData"
-                    android:valueFrom="M50,70 l 0,-70 70,70 0,0 -70,70z"
-                    android:valueTo="M50,70 l 0,-70 70,0  0,140 -70,0 z"
-                    android:valueType="pathType"/>
-            </set>
-        </aapt:attr>
-    </target>
-</animated-vector>
+<!-- See animated version in drawable-v21 -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="64dp"
+    android:height="64dp"
+    android:viewportWidth="100"
+    android:viewportHeight="100">
+    <group
+        android:name="rotationGroup"
+        android:pivotX="50.0"
+        android:pivotY="50.0"
+        android:rotation="45.0">
+        <path
+            android:name="v"
+            android:fillColor="#ff88ff"
+            android:pathData="M50,70 l 0,-70 70,70 0,0 -70,70z" />
+    </group>
+</vector>
