@@ -23,14 +23,25 @@ package com.landenlabs.all_UiDemo.frag;
  *
  */
 
+import android.graphics.Color;
+import android.graphics.drawable.AnimatedVectorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
+import android.transition.AutoTransition;
+import android.transition.Transition;
+import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TableLayout;
 
 import com.landenlabs.all_UiDemo.R;
 import com.landenlabs.all_UiDemo.Ui;
+
+import java.util.ArrayList;
 
 
 /**
@@ -43,6 +54,7 @@ import com.landenlabs.all_UiDemo.Ui;
 public class OtherLayoutFrag  extends UiFragment implements View.OnClickListener {
 
     private View mRootView;
+    private ArrayList<View> childList;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -70,7 +82,37 @@ public class OtherLayoutFrag  extends UiFragment implements View.OnClickListener
     private void setup() {
         Ui.viewById(mRootView, R.id.card_title_btn).setOnClickListener(this);
         Ui.viewById(mRootView, R.id.card_more_btn).setOnClickListener(this);
+
+        TableLayout tableLayout = Ui.viewById(mRootView, R.id.other_tableLayout);
+        childList = new ArrayList<>();
+        getChildren(tableLayout, childList);
+        int[] randomIdx = { 1, 3, 7, 11, 13 };
+        for (int idx : randomIdx) {
+            if (idx < childList.size()) {
+                View view = childList.get(idx);
+                view.setBackgroundResource(R.drawable.anim_grady1);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    ((AnimatedVectorDrawable)view.getBackground()).start();
+                }
+                view.setOnClickListener(this);
+            }
+        }
     }
+
+    void getChildren(ViewGroup viewGroup, ArrayList<View> childList) {
+        int cnt = viewGroup.getChildCount();
+        for (int idx = 0; idx < cnt; idx++) {
+            View child = viewGroup.getChildAt(idx);
+            if (child instanceof  ViewGroup) {
+                getChildren((ViewGroup)child, childList);
+            } else {
+                childList.add(child);
+            }
+        }
+    }
+
+    AutoTransition autoTransition = new AutoTransition();
+    static final int INCR = 80;
 
     @Override
     public void onClick(View view) {
@@ -81,6 +123,16 @@ public class OtherLayoutFrag  extends UiFragment implements View.OnClickListener
                 break;
             case R.id.card_more_btn:
                 setVis(Ui.viewById(mRootView, R.id.card_more));
+                break;
+            default:
+                // view.setBackgroundColor(Color.GREEN);
+                ViewGroup.LayoutParams params = view.getLayoutParams();
+                autoTransition.setDuration(3000);
+                TransitionManager.beginDelayedTransition((ViewGroup) mRootView, autoTransition);
+                params.width += INCR;
+                params.height += INCR;
+                view.requestLayout();
+                view.invalidate();
                 break;
         }
     }

@@ -304,7 +304,7 @@
 
                 <CheckBox
                     android:id="@+id/p0CheckBox"
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:stateListAnimator="@animator/press"
                     android:text="CheckBox Full" />
@@ -328,7 +328,7 @@
 
                 <CheckedTextView
                     android:id="@+id/p0CheckedTextView1"
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:checkMark="@drawable/checkmark_sel"
                     android:checked="true"
@@ -351,7 +351,7 @@
 
             <ToggleButton
                 android:id="@+id/o0ToggleButton1"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:stateListAnimator="@animator/press"
                 android:text="New ToggleButton" />

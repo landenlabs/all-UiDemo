@@ -74,23 +74,23 @@
     <!-- Splash screen -->
     <ImageView
         android:id="@+id/overlay_bg"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:alpha="0"
         android:scaleType="fitXY"
         android:src="@drawable/paper_dark" />
 
     <ImageView
         android:id="@+id/overlay_logo"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:alpha="0"
         android:src="@drawable/uidemo" />
 
     <TextView
         android:id="@+id/overlay_text"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:alpha="0"
         android:gravity="bottom|center_horizontal"
         android:text="@string/app_desc"

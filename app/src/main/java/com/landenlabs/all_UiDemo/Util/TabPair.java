@@ -75,6 +75,7 @@ public class TabPair {
             });
         }
 
+        // BaseOnTabSelectedListener Not available in suppoert library version v27.1.1
         tabLayout.addOnTabSelectedListener(new TabLayout.BaseOnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {

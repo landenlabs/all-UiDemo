@@ -28,38 +28,49 @@
         android:verticalSpacing="10dp" />
 
     <RadioGroup
+
         android:id="@+id/grid_image_rg"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
         <RadioButton
             android:id="@+id/grid_image_statelist"
-            android:checked="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="State"/>
+            android:text="State - Long press to elevate"/>
+        <RadioButton
+            android:id="@+id/grid_image_brAnim"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Background animation"/>
+        <RadioButton
+            android:id="@+id/grid_image_elev"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Elevate"/>
         <RadioButton
             android:id="@+id/grid_image_scale1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Scale1"/>
+            android:text="ScaleUp - manual scale"/>
         <RadioButton
+            android:checked="true"
             android:id="@+id/grid_image_scale2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Scale2"/>
+            android:text="ScaleUp - Transition API"/>
         <RadioButton
             android:id="@+id/grid_image_down"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Down"/>
+            android:text="ScaleDn - Transition API"/>
         <RadioButton
             android:id="@+id/grid_image_reset"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Reset"/>
+            android:text="Reset size"/>
     </RadioGroup>
 
 </LinearLayout>

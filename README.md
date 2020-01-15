@@ -1,10 +1,14 @@
 # a LanDen Labs - UiDemo
-Android UI Demo
+Android UI Demo<br>
+14-Jan-2020
 
 Demonstrate various Ui Components (useful to see how they change on different API levels 19...23)
 
+  [![Build status](https://travis-ci.org/landenlabs/all_UiDemo.svg?branch=master)](https://travis-ci.org/landenlabs/all_UiDemo)
+
+
 <a name="table"></a>
-#Table of Contents
+# Table of Contents
 1. [Switches] (#switches)
 2. [Checkboxes right side] (#checkboxes-right)
 3. [Lists] (#lists)

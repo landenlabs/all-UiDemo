@@ -25,13 +25,20 @@ package com.landenlabs.all_UiDemo.frag;
 
 import android.animation.AnimatorInflater;
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Color;
+import android.graphics.Point;
+import android.graphics.Rect;
+import android.graphics.drawable.AnimatedVectorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.transition.AutoTransition;
+import android.transition.ChangeBounds;
 import android.transition.Transition;
 import android.transition.TransitionManager;
+import android.transition.TransitionSet;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,11 +46,13 @@ import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.landenlabs.all_UiDemo.ALog.ALog;
 import com.landenlabs.all_UiDemo.R;
 import com.landenlabs.all_UiDemo.Ui;
+import com.landenlabs.all_UiDemo.Util.Translation;
 
 /**
  * Demonstrate grid layout of images.
@@ -55,8 +64,10 @@ import com.landenlabs.all_UiDemo.Ui;
 public class GridImagesFrag  extends UiFragment   {
 
     private View mRootView;
-    RadioGroup mRadioGroup;
-    int dimPx = 85;
+    private static final  int dimPx = 85;
+    private static final  long ANIM_MILLI = 2000;
+    private static final  int incr = 200;
+    private static Rect screenRect;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -81,29 +92,154 @@ public class GridImagesFrag  extends UiFragment   {
         return "??";
     }
 
-    private void setup() {
-
-        GridView gridview = Ui.needViewById(mRootView, R.id.gridview);
-        gridview.setAdapter(new ImageAdapter(getActivity()));
-
-        /*
-        gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View v,
-                                    int position, long id) {
-                Toast.makeText(getActivity(), "" + position,  Toast.LENGTH_SHORT).show();
-            }
-        });
-        */
-
-        mRadioGroup = Ui.needViewById(mRootView, R.id.grid_image_rg);
-
+    @Override
+    public void onResume() {
+        super.onResume();
+        Point pt = new Point();
+        mRootView.getDisplay().getSize(pt);
+        screenRect = new Rect(0, 0, pt.x, pt.y);
     }
 
-    class ImageAdapter extends BaseAdapter {
-        private final Context mContext;
+    private void setup() {
+        GridView gridview = Ui.needViewById(mRootView, R.id.gridview);
+        gridview.setClipChildren(false);
+        RadioGroup radioGroup = Ui.needViewById(mRootView, R.id.grid_image_rg);
+        gridview.setAdapter(new ImageAdapter(getActivity(), radioGroup));
+    }
 
-        ImageAdapter(Context c) {
-            mContext = c;
+    private static void scaleImage(View view, int id, int pos) {
+        if (view instanceof  ImageView) {
+            ImageView imgView = (ImageView)view;
+            imgView.setImageResource(mThumbIds[pos]);
+        }
+        View rootView = view.getRootView();
+        ViewGroup.LayoutParams params = view.getLayoutParams();
+        Transition autoTransition;
+
+        switch (id) {
+            case R.id.grid_image_scale1:
+                view.setBackgroundColor(0x80ff0000);    // red
+                params.width += incr;
+                params.height += incr;
+                view.setLayoutParams(params);
+                break;
+
+            case R.id.grid_image_scale2:
+
+                if (false) {
+                    autoTransition = new AutoTransition();
+                    autoTransition.setDuration(ANIM_MILLI);
+                    TransitionManager.beginDelayedTransition((ViewGroup) rootView, autoTransition);
+                } else {
+                    TransitionSet transitionSet = new TransitionSet();
+                    transitionSet.setDuration(ANIM_MILLI);
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        /*
+                        https://medium.com/@andkulikov/animate-all-the-things-transitions-in-android-914af5477d50
+                        ChangeBounds changeBounds = new ChangeBounds();
+                        changeBounds.setPathMotion(new ArcMotion());
+                        transitionSet.addTransition(changeBounds);
+                        transitionSet.addTransition(new ChangeImageTransform());
+                        transitionSet.addTransition(new ChangeTransform());
+                        transitionSet.addTransition(new Slide());
+                         */
+                        transitionSet.addTransition(new AutoTransition());
+                        transitionSet.addTransition(new Translation());
+                    }
+                    transitionSet.addTransition(new ChangeBounds());
+
+                    TransitionManager.beginDelayedTransition((ViewGroup) rootView, transitionSet);
+                }
+                view.setBackgroundColor(Color.WHITE);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    view.setElevation(params.width/10f);
+                }
+
+                if (view instanceof TextView) {
+                    TextView textView = (TextView)view;
+                    textView.setGravity(Gravity.RIGHT);
+                }
+                // view.setForegroundGravity(Gravity.RIGHT);
+
+                params.width += incr;
+                params.height += incr;
+                // view.requestLayout();
+
+                // Rect viewableRect = new Rect();
+                // view.getGlobalVisibleRect(viewableRect);
+                if (view.getX() < 0) {
+                    // view.setX(incr);
+                    view.setTranslationX(incr*2);
+                    ViewGroup vg = (ViewGroup)view.getParent();
+                    vg.setClipChildren(false);
+                } else if (view.getX() + params.width > screenRect.width()) {
+                    view.setX(screenRect.width() - params.width);
+                    // view.setTranslationX(-view.getX());
+                }
+                view.requestLayout();
+                view.invalidate();
+                break;
+
+            case R.id.grid_image_down:
+                if (params.width > incr) {
+                    view.setBackgroundColor(Color.WHITE);
+                    autoTransition = new AutoTransition();
+                    autoTransition.setDuration(ANIM_MILLI);
+                    TransitionManager.beginDelayedTransition((ViewGroup) rootView, autoTransition);
+                    params.width -= incr;
+                    params.height -= incr;
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        view.setElevation(params.width/10f);
+                    }
+                    view.requestLayout();
+                    view.invalidate();
+                } else {
+                    scaleImage(view, R.id.grid_image_reset, pos);
+                }
+                break;
+
+            case R.id.grid_image_reset:
+                params.width = dimPx;
+                params.height = dimPx;
+                view.setLayoutParams(params);
+                if (view instanceof ImageView) {
+                    view.setBackgroundColor(Color.TRANSPARENT);
+                }
+                break;
+        }
+    }
+
+    // references to our images
+    private static final Integer[] mThumbIds = {
+            R.drawable.image_a, R.drawable.image_c,
+            R.string.app_name, R.drawable.image_f,
+            R.drawable.image_p, R.drawable.image_s,
+
+            R.drawable.image100, R.drawable.image200,
+            R.drawable.image400, R.drawable.image600,
+
+            R.string.app_name, R.drawable.image_c,
+            R.drawable.image_e, R.drawable.image_f,
+            R.drawable.image_p, R.drawable.image_s,
+
+            R.drawable.image_a, R.drawable.image_c,
+            R.drawable.image_e,  R.string.app_name,
+            R.drawable.image_p, R.drawable.image_s,
+
+            R.drawable.image_a, R.drawable.image_c,
+            R.drawable.image_e, R.drawable.image_f,
+            R.drawable.image_p, R.drawable.image_s,
+    };
+
+
+    // =============================================================================================
+    static class  ImageAdapter extends BaseAdapter {
+        private final Context mContext;
+        private RadioGroup mRadioGroup;
+
+        ImageAdapter(Context context, RadioGroup radioGroup) {
+            mContext = context;
+            mRadioGroup = radioGroup;
         }
 
         public int getCount() {
@@ -120,127 +256,99 @@ public class GridImagesFrag  extends UiFragment   {
 
         // create a new ImageView for each item referenced by the Adapter
         public View getView(int position, View convertView, ViewGroup parent) {
-            ImageView imageView;
+            View view;
             if (convertView == null) {
-                // if it's not recycled, initialize some attributes
-                imageView = new ImageView(mContext);
-                imageView.setLayoutParams(new GridView.LayoutParams(dimPx, dimPx));
-                imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-                imageView.setPadding(8, 8, 8, 8);
-
-
-                final int pos = position;
-                imageView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Toast.makeText(view.getContext(), "Grid Pos:" + pos,  Toast.LENGTH_SHORT).show();
-                        int ckId = mRadioGroup.getCheckedRadioButtonId();
-
-                        try {
-                            switch (ckId) {
-                                case R.id.grid_image_statelist:
-                                    break;
-                                case R.id.grid_image_scale1:
-                                case R.id.grid_image_scale2:
-                                case R.id.grid_image_down:
-                                case R.id.grid_image_reset:
-                                    scaleImage(view, ckId, pos);
-                                    break;
-                            }
-                        } catch (Exception ex) {
-                            ALog.w.msg(ex.getMessage());
-                        }
+                // If it's not recycled, initialize some attributes
+                try {
+                    String text = mContext.getString(mThumbIds[position]);
+                    if (text.contains("/drawable/")) {
+                        view = makeImage(position);
+                    } else {
+                        view = makeText(text, position);
                     }
-                });
+                } catch (Resources.NotFoundException ex) {
+                    view = makeImage(position);
+                }
+
                 if (Build.VERSION.SDK_INT >= 21) {
-                    imageView.setStateListAnimator(AnimatorInflater.loadStateListAnimator(mContext, R.animator.press));
+                    view.setStateListAnimator(AnimatorInflater.loadStateListAnimator(mContext, R.animator.press));
                 }
             } else {
-                imageView = (ImageView) convertView;
+                view = convertView;
             }
 
             // Image must be set in background to ue stateList animation
-            imageView.setBackgroundResource(mThumbIds[position]);
+            if (view instanceof  ImageView) {
+                view.setBackgroundResource(mThumbIds[position]);
+            }
+            return view;
+        }
+
+        private TextView makeText(String text, final int pos) {
+            TextView textView = new TextView(mContext);
+            textView.setLayoutParams(new GridView.LayoutParams(dimPx, dimPx));
+            textView.setPadding(8, 8, 8, 8);
+            textView.setText(text);
+            textView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    doAction(view, pos);
+                }
+            });
+            return textView;
+        }
+
+        private ImageView makeImage(final int pos) {
+            ImageView imageView = new ImageView(mContext);
+            imageView.setLayoutParams(new GridView.LayoutParams(dimPx, dimPx));
+            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+            imageView.setPadding(8, 8, 8, 8);
+
+            imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    doAction(view, pos);
+                }
+            });
+
             return imageView;
         }
 
-        private void scaleImage(View view, int id, int pos) {
-            ImageView imgView = (ImageView)view;
-            imgView.setImageResource(mThumbIds[pos]);
-            ViewGroup.LayoutParams params = view.getLayoutParams();
-            Transition autoTransition;
-            int incr = 80;
-            switch (id) {
-                case R.id.grid_image_scale1:
-                    imgView.setBackgroundColor(Color.RED);
-                    params.width += incr;
-                    params.height += incr;
-                    view.setLayoutParams(params);
-                    break;
+        private void doAction(View view, int pos) {
+            Toast.makeText(view.getContext(), "Grid Pos:" + pos, Toast.LENGTH_SHORT).show();
+            int ckId = mRadioGroup.getCheckedRadioButtonId();
 
-                case R.id.grid_image_scale2:
-                    imgView.setBackgroundColor(Color.GREEN);
-                    autoTransition = new AutoTransition();
-                    autoTransition.setDuration(3000);
-
-                    // With this overload you can control actual transition animation
-                    TransitionManager.beginDelayedTransition((ViewGroup) mRootView, autoTransition);
-                    // After `beginDelayedTransition()` function perform changes to the layout
-                    // Transitions framework will detect those changes and perform appropriate animations
-                    params.width += incr;
-                    params.height += incr;
-                    view.requestLayout();
-                    view.invalidate();
-                    break;
-
-                case R.id.grid_image_down:
-                    if (params.width > incr) {
-                        imgView.setBackgroundColor(Color.GREEN);
-                        autoTransition = new AutoTransition();
-                        autoTransition.setDuration(3000);
-
-                        // With this overload you can control actual transition animation
-                        TransitionManager.beginDelayedTransition((ViewGroup) mRootView, autoTransition);
-                        // After `beginDelayedTransition()` function perform changes to the layout
-                        // Transitions framework will detect those changes and perform appropriate animations
-                        params.width -= incr;
-                        params.height -= incr;
-                        view.requestLayout();
-                        view.invalidate();
-                    }
-                    break;
-
-                case R.id.grid_image_reset:
-                    params.width = dimPx;
-                    params.height = dimPx;
-                    view.setLayoutParams(params);
-                    imgView.setBackgroundColor(Color.TRANSPARENT);
-                    break;
+            try {
+                switch (ckId) {
+                    case R.id.grid_image_statelist:
+                        break;
+                    case R.id.grid_image_brAnim:
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                            if (view instanceof ImageView) {
+                                ((ImageView)view).setImageResource(mThumbIds[pos]);
+                            }
+                            view.setBackgroundResource(R.drawable.anim_grady1);
+                            ((AnimatedVectorDrawable)view.getBackground()).start();
+                        }
+                        break;
+                    case R.id.grid_image_elev:
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                            // view.setTranslationZ(20.0f);
+                            // view.setZ(20.0f);
+                            view.setElevation(20.0f);
+                        }
+                        break;
+                    case R.id.grid_image_scale1:
+                    case R.id.grid_image_scale2:
+                    case R.id.grid_image_down:
+                    case R.id.grid_image_reset:
+                        scaleImage(view, ckId, pos);
+                        break;
+                }
+            } catch (Exception ex) {
+                ALog.w.msg(ex.getMessage());
             }
         }
-
-        // references to our images
-        private final Integer[] mThumbIds = {
-                R.drawable.image_a, R.drawable.image_c,
-                R.drawable.image_e, R.drawable.image_f,
-                R.drawable.image_p, R.drawable.image_s,
-
-                R.drawable.image100, R.drawable.image200,
-                R.drawable.image400, R.drawable.image600,
-
-                R.drawable.image_a, R.drawable.image_c,
-                R.drawable.image_e, R.drawable.image_f,
-                R.drawable.image_p, R.drawable.image_s,
-
-                R.drawable.image_a, R.drawable.image_c,
-                R.drawable.image_e, R.drawable.image_f,
-                R.drawable.image_p, R.drawable.image_s,
-
-                R.drawable.image_a, R.drawable.image_c,
-                R.drawable.image_e, R.drawable.image_f,
-                R.drawable.image_p, R.drawable.image_s,
-
-
-        };
     }
+
 }

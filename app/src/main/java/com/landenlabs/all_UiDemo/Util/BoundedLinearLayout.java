@@ -67,13 +67,13 @@ import com.landenlabs.all_UiDemo.R;
  */
 public class BoundedLinearLayout extends LinearLayout {
 
-    private final int mBoundedWidthPixel;       // max width
-    private final int mBoundedHeightPixel;      // max height
-    private final float mBoundedWidthPercent;
-    private final float mBoundedHeightPercent;
-    private final boolean mEnabled;
-    private final float mAspectWdivH;
-    private final int mIncludeLayoutResId;
+    private int mBoundedWidthPixel;       // max width
+    private int mBoundedHeightPixel;      // max height
+    private float mBoundedWidthPercent;
+    private float mBoundedHeightPercent;
+    private boolean mEnabled;
+    private float mAspectWdivH;
+    private int mIncludeLayoutResId;
 
     private static final int MAX_INT = Integer.MAX_VALUE;
 
@@ -90,6 +90,15 @@ public class BoundedLinearLayout extends LinearLayout {
 
     public BoundedLinearLayout(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs);
+        init(context, attrs, defStyle);
+    }
+
+    public BoundedLinearLayout(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        init(context, attrs, 0);
+    }
+
+    private void init(Context context, AttributeSet attrs, int defStyle) {
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.BoundedLinearLayout, defStyle, MAX_INT);
         mBoundedWidthPixel = a.getDimensionPixelSize(R.styleable.BoundedLinearLayout_width, MAX_INT);
         mBoundedHeightPixel = a.getDimensionPixelSize(R.styleable.BoundedLinearLayout_height, MAX_INT);
@@ -98,28 +107,10 @@ public class BoundedLinearLayout extends LinearLayout {
         mEnabled = a.getBoolean(R.styleable.BoundedLinearLayout_enabled, true);
         mAspectWdivH = a.getFloat(R.styleable.BoundedLinearLayout_aspectWdivH, 0);
         mIncludeLayoutResId = a.getResourceId(R.styleable.BoundedLinearLayout_include, -1);
-
         a.recycle();
-        init(context);
-    }
 
-    public BoundedLinearLayout(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.BoundedLinearLayout, 0, 0);
-        mBoundedWidthPixel = a.getDimensionPixelSize(R.styleable.BoundedLinearLayout_width, MAX_INT);
-        mBoundedHeightPixel = a.getDimensionPixelSize(R.styleable.BoundedLinearLayout_height, MAX_INT);
-        mBoundedWidthPercent = a.getFloat(R.styleable.BoundedLinearLayout_widthPercent, 1);
-        mBoundedHeightPercent = a.getFloat(R.styleable.BoundedLinearLayout_heightPercent, 1);
-        mEnabled = a.getBoolean(R.styleable.BoundedLinearLayout_enabled, true);
-        mAspectWdivH = a.getFloat(R.styleable.BoundedLinearLayout_aspectWdivH, 0);
-        mIncludeLayoutResId = a.getResourceId(R.styleable.BoundedLinearLayout_include, -1);
-
-        a.recycle();
-        init(context);
-    }
-
-    private void init(Context context) {
-        LayoutInflater inflater = SysUtils.getServiceSafe(context, Context.LAYOUT_INFLATER_SERVICE);
+        // LayoutInflater inflater = SysUtils.getServiceSafe(context, Context.LAYOUT_INFLATER_SERVICE);
+        LayoutInflater inflater = LayoutInflater.from(context);
         if (mIncludeLayoutResId > 0) {
             View view = inflater.inflate(mIncludeLayoutResId, this);
             this.addView(view);

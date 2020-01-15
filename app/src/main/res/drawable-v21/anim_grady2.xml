@@ -2,12 +2,12 @@
     xmlns:aapt="http://schemas.android.com/aapt" >
     <aapt:attr name="android:drawable">
         <vector
-            android:width="100dp"
+            android:width="2dp"
             android:height="100dp"
             android:viewportHeight="100"
             android:viewportWidth="100">
 
-            <group android:name="grad">
+            <garoup android:name="grad">
                 <path
                     android:pathData="M1,1 H99 V99 H1Z">
                     <aapt:attr name="android:fillColor">
@@ -21,7 +21,7 @@
                             android:type="linear" />
                     </aapt:attr>
                 </path>
-            </group>
+            </garoup>
         </vector>
     </aapt:attr>
 

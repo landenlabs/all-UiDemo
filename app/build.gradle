@@ -8,25 +8,25 @@ android {
     }
     compileSdkVersion 28
 
-    // As of gradle 3.x this is no longer needed.
-    // buildToolsVersion '26.0.2'
-
     defaultConfig {
         applicationId 'com.landenlabs.all_uidemo'
         minSdkVersion 19
         targetSdkVersion 28
-        versionName '2.01'
-        versionCode 201
+        versionName '3.01'
+        versionCode 301
 
         // renderscriptTargetApi 23
         // renderscriptSupportModeEnabled true
+
         signingConfig signingConfigs.release
 
         // Unit test
         // http://robolectric.org/migrating/#migrating-to-40
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
-
+    applicationVariants.all { variant ->
+        variant.resValue "string", "versionName", "version " + variant.versionName
+    }
     buildTypes {
         release {
             minifyEnabled true
@@ -45,6 +45,13 @@ android {
                 'RtlSymmetry', 'RtlHardcoded', 'ContentDescription',
                 'MissingTranslation', 'ValidFragment', 'UnusedAttribute',
                 'FieldCanBeLocal', 'LocalSuppress', 'HardcodedText', 'Typos'
+    }
+
+    gradle.projectsEvaluated {
+        tasks.withType(JavaCompile) {
+            // Enable verbose lint reporting during build.
+            options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+        }
     }
 
     productFlavors {
@@ -76,15 +83,20 @@ android {
 }
 
 dependencies {
-    // implementation fileTree(include: ['*.jar'], dir: 'libs')
+    // https://developer.android.com/topic/libraries/support-library/revisions
+    // Last non-AndroidX version is 28.9.9
     implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'com.android.support:support-v4:28.0.0'
     implementation 'com.android.support:support-media-compat:28.0.0'
     implementation 'com.android.support:percent:28.0.0'
     implementation 'com.android.support:design:28.0.0'
+    implementation 'com.android.support:cardview-v7:28.0.0'
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
 
-    implementation 'com.google.android.gms:play-services-analytics:16.0.7'
+    // https://developers.google.com/android/guides/releases
+    // Version 17.0.0 forces use of AndroidX
+    // implementation 'com.google.android.gms:play-services-analytics:17.0.0'
+    implementation 'com.google.android.gms:play-services-analytics:16.0.8'
     implementation 'net.hockeyapp.android:HockeySDK:5.1.1'
 
     // Unit testing
@@ -94,4 +106,11 @@ dependencies {
     })
     testImplementation "org.assertj:assertj-core:3.8.0"
     testImplementation 'org.robolectric:robolectric:4.1'
+}
+
+android.applicationVariants.all { variant ->
+    variant.outputs.all {
+        outputFileName = "all-UiDemo-${variant.name}-${variant.versionName}.apk"
+        println "out name= $outputFileName"
+    }
 }
