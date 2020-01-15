@@ -69,12 +69,14 @@ android {
     }
 
     // Load signing config.
-    def props = new Properties()
-    props.load(new FileInputStream(rootProject.file("release.properties")))
-    android.signingConfigs.release.storeFile rootProject.file(props.keyStore)
-    android.signingConfigs.release.storePassword props.keyStorePassword
-    android.signingConfigs.release.keyAlias props.keyAlias
-    android.signingConfigs.release.keyPassword props.keyAliasPassword
+    if (file("release.properties").exists()) {
+        def props = new Properties()
+        props.load(new FileInputStream(rootProject.file("release.properties")))
+        android.signingConfigs.release.storeFile rootProject.file(props.keyStore)
+        android.signingConfigs.release.storePassword props.keyStorePassword
+        android.signingConfigs.release.keyAlias props.keyAlias
+        android.signingConfigs.release.keyPassword props.keyAliasPassword
+    }
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
