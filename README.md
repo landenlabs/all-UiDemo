@@ -6,6 +6,7 @@ Demonstrate various Ui Components (useful to see how they change on different AP
 
   [![Build status](https://travis-ci.org/landenlabs/all_UiDemo.svg?branch=master)](https://travis-ci.org/landenlabs/all_UiDemo)
 
+API 28, pre Android X
 
 <a name="table"></a>
 # Table of Contents
