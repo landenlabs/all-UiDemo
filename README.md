@@ -1,10 +1,14 @@
 # a LanDen Labs - UiDemo
 Android UI Demo<br>
-14-Jan-2020
+<br>
+15-Jan-2020
+<br>
+API 28, Android, Java
 
 Demonstrate various Ui Components (useful to see how they change on different API levels 19...23)
 
-  [![Build status](https://travis-ci.org/landenlabs/all_UiDemo.svg?branch=master)](https://travis-ci.org/landenlabs/all_UiDemo)
+[![Build status](https://travis-ci.org/landenlabs/all_UiDemo.svg?branch=master)](https://travis-ci.org/landenlabs/all_UiDemo)
+[![Known Vulnerabilities](https://snyk.io/test/github/landenlabs/all_UiDemo/badge.svg)](https://snyk.io/test/github/landenlabs/all_UiDemo)
 
 API 28, pre Android X
 

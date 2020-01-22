@@ -555,28 +555,43 @@
                     android:id="@+id/long_text6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+
                     android:ellipsize="end"
-                    android:lines="1"
+                    android:singleLine="true"
+                    android:scrollHorizontally="true"
+
                     android:text="@string/long_string"
                     android:textAppearance="@style/TextLongA" />
 
                 <!-- Tap on text to start marquee -->
                 <TextView
                     android:clickable="true"
-                    android:focusable="true"
                     android:focusableInTouchMode="true"
-                    android:state_selected = "true"
+
+                    android:ellipsize="marquee"
+                    android:singleLine="true"
+                    android:scrollHorizontally="true"
 
                     android:id="@+id/long_text7"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:ellipsize="marquee"
-                    android:singleLine="true"
-                    android:marqueeRepeatLimit="marquee_forever"
-                    android:scrollHorizontally="true"
                     android:text="@string/long_string"
                     android:textAppearance="@style/TextLongA" />
 
+                <!-- Scrollable horizontal text trick to avoid using HorizontalScroll parent -->
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:cursorVisible="false"
+                    android:singleLine="true"
+                    android:inputType="none"
+
+                    android:text="@string/long_string"
+                    android:textColor="#fff"
+                    android:textAppearance="@style/TextLongA" />
 
             </LinearLayout>
 
