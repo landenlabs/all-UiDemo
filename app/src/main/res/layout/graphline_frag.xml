@@ -16,7 +16,8 @@
         android:text="Line Graph"
         />
 
-    <FrameLayout
+    <LinearLayout
+        android:orientation="vertical"
         android:id="@+id/graph_line_surfaceview"
 
         android:padding="10dp"
@@ -28,5 +29,5 @@
         android:layout_weight="1">
 
 
-    </FrameLayout>
+    </LinearLayout>
 </LinearLayout>

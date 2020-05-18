@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ The Weather Company Confidential
+  ~ Unpublished Copyright (c) 2018 The Weather Company, All Rights Reserved.
+  -->
+<GridView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/picker_list"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/picker_height"
+    android:choiceMode="singleChoice"
+    android:divider="@null"
+    android:dividerHeight="0dp"
+    />

@@ -29,8 +29,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.annotation.NonNull;
-import android.support.v4.app.FragmentActivity;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -41,6 +39,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
 
 import com.landenlabs.all_UiDemo.R;
 import com.landenlabs.all_UiDemo.Ui;
@@ -57,18 +58,18 @@ import java.util.Locale;
 @SuppressWarnings("Convert2Lambda")
 public class ScreenFrag extends UiFragment {
 
-    FragmentActivity m_context;
-    View m_rootView;
+    private FragmentActivity m_context;
+    private View m_rootView;
 
-    LinearLayout m_layout;
-    TextView m_screenDevice;
-    ImageView m_horzWindowArrow;
-    ImageView m_vertPanelArrow;
-    TextView m_horzWindowText;
-    TextView m_vertPanelText;
-    DrawView m_drawPoints;
+    private LinearLayout m_layout;
+    private TextView m_screenDevice;
+    private ImageView m_horzWindowArrow;
+    private ImageView m_vertPanelArrow;
+    private TextView m_horzWindowText;
+    private TextView m_vertPanelText;
+    private DrawView m_drawPoints;
 
-    DisplayMetrics m_displayMetrics;
+    private DisplayMetrics m_displayMetrics;
 
     static final int MSG_GET_UI_SIZE = 1;
     private final Handler m_handler = new Handler() {
@@ -121,7 +122,7 @@ public class ScreenFrag extends UiFragment {
 
     @Override
     public View onCreateView(
-            @NonNull LayoutInflater inflater, ViewGroup container,  Bundle savedInstanceState) {
+            @NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
         

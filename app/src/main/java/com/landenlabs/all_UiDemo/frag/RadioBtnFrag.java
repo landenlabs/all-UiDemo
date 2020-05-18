@@ -29,14 +29,15 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.StateListDrawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.graphics.drawable.DrawableCompat;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+
+import androidx.annotation.NonNull;
+import androidx.core.graphics.drawable.DrawableCompat;
 
 import com.landenlabs.all_UiDemo.R;
 import com.landenlabs.all_UiDemo.Ui;
@@ -119,7 +120,7 @@ public class RadioBtnFrag  extends UiFragment {
 
             String resName = "tab_" + pageName.toLowerCase();
             int resID = getResources().getIdentifier(resName, "drawable", getContextSafe().getPackageName());
-            Drawable tabBtnIcon = getResources().getDrawable(resID);
+            Drawable tabBtnIcon = getResources().getDrawable(resID, getTheme());
             if (tabBtnIcon != null) {
 
                 if (Build.VERSION.SDK_INT >= 21) {

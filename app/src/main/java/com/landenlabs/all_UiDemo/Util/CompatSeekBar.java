@@ -34,6 +34,8 @@ import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 
+import androidx.appcompat.widget.AppCompatSeekBar;
+
 import com.landenlabs.all_UiDemo.R;
 
 
@@ -42,7 +44,7 @@ import com.landenlabs.all_UiDemo.R;
  * @see <a href="http://landenlabs.com/android"> author's web-site </a>
  */
 
-public class CompatSeekBar extends android.support.v7.widget.AppCompatSeekBar {
+public class CompatSeekBar extends AppCompatSeekBar {
 
     private final Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.FILTER_BITMAP_FLAG);
 
@@ -122,7 +124,7 @@ public class CompatSeekBar extends android.support.v7.widget.AppCompatSeekBar {
         a.recycle();
 
         if (tickMark != -1) {
-            mTickMarkDr = getResources().getDrawable(tickMark);
+            mTickMarkDr = getResources().getDrawable(tickMark, getContext().getTheme());
         }
     }
 

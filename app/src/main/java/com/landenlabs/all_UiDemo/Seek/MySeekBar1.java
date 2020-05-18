@@ -5,8 +5,9 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
-import android.support.v7.widget.AppCompatSeekBar;
 import android.util.AttributeSet;
+
+import androidx.appcompat.widget.AppCompatSeekBar;
 
 /**
  * Custom seekbar with text bubble over thumbnail position.

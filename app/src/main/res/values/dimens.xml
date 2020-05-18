@@ -24,4 +24,8 @@
 
 
     <integer name="scrollbar_fade_delay">500000</integer>
+
+    <!-- Picker2 -->
+    <dimen name="picker_height">75dp</dimen>
+    <dimen name="picker_row_height">25dp</dimen>
 </resources>

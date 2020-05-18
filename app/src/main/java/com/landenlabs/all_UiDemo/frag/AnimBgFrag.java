@@ -29,12 +29,13 @@ import android.animation.ValueAnimator;
 import android.graphics.Matrix;
 import android.graphics.RectF;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
+
+import androidx.annotation.NonNull;
 
 import com.landenlabs.all_UiDemo.R;
 import com.landenlabs.all_UiDemo.Ui;

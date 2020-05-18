@@ -38,7 +38,6 @@ import android.graphics.RectF;
 import android.graphics.Shader;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,6 +45,8 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
 
 import com.landenlabs.all_UiDemo.R;
 import com.landenlabs.all_UiDemo.Ui;
@@ -248,7 +249,7 @@ public class ImageOverFrag  extends UiFragment
         ambientTv.setText(String.format("Ambient %.1f", ambient));
 
         // http://stackoverflow.com/questions/1705239/how-should-i-give-images-rounded-corners-in-android
-        BitmapDrawable botDrawable = (BitmapDrawable)getResources().getDrawable(R.drawable.paper_pink);
+        BitmapDrawable botDrawable = (BitmapDrawable)getResources().getDrawable(R.drawable.paper_pink, getTheme());
         int imgWidth = botDrawable.getIntrinsicWidth();
         int imgHeight = botDrawable.getIntrinsicHeight();
 

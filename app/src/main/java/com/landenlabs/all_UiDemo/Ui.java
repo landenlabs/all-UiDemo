@@ -30,13 +30,14 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Outline;
 import android.os.Build;
-import android.support.annotation.RequiresApi;
-import android.support.v4.app.FragmentActivity;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewOutlineProvider;
 import android.view.WindowManager;
 import android.widget.TextView;
+
+import androidx.annotation.RequiresApi;
+import androidx.fragment.app.FragmentActivity;
 
 import com.landenlabs.all_UiDemo.Util.SysUtils;
 

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:background="#d0d0ff"
+        android:padding="10dp"
+        android:text="- Pickers -" />
+
+    <LinearLayout
+        android:id="@+id/picker_controls"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:padding="10dp"
+            android:layout_gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="Wheel" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_border_transparent2"
+            android:orientation="horizontal"
+            android:paddingStart="20dp">
+
+            <TextView
+                android:textSize="20sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-black"
+                android:layout_gravity="center_vertical"
+                android:text="Visible Items >" />
+
+            <com.landenlabs.all_UiDemo.Util.Picker2
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:entries="@array/pickerRows"
+                app:visibleItems="3"
+                app:wheel="true" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/picker_controls"
+        android:layout_alignParentBottom="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="#ccc"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:textSize="20sp"
+                android:textColor="#808"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-medium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Picker1" />
+
+            <com.landenlabs.all_UiDemo.Util.Picker1
+                android:backgroundTint="#f8f"
+                android:background="@drawable/round_border_transparent2"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:entries="@array/states8" />
+
+            <TextView
+                android:textSize="20sp"
+                android:textColor="#880"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-medium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Picker2" />
+
+            <com.landenlabs.all_UiDemo.Util.Picker2
+                android:backgroundTint="#ff8"
+                android:background="@drawable/round_border_transparent2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:visibleItems="5"
+                app:gravityItems="left"
+                app:widthItems="wrap_content"
+                android:entries="@array/states8" />
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</RelativeLayout>

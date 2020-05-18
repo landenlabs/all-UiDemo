@@ -25,13 +25,13 @@ package com.landenlabs.all_UiDemo.Util;
 
 import android.annotation.SuppressLint;
 import android.os.Build;
-import android.support.design.widget.TabLayout;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 
+import com.google.android.material.tabs.TabLayout;
 import com.landenlabs.all_UiDemo.ALog.ALog;
 
 /**

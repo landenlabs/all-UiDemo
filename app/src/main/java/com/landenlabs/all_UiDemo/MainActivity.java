@@ -29,13 +29,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -44,6 +37,14 @@ import android.view.SubMenu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import com.landenlabs.all_UiDemo.ALog.ALog;
 import com.landenlabs.all_UiDemo.ALog.UncaughtExceptionHandler;
@@ -65,12 +66,6 @@ import com.landenlabs.all_UiDemo.Util.PageItem;
 public class MainActivity extends AppCompatActivity {
 
     /**
-     * The {@link android.support.v4.view.PagerAdapter} that will provide
-     * fragments for each of the sections. We use a
-     * {@link FragmentPagerAdapter} derivative, which will keep every
-     * loaded fragment in memory. If this becomes too memory intensive, it
-     * may be best to switch to a
-     * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
     private SectionsPagerAdapter mSectionsPagerAdapter;
 
@@ -273,6 +268,7 @@ public class MainActivity extends AppCompatActivity {
             new PageItem( "CkBox List", R.layout.page_list1),       // min api 21
             new PageItem( "Custom List",  R.layout.page_anim_list ),
             new PageItem( "RecyclerView", R.layout.page_recyclerview),
+            new PageItem( "Picker", R.layout.pickers),
 
             new PageItem( "Toggle/Switch",  R.layout.page_switches),
             new PageItem( "Checkbox Right",  R.layout.page_checkbox_right ),
@@ -314,7 +310,7 @@ public class MainActivity extends AppCompatActivity {
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
      * one of the sections/tabs/pages.
      */
-    class SectionsPagerAdapter extends FragmentPagerAdapter {
+    static class SectionsPagerAdapter extends FragmentPagerAdapter {
 
         SectionsPagerAdapter(FragmentManager fm) {
             super(fm);

@@ -4,7 +4,8 @@ import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.annotation.TargetApi;
 import android.os.Build;
-import android.support.annotation.Nullable;
+
+import androidx.annotation.Nullable;
 
 
 /**

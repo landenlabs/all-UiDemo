@@ -32,7 +32,6 @@ import android.graphics.Rect;
 import android.graphics.drawable.AnimatedVectorDrawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.transition.AutoTransition;
 import android.transition.ChangeBounds;
 import android.transition.Transition;
@@ -48,6 +47,8 @@ import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 
 import com.landenlabs.all_UiDemo.ALog.ALog;
 import com.landenlabs.all_UiDemo.R;

@@ -27,7 +27,6 @@ import android.animation.AnimatorInflater;
 import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +34,8 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
 
 import com.landenlabs.all_UiDemo.MainActivity;
 import com.landenlabs.all_UiDemo.R;

@@ -63,10 +63,10 @@ public class RenderScriptUtils {
         public Blur(Context context) {
             mRS = RenderScript.create(context);
 
-            mHorizontalScript = new ScriptC_horzblur(mRS, mRS.getApplicationContext()
-                    .getResources(), R.raw.horzblur);
-            mVerticalScript = new ScriptC_vertblur(mRS, mRS.getApplicationContext().getResources(),
-                    R.raw.vertblur);
+            // mHorizontalScript = new ScriptC_horzblur(mRS, mRS.getApplicationContext() .getResources(), R.raw.horzblur);
+            mHorizontalScript = new ScriptC_horzblur(mRS);
+            // mVerticalScript = new ScriptC_vertblur(mRS, mRS.getApplicationContext().getResources(), R.raw.vertblur);
+            mVerticalScript = new ScriptC_vertblur(mRS);
         }
 
         public Bitmap blur(Bitmap src, int radius) {
@@ -157,8 +157,8 @@ public class RenderScriptUtils {
 
         public Tint(Context context) {
             mRS = RenderScript.create(context);
-            mTintScript = new ScriptC_tint(mRS, mRS.getApplicationContext().getResources(),
-                    R.raw.tint);
+            // mTintScript = new ScriptC_tint(mRS, mRS.getApplicationContext().getResources(), R.raw.tint);
+            mTintScript = new ScriptC_tint(mRS);
         }
 
         public Bitmap tint(Bitmap src, int argb) {

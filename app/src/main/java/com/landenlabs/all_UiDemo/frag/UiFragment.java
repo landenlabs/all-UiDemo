@@ -51,10 +51,12 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
-import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.view.Window;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.landenlabs.all_UiDemo.ALog.ALog;
 
@@ -87,7 +89,7 @@ public abstract class UiFragment extends Fragment {
     }
 
     @NonNull
-    private android.support.v4.app.FragmentManager getFragmentMgrSafe() {
+    private FragmentManager getFragmentMgrSafe() {
         return Objects.requireNonNull(getFragmentManager());
     }
 

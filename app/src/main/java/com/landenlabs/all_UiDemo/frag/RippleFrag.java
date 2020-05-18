@@ -29,11 +29,12 @@ import android.graphics.drawable.RippleDrawable;
 import android.graphics.drawable.StateListDrawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+
+import androidx.annotation.NonNull;
 
 import com.landenlabs.all_UiDemo.ALog.ALog;
 import com.landenlabs.all_UiDemo.R;

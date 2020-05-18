@@ -58,7 +58,7 @@
         android:text="Constrain chain packed, bias=0.0"
         android:textSize="24sp" />
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#8ff">
@@ -113,7 +113,7 @@
             android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/h1_3" />
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.ConstraintLayout>
 
     <TextView
         android:layout_width="match_parent"
@@ -123,7 +123,7 @@
         android:text="Constrain chain spread, bias=0.0"
         android:textSize="24sp" />
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#fcf">
@@ -178,7 +178,7 @@
             android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/h2_3" />
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.ConstraintLayout>
 
 
     <TextView
@@ -189,7 +189,7 @@
         android:text="Constrain chain default, width=0dp, no bias"
         android:textSize="24sp" />
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#ffc">
@@ -246,7 +246,7 @@
             android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/h3_3" />
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.ConstraintLayout>
 
 
     <TextView
@@ -257,7 +257,7 @@
         android:text="Constrain chain default, width=90dp, no bias"
         android:textSize="24sp" />
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#ffc">
@@ -314,10 +314,10 @@
             android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/h4_3" />
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.ConstraintLayout>
 
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.ConstraintLayout
         android:background="#b86"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -449,7 +449,7 @@
         </FrameLayout>
 
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.ConstraintLayout>
 </LinearLayout>
 
 

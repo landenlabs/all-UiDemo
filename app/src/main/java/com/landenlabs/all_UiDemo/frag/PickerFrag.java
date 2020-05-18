@@ -33,18 +33,44 @@ import androidx.annotation.NonNull;
 import com.landenlabs.all_UiDemo.R;
 
 /**
- * Demonstrate Checkbox ui components with checkmark on left margin.
+ * Demonstrate list of checkboxes (two different types).
+ *   CheckBox  does not honor the single selection mode of ListView
+ *   CheckedTextView honors the single selection mode of ListView
+ * and most of the standard pre-built list row layouts.
  *
  * @author Dennis Lang (LanDen Labs)
  * @see <a href="http://landenlabs.com/android"> author's web-site </a>
  */
-public class CheckboxLeftDemoFrag extends CheckboxDemoFrag {
+public class PickerFrag extends UiFragment  {
+
+    // ---- Local Data ----
+    private View mRootView;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        mRootView = inflater.inflate(R.layout.pickers, container, false);
 
-        mRootView = inflater.inflate(R.layout.checkbox_left_demo, container, false);
         setup();
         return mRootView;
+    }
+
+    @Override
+    public int getFragId() {
+        return R.id.pickers_id;
+    }
+
+    @Override
+    public String getName() {
+        return "Pickers";
+    }
+
+    @Override
+    public String getDescription() {
+        return "??";
+    }
+
+
+    private void setup() {
+        // Ui.<RadioButton>viewById(mRootView, R.id.row_ckBoxRb).setOnCheckedChangeListener(this);
     }
 }

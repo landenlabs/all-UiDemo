@@ -26,14 +26,17 @@ package com.landenlabs.all_UiDemo.frag;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.LinearGradient;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.Shader;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+
+import androidx.annotation.NonNull;
 
 import com.landenlabs.all_UiDemo.ALog.ALog;
 import com.landenlabs.all_UiDemo.R;
@@ -62,16 +65,26 @@ public class GraphLineFrag  extends UiFragment implements View.OnClickListener {
     // =============================================================================================
     public static class LineView extends View {
 
-        final float mXScale = 5;
+        float mXScale = 5;
         float mLineWidth = 2;
         int   mColor = Color.RED;
+        boolean mAddShadow = false;
 
-        private final Paint paint = new Paint();
+        private final Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
         private final Path path = new Path();
         private final ArrayList<Float> mPoints = new ArrayList<>();
+        private Shader shader;
 
         public LineView(Context context) {
             super(context);
+            paint.setStyle(Paint.Style.STROKE);
+            paint.setAntiAlias(true);
+        }
+
+        public void enableShadow(boolean enable) {
+            mAddShadow = enable;
+            // paint.setStyle(Paint.Style.FILL_AND_STROKE);
+            // paint.setStyle(Paint.Style.FILL);
         }
 
         @Override
@@ -80,12 +93,39 @@ public class GraphLineFrag  extends UiFragment implements View.OnClickListener {
 
             paint.setColor(mColor);
             paint.setStrokeWidth(mLineWidth);
-            paint.setStyle(Paint.Style.STROKE);
 
             if (!mPoints.isEmpty()) {
+                path.reset();
                 path.moveTo(0, mPoints.get(0));
                 for (int idx = 1; idx < mPoints.size(); idx++) {
                     path.lineTo(idx * mXScale, mPoints.get(idx));
+                }
+
+                if (mAddShadow) {
+                    paint.setShader(null);
+                    paint.setStyle(Paint.Style.STROKE);
+                    canvas.drawPath(path, paint);
+
+                    // Close graph.
+                    path.lineTo((mPoints.size()-1) * mXScale, getHeight());
+                    path.lineTo(0, getHeight());
+                    path.close();
+
+                    if (shader == null) {
+                        shader = new LinearGradient(
+                                0, 0,
+                                0, getHeight(),
+                                Color.WHITE,0,
+                                Shader.TileMode.CLAMP);
+                    }
+
+                    paint.setShader(shader);
+                    paint.setStyle(Paint.Style.FILL);   // Paint.Style.FILL_AND_STROKE);
+
+                    // path.setFillType(Path.FillType.WINDING);
+                    // path.setFillType(Path.FillType.INVERSE_WINDING);
+                    // path.setFillType(Path.FillType.EVEN_ODD);
+                    // path.setFillType(Path.FillType.INVERSE_EVEN_ODD);
                 }
 
                 canvas.drawPath(path, paint);
@@ -135,7 +175,7 @@ public class GraphLineFrag  extends UiFragment implements View.OnClickListener {
 
         FrameLayout.LayoutParams lp =
                 new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT,
-                        FrameLayout.LayoutParams.MATCH_PARENT);
+                        400);
 
         mGraphView.removeAllViews();
 
@@ -144,8 +184,12 @@ public class GraphLineFrag  extends UiFragment implements View.OnClickListener {
         final int maxRange = 400;
         try {
             //noinspection PointlessArithmeticExpression
-            mLineView1 = createLine(mGraphView, lp, 0xff801010, 2, updateMill*1, maxPoints, maxRange/2);
-            mLineView2 = createLine(mGraphView, lp, 0xff108010, 4, updateMill*2, maxPoints, maxRange);
+            mLineView1 = createLine(mGraphView, lp, 0xffff4040, 2, updateMill*1, maxPoints, maxRange/2);
+            int lineScale2 = 4;
+            mLineView2 = createLine(mGraphView, lp, 0xff40ff40, 4, updateMill*2, maxPoints/lineScale2, maxRange);
+            mLineView2.enableShadow(true);
+            mLineView2.mXScale *= lineScale2;
+
         } catch (Exception ex) {
             ALog.e.tagMsg(this, ex);
         }
@@ -160,7 +204,7 @@ public class GraphLineFrag  extends UiFragment implements View.OnClickListener {
         final LineView lineView = new LineView(mGraphView.getContext());
         lineView.mColor = lineColor;
         lineView.mLineWidth = lineWidth;
-        lineView.setBackgroundColor(0);
+        // lineView.setBackgroundColor(0);
         viewGroup.addView(lineView, lp);
 
         mAddPoints = new Runnable() {

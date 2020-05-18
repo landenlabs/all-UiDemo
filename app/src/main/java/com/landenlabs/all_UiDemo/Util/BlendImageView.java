@@ -40,13 +40,15 @@ import android.graphics.drawable.VectorDrawable;
 import android.os.Build;
 import android.util.AttributeSet;
 
+import androidx.appcompat.widget.AppCompatImageView;
+
 import com.landenlabs.all_UiDemo.R;
 
 /**
  * https://gist.githubusercontent.com/cblunt/3175620/raw/1571e9e36f87f5455ecf95e34194c37b77bbc73e/MaskedImageView.java
  */
 
-public class BlendImageView extends android.support.v7.widget.AppCompatImageView {
+public class BlendImageView extends AppCompatImageView {
 
     private Drawable backgroundDrawable;
     private Drawable foregroundDrawable;
@@ -74,11 +76,11 @@ public class BlendImageView extends android.support.v7.widget.AppCompatImageView
             int resId;
             resId = a.getResourceId(R.styleable.BlendImageView_foreground, -1);
             if (resId != -1)
-            foregroundDrawable = getContext().getResources().getDrawable(resId);
+            foregroundDrawable = getContext().getResources().getDrawable(resId, getContext().getTheme());
 
             resId = a.getResourceId(R.styleable.BlendImageView_background, -1);
             if (resId != -1)
-            backgroundDrawable  = getContext().getResources().getDrawable(resId);
+            backgroundDrawable  = getContext().getResources().getDrawable(resId, getContext().getTheme());
 
             String modeStr = a.getString(R.styleable.BlendImageView_mode);
             mBlendMode = PorterDuff.Mode.valueOf(modeStr);

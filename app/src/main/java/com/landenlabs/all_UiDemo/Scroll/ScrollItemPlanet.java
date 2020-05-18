@@ -23,10 +23,11 @@ package com.landenlabs.all_UiDemo.Scroll;
  *
  */
 
-import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
 
 import com.landenlabs.all_UiDemo.R;
 
