@@ -117,11 +117,11 @@ public class ExpandListFrag  extends UiFragment {
                     int groupPosition, int childPosition, long id) {
                 int cp = (int) expandableListAdapter.getChildId(groupPosition, childPosition);
                 Toast.makeText(getContext(), " onClickChild grp="
-                        + String.valueOf(groupPosition)
+                        + groupPosition
                         + " child="
-                        + String.valueOf(childPosition)
+                        + childPosition
                         + " cp="
-                        + String.valueOf(cp)
+                        + cp
                         , Toast.LENGTH_SHORT).show();
                 return false;
 

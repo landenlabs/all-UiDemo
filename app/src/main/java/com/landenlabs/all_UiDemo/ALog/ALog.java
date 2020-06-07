@@ -540,20 +540,22 @@ public enum ALog {
                 System.gc();
                 ActivityManager activityManager =
                         (ActivityManager) context.getSystemService(ACTIVITY_SERVICE);
-                Debug.MemoryInfo[] memInfos =
-                        activityManager.getProcessMemoryInfo(new int[]{android.os.Process.myPid()});
-                Debug.MemoryInfo memoryInfo = memInfos[0];
+                if (activityManager != null) {
+                    Debug.MemoryInfo[] memInfos =
+                            activityManager.getProcessMemoryInfo(new int[]{android.os.Process.myPid()});
+                    Debug.MemoryInfo memoryInfo = memInfos[0];
 
-                tagMsg(tagObj,
-                        join("", 0, args, null),
-                        " Memory javaHeap=",
-                        memoryInfo.getMemoryStat("summary.java-heap"),
-                        " nativeHeap=",
-                        memoryInfo.getMemoryStat("summary.native-heap"),
-                        " graphics=",
-                        memoryInfo.getMemoryStat("summary.graphics"),
-                        " NetRcv=", TrafficStats.getUidRxBytes(android.os.Process.myUid())
-                );
+                    tagMsg(tagObj,
+                            join("", 0, args, null),
+                            " Memory javaHeap=",
+                            memoryInfo.getMemoryStat("summary.java-heap"),
+                            " nativeHeap=",
+                            memoryInfo.getMemoryStat("summary.native-heap"),
+                            " graphics=",
+                            memoryInfo.getMemoryStat("summary.graphics"),
+                            " NetRcv=", TrafficStats.getUidRxBytes(android.os.Process.myUid())
+                    );
+                }
             }
         }
     }

@@ -23,13 +23,11 @@ package com.landenlabs.all_UiDemo.Util;
  *
  */
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LinearInterpolator;
-import android.widget.TextView;
 
 import com.landenlabs.all_UiDemo.R;
 
@@ -39,7 +37,8 @@ import com.landenlabs.all_UiDemo.R;
  * @see <a href="http://landenlabs.com/android"> author's web-site </a>
  */
 
-public class TextViewSpin extends TextView {
+@SuppressWarnings("FieldCanBeLocal")
+public class TextViewSpin extends androidx.appcompat.widget.AppCompatTextView {
 
     private LinearInterpolator mInterpolator;
     private Animation mAnimation;
@@ -60,10 +59,12 @@ public class TextViewSpin extends TextView {
         init(context, attrs, defStyle);
     }
 
+    /*
     @TargetApi(21)
     public TextViewSpin(Context context, AttributeSet attrs, int defStyleAttr,  int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
+     */
 
     private void init(Context context, AttributeSet attrs, int defStyle) {
     }

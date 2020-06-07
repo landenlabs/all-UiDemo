@@ -24,7 +24,6 @@ package com.landenlabs.all_UiDemo.Util;
  */
 
 import android.app.Application;
-import android.content.Context;
 
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.HitBuilders;
@@ -37,12 +36,10 @@ import com.google.android.gms.analytics.Tracker;
  * @see <a href="http://landenlabs.com/android"> author's web-site </a>
  */
 public class GoogleAnalyticsHelper {
-    private final Context mContext;
-    private GoogleAnalytics mGoogleAnalytics;
+    private static GoogleAnalytics mGoogleAnalytics;
     private Tracker mTracker;
 
     public GoogleAnalyticsHelper(Application context, boolean isDebug) {
-        mContext = context;
         int keyResId = context.getResources().getIdentifier("google_analytic_key", "string", context.getPackageName());
         if (keyResId > 0) {
             String googleAnalyticKey = context.getResources().getString(keyResId);

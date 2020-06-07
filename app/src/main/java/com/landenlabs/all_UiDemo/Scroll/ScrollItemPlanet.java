@@ -36,11 +36,11 @@ import com.landenlabs.all_UiDemo.R;
  */
 public class ScrollItemPlanet extends ScrollItem {
 
-    private String planetName;
-    private int distanceFromSun;
+    private final String planetName;
+    private final int distanceFromSun;
     private int gravity;
-    private int diameter;
-    private int layout;
+    private final int diameter;
+    private final int layout;
     private static int cardCnt = 0;
 
     public ScrollItemPlanet(String planetName, int distanceFromSun, int gravity, int diameter) {

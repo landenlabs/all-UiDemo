@@ -48,8 +48,15 @@ import com.landenlabs.all_UiDemo.R;
  * https://gist.githubusercontent.com/cblunt/3175620/raw/1571e9e36f87f5455ecf95e34194c37b77bbc73e/MaskedImageView.java
  */
 
+@SuppressWarnings("ConstantConditions")
 public class BlendImageView extends AppCompatImageView {
 
+    private Bitmap mutableBitmap;
+    private Canvas canvas;
+    private PorterDuffXfermode mode;
+    private PorterDuffXfermode bgMode;
+    private Paint paintBlend;
+    private Paint paintNormal;
     private Drawable backgroundDrawable;
     private Drawable foregroundDrawable;
     private PorterDuff.Mode mBlendMode = PorterDuff.Mode.LIGHTEN;
@@ -84,25 +91,29 @@ public class BlendImageView extends AppCompatImageView {
 
             String modeStr = a.getString(R.styleable.BlendImageView_mode);
             mBlendMode = PorterDuff.Mode.valueOf(modeStr);
-        } catch (Exception ex) {
+        } catch (Exception ignore) {
 
         }
-
         a.recycle();
+
+
+        mode = new PorterDuffXfermode(mBlendMode);
+        paintBlend = new Paint();
+        paintNormal = new Paint(); // (Paint.ANTI_ALIAS_FLAG);
+        bgMode = new PorterDuffXfermode(PorterDuff.Mode.DST_IN);
     }
 
     @Override
     protected void onDraw(Canvas onDrawCanvas) {
-        Bitmap mutableBitmap = Bitmap.createBitmap(getMeasuredWidth(), getMeasuredHeight(), Bitmap.Config.ARGB_8888);
-        Canvas canvas = new Canvas(mutableBitmap);
-        // mutableBitmap.eraseColor(0);
-        PorterDuffXfermode mode = new PorterDuffXfermode(mBlendMode);
+        if (mutableBitmap == null) {
+            // Need to wait until measure is ready.
+            mutableBitmap = Bitmap.createBitmap(getMeasuredWidth(), getMeasuredHeight(), Bitmap.Config.ARGB_8888);
+            canvas = new Canvas(mutableBitmap);
+        }
 
-        Paint paintBlend = new Paint();
         paintBlend.setFilterBitmap(false);
         paintBlend.setXfermode(mode);
 
-        Paint paintNormal = new Paint(); // (Paint.ANTI_ALIAS_FLAG);
         paintNormal.setFilterBitmap(false);
         // paintNormal.setXfermode(mode);
 
@@ -116,7 +127,6 @@ public class BlendImageView extends AppCompatImageView {
         if (false && getBackground() != null) {
             Drawable background = getBackground();
             // background = backgroundDrawable;
-            PorterDuffXfermode bgMode = new PorterDuffXfermode(PorterDuff.Mode.DST_IN);
 
             if (false) {
                 if (background instanceof BitmapDrawable) {
@@ -240,9 +250,7 @@ public class BlendImageView extends AppCompatImageView {
 
         invalidate();
     }
-
     */
-
 
     // drawable.getIntrinsicWidth(
     private static Bitmap drawableToBitmap (Drawable drawable, int width, int height) {

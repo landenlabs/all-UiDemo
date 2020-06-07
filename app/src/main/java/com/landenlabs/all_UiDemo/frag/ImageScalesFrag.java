@@ -144,7 +144,7 @@ public class ImageScalesFrag  extends UiFragment implements View.OnClickListener
     }
 
     private void setImage(ImageView imageView, int imageRes) {
-        //noinspection ConstantConditions,ConstantConditions,PointlessBooleanExpression
+        // noinspection ConstantConditions,PointlessBooleanExpression
         if (false &&  imageRes == R.drawable.scr_home) {
             // ScaleDrawable does nothing.
             setScaledVector(imageView, imageRes);

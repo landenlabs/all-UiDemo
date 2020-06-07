@@ -101,8 +101,8 @@ public class DividerGridLayout extends GridLayout {
             int[] ys = (int[])axisGetLocations.invoke(verticalAxis.get(this));
             // int[] ys = mVerticalAxis.locations;
             if (ys != null) {
-                for (int i = 0, length = ys.length; i < length; i++) {
-                    int y = top + ys[i];
+                for (int value : ys) {
+                    int y = top + value;
                     drawLine(canvas, left, y, right, y, paint);
                 }
             }

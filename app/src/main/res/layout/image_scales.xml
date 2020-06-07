@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--suppress DeprecatedClassUsageInspection -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -119,20 +118,27 @@
                 android:layout_marginTop="10dp"
                 android:background="@color/rowtx"
                 android:gravity="center"
-                android:text="PercentLayout 16:9  (178%)"
+                android:text="ConstraintLayout 16:9  (178%)"
                 android:textAppearance="@style/TextAppearanceWhite20" />
 
-            <android.support.percent.PercentRelativeLayout
+            <!--
+            android.support.percent.PercentRelativeLayout
+            androidx.percentlayout.widget.PercentRelativeLayout
+            -->
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="90dp">
 
                 <com.landenlabs.all_UiDemo.Util.ExImageView
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintDimensionRatio="W,16:9"
                     android:contentDescription="Percent 178"
                     android:background="@color/row1"
                     android:src="@drawable/image200"
-                    app:layout_aspectRatio="178%"
+                    android:layout_width="0dp"
                     android:layout_height="90dp" />
-            </android.support.percent.PercentRelativeLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
                 android:layout_width="match_parent"
@@ -140,20 +146,23 @@
                 android:layout_marginTop="10dp"
                 android:background="@color/rowtx"
                 android:gravity="center"
-                android:text="PercentLayout 1:2 (50%)"
+                android:text="ConstraintLayout 1:2 (50%)"
                 android:textAppearance="@style/TextAppearanceWhite20" />
 
-            <android.support.percent.PercentRelativeLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="90dp">
 
                 <com.landenlabs.all_UiDemo.Util.ExImageView
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintDimensionRatio="W,1:2"
                     android:contentDescription="Percent 50"
                     android:background="@color/row0"
                     android:src="@drawable/image200"
-                    app:layout_aspectRatio="50%"
+                    android:layout_width="0dp"
                     android:layout_height="90dp" />
-            </android.support.percent.PercentRelativeLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
                 android:layout_width="match_parent"

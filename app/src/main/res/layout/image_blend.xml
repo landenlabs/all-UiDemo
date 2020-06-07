@@ -122,10 +122,11 @@
             <ImageView
                 android:contentDescription="wrapImage"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/blend_image_width"
                 android:background="@color/row0"
                 android:clickable="true"
                 android:src="@drawable/image200"
+                android:adjustViewBounds="true"
                 android:stateListAnimator="@animator/press"
                 tools:ignore="KeyboardInaccessibleWidget" />
 

@@ -104,7 +104,7 @@
 
 
 
-    <android.support.design.widget.TabLayout
+    <com.google.android.material.tabs.TabLayout
         android:id="@+id/bottom_tab_holder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -112,35 +112,35 @@
         app:layout_scrollFlags="scroll|enterAlways"
         app:tabIndicatorHeight="4dp">
 
-        <android.support.design.widget.TabItem
+        <com.google.android.material.tabs.TabItem
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:icon="@drawable/scr_home"
             android:text="Home" />
 
-        <android.support.design.widget.TabItem
+        <com.google.android.material.tabs.TabItem
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:icon="@drawable/scr_hourly"
             android:text="Hourly" />
 
-        <android.support.design.widget.TabItem
+        <com.google.android.material.tabs.TabItem
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:icon="@drawable/scr_daily"
             android:text="Daily" />
 
-        <android.support.design.widget.TabItem
+        <com.google.android.material.tabs.TabItem
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:icon="@drawable/scr_map"
             android:text="Map" />
 
-    </android.support.design.widget.TabLayout>
+    </com.google.android.material.tabs.TabLayout>
 
     <RadioGroup
         android:layout_width="match_parent"

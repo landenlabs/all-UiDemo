@@ -50,12 +50,10 @@ import com.landenlabs.all_UiDemo.R;
 
 import java.util.ArrayList;
 
-import static android.view.Gravity.CENTER_HORIZONTAL;
-import static android.view.Gravity.RIGHT;
-
 /**
  * Simple list picker wheel, shows three rows, center selected.
  */
+@SuppressWarnings("SameParameterValue")
 public class Picker2 extends FrameLayout {
 
     public static final boolean DEF_WHEEL = true;
@@ -69,7 +67,7 @@ public class Picker2 extends FrameLayout {
     private int gravityItems = DEF_GRAVITY_ITEMS;
     private int widthItems = DEF_WIDTH_ITEMS;
 
-    public ArrayList<String> items = new ArrayList<>();
+    public final ArrayList<String> items = new ArrayList<>();
 
     public Picker2(Context context) {
         super(context);
@@ -227,7 +225,8 @@ public class Picker2 extends FrameLayout {
                     if (position == 0 || position == items.size()+1) {
                         itemPos = -1;
                     } else {
-                        msg = items.get(position-1);
+                        itemPos = position - 1;
+                        msg = items.get(itemPos);
                     }
                 }
                 itemView.setText(msg);

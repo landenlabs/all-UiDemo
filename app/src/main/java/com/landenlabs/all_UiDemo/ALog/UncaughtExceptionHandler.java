@@ -36,6 +36,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+
 import com.landenlabs.all_UiDemo.R;
 
 import java.io.PrintWriter;
@@ -55,7 +57,7 @@ public class UncaughtExceptionHandler implements Thread.UncaughtExceptionHandler
     private final SharedPreferences prefs;
     private static final String CRASH_REPORT = "CrashReport";
 
-    private Thread.UncaughtExceptionHandler originalHandler;
+    private final Thread.UncaughtExceptionHandler originalHandler;
 
     /**
      * Creates a reporter instance
@@ -81,7 +83,7 @@ public class UncaughtExceptionHandler implements Thread.UncaughtExceptionHandler
     }
 
     @Override
-    public void uncaughtException(Thread thread, Throwable ex) {
+    public void uncaughtException(@NonNull Thread thread, @NonNull Throwable ex) {
 
         String stackTrace = Log.getStackTraceString(ex);
         ALog.d.tagMsg(this,  stackTrace);

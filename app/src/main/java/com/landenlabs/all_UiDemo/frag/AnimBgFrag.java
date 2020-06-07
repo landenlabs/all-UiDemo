@@ -28,15 +28,19 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
 import android.graphics.Matrix;
 import android.graphics.RectF;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
+import com.landenlabs.all_UiDemo.ALog.ALog;
 import com.landenlabs.all_UiDemo.R;
 import com.landenlabs.all_UiDemo.Ui;
 import com.landenlabs.all_UiDemo.Util.TextProgressBar;
@@ -54,12 +58,265 @@ public class AnimBgFrag  extends UiFragment implements View.OnClickListener {
 
     private View  mRootView;
 
-
     // http://stackoverflow.com/questions/27671653/background-animation-with-repeat
-
     // https://github.com/flavienlaurent/PanningView
-
     // http://flavienlaurent.com/blog/2013/08/05/make-your-background-moving-like-on-play-music-app/
+
+    private TextProgressBar mTextProgress1;
+    private TextViewSpin mTextProgress2;
+    private TextViewSpin mTextProgress3;
+
+    private final AnimationState state1 = new AnimationState();
+    private final AnimationState state2 = new AnimationState();
+
+    // =============================================================================================
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        mRootView = inflater.inflate(R.layout.anim_bg_frag, container, false);
+
+        setup();
+        return mRootView;
+    }
+
+    @Override
+    public int getFragId() {
+        return R.id.anim_bg_id;
+    }
+
+    @Override
+    public String getName() {
+        return "AnimBg";
+    }
+
+    @Override
+    public String getDescription() {
+        return "??";
+    }
+
+    @Override
+    public void onClick(View view) {
+        int id = view.getId();
+        switch (id) {
+            default:
+                break;
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        state1.stop();
+        state2.stop();
+        super.onDetach();
+    }
+
+    private void setup() {
+        setupHorizontalAnimation(state1, R.id.anim_bg_image1, R.id.anim_tx_image1);
+        setupVerticalAnimation(state2, R.id.anim_bg_image2, R.id.anim_tx_image2);
+        
+        mTextProgress1 = Ui.viewById(mRootView, R.id.textProgressBar1);
+        mTextProgress1.setText("123");
+        mTextProgress2 = Ui.viewById(mRootView, R.id.textProgressBar2);
+        mTextProgress3 = Ui.viewById(mRootView, R.id.textProgressBar3);
+
+        Ui.viewById(mRootView, R.id.anim_progress_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mTextProgress2.isAnimating()) {
+                    mTextProgress2.stopAnimation();
+                    mTextProgress2.setText("12");
+                    mTextProgress2.setBackgroundResource(R.drawable.badge_bg);
+                } else {
+                    mTextProgress2.startAnimation();
+                    mTextProgress2.setText(" ");
+                    mTextProgress2.setBackgroundResource(R.drawable.badge_spin);
+                }
+
+                if (mTextProgress3.isAnimating())
+                    mTextProgress3.stopAnimation();
+                else
+                    mTextProgress3.startAnimation();
+            }
+        });
+    }
+
+    
+    Drawable getImage(ImageView imageView) {
+        return imageView.getDrawable();
+    }
+
+    private void setupHorizontalAnimation(AnimationState state, int imageRes,  int textRes) {
+        ImageView imageView = Ui.viewById(mRootView, imageRes);
+        TextView textView =  Ui.viewById(mRootView, textRes);
+        imageView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent event) {
+                if (event.getX() < view.getWidth()/4) {
+                    animate(state, Direction.ToLeft);
+                } else if (event.getX() > view.getWidth()*3/4) {
+                    animate(state, Direction.ToRight);
+                }
+                return false;
+            }
+        });
+
+        imageView.post(new Runnable() {
+            @Override
+            public void run() {
+                Matrix matrix = new Matrix();
+
+                // centerMatrix(mImageView1, matrix);
+                float scale = 1f;
+                if (getImage(imageView).getIntrinsicWidth() < imageView.getWidth() * 1.5) {
+                    scale =  (imageView.getWidth() * 2f) / getImage(imageView).getIntrinsicWidth();
+                    matrix.postScale(scale, scale);
+                }
+
+                imageView.setImageMatrix(matrix);
+
+                animate(state, Direction.ToLeft, 5000, false, imageView);
+                textView.setText(String.format("Img w=%d View w=%d scale=%.1f",
+                        getImage(imageView).getIntrinsicWidth(), imageView.getWidth(), scale));
+            }
+        });
+    }
+    
+    private void setupVerticalAnimation(AnimationState state, int imageRes, int textRes) {
+        ImageView imageView  = Ui.viewById(mRootView, imageRes);
+        TextView textView =  Ui.viewById(mRootView, textRes);
+
+        imageView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent event) {
+                if (event.getY() < view.getHeight()/4) {
+                    animate(state, Direction.ToTop);
+                } else if (event.getY() > view.getHeight()*3/4) {
+                    animate(state, Direction.ToBottom);
+                }
+                return false;
+            }
+        });
+
+        imageView.post(new Runnable() {
+            @Override
+            public void run() {
+                Matrix matrix = new Matrix();
+
+                // Scale image to fill view by more than 50%
+                float scale = 1f;
+                if (getImage(imageView).getIntrinsicHeight() < imageView.getHeight()*1.5) {
+                    scale =  getImage(imageView).getIntrinsicHeight() / (imageView.getHeight() * 2f) ;
+                    matrix.postScale(scale, scale);
+                }
+
+                imageView.setImageMatrix(matrix);
+                animate(state, Direction.ToBottom, 5000, true, imageView);
+                textView.setText(String.format("Img h=%d View h=%d scale=%.1f",
+                        getImage(imageView).getIntrinsicHeight(), imageView.getHeight(), 1f/scale));
+            }
+        });
+    }
+
+    // =============================================================================================
+    // Animate assumes source image is larger than imageView canvas (portal).
+    private void animate( AnimationState state, Direction direction, int durationMilli, boolean doRev, ImageView imageView) {
+        state.direction = direction;
+        state.durationMilli = durationMilli;
+        state.doRev = doRev;
+        state.imageView = imageView;
+        animate(state);
+    }
+    private void animate( AnimationState state, Direction direction, int durationMilli, boolean doRev) {
+        state.direction = direction;
+        state.durationMilli = durationMilli;
+        state.doRev = doRev;
+        animate(state);
+    }
+    private void animate( AnimationState state, Direction direction, int durationMilli) {
+        state.direction = direction;
+        state.durationMilli = durationMilli;
+        animate(state);
+    }
+    private void animate( AnimationState state, Direction direction) {
+        state.direction = direction;
+        animate(state);
+    }
+
+    private void animate( AnimationState state) {
+        // imageView.getImageMatrix().mapRect(rawSourceRect);
+
+        float[] f = new float[9];
+        state.imageView.getImageMatrix().getValues(f);
+        float scaleX = f[Matrix.MSCALE_X];
+        float scaleY = f[Matrix.MSCALE_Y];
+
+        float srcWidth = getImage(state.imageView).getIntrinsicWidth();
+        float srcHeight = getImage(state.imageView).getIntrinsicHeight();
+        state.srcRect = new RectF(0, 0,  srcWidth, srcHeight);
+
+        switch (state.direction) {
+            case ToLeft:
+                animate(state,  0f, state.imageView.getWidth()/scaleX  -  srcWidth);
+                break;
+            case ToRight:
+                animate(state, state.imageView.getWidth()/scaleX  -  srcWidth, 0f);
+                break;
+            case ToTop:
+                animate(state,  0f,  state.imageView.getHeight() - srcHeight);
+                break;
+            case ToBottom:
+                animate(state,  state.imageView.getHeight()  - srcHeight, 0f);
+                break;
+        }
+    }
+
+    private void animate(final AnimationState state,   final float from, final float to) {
+        ALog.d.tagFmt(this,  state.direction.toString() + " From %.1f To %.1f Width=%.1f", from, to, state.srcRect.width());
+        if (from != to) {
+            state.stop();
+            state.animator = ValueAnimator.ofFloat(from, to);
+            state.animator.setInterpolator(new LinearInterpolator());
+            state.animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                @Override
+                public void onAnimationUpdate(ValueAnimator animation) {
+                    float value = (Float) animation.getAnimatedValue();
+
+                    Matrix matrix = state.imageView.getImageMatrix(); //
+                    float[] f = new float[9];
+                    state.imageView.getImageMatrix().getValues(f);
+                    float scaleX = f[Matrix.MSCALE_X];
+                    float scaleY = f[Matrix.MSCALE_Y];
+
+                    //matrix.reset();
+                    matrix = new Matrix();
+                    float x = state.direction.getX(value, state.srcRect);
+                    float y = state.direction.getY(value, state.srcRect);
+                    matrix.postTranslate(x, y);
+                    matrix.postScale(scaleX, scaleY);
+                    // ALog.d.tagMsg(this, String.format(" val=%.0f  x=%.0f, y=%.0f w=%.0f", value, x, y, displayRect.width()));
+
+                    state.imageView.setImageMatrix(matrix);
+                }
+            });
+
+            state.animator.setDuration(state.durationMilli);
+            state.animator.addListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    // animation.cancel();
+                    // animation.removeAllListeners();
+                    if (state.doRev) {
+                        animate(state, state.direction.reverse());
+                    } else {
+                        animate(state, from, to);
+                    }
+                }
+            });
+            state.animator.start();
+        }
+    }
+
+
+    // =============================================================================================
     enum Direction {
         ToLeft {
             @Override
@@ -110,164 +367,23 @@ public class AnimBgFrag  extends UiFragment implements View.OnClickListener {
             return 0;
         }
     }
-    // private static final int ToLeft = 1;
-    // private static final int ToRight = 2;
-
-    private ImageView mImageView1;
-    private ImageView mImageView2;
-    @SuppressWarnings("unused")
-    private float mScaleFactor;
-
-    private TextProgressBar mTextProgress1;
-    private TextViewSpin mTextProgress2;
-    private TextViewSpin mTextProgress3;
 
     // =============================================================================================
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        mRootView = inflater.inflate(R.layout.anim_bg_frag, container, false);
-
-        setup();
-        return mRootView;
-    }
-
-    @Override
-    public int getFragId() {
-        return R.id.anim_bg_id;
-    }
-
-    @Override
-    public String getName() {
-        return "AnimBg";
-    }
-
-    @Override
-    public String getDescription() {
-        return "??";
-    }
-
-    @Override
-    public void onClick(View view) {
-        int id = view.getId();
-        switch (id) {
-            default:
-                break;
-        }
-    }
-
-    private void setup() {
-        mImageView1 = Ui.viewById(mRootView, R.id.anim_bg_image1);
-        mImageView1.post(new Runnable() {
-            @Override
-            public void run() {
-                mScaleFactor = (float)  mImageView1.getHeight() / (float) mImageView1.getDrawable().getIntrinsicHeight();
-                Matrix matrix = new Matrix();
-                // mMatrix.postScale(mScaleFactor, mScaleFactor);
-                mImageView1.setImageMatrix(matrix);
-                animate(mImageView1, Direction.ToLeft, 15000, false);
-            }
-        });
-
-        mImageView2 = Ui.viewById(mRootView, R.id.anim_bg_image2);
-        mImageView2.post(new Runnable() {
-            @Override
-            public void run() {
-                mScaleFactor = (float)  mImageView2.getHeight() / (float) mImageView2.getDrawable().getIntrinsicHeight();
-                Matrix matrix = new Matrix();
-                // matrix.postScale(mScaleFactor, mScaleFactor);
-                mImageView2.setImageMatrix(matrix);
-                animate(mImageView2, Direction.ToTop, 5000, true);
-            }
-        });
-
-
-        mTextProgress1 = Ui.viewById(mRootView, R.id.textProgressBar1);
-        mTextProgress1.setText("123");
-
-        mTextProgress2 = Ui.viewById(mRootView, R.id.textProgressBar2);
-        mTextProgress3 = Ui.viewById(mRootView, R.id.textProgressBar3);
-
-        Ui.viewById(mRootView, R.id.anim_progress_btn).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (mTextProgress2.isAnimating()) {
-                    mTextProgress2.stopAnimation();
-                    mTextProgress2.setText("12");
-                    mTextProgress2.setBackgroundResource(R.drawable.badge_bg);
-                } else {
-                    mTextProgress2.startAnimation();
-                    mTextProgress2.setText(" ");
-                    mTextProgress2.setBackgroundResource(R.drawable.badge_spin);
-                }
-
-                if (mTextProgress3.isAnimating())
-                    mTextProgress3.stopAnimation();
-                else
-                    mTextProgress3.startAnimation();
-            }
-        });
-    }
-
-    private void animate(ImageView imageView, Direction direction, final int durationMilli, boolean doRev) {
-        RectF displayRect = new RectF(0, 0,
-                imageView.getDrawable().getIntrinsicWidth(), imageView.getDrawable().getIntrinsicHeight());
-        imageView.getImageMatrix().mapRect(displayRect);
-
-        switch (direction) {
-            case ToLeft:
-                animate(imageView, direction, durationMilli, doRev, displayRect,
-                    displayRect.left, imageView.getWidth() + displayRect.left - displayRect.right);
-                break;
-            case ToRight:
-                animate(imageView, direction, durationMilli, doRev, displayRect, displayRect.left, 0.0f);
-                break;
-
-            case ToTop:
-                animate(imageView, direction, durationMilli, doRev, displayRect,
-                        displayRect.top, imageView.getHeight() + displayRect.top - displayRect.bottom);
-                break;
-            case ToBottom:
-                animate(imageView, direction, durationMilli, doRev, displayRect, displayRect.top, 0.0f);
-                break;
-        }
-    }
-
-    private void animate(final ImageView imageView,
-             final Direction direction, final int durationMilli, final boolean doRev,
-             final RectF displayRect,
-             final float from, final float to) {
+    static class AnimationState {
         ValueAnimator animator;
-        animator = ValueAnimator.ofFloat(from, to);
-        animator.setInterpolator(new LinearInterpolator());
-        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                float value = (Float) animation.getAnimatedValue();
+        Direction direction;
+        int durationMilli;
+        boolean doRev;
+        ImageView imageView;
+        RectF srcRect;
 
-                Matrix matrix = new Matrix(); // imageView.getImageMatrix();
-                matrix.reset();
-                // matrix.postScale(mScaleFactor, mScaleFactor);
-                float x = direction.getX(value, displayRect);
-                float y = direction.getY(value, displayRect);
-                matrix.postTranslate(x, y);
-                // ALog.d.tagMsg(this,  String.format("x=%.0f, y=%.0f w=%.0f", x, y, displayRect.width()));
-
-                imageView.setImageMatrix(matrix);
+        void stop() {
+            if (animator != null) {
+                animator.cancel();
+                animator.removeAllListeners();
+                animator = null;
             }
-        });
-
-        animator.setDuration(durationMilli);
-        animator.addListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                if (doRev) {
-                    animate(imageView, direction.reverse(), durationMilli, true);
-                } else {
-                    animate(imageView, direction, durationMilli, false, displayRect, from, to);
-                }
-            }
-        });
-        animator.start();
+        }
     }
 
 }

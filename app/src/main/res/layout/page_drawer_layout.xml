@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/DrawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -37,10 +38,12 @@
             android:textSize="16dp"
             android:text="FullScreen\n----------\n"
             />
-        <android.support.v7.widget.ListViewCompat
+
+        <!-- ListViewCompat -->
+        <ListView
             android:layout_width="150dp"
             android:layout_height="match_parent"
             android:entries="@array/states8" />
     </LinearLayout>
 
-</androidx.core.widget.DrawerLayout>
+</androidx.drawerlayout.widget.DrawerLayout>

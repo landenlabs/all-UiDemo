@@ -1,68 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
+    xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:background="@drawable/paper_pink"
-    android:padding="30dp"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/paper_pink"
+    android:orientation="vertical"
+    android:padding="30dp">
 
-    <ImageView
-        android:id="@+id/anim_bg_image1"
-        android:layout_width="400dp"
-        android:layout_height="200dp"
-        android:scaleType="matrix"
-        android:src="@drawable/clouds11"
-        />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <Space
-        android:layout_width="1dp"
-        android:layout_height="10dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/anim_bg_image2"
-        android:layout_width="400dp"
-        android:layout_height="200dp"
-        android:scaleType="matrix"
-        android:src="@drawable/grid"
-        />
+            <!--
+             android:src="@drawable/clouds11"
+              android:background="@drawable/squares"
+              squares10_tiles
+              android:src="@drawable/image100"
+             -->
+            <ImageView
+                android:id="@+id/anim_bg_image1"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scaleType="matrix"
+                android:src="@drawable/clouds11" />
+            <TextView
+                tools:text="Image width, View width"
+                android:id="@+id/anim_tx_image1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
 
-    <Button
-        android:id="@+id/anim_progress_btn"
-        android:text="Animate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+            <Space
+                android:layout_width="1dp"
+                android:layout_height="10dp" />
 
-    <com.landenlabs.all_UiDemo.Util.TextProgressBar
-        android:id="@+id/textProgressBar1"
-        android:text="123"
-        android:textSize="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+            <ImageView
+                android:id="@+id/anim_bg_image2"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scaleType="matrix"
+                android:src="@drawable/grid" />
+            <TextView
+                tools:text="Image width, View width"
+                android:id="@+id/anim_tx_image2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
 
-    <com.landenlabs.all_UiDemo.Util.TextViewSpin
-        android:background="@drawable/badge_spin"
-        android:id="@+id/textProgressBar2"
-        android:paddingLeft="18dp"
-        android:paddingRight="18dp"
-        android:paddingTop="3dp"
-        android:paddingBottom="3dp"
-        android:textSize="30dp"
-        android:text="+"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+            <Button
+                android:id="@+id/anim_progress_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Animate" />
 
-    <com.landenlabs.all_UiDemo.Util.TextViewSpin
-        android:background="@drawable/badge_bg"
-        android:id="@+id/textProgressBar3"
-        android:paddingLeft="18dp"
-        android:paddingRight="18dp"
-        android:paddingTop="3dp"
-        android:paddingBottom="3dp"
-        android:textSize="30dp"
-        android:text="( )"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+            <com.landenlabs.all_UiDemo.Util.TextProgressBar
+                android:id="@+id/textProgressBar1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="123"
+                android:textSize="20dp" />
 
+            <com.landenlabs.all_UiDemo.Util.TextViewSpin
+                android:id="@+id/textProgressBar2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/badge_spin"
+                android:paddingLeft="18dp"
+                android:paddingTop="3dp"
+                android:paddingRight="18dp"
+                android:paddingBottom="3dp"
+                android:text="+"
+                android:textSize="30dp" />
+
+            <com.landenlabs.all_UiDemo.Util.TextViewSpin
+                android:id="@+id/textProgressBar3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/badge_bg"
+                android:paddingLeft="18dp"
+                android:paddingTop="3dp"
+                android:paddingRight="18dp"
+                android:paddingBottom="3dp"
+                android:text="( )"
+                android:textSize="30dp" />
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

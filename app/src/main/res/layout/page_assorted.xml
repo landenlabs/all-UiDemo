@@ -67,7 +67,8 @@
                     android:layout_height="60dp"
                     app:background="@drawable/image_c"
                     app:foreground="@drawable/animated_vec1"
-                    app:mode="SRC_IN" />
+                    app:mode="SRC_IN"
+                    />
             </LinearLayout>
 
             <LinearLayout
@@ -84,7 +85,8 @@
                     android:clickable="true"
                     android:foreground="@drawable/ripple_boarderless"
                     android:src="@drawable/image100"
-                    android:stateListAnimator="@animator/press" />
+                    android:stateListAnimator="@animator/press"
+                    android:focusable="true" />
 
                 <ImageView
                     android:id="@+id/p0ImageView2"
@@ -95,7 +97,8 @@
                     android:clickable="true"
                     android:foreground="@drawable/ripple_boarderless"
                     android:src="@drawable/image100_m20"
-                    android:stateListAnimator="@animator/press" />
+                    android:stateListAnimator="@animator/press"
+                    android:focusable="true" />
 
                 <ImageView
                     android:id="@+id/p0ImageView22"
@@ -106,7 +109,8 @@
                     android:clickable="true"
                     android:foreground="@drawable/ripple_boarderless"
                     android:src="@drawable/image100_m20"
-                    android:stateListAnimator="@animator/press" />
+                    android:stateListAnimator="@animator/press"
+                    android:focusable="true" />
             </LinearLayout>
 
             <LinearLayout
@@ -123,7 +127,8 @@
                     android:background="#60f0"
                     android:clickable="true"
                     android:foreground="@drawable/ripple_boarderless"
-                    android:src="@drawable/image100_m20" />
+                    android:src="@drawable/image100_m20"
+                    android:focusable="true" />
 
                 <SeekBar
                     android:layout_width="0dp"
@@ -140,7 +145,8 @@
                     android:background="#6484"
                     android:clickable="true"
                     android:foreground="@drawable/ripple_boarderless"
-                    android:src="@drawable/scr_hourly_m20" />
+                    android:src="@drawable/scr_hourly_m20"
+                    android:focusable="true" />
             </LinearLayout>
 
             <LinearLayout
@@ -159,7 +165,8 @@
                     android:checked="true"
                     android:clickable="true"
                     android:foreground="@drawable/ripple_boarderless"
-                    android:gravity="center" />
+                    android:gravity="center"
+                    android:focusable="true" />
 
                 <CheckBox
                     android:layout_width="0dp"
@@ -171,7 +178,8 @@
                     android:checked="true"
                     android:clickable="true"
                     android:foreground="@drawable/ripple_boarderless"
-                    android:gravity="center" />
+                    android:gravity="center"
+                    android:focusable="true" />
 
                 <CheckBox
                     android:layout_width="0dp"
@@ -183,7 +191,8 @@
                     android:checked="true"
                     android:clickable="true"
                     android:foreground="@drawable/ripple_boarderless"
-                    android:gravity="center" />
+                    android:gravity="center"
+                    android:focusable="true" />
             </LinearLayout>
 
             <LinearLayout
@@ -203,7 +212,8 @@
                     android:checked="true"
                     android:clickable="true"
                     android:foreground="@drawable/ripple_boarderless"
-                    android:gravity="center" />
+                    android:gravity="center"
+                    android:focusable="true" />
 
                 <CheckBox
                     android:id="@+id/p0CheckBox3"
@@ -215,7 +225,8 @@
                     android:checked="true"
                     android:clickable="true"
                     android:drawableRight="@drawable/checkmark_sel"
-                    android:foreground="@drawable/ripple_boarderless" />
+                    android:foreground="@drawable/ripple_boarderless"
+                    android:focusable="true" />
 
                 <CheckBox
                     android:id="@+id/p0CheckBox4"
@@ -228,7 +239,8 @@
                     android:checked="true"
                     android:clickable="true"
                     android:foreground="@drawable/ripple_boarderless"
-                    android:padding="20dp" />
+                    android:padding="20dp"
+                    android:focusable="true" />
             </LinearLayout>
 
             <TextView
@@ -248,7 +260,7 @@
                 android:text="TextView"
                 android:textSize="18sp" />
 
-            <android.support.v7.widget.AppCompatTextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/p0CompatTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -266,7 +278,7 @@
                 android:layout_height="wrap_content"
                 android:text="Button Full" />
 
-            <android.support.v7.widget.AppCompatButton
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/p0Button2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

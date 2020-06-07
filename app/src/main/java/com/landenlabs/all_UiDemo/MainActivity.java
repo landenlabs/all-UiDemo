@@ -65,13 +65,9 @@ import com.landenlabs.all_UiDemo.Util.PageItem;
 @SuppressWarnings("ConstantIfStatement")
 public class MainActivity extends AppCompatActivity {
 
-    /**
-     */
     private SectionsPagerAdapter mSectionsPagerAdapter;
-
     private ViewPager mViewPager;
     private ActionBar mActionBar;
-
     private Parcelable mAdapterParcelable;
     private int mStartPageIdx = -1; // -1 = menu, else 0...n-1 pages
 
@@ -110,7 +106,8 @@ public class MainActivity extends AppCompatActivity {
 
         // Set up the ViewPager with the sections adapter.
         mViewPager = findViewById(R.id.pager);
-        mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        // TODO - call removeOnPageChangeListener
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
             }
@@ -186,7 +183,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onSaveInstanceState(Bundle outState) {
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
     }
 
@@ -313,11 +310,12 @@ public class MainActivity extends AppCompatActivity {
     static class SectionsPagerAdapter extends FragmentPagerAdapter {
 
         SectionsPagerAdapter(FragmentManager fm) {
-            super(fm);
+            super(fm, BEHAVIOR_SET_USER_VISIBLE_HINT);
 
             // ActionBar actionBar = getActionBar();
         }
 
+        @NonNull
         @Override
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.

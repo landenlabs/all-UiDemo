@@ -24,14 +24,11 @@ package com.landenlabs.all_UiDemo.Util;
  */
 
 import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.os.Build;
 import android.util.AttributeSet;
-import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
@@ -51,7 +48,8 @@ import com.landenlabs.all_UiDemo.R;
  * @see <a href="http://landenlabs.com/android"> author's web-site </a>
  */
 
-public class ExTextView extends TextView {
+@SuppressWarnings("FieldCanBeLocal")
+public class ExTextView extends androidx.appcompat.widget.AppCompatTextView {
 
     private boolean mHasDecenders = true;
     private int mOrgHeight = 0;
@@ -84,15 +82,12 @@ public class ExTextView extends TextView {
         super(context, attrs, defStyleAttr);
     }
 
+    /*
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public ExTextView(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
-
-    @Override
-    public int getLineHeight() {
-        return super.getLineHeight();
-    }
+     */
 
     @Override
     protected void onDraw(Canvas canvas) {

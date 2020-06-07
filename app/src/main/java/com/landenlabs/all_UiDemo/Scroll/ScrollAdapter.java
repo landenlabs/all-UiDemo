@@ -35,20 +35,19 @@ import java.util.ArrayList;
 /**
  * Recycler Adapter to manage ScrollItemHolder(s) and ScrollItem(s)
  */
+@SuppressWarnings("UnnecessaryLocalVariable")
 public class ScrollAdapter extends RecyclerView.Adapter<ScrollItemHolder> {
 
-    private final Context context;
     private final ArrayList<ScrollItem> items;
 
     // Collection of view holders by type.
-    private SparseArray<ScrollItem> holderMakersByType = new SparseArray();
+    private final SparseArray<ScrollItem> holderMakersByType = new SparseArray<>();
 
     // False to make new holder per position
     // True reuse holders by item type.
     static final boolean holdersByType = true;
 
     public ScrollAdapter(Context context, ArrayList<ScrollItem> items) {
-        this.context = context;
         this.items = items;
     }
 

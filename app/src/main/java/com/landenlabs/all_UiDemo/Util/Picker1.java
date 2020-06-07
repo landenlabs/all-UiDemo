@@ -30,6 +30,7 @@ import android.widget.NumberPicker;
 
 import com.landenlabs.all_UiDemo.R;
 
+@SuppressWarnings("SameParameterValue")
 public class Picker1 extends NumberPicker {
 
     public Picker1(Context context) {

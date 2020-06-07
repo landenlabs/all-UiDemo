@@ -48,7 +48,9 @@ import java.util.ArrayList;
  * @see <a href="http://landenlabs.com/android"> author's web-site </a>
  */
 
-public class OtherLayoutFrag  extends UiFragment implements View.OnClickListener {
+@SuppressWarnings("FieldCanBeLocal")
+public class OtherLayoutFrag  extends UiFragment
+        implements View.OnClickListener {
 
     private View mRootView;
     private ArrayList<View> childList;
@@ -108,7 +110,7 @@ public class OtherLayoutFrag  extends UiFragment implements View.OnClickListener
         }
     }
 
-    AutoTransition autoTransition = new AutoTransition();
+    final AutoTransition autoTransition = new AutoTransition();
     static final int INCR = 80;
 
     @Override

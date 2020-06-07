@@ -42,10 +42,10 @@ import java.io.IOException;
  * <p>It can be defined in an XML file with the <scale> element.
 
  *
- * @attr ref android.R.styleable#ScaleImage_scaleWidth
- * @attr ref android.R.styleable#ScaleImage_scaleHeight
- * @attr ref android.R.styleable#ScaleImage_scaleGravity
- * @attr ref android.R.styleable#ScaleImage_drawable
+ * attr ref android.R.styleable#ScaleImage_scaleWidth
+ * attr ref android.R.styleable#ScaleImage_scaleHeight
+ * attr ref android.R.styleable#ScaleImage_scaleGravity
+ * attr ref android.R.styleable#ScaleImage_drawable
  */
 class ScaleImage extends Drawable implements Drawable.Callback {
     private final ScaleState mScaleState;

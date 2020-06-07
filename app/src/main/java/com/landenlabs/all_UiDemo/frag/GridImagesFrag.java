@@ -236,7 +236,7 @@ public class GridImagesFrag  extends UiFragment   {
     // =============================================================================================
     static class  ImageAdapter extends BaseAdapter {
         private final Context mContext;
-        private RadioGroup mRadioGroup;
+        private final RadioGroup mRadioGroup;
 
         ImageAdapter(Context context, RadioGroup radioGroup) {
             mContext = context;
@@ -262,7 +262,7 @@ public class GridImagesFrag  extends UiFragment   {
                 // If it's not recycled, initialize some attributes
                 try {
                     String text = mContext.getString(mThumbIds[position]);
-                    if (text.contains("/drawable/")) {
+                    if (text.contains("/drawable")) {
                         view = makeImage(position);
                     } else {
                         view = makeText(text, position);

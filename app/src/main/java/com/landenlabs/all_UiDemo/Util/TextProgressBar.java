@@ -37,7 +37,7 @@ import android.widget.ProgressBar;
 public class TextProgressBar extends ProgressBar {
     private String text;
     private final Paint textPaint;
-    private  Rect bounds = new Rect();
+    private final Rect bounds = new Rect();
 
     public TextProgressBar(Context context) {
         super(context);

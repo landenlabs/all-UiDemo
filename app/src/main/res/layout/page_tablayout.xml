@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.design.widget.TabLayout
+    <com.google.android.material.tabs.TabLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#444"
@@ -13,31 +13,31 @@
         app:tabIndicatorHeight="3dp"
         app:tabGravity="fill" >
 
-        <android.support.design.widget.TabItem
+        <com.google.android.material.tabs.TabItem
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:icon="@drawable/scr_home"
             android:text="Home" />
 
-        <android.support.design.widget.TabItem
+        <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:icon="@drawable/scr_hourly"
             android:text="Hourly" />
 
-        <android.support.design.widget.TabItem
+        <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:icon="@drawable/scr_daily"
             android:text="Daily" />
 
-        <android.support.design.widget.TabItem
+        <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:icon="@drawable/scr_map"
             android:text="Map" />
 
-    </android.support.design.widget.TabLayout>
+    </com.google.android.material.tabs.TabLayout>
 
     <!-- TODO fill with items
     <TabWidget

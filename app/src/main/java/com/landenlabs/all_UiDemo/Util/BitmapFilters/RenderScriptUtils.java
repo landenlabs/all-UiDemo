@@ -30,7 +30,6 @@ import android.renderscript.Element;
 import android.renderscript.RenderScript;
 
 import com.landenlabs.all_UiDemo.ALog.ALog;
-import com.landenlabs.all_UiDemo.R;
 import com.landenlabs.all_UiDemo.Util.ScriptC_horzblur;
 import com.landenlabs.all_UiDemo.Util.ScriptC_tint;
 import com.landenlabs.all_UiDemo.Util.ScriptC_vertblur;

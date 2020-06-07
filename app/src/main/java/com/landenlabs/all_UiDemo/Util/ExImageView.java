@@ -23,13 +23,10 @@ package com.landenlabs.all_UiDemo.Util;
  *
  */
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
-import android.os.Build;
 import android.util.AttributeSet;
-import android.widget.ImageView;
 
 import com.landenlabs.all_UiDemo.ALog.ALog;
 
@@ -41,10 +38,10 @@ import com.landenlabs.all_UiDemo.ALog.ALog;
  * @author Dennis Lang (LanDen Labs)
  * @see <a href="http://landenlabs.com/android"> author's web-site </a>
  */
-public class ExImageView extends ImageView {
+public class ExImageView extends androidx.appcompat.widget.AppCompatImageView {
 
     private int mImageResID;
-    private float[] values = new float[9];
+    private final float[] values = new float[9];
 
     public ExImageView(Context context) {
         super(context);
@@ -54,6 +51,7 @@ public class ExImageView extends ImageView {
         super(context, attrs, 0);
     }
 
+    /*
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public ExImageView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr, 0);
@@ -63,6 +61,7 @@ public class ExImageView extends ImageView {
     public ExImageView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
+     */
 
     @Override
     public void setImageResource(int resId) {

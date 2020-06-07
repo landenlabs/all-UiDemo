@@ -49,9 +49,9 @@ import java.util.ArrayList;
  * @see <a href="http://landenlabs.com/android"> author's web-site </a>
  */
 
+@SuppressWarnings("FieldCanBeLocal")
 public class RecyclerFrag  extends UiFragment {
 
-    @SuppressWarnings("FieldCanBeLocal")
     private View mRootView;
     private RecyclerView mRecyclerView;
     private ScrollAdapter mAdapter;

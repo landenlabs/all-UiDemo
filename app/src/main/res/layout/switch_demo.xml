@@ -110,7 +110,7 @@
                 android:text="SwitchCompat"
                 android:textSize="20sp" />
 
-            <android.support.v7.widget.SwitchCompat
+            <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/switchCompat1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -127,7 +127,7 @@
                 android:layout_height="1dp"
                 android:background="#80808080" />
 
-            <android.support.v7.widget.SwitchCompat
+            <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/switchCompat2"
                 style="@style/SwitchBlueStyle"
                 android:layout_width="match_parent"
@@ -139,7 +139,7 @@
                 android:thumb="@drawable/thumb"
                 android:track="@drawable/track" />
 
-            <android.support.v7.widget.SwitchCompat
+            <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/switchCompat3"
                 style="@style/SwitchBlueStyle"
                 android:layout_width="match_parent"

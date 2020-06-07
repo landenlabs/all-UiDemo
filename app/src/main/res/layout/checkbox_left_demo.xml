@@ -1,11 +1,12 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!--suppress ALL -->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#303030"
     android:orientation="vertical"
     android:padding="10dp">
     <!--    android:background="@drawable/paper_black" -->
-
 
     <ScrollView
         android:layout_width="match_parent"
@@ -41,7 +42,7 @@
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/buttonTextSize" />
 
-            <android.support.v7.widget.AppCompatButton
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/p2Button2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -69,7 +70,7 @@
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/buttonTextSize" />
 
-            <android.support.v7.widget.AppCompatTextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/p2TextView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -101,7 +102,7 @@
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/buttonTextSize" />
 
-            <android.support.v7.widget.AppCompatCheckBox
+            <androidx.appcompat.widget.AppCompatCheckBox
                 android:id="@+id/p2Checkbox2"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/buttonHeight"
@@ -115,7 +116,7 @@
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/buttonTextSize" />
 
-            <android.support.v7.widget.AppCompatCheckedTextView
+            <androidx.appcompat.widget.AppCompatCheckedTextView
                 android:id="@+id/p2Checkbox3"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/buttonHeight"
@@ -239,7 +240,7 @@
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/buttonTextSize" />
 
-            <android.support.v7.widget.AppCompatRadioButton
+            <AppCompatRadioButton
                 android:id="@+id/p2RadioButton2"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/buttonHeight"
@@ -277,7 +278,7 @@
                 android:track="@drawable/image_off" />
 
             <!-- android:background="@android:drawable/checkbox_on_background" -->
-            <android.support.v7.widget.SwitchCompat
+            <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/p2Switch2"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/buttonHeight"

@@ -28,4 +28,7 @@
     <!-- Picker2 -->
     <dimen name="picker_height">75dp</dimen>
     <dimen name="picker_row_height">25dp</dimen>
+
+
+    <dimen name="blend_image_width">100dp</dimen>
 </resources>

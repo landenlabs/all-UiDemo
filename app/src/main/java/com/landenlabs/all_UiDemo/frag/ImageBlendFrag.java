@@ -42,6 +42,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.DrawableRes;
@@ -53,6 +54,8 @@ import com.landenlabs.all_UiDemo.ALog.ALog;
 import com.landenlabs.all_UiDemo.R;
 import com.landenlabs.all_UiDemo.Ui;
 
+import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
+
 /**
  * Demonstrate Image Blend using PorterDuff modes.
  *
@@ -60,6 +63,7 @@ import com.landenlabs.all_UiDemo.Ui;
  * @see <a href="http://landenlabs.com/android"> author's web-site </a>
  */
 
+@SuppressWarnings("SameParameterValue")
 public class ImageBlendFrag  extends UiFragment implements View.OnClickListener  {
 
     private View mRootView;
@@ -226,7 +230,11 @@ public class ImageBlendFrag  extends UiFragment implements View.OnClickListener 
         mImageHolder.addView(tv);
         ImageView iv = new ImageView(mImageHolder.getContext());
         iv.setBackgroundResource(R.color.row0);
-        mImageHolder.addView(iv);
+        int imgWidth = getResources().getDimensionPixelSize(R.dimen.blend_image_width);
+        iv.setAdjustViewBounds(true);
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(imgWidth, WRAP_CONTENT);
+        lp.gravity = Gravity.CENTER_HORIZONTAL;
+        mImageHolder.addView(iv, lp);
         iv.setColorFilter(mColor, mode);
         iv.setTag(mode);
     }
@@ -246,10 +254,14 @@ public class ImageBlendFrag  extends UiFragment implements View.OnClickListener 
         ImageView iv = new ImageView(mImageHolder.getContext());
         iv.setBackgroundResource(drawableRes);
         if (iv.getBackground() instanceof LayerDrawable) {
-            LayerDrawable background = LayerDrawable.class.cast(iv.getBackground());
+            LayerDrawable background = (LayerDrawable) iv.getBackground();
             background.findDrawableByLayerId(layerId).setColorFilter(mColor, mode);
         }
-        mImageHolder.addView(iv);
+        int imgWidth = getResources().getDimensionPixelSize(R.dimen.blend_image_width);
+        iv.setAdjustViewBounds(true);
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(imgWidth, WRAP_CONTENT);
+        lp.gravity = Gravity.CENTER_HORIZONTAL;
+        mImageHolder.addView(iv, lp);
         // iv.setColorFilter(mColor, mode);
         // iv.setTag(mode);
     }
@@ -271,11 +283,15 @@ public class ImageBlendFrag  extends UiFragment implements View.OnClickListener 
             iv.setImageResource(R.drawable.image100);
          //   iv.setColorFilter(mColor, mode);
          //   iv.setTag(mode);
-            mImageHolder.addView(iv);
+            int imgWidth = getResources().getDimensionPixelSize(R.dimen.blend_image_width);
+            iv.setAdjustViewBounds(true);
+            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(imgWidth, WRAP_CONTENT);
+            lp.gravity = Gravity.CENTER_HORIZONTAL;
+            mImageHolder.addView(iv, lp);
 
             ColorStateList colorStateList = new ColorStateList(
                     new int[][]{ new int[]{}},
-                    new int[]{  blendColor}
+                    new int[]{ blendColor }
             );
 
             if (Build.VERSION.SDK_INT >= 21) {
@@ -285,6 +301,7 @@ public class ImageBlendFrag  extends UiFragment implements View.OnClickListener 
                 Drawable drawable = DrawableCompat.wrap(iv.getDrawable());
                 DrawableCompat.setTintList(drawable.mutate(), colorStateList);
                 DrawableCompat.setTintMode(drawable.mutate(), mode);
+                iv.setImageDrawable(drawable);  // Required API 29
             }
             // iv.setTag(null);
         } catch (Exception ex) {

@@ -184,30 +184,6 @@ public class ExpandablePanel extends LinearLayout {
         return mAnimation;
     }
 
-    /**
-     * This method gets called when the View is physically
-     * visible to the user
-     */
-    @Override
-    protected void onFinishInflate() {
-        super.onFinishInflate();
-
-        /*
-        mContent = findViewThrowIfNull(mContentId, "content");
-
-        // Change dimension of the content starting with it collapsed
-        if (!mExpanded) {
-            android.view.ViewGroup.LayoutParams lp = mContent.getLayoutParams();
-            if (getOrientation() == VERTICAL) {
-                lp.height = mCollapsedDim;
-            } else {
-                lp.width = mCollapsedDim;
-            }
-            mContent.setLayoutParams(lp);
-        }
-        */
-    }
-
     @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
@@ -298,7 +274,7 @@ public class ExpandablePanel extends LinearLayout {
     protected interface OnExpandListener {
         void onExpand(View handle, View content);
 
-        public void onCollapse(View handle, View content);
+        void onCollapse(View handle, View content);
     }
 
     /**

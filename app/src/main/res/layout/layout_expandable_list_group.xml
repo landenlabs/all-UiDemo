@@ -8,7 +8,7 @@
     android:orientation="horizontal"
     android:padding="8dp">
 
-    <androidx.core.widget.Space
+    <androidx.legacy.widget.Space
         android:layout_width="10dp"
         android:layout_height="wrap_content" />
 

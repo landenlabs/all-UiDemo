@@ -75,7 +75,7 @@ public class AppCrash extends CrashManagerListener {
 
     @SuppressWarnings("UnnecessaryLocalVariable")
     public static void initalize(Application application, boolean isDebug) {
-        Context context = application;
+        Application context = application;
         int keyResId = context.getResources().getIdentifier("hockeyapp_key", "string", context.getPackageName());
         int pkgResId = context.getResources().getIdentifier("hockeyapp_pkg", "string", context.getPackageName());
         if (keyResId > 0 && pkgResId > 0) {
@@ -103,7 +103,7 @@ public class AppCrash extends CrashManagerListener {
                     new WeakReference<>(context), false);
             CrashManager.execute(context, hockeyAppCrashListener);
 
-            MetricsManager.register((Application)context, HOCKEY_APP_ID);
+            MetricsManager.register(context, HOCKEY_APP_ID);
             MetricsManager.trackEvent("start");
         }
     }
@@ -111,21 +111,6 @@ public class AppCrash extends CrashManagerListener {
     @Override
     public boolean shouldAutoUploadCrashes() {
         return true;
-    }
-
-    @Override
-    public void onNewCrashesFound() {
-        super.onNewCrashesFound();
-    }
-
-    @Override
-    public void onCrashesNotSent() {
-        super.onCrashesNotSent();
-    }
-
-    @Override
-    public void onCrashesSent() {
-        super.onCrashesSent();
     }
 
     /**

@@ -160,6 +160,7 @@ public class GraphLineFrag  extends UiFragment implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         int id = view.getId();
+        //noinspection SwitchStatementWithTooFewBranches
         switch (id) {
             default:
                 break;

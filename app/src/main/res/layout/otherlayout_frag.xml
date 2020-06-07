@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--suppress AndroidDomInspection -->
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -302,7 +303,7 @@
             android:gravity="center"
             android:text="Grid Layout (4 columns) \n match_parent\n columnWeight" />
         -->
-        <!-- android.support.v7.widget.GridLayout -->
+        <!-- GridLayout -->
         <!--
         <GridLayout
             android:layout_width="match_parent"

@@ -212,11 +212,14 @@ public class ShadowsFrag  extends UiFragment
         return Math.round((float)seekBar.getProgress() * maxValue / seekMax);
     }
 
+    @SuppressWarnings("SameParameterValue")
     private void setNegSb(SeekBar seekBar, int value, int maxValue) {
         int maxValue2 = maxValue*2;
         int iVal = (maxValue + value) * seekMax/maxValue2;
         seekBar.setProgress(iVal);
     }
+
+    @SuppressWarnings("SameParameterValue")
     private int getNegSb(SeekBar seekBar, int maxValue) {
         int maxValue2 = maxValue*2;
         return seekBar.getProgress() *  maxValue2 / seekMax - maxValue;
@@ -335,11 +338,13 @@ public class ShadowsFrag  extends UiFragment
             textSize = shadowImage.getWidth() / 2;
         }
 
+        /*
         String msg = String.format(
                 "Tag:%s\nTextSize: %d\nTextColorIdx:%d\nTextBgColor:%d\nShadowColor:%d\nShadowAlpha:%d\nOffset:%d,%d\nRadius:%d\n",
                 shadowView.getTag(),
                 textSize, textColorIdx, textBgColor, shadowColor, shadowAlpha, offsetX, offsetY, radius);
         // Toast.makeText(this.getActivity(), msg, Toast.LENGTH_SHORT).show();
+        */
 
         mProcessChange = false;
         setPosSb(textSizeSb, textSize, maxTextSize);

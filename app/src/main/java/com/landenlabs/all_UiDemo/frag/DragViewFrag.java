@@ -94,6 +94,7 @@ public class DragViewFrag extends UiFragment implements View.OnClickListener, Vi
         view.setLayoutParams(lParams);
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     public boolean onTouch(View view, MotionEvent event) {
         final int X = (int) event.getRawX();
@@ -102,6 +103,7 @@ public class DragViewFrag extends UiFragment implements View.OnClickListener, Vi
         switch (event.getAction() & MotionEvent.ACTION_MASK) {
             case MotionEvent.ACTION_DOWN:
                 view.setPressed(true);
+                //noinspection ConstantConditions
                 if (useLayout) {
                     RelativeLayout.LayoutParams lParams = (RelativeLayout.LayoutParams) view.getLayoutParams();
                     xDelta = X - lParams.leftMargin;
@@ -116,11 +118,11 @@ public class DragViewFrag extends UiFragment implements View.OnClickListener, Vi
                 view.setPressed(false);
                 break;
             case MotionEvent.ACTION_POINTER_DOWN:
-                break;
             case MotionEvent.ACTION_POINTER_UP:
                 break;
             case MotionEvent.ACTION_MOVE:
-               if (useLayout) {
+                //noinspection ConstantConditions
+                if (useLayout) {
                    RelativeLayout.LayoutParams layoutParams =
                            (RelativeLayout.LayoutParams) view.getLayoutParams();
                    layoutParams.leftMargin = X - xDelta;

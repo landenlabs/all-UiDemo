@@ -76,7 +76,8 @@ public class TabPair {
         }
 
         // BaseOnTabSelectedListener Not available in suppoert library version v27.1.1
-        tabLayout.addOnTabSelectedListener(new TabLayout.BaseOnTabSelectedListener() {
+        // TODO - call removeOnTabSelectedListener
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 int y = hScrollView.getScrollY();

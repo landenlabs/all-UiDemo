@@ -91,7 +91,7 @@ public class DrawablesFrag  extends UiFragment  {
 
 
         // Bitmap Drawable - tint works
-        Drawable drawable2 = ContextCompat.getDrawable(getContext(), R.drawable.shadow7);
+        Drawable drawable2 = ContextCompat.getDrawable(requireContext(), R.drawable.shadow7);
         if (Build.VERSION.SDK_INT >= 21) {
             drawable2.setTint(tintColor);
         }

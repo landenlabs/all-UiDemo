@@ -45,6 +45,7 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -59,7 +60,6 @@ import com.landenlabs.all_UiDemo.Ui;
  * @see <a href="http://landenlabs.com/android"> author's web-site </a>
  */
 
-//noinspection ConstantConditions
 public class ImageOverFrag  extends UiFragment
         implements SeekBar.OnSeekBarChangeListener, View.OnClickListener {
 
@@ -225,10 +225,10 @@ public class ImageOverFrag  extends UiFragment
         gray = graySb.getProgress();
         int grayColor = 0xff000000 + gray + gray*256 + gray*256*256;
         grayLbl.setBackgroundColor(grayColor);
-        grayLbl.setText("Gray: " + String.valueOf(gray));
+        grayLbl.setText("Gray: " + gray);
 
         alpha = alphaSb.getProgress();
-        alphaLbl.setText("Alpha: " + String.valueOf(alpha));
+        alphaLbl.setText("Alpha: " + alpha);
         grayColor = gray + gray*256 + gray*256*256 + alpha*256*256*256;
 
         lx = getXYZ(lightx);
@@ -280,7 +280,7 @@ public class ImageOverFrag  extends UiFragment
         float notchWidth = notchCenter / 2;
 
         boolean drawNotch = true;
-        //noinspection ConstantConditions,ConstantConditions
+        // noinspection ConstantConditions
         if (drawNotch) {
             Path notchPath = new Path();
             notchPath.moveTo(0, 0);
@@ -304,7 +304,7 @@ public class ImageOverFrag  extends UiFragment
         // resultCanvas.drawBitmap(canvasDrawable, 0, 0, xferPaint);
 
         boolean doDrawNotchShadow = true;
-        //noinspection ConstantConditions,ConstantConditions
+        // noinspection ConstantConditions
         if (doDrawNotchShadow) {
             drawNotchShadow(resultCanvas, grayColor, notchCenter, notchWidth, imgWidth, strokeWidth);
         }
@@ -362,21 +362,32 @@ public class ImageOverFrag  extends UiFragment
                 break;
         }
 
-        switch (filters) {
-            case NoFilter:
-                break;
-            case EmbossFilter:
-                filter =  new EmbossMaskFilter(lightSrc, ambient, specular, blurRadius);
-                paint.setXfermode(new PorterDuffXfermode(portDuffMode));
-                break;
-            case BlurFilter:
-                filter = new BlurMaskFilter(Math.max(0.5f, blurRadius), BlurMaskFilter.Blur.NORMAL);
-                paint.setXfermode(new PorterDuffXfermode(portDuffMode));
-                break;
-        }
+        try {
+            switch (filters) {
+                case NoFilter:
+                    break;
+                case EmbossFilter:
+                    filter = new EmbossMaskFilter(lightSrc, ambient, specular, blurRadius);
+                    paint.setXfermode(new PorterDuffXfermode(portDuffMode));
+                    break;
+                case BlurFilter:
+                    filter = new BlurMaskFilter(Math.max(0.5f, blurRadius), BlurMaskFilter.Blur.NORMAL);
+                    paint.setXfermode(new PorterDuffXfermode(portDuffMode));
+                    break;
+            }
 
-        paint.setMaskFilter(filter);
-        canvas.drawPath(notchPath, paint);
+            paint.setMaskFilter(filter);
+            canvas.drawPath(notchPath, paint);
+        } catch (Exception ex) {
+            switch (filters) {
+                case EmbossFilter:
+                    Toast.makeText(getContext(), "Invalid EmbossFilter radius=" + blurRadius, Toast.LENGTH_LONG).show();
+                    break;
+                case BlurFilter:
+                    Toast.makeText(getContext(), "Invalid BlurFilter " + ex.getMessage(), Toast.LENGTH_LONG).show();
+                    break;
+            }
+        }
     }
 
     // =============================================================================================

@@ -41,15 +41,16 @@ import java.util.ArrayList;
  * Simple class to draw touch events
  * {@link} http://code.tutsplus.com/tutorials/android-sdk-create-a-drawing-app-touch-interaction--mobile-19202
  */
+@SuppressWarnings("FieldCanBeLocal")
 public class DrawView extends View {
 
     // ---- Timer ----
-    private Handler m_handler = new Handler();
-    private boolean m_autoPrune = true;
+    private final Handler m_handler = new Handler();
+    private final boolean m_autoPrune = true;
     private static final int MAX_POINTS = 10000;
     private static final int mDurationMsec = 3000;
     private static final int TIMER_MSEC = 100;
-    private Runnable m_pruneTimerTask = new Runnable() {
+    private final Runnable m_pruneTimerTask = new Runnable() {
         public void run() {
             prunePath();
             m_handler.postDelayed(this, TIMER_MSEC);   // Re-execute after msec.
@@ -92,7 +93,7 @@ public class DrawView extends View {
     }
 
     static class PointfTime extends PointF {
-        long msec;
+        final long msec;
         PointfTime(float x, float y) {
             this.x = x;
             this.y = y;
@@ -108,7 +109,7 @@ public class DrawView extends View {
             }
         }
     }
-    ArrayList<PointfTime> m_pathPoints = new ArrayList<>();
+    final ArrayList<PointfTime> m_pathPoints = new ArrayList<>();
 
     @SuppressLint("ClickableViewAccessibility")
     @Override

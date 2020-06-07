@@ -130,7 +130,7 @@ public abstract class UiFragment extends Fragment {
     }
 
     Drawable getDrawable(int resId) {
-        if (Build.VERSION.SDK_INT >= 21) {
+        if (Build.VERSION.SDK_INT >= 22) {
             return getResources().getDrawable(resId, getTheme());
         } else {
             return getResources().getDrawable(resId);

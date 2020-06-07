@@ -20,8 +20,8 @@
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@id/bottom"
         android:layout_below="@id/title"
+        android:background="@drawable/squares100_tiles"
         android:layout_gravity="center_horizontal">
 
         <LinearLayout
@@ -73,7 +73,7 @@
                 android:padding="10dp"
                 android:scaleType="fitCenter"
                 android:text="0 RadioBtn"
-                app:srcCompat="@drawable/image_e" />
+                />
 
             <TextView
                 android:clickable="true"
@@ -84,7 +84,7 @@
                 android:background="@drawable/image_e"
                 android:padding="10dp"
                 android:text="1 TextView img bg"
-                tools:ignore="KeyboardInaccessibleWidget" />
+                android:focusable="true" />
 
             <TextView
                 android:clickable="true"
@@ -106,7 +106,7 @@
                 android:padding="10dp"
                 android:drawableTop="@drawable/image_e"
                 android:text="3 TextView img Top"
-                tools:ignore="KeyboardInaccessibleWidget" />
+                android:focusable="true" />
 
             <TextView
                 android:clickable="true"
@@ -253,7 +253,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
-                android:drawableLeft="@drawable/image_e"
+                android:drawableLeft="@drawable/image_f_dr"
                 android:drawableRight="@drawable/image_e"
                 android:padding="10dp"
                 android:text="14 Left Button Right"
@@ -271,6 +271,30 @@
                 android:text="15 TextView right"
                 android:focusable="true" />
 
+            <TextView
+                android:clickable="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:background="#c0c0ff"
+                android:drawableRight="@drawable/image_e_dr"
+                android:padding="10dp"
+                android:text="16 TextView right"
+                android:focusable="true" />
+
+            <!-- Compare drawable (mdpi) and nodpi
+            <ImageView
+                android:layout_margin="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/image_e" />
+
+            <ImageView
+                android:layout_margin="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/image_f_dr" />
+            -->
 
         </LinearLayout>
     </ScrollView>

@@ -58,7 +58,7 @@ public class GlCubeFrag  extends UiFragment implements View.OnClickListener {
     //
     //  https://gist.github.com/ybakos/4151696
     //
-    class DemoRenderer implements GLSurfaceView.Renderer {
+    static class DemoRenderer implements GLSurfaceView.Renderer {
 
         private final Cube cube = new Cube();
         private float rotation;
@@ -106,13 +106,13 @@ public class GlCubeFrag  extends UiFragment implements View.OnClickListener {
 
     }
 
-    class Cube {
+    static class Cube {
 
         private final FloatBuffer mVertexBuffer;
         private final FloatBuffer mColorBuffer;
         private final ByteBuffer mIndexBuffer;
 
-        private final float[] vertices = {
+        private static final float[] vertices = {
                 -1.0f, -1.0f, -1.0f,
                 1.0f, -1.0f, -1.0f,
                 1.0f, 1.0f, -1.0f,
@@ -122,7 +122,7 @@ public class GlCubeFrag  extends UiFragment implements View.OnClickListener {
                 1.0f, 1.0f, 1.0f,
                 -1.0f, 1.0f, 1.0f
         };
-        private final float[] colors = {
+        private static final float[] colors = {
                 0.0f, 1.0f, 0.0f, 1.0f,
                 0.0f, 1.0f, 0.0f, 1.0f,
                 1.0f, 0.5f, 0.0f, 1.0f,
@@ -133,7 +133,7 @@ public class GlCubeFrag  extends UiFragment implements View.OnClickListener {
                 1.0f, 0.0f, 1.0f, 1.0f
         };
 
-        private final byte[] indices = {
+        private static final byte[] indices = {
                 0, 4, 5, 0, 5, 1,
                 1, 5, 6, 1, 6, 2,
                 2, 6, 7, 2, 7, 3,
@@ -205,6 +205,7 @@ public class GlCubeFrag  extends UiFragment implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         int id = view.getId();
+        //noinspection SwitchStatementWithTooFewBranches
         switch (id) {
             default:
                 break;

@@ -51,6 +51,7 @@ import java.util.List;
  * @see <a href="http://landenlabs.com/android"> author's web-site </a>
  * @see <a href="http://landenlabs.com/android/flip-animation/index.html"> Flip animation</a>
  */
+@SuppressWarnings("Convert2Lambda")
 public class AnimListFrag  extends UiFragment {
 
     // ---- Timer ----
@@ -186,7 +187,7 @@ public class AnimListFrag  extends UiFragment {
     /**
      * Modify angle so both edges are in sync.
      */
-    class FloatEvaluator implements TypeEvaluator<Float> {
+    static class FloatEvaluator implements TypeEvaluator<Float> {
         public Float evaluate(float fraction, Float startValue,  Float endValue) {
 
             // Assume non-zero start is a reverse animation..

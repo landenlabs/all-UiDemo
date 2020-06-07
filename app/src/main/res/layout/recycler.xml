@@ -18,7 +18,7 @@
         android:gravity="center"
         android:text="-Header-"/>
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:background="#f00"
         tools:listitem="@layout/scroll_item_planet"
         android:id="@+id/recyclerView"

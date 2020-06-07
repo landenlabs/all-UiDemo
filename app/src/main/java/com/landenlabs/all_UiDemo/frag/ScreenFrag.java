@@ -31,8 +31,6 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,7 +53,7 @@ import java.util.Locale;
  * @author Dennis Lang
  *
  */
-@SuppressWarnings("Convert2Lambda")
+@SuppressWarnings("FieldCanBeLocal")
 public class ScreenFrag extends UiFragment {
 
     private FragmentActivity m_context;
@@ -113,7 +111,7 @@ public class ScreenFrag extends UiFragment {
     // ============================================================================================
 
     @Override
-    public void onConfigurationChanged(Configuration newConfig) {
+    public void onConfigurationChanged(@NonNull Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         updateView();
     }
@@ -136,66 +134,9 @@ public class ScreenFrag extends UiFragment {
     }
 
     @Override
-    public void setUserVisibleHint(boolean isVisibleToUser) {
-        super.setUserVisibleHint(isVisibleToUser);
-
-        /*
-        if (m_context != null) {
-            ActionBar actionBar = getActivity().getActionBar();
-            // actionBar.hide();
-            actionBar.setDisplayShowTitleEnabled(false);
-            if (isVisibleToUser) {
-                ColorDrawable colorDrawable = new ColorDrawable(Color.TRANSPARENT);
-                actionBar.setBackgroundDrawable(colorDrawable);
-            } else {
-                actionBar.setBackgroundDrawable(GlobalInfo.s_globalInfo.actionBarBackground);
-            }
-            actionBar.setDisplayShowTitleEnabled(true);
-            // actionBar.show();
-
-            // getActivity().invalidateOptionsMenu();
-        }
-        */
-    }
-
-
-    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        /*
-        switch (id) {
-            case R.id.screen_clear_menu:
-                m_drawPoints.clear();
-                m_drawPoints.invalidate();
-                break;
-            case R.id.screen_freeze_menu:
-                m_drawPoints.setAutoPrune(false);
-                break;
-            case R.id.screen_prune_menu:
-                m_drawPoints.setAutoPrune(true);
-                break;
-
-            default:
-                break;
-        }
-        */
-
         item.setChecked(true);
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void onPrepareOptionsMenu(Menu menu) {
-        super.onPrepareOptionsMenu(menu);
-    }
-
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
-        /*
-        inflater.inflate(R.menu.screen_menu, menu.addSubMenu("Screen Options"));
-        menu.findItem(R.id.screen_prune_menu).setChecked(m_drawPoints.getAutoPrune());
-        */
     }
 
     // ============================================================================================

@@ -59,7 +59,7 @@ public class GlLineFrag  extends UiFragment implements View.OnClickListener {
     static class Line {
         private final FloatBuffer VertexBuffer;
 
-        private final String VertexShaderCode =
+        private static final String VertexShaderCode =
                 // This matrix member variable provides a hook to manipulate
                 // the coordinates of the objects that use this vertex shader
                 "uniform mat4 uMVPMatrix;" +
@@ -70,7 +70,7 @@ public class GlLineFrag  extends UiFragment implements View.OnClickListener {
                         "  gl_Position = uMVPMatrix * vPosition;" +
                         "}";
 
-        private final String FragmentShaderCode =
+        private static final String FragmentShaderCode =
                 "precision mediump float;" +
                         "uniform vec4 vColor;" +
                         "void main() {" +
@@ -90,7 +90,7 @@ public class GlLineFrag  extends UiFragment implements View.OnClickListener {
         };
 
         private final int VertexCount = LineCoords.length / COORDS_PER_VERTEX;
-        private final int VertexStride = COORDS_PER_VERTEX * 4; // 4 bytes per vertex
+        private static final int VertexStride = COORDS_PER_VERTEX * 4; // 4 bytes per vertex
 
         // Set color with red, green, blue and alpha (opacity) values
         final float[] color = { 0.0f, 0.0f, 0.0f, 1.0f };
@@ -261,6 +261,7 @@ public class GlLineFrag  extends UiFragment implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         int id = view.getId();
+        //noinspection SwitchStatementWithTooFewBranches
         switch (id) {
             default:
                 break;

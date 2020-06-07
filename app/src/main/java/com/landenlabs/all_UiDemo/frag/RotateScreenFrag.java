@@ -44,7 +44,6 @@ import com.landenlabs.all_UiDemo.R;
 
 public class RotateScreenFrag  extends UiFragment implements View.OnClickListener {
 
-    @SuppressWarnings("FieldCanBeLocal")
     private View mRootView;
 
     @Override

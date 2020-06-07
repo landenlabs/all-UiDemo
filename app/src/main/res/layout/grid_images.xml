@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -27,50 +28,57 @@
         android:stretchMode="columnWidth"
         android:verticalSpacing="10dp" />
 
-    <RadioGroup
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
 
-        android:id="@+id/grid_image_rg"
-        android:orientation="vertical"
-        android:layout_gravity="center_horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        <RadioGroup
 
-        <RadioButton
-            android:id="@+id/grid_image_statelist"
+            android:id="@+id/grid_image_rg"
+            android:orientation="vertical"
+            android:layout_gravity="center_horizontal"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="State - Long press to elevate"/>
-        <RadioButton
-            android:id="@+id/grid_image_brAnim"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Background animation"/>
-        <RadioButton
-            android:id="@+id/grid_image_elev"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Elevate"/>
-        <RadioButton
-            android:id="@+id/grid_image_scale1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ScaleUp - manual scale"/>
-        <RadioButton
-            android:checked="true"
-            android:id="@+id/grid_image_scale2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ScaleUp - Transition API"/>
-        <RadioButton
-            android:id="@+id/grid_image_down"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ScaleDn - Transition API"/>
-        <RadioButton
-            android:id="@+id/grid_image_reset"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Reset size"/>
-    </RadioGroup>
+            android:layout_height="wrap_content">
 
+            <RadioButton
+                android:id="@+id/grid_image_statelist"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="State - Long press to elevate"/>
+            <RadioButton
+                android:id="@+id/grid_image_brAnim"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Background animation"/>
+            <RadioButton
+                android:id="@+id/grid_image_elev"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Elevate"/>
+            <RadioButton
+                android:id="@+id/grid_image_scale1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ScaleUp - manual scale" />
+
+            <RadioButton
+                android:id="@+id/grid_image_scale2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="ScaleUp - Transition API" />
+
+            <RadioButton
+                android:id="@+id/grid_image_down"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ScaleDn - Transition API" />
+
+            <RadioButton
+                android:id="@+id/grid_image_reset"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Reset size" />
+        </RadioGroup>
+    </ScrollView>
 </LinearLayout>

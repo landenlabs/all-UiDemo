@@ -43,12 +43,10 @@ import com.landenlabs.all_UiDemo.R;
  */
 public class PickerFrag extends UiFragment  {
 
-    // ---- Local Data ----
-    private View mRootView;
-
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        mRootView = inflater.inflate(R.layout.pickers, container, false);
+        // ---- Local Data ----
+        View mRootView = inflater.inflate(R.layout.pickers, container, false);
 
         setup();
         return mRootView;

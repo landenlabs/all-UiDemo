@@ -35,7 +35,10 @@ import java.util.Locale;
  */
 public class ScrollItemPlanetHolder extends ScrollItemHolder {
 
-    private TextView txtName, txtDistance, txtGravity, txtDiameter;
+    private final TextView txtName;
+    private final TextView txtDistance;
+    private final TextView txtGravity;
+    private final TextView txtDiameter;
 
     public ScrollItemPlanetHolder(View itemView) {
         super(itemView);

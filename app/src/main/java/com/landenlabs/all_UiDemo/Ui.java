@@ -53,7 +53,6 @@ public class Ui {
         return (E) rootView.findViewById(id);
     }
 
-    @SuppressWarnings("unchecked")
     public static <E extends View> E needViewById(View rootView, int id) {
         E foundView = rootView.findViewById(id);
         if (foundView == null)

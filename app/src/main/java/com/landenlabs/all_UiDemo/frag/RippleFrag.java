@@ -47,7 +47,7 @@ import com.landenlabs.all_UiDemo.R;
  */
 public class RippleFrag extends UiFragment implements View.OnClickListener {
 
-    private class DbgStateListDrawable extends StateListDrawable {
+    private static class DbgStateListDrawable extends StateListDrawable {
         @Override
         public boolean selectDrawable(int idx) {
             ALog.d.tagMsg(this,  "SelectDrawable " ,  idx);
@@ -55,13 +55,12 @@ public class RippleFrag extends UiFragment implements View.OnClickListener {
         }
     }
 
-    // ---- Local Data ----
-    private View mRootView;
     private ListView mList1View;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        mRootView = inflater.inflate(R.layout.ripple_frag, container, false);
+        // ---- Local Data ----
+        View mRootView = inflater.inflate(R.layout.ripple_frag, container, false);
 
         setup();
         return mRootView;

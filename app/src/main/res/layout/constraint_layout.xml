@@ -2,8 +2,10 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:ignore="ButtonStyle"
     android:background="#cfc"
     android:orientation="vertical">
 
@@ -45,7 +47,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="#4" />
+            android:text="#4"
+             />
 
     </LinearLayout>
 
@@ -58,9 +61,10 @@
         android:text="Constrain chain packed, bias=0.0"
         android:textSize="24sp" />
 
-    <androidx.constraintlayout.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints"
         android:background="#8ff">
 
         <TextView
@@ -88,7 +92,8 @@
             android:textSize="24sp"
             android:visibility="gone"
             app:layout_constraintEnd_toStartOf="@+id/h1_3"
-            app:layout_constraintStart_toEndOf="@+id/h1_1" />
+            app:layout_constraintStart_toEndOf="@+id/h1_1"
+            tools:ignore="MissingConstraints" />
 
         <TextView
             android:id="@+id/h1_3"
@@ -100,7 +105,8 @@
             android:textSize="24sp"
             android:visibility="visible"
             app:layout_constraintEnd_toStartOf="@+id/h1_4"
-            app:layout_constraintStart_toEndOf="@+id/h1_2" />
+            app:layout_constraintStart_toEndOf="@+id/h1_2"
+            />
 
         <TextView
             android:id="@+id/h1_4"
@@ -113,7 +119,7 @@
             android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/h1_3" />
-    </androidx.constraintlayout.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
         android:layout_width="match_parent"
@@ -123,7 +129,7 @@
         android:text="Constrain chain spread, bias=0.0"
         android:textSize="24sp" />
 
-    <androidx.constraintlayout.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#fcf">
@@ -178,7 +184,7 @@
             android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/h2_3" />
-    </androidx.constraintlayout.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     <TextView
@@ -189,7 +195,7 @@
         android:text="Constrain chain default, width=0dp, no bias"
         android:textSize="24sp" />
 
-    <androidx.constraintlayout.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#ffc">
@@ -246,7 +252,7 @@
             android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/h3_3" />
-    </androidx.constraintlayout.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     <TextView
@@ -257,7 +263,7 @@
         android:text="Constrain chain default, width=90dp, no bias"
         android:textSize="24sp" />
 
-    <androidx.constraintlayout.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#ffc">
@@ -314,10 +320,10 @@
             android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/h4_3" />
-    </androidx.constraintlayout.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    <androidx.constraintlayout.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:background="#b86"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -449,7 +455,7 @@
         </FrameLayout>
 
 
-    </androidx.constraintlayout.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>
 
 

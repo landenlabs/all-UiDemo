@@ -57,11 +57,8 @@ public class BottomAppBarLayoutBehavior extends CoordinatorLayout.Behavior<AppBa
     public boolean onStartNestedScroll(
             @NonNull final CoordinatorLayout coordinatorLayout, @NonNull final AppBarLayout child,
             @NonNull final View directTargetChild, @NonNull final View target,
-            final int nestedScrollAxes) {
+            final int nestedScrollAxes, @ViewCompat.NestedScrollType int type) {
         return true;
-
-        // return nestedScrollAxes == ViewCompat.SCROLL_AXIS_VERTICAL
-        //        && super.onStartNestedScroll(coordinatorLayout, child, directTargetChild, target, nestedScrollAxes);
     }
 
 
@@ -69,8 +66,8 @@ public class BottomAppBarLayoutBehavior extends CoordinatorLayout.Behavior<AppBa
     public void onNestedPreScroll(
             @NonNull CoordinatorLayout coordinatorLayout, @NonNull AppBarLayout child, @NonNull
             View target, int dx, int dy, @NonNull
-            int[] consumed) {
-        super.onNestedPreScroll(coordinatorLayout, child, target, dx, dy, consumed);
+            int[] consumed,  @ViewCompat.NestedScrollType int type) {
+        super.onNestedPreScroll(coordinatorLayout, child, target, dx, dy, consumed, type);
         ALog.d.tagMsg(this,  "onNestedPreScroll dy=", dy, " consumed[1]=" ,  consumed[1]);
 
         if (dy > 0 && !this.mIsAnimatingOut && child.getVisibility() == View.VISIBLE) {
@@ -83,8 +80,8 @@ public class BottomAppBarLayoutBehavior extends CoordinatorLayout.Behavior<AppBa
     @Override
     public void onStopNestedScroll(
             @NonNull CoordinatorLayout coordinatorLayout, @NonNull AppBarLayout child, @NonNull
-            View target) {
-        super.onStopNestedScroll(coordinatorLayout, child, target);
+            View target, @ViewCompat.NestedScrollType int type) {
+        super.onStopNestedScroll(coordinatorLayout, child, target, type);
         ALog.d.tagMsg(this,  "StopNestedScroll");
     }
 
@@ -103,11 +100,11 @@ public class BottomAppBarLayoutBehavior extends CoordinatorLayout.Behavior<AppBa
     */
     @Override
     public void onNestedScroll(@NonNull final CoordinatorLayout coordinatorLayout,
-            @NonNull final AppBarLayout child,
-            @NonNull final View target, final int dxConsumed, final int dyConsumed,
-            final int dxUnconsumed, final int dyUnconsumed) {
+                               @NonNull final AppBarLayout child,
+                               @NonNull final View target, final int dxConsumed, final int dyConsumed,
+                               final int dxUnconsumed, final int dyUnconsumed, @ViewCompat.NestedScrollType int type, @NonNull int[]out) {
         super.onNestedScroll(coordinatorLayout, child, target, dxConsumed, dyConsumed, dxUnconsumed,
-                dyUnconsumed);
+                dyUnconsumed, type, out);
 
         ALog.d.tagMsg(this,  "dyConsumed=", dyConsumed, " dyUnconsumed=",  dyUnconsumed);
 
