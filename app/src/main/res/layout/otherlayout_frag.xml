@@ -128,6 +128,7 @@
              android:stretchColumns="*"
         -->
         <TableLayout
+android:visibility="gone"
             android:id="@+id/other_tableLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -244,6 +245,7 @@
             android:text="Grid Layout (4 columns) \nwrap_content" />
 
         <com.landenlabs.all_UiDemo.Util.DividerGridLayout
+    android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
@@ -364,10 +366,11 @@
 
             <TextView
                 android:layout_width="wrap_content"
+                android:layout_column="0"
                 android:layout_columnSpan="4"
                 android:layout_gravity="center_horizontal"
                 android:background="#c0ffff"
-                android:text="Span 4 columns\nwrap_content"
+                android:text="Span 4 columns\nwrap_content\ncenter horiz"
                 android:textSize="32dp" />
 
             <TextView
@@ -380,22 +383,22 @@
             <TextView
                 android:layout_gravity="right"
                 android:background="#c0ffff"
-                android:text="right gravity" />
+                android:text="1 right gravity" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:background="#ffc0ff"
-                android:text="match_parent" />
+                android:text="2 match_parent" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:background="#ffffc0"
-                android:text="match_parent" />
+                android:text="3 match_parent" />
 
             <TextView
                 android:layout_column="0"
                 android:layout_gravity="right"
-                android:text="col=0 gravity=right:" />
+                android:text="gravity=right" />
 
             <TextView android:text="textView" />
 
