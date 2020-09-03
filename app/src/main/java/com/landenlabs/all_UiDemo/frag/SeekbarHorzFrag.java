@@ -42,14 +42,14 @@ import com.landenlabs.all_UiDemo.Ui;
  * @author Dennis Lang (LanDen Labs)
  * @see <a href="http://landenlabs.com/android"> author's web-site </a>
  */
-public class SeekbarFrag extends UiFragment implements View.OnClickListener {
+public class SeekbarHorzFrag extends UiFragment implements View.OnClickListener {
 
     // ---- Local Data ----
     private View mRootView;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        mRootView = inflater.inflate(R.layout.seekbar_frag, container, false);
+        mRootView = inflater.inflate(R.layout.seekbar_horz_frag, container, false);
 
         setup();
         return mRootView;
@@ -57,12 +57,12 @@ public class SeekbarFrag extends UiFragment implements View.OnClickListener {
 
     @Override
     public int getFragId() {
-        return R.id.seekbar_id;
+        return R.id.seekbar_horz_id;
     }
 
     @Override
     public String getName() {
-        return "Seekbar";
+        return "SeekbarHz";
     }
 
     @Override
@@ -92,6 +92,8 @@ public class SeekbarFrag extends UiFragment implements View.OnClickListener {
                 seekLbl.setText(text);
                 seekLbl.setX(seekBar.getX() + thumb_x - txtBounds.width()/2f);
                 seekLbl.setY(seekBar.getY() + thumb_y - txtBounds.height());
+
+                seekBar.setSecondaryProgress(Math.min(100,progress/2));
             }
 
             @Override

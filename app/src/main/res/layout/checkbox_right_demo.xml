@@ -133,8 +133,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/buttonHeight"
                 android:background="@drawable/transparent_ripple"
+                android:button="@null"
                 android:checked="true"
-                android:gravity="center_vertical|end"
+                android:drawableRight="@drawable/checkpath_anim_sel"
+                android:gravity="center_vertical|left"
                 android:text="CheckBox"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/buttonTextSize" />

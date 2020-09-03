@@ -275,7 +275,8 @@ public class MainActivity extends AppCompatActivity {
             new PageItem( "Animation",  R.layout.page_animation ),
             new PageItem( "Anim Bg", R.layout.page_anim_bg_frag),
 
-            new PageItem( "SeekBar", R.layout.page_seekbar),
+            new PageItem( "SeekBar Hz", R.layout.page_seekbar_horz),
+            new PageItem( "SeekBar Vt", R.layout.page_seekbar_vert),
             new PageItem( "Screen Draw", R.layout.page_screen),
             new PageItem( "DragView", R.layout.page_dragview),
 
