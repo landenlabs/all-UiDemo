@@ -31,4 +31,5 @@
 
 
     <dimen name="blend_image_width">100dp</dimen>
+    <dimen name="seek_vert_height">300dp</dimen>
 </resources>

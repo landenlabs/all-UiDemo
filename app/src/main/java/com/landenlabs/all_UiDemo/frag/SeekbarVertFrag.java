@@ -23,16 +23,12 @@ package com.landenlabs.all_UiDemo.frag;
  *
  */
 
-import android.graphics.Rect;
 import android.os.Bundle;
-import android.view.DragEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Checkable;
 import android.widget.ProgressBar;
 import android.widget.SeekBar;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
@@ -41,7 +37,6 @@ import com.landenlabs.all_UiDemo.Seek.SeekBarWithLabelHorizontal;
 import com.landenlabs.all_UiDemo.Ui;
 
 import java.util.ArrayList;
-import java.util.function.Function;
 
 /**
  * Demonstrate ripple on various views using different settings.
@@ -87,10 +82,12 @@ public class SeekbarVertFrag extends UiFragment
         primaryBar = new SeekBarWithLabelHorizontal(mRootView, R.id.seekBarH1, R.id.seekBarH1_Lbl, this);
         secondaryBar = new SeekBarWithLabelHorizontal(mRootView, R.id.seekBarH2, R.id.seekBarH2_Lbl, this);
 
-        bars.add( Ui.viewById(mRootView, R.id.seekBarV2));
+        bars.add( Ui.viewById(mRootView, R.id.seekBarV1));
         bars.add( Ui.viewById(mRootView, R.id.progressBarV1));
         bars.add(  Ui.viewById(mRootView, R.id.progressBarV2));
         bars.add(  Ui.viewById(mRootView, R.id.progressBarV3));
+        bars.add(  Ui.viewById(mRootView, R.id.progressBarV4));
+        bars.add(  Ui.viewById(mRootView, R.id.progressBarV5));
     }
 
     @Override
