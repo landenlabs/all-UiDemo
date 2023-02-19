@@ -1,8 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2020 Dennis Lang (LanDen Labs) landenlabs@gmail.com
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
+  ~ associated documentation files (the "Software"), to deal in the Software without restriction, including
+  ~ without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  ~ copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the
+  ~ following conditions:
+  ~
+  ~ The above copyright notice and this permission notice shall be included in all copies or substantial
+  ~ portions of the Software.
+  ~
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT
+  ~ LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
+  ~ NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+  ~ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+  ~ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+  ~
+  ~ @author Dennis Lang
+  ~ @see http://LanDenLabs.com/
+  -->
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#ecc"
     android:orientation="vertical">
 
@@ -30,40 +52,39 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_column="0"
                 android:layout_columnSpan="3"
                 android:layout_gravity="fill"
                 android:layout_marginTop="10dp"
-                android:layout_row="0"
                 android:background="#ccc"
                 android:gravity="center"
                 android:text="ImageView src=image"
                 android:textSize="16dp" />
 
             <ImageView
+                android:layout_rowWeight="1"
                 android:layout_width="@dimen/grid_layout_image_width"
                 android:layout_height="@dimen/grid_layout_image_height"
-                android:layout_column="0"
-                android:layout_row="1"
                 android:background="@drawable/ripple_boarderless"
                 android:clickable="true"
                 android:src="@drawable/image_e"
                 android:stateListAnimator="@animator/press"
                 android:focusable="true" />
 
-
             <ImageView
-                android:layout_width="@dimen/grid_layout_image_width"
-                android:layout_height="@dimen/grid_layout_image_height"
+                android:layout_gravity="fill"
+                android:layout_rowWeight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
                 android:background="@drawable/ripple_boarderless"
                 android:clickable="true"
                 android:src="@drawable/image_c"
                 android:stateListAnimator="@animator/press"
                 android:focusable="true" />
 
-
             <!-- outlineProvider required if no background set -->
             <ImageView
+                android:layout_rowWeight="1"
                 android:layout_width="@dimen/grid_layout_image_width"
                 android:layout_height="@dimen/grid_layout_image_height"
                 android:clickable="true"
@@ -75,11 +96,9 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_column="0"
                 android:layout_columnSpan="3"
                 android:layout_gravity="fill"
                 android:layout_marginTop="10dp"
-                android:layout_row="2"
                 android:background="#ccc"
                 android:gravity="center"
                 android:text="ImageView background=image"
@@ -88,8 +107,6 @@
             <ImageView
                 android:layout_width="@dimen/grid_layout_image_width"
                 android:layout_height="@dimen/grid_layout_image_height"
-                android:layout_column="0"
-                android:layout_row="3"
                 android:background="@drawable/image_e"
                 android:clickable="true"
                 android:src="@drawable/ripple_boarderless"
@@ -118,11 +135,9 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_column="0"
                 android:layout_columnSpan="3"
                 android:layout_gravity="fill"
                 android:layout_marginTop="10dp"
-                android:layout_row="4"
                 android:background="#ccc"
                 android:gravity="center"
                 android:text="ImageButtons"
@@ -131,8 +146,6 @@
             <ImageButton
                 android:layout_width="@dimen/grid_layout_image_width"
                 android:layout_height="@dimen/grid_layout_image_height"
-                android:layout_column="0"
-                android:layout_row="5"
                 android:clickable="true"
                 android:src="@drawable/image_e"
                 android:stateListAnimator="@animator/press"
@@ -158,11 +171,9 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_column="0"
                 android:layout_columnSpan="3"
                 android:layout_gravity="fill"
                 android:layout_marginTop="10dp"
-                android:layout_row="6"
                 android:background="#ccc"
                 android:gravity="center"
                 android:text="Button"
@@ -171,8 +182,6 @@
             <Button
                 android:layout_width="@dimen/grid_layout_image_width"
                 android:layout_height="@dimen/grid_layout_image_height"
-                android:layout_column="0"
-                android:layout_row="7"
 
                 android:text="Btn-A"
                 android:background="@drawable/ripple_boarderless"
@@ -182,8 +191,7 @@
 
             <Button
                 android:text="Btn-B"
-                android:layout_width="@dimen/grid_layout_image_width"
-                android:layout_height="@dimen/grid_layout_image_height"
+                android:layout_gravity="fill"
                 android:background="#cfc"
                 android:clickable="true"
                 android:stateListAnimator="@animator/press"
@@ -200,45 +208,41 @@
                 android:focusable="true" />
 
             <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_column="0"
-            android:layout_columnSpan="3"
-            android:layout_gravity="fill"
-            android:layout_marginTop="10dp"
-            android:layout_row="8"
-            android:background="#ccc"
-            android:gravity="center"
-            android:text="TextView"
-            android:textSize="16dp" />
+                android:layout_height="wrap_content"
+                android:layout_columnSpan="3"
+                android:layout_gravity="fill"
+                android:layout_marginTop="10dp"
+                android:background="#ccc"
+                android:gravity="center"
+                android:text="TextView"
+                android:textSize="16dp" />
 
             <TextView
-                android:gravity="center"
+                android:layout_columnWeight="1"
+                android:layout_gravity="center"
                 android:text="Txt-A"
-                android:layout_width="@dimen/grid_layout_image_width"
-                android:layout_height="@dimen/grid_layout_image_height"
                 android:layout_column="0"
                 android:layout_row="9"
                 android:background="@drawable/ripple_boarderless"
-
+                android:autoSizeTextType="uniform"
                 android:clickable="true"
                 android:stateListAnimator="@animator/press"
                 android:focusable="true" />
-
-            <TextView
-                android:gravity="center"
-                android:layout_width="@dimen/grid_layout_image_width"
-                android:layout_height="@dimen/grid_layout_image_height"
-                android:text="Txt-B"
-                android:background="#cfc"
+            <ImageView
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:background="@drawable/ripple_boarderless"
                 android:clickable="true"
+                android:src="@drawable/image_c"
                 android:stateListAnimator="@animator/press"
                 android:focusable="true" />
-
             <TextView
+                android:layout_columnWeight="1"
                 android:gravity="center"
-                android:text="Txt-C"
-                android:layout_width="@dimen/grid_layout_image_width"
+                android:maxWidth="100dp"
+                android:text="Txt-C is very long"
                 android:layout_height="@dimen/grid_layout_image_height"
                 android:background="@drawable/image_c"
                 android:clickable="true"
@@ -246,15 +250,12 @@
                 android:stateListAnimator="@animator/press"
                 android:focusable="true" />
 
-
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_column="0"
                 android:layout_columnSpan="3"
                 android:layout_gravity="fill"
                 android:layout_marginTop="10dp"
-                android:layout_row="10"
                 android:background="#ccc"
                 android:gravity="center"
                 android:text="RadioBtn"
@@ -262,11 +263,8 @@
 
             <RadioButton
                 android:gravity="center"
-                android:text="Txt-A"
-                android:layout_width="@dimen/grid_layout_image_width"
-                android:layout_height="@dimen/grid_layout_image_height"
-                android:layout_column="0"
-                android:layout_row="11"
+                android:text="Txt-A is very long"
+                android:maxWidth="80dp"
                 android:button="@null"
                 android:background="@drawable/ripple_boarderless"
                 android:clickable="true"
@@ -274,9 +272,8 @@
                 android:focusable="true" />
 
             <RadioButton
+                android:layout_gravity="fill"
                 android:gravity="center"
-                android:layout_width="@dimen/grid_layout_image_width"
-                android:layout_height="@dimen/grid_layout_image_height"
                 android:text="Txt-B"
                 android:button="@drawable/transparent_ripple"
                 android:background="#cfc"

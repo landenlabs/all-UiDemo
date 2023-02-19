@@ -1,3 +1,24 @@
+<!--
+  ~ Copyright (c) 2020 Dennis Lang (LanDen Labs) landenlabs@gmail.com
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
+  ~ associated documentation files (the "Software"), to deal in the Software without restriction, including
+  ~ without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  ~ copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the
+  ~ following conditions:
+  ~
+  ~ The above copyright notice and this permission notice shall be included in all copies or substantial
+  ~ portions of the Software.
+  ~
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT
+  ~ LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
+  ~ NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+  ~ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+  ~ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+  ~
+  ~ @author Dennis Lang
+  ~ @see http://LanDenLabs.com/
+  -->
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -30,10 +51,10 @@
                 android:background="@drawable/transparent_ripple"
                 android:drawableRight="@drawable/toggle_selector"
                 android:gravity="left"
-                android:textAllCaps="false"
+                android:minHeight="0dp"
                 android:textColor="#ff0000"
-                android:textOff="Two\nImages"
-                android:textOn="Two\nImages"
+                android:textOff="Off"
+                android:textOn="On"
                 android:textSize="@dimen/buttonTextSize" />
 
             <View
@@ -51,8 +72,8 @@
                 android:gravity="left"
                 android:textAllCaps="false"
                 android:textColor="#ff0000"
-                android:textOff="Two 3d\nImages"
-                android:textOn="Two 3d\nImages"
+                android:textOff="Off 3d\nImages"
+                android:textOn="On 3d\nImages"
                 android:textSize="@dimen/buttonTextSize" />
 
             <View

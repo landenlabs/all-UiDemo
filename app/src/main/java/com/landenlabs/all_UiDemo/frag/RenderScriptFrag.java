@@ -1,16 +1,13 @@
-package com.landenlabs.all_UiDemo.frag;
-
 /*
- * Copyright (c) 2019 Dennis Lang (LanDen Labs) landenlabs@gmail.com
- *
+ * Copyright (c) 2020 Dennis Lang (LanDen Labs) landenlabs@gmail.com
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
  * associated documentation files (the "Software"), to deal in the Software without restriction, including
  * without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the
- *  following conditions:
+ * following conditions:
  *
- *  The above copyright notice and this permission notice shall be included in all copies or substantial
- *  portions of the Software.
+ * The above copyright notice and this permission notice shall be included in all copies or substantial
+ * portions of the Software.
  *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT
  * LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
@@ -18,11 +15,13 @@ package com.landenlabs.all_UiDemo.frag;
  * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *
- *  @author Dennis Lang  (3/21/2015)
- *  @see http://landenlabs.com
- *
+ * @author Dennis Lang
+ * @see http://LanDenLabs.com/
  */
 
+package com.landenlabs.all_UiDemo.frag;
+
+import android.annotation.SuppressLint;
 import android.app.ActivityManager;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -59,12 +58,12 @@ import com.landenlabs.all_UiDemo.Util.BitmapUtils;
  * @see <a href="http://landenlabs.com/android"> author's web-site </a>
  */
 
-public class RenderScriptFrag  extends UiFragment
+public class RenderScriptFrag extends UiFragment
         implements SeekBar.OnSeekBarChangeListener, View.OnClickListener {
 
     private View mRootView;
     private ViewGroup mImageScroller;
-    
+
     private TextView mRadiusTv;
     private TextView mScaleTv;
     private SeekBar mRadiusSb;
@@ -89,17 +88,20 @@ public class RenderScriptFrag  extends UiFragment
     private int mScale = 10;
 
     private RenderScriptUtils.Blur mBlur;
-    private Bitmap  mSrcBitmap;
+    private Bitmap mSrcBitmap;
+
+    private Runnable mRenderRunnable;
 
     /**
      * Blur image in thread.
      */
+    /*
     private static class BlurAsyncTask extends AsyncTask<Void, Void, Bitmap> {
 
         private final IBlur mBlur;
         private final Bitmap mInBitmap;
         private final int mRadius;
-        private final ImageView mImageView;
+        private ImageView mImageView;
 
         private BlurAsyncTask(IBlur blur, Bitmap inBitmap, int radius, ImageView showResult) {
             super();
@@ -117,8 +119,10 @@ public class RenderScriptFrag  extends UiFragment
         @Override
         protected void onPostExecute(Bitmap outBitmap) {
             mImageView.setImageBitmap(outBitmap);
+            mImageView = null;
         }
     }
+     */
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -143,10 +147,15 @@ public class RenderScriptFrag  extends UiFragment
         return "RS Blur";
     }
 
+    @Override
+    public void onDetach() {
+        mRootView.removeCallbacks(mRenderRunnable);
+        super.onDetach();
+    }
 
     private void setup() {
         // final View titleView = Ui.viewById(mRootView, R.id.title);
-        
+
         mImageScroller = Ui.viewById(mRootView, R.id.rs_scroller);
         mTime1Tv = Ui.viewById(mRootView, R.id.rs_blur1Time);
         mTime2Tv = Ui.viewById(mRootView, R.id.rs_blur2Time);
@@ -190,6 +199,7 @@ public class RenderScriptFrag  extends UiFragment
         int iVal = value * mSeekMax / maxValue;
         seekBar.setProgress(iVal);
     }
+
     private int getPosSb(SeekBar seekBar, int maxValue) {
         // return maxXYZ/2 - seekBar.getProgress() *  maxXYZ / mSeekMax;
         return seekBar.getProgress() * maxValue / mSeekMax;
@@ -223,20 +233,19 @@ public class RenderScriptFrag  extends UiFragment
 
         if (mBlur == null) {
             mBlur = new RenderScriptUtils.Blur(this.getContext());
-            mSrcBitmap = ((BitmapDrawable)mImage1.getDrawable()).getBitmap();
+            mSrcBitmap = ((BitmapDrawable) mImage1.getDrawable()).getBitmap();
         }
 
         final ProgressDialog progress = new ProgressDialog(getContext());
         progress.setTitle("Blurring...");
         progress.setMessage("Please wait...");
         progress.setCancelable(false);
-        progress.show();
+        // progress.show(); // dismiss not working, claims to work in any thread !
 
         final Context context = this.getContext();
 
-        mRootView.postDelayed(new Runnable() {
-            @Override
-            public void run() {
+        if (mRenderRunnable == null) {
+            mRenderRunnable = () -> {
                 long startNano;
                 if (mCustomBlurCk.isChecked()) {
 
@@ -270,9 +279,10 @@ public class RenderScriptFrag  extends UiFragment
                 activityManager.getMemoryInfo(mi);
                 mMemTv.setText(String.format("Mem Avail:%,d Free:%,d", mi.availMem, mi.totalMem - mi.availMem));
 
-                progress.dismiss();
-            }
-        }, 500);
+                progress.dismiss(); // Does not work to hide (dismiss dialog), claims to work in any thread !
+            };
+        }
+        mRootView.postDelayed(mRenderRunnable, 500);
     }
 
 
@@ -286,15 +296,18 @@ public class RenderScriptFrag  extends UiFragment
             updateView();
         }
     }
+
     public void onStartTrackingTouch(SeekBar seekBar) {
     }
-    public void onStopTrackingTouch(SeekBar seekBar)  {
+
+    public void onStopTrackingTouch(SeekBar seekBar) {
     }
 
     // =============================================================================================
     // View  onClick
 
 
+    @SuppressLint("NonConstantResourceId")
     public void onClick(View view) {
         int id = view.getId();
 
@@ -334,7 +347,7 @@ public class RenderScriptFrag  extends UiFragment
 
         // TODO - why does this image not blur correctly.
         // Image 7 works on nx7 if pulled out using density.
-        mSrcBitmap = ((BitmapDrawable)getResources().getDrawableForDensity(imageRes, DisplayMetrics.DENSITY_DEFAULT)).getBitmap();
+        mSrcBitmap = ((BitmapDrawable) getResources().getDrawableForDensity(imageRes, DisplayMetrics.DENSITY_DEFAULT)).getBitmap();
 
         // mSrcBitmap = ((BitmapDrawable)mImage1.getDrawable()).getBitmap();
         mImage1.setImageBitmap(mSrcBitmap);

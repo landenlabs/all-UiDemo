@@ -1,16 +1,13 @@
-package com.landenlabs.all_UiDemo;
-
 /*
- * Copyright (c) 2019 Dennis Lang (LanDen Labs) landenlabs@gmail.com
- *
+ * Copyright (c) 2020 Dennis Lang (LanDen Labs) landenlabs@gmail.com
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
  * associated documentation files (the "Software"), to deal in the Software without restriction, including
  * without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the
- *  following conditions:
+ * following conditions:
  *
- *  The above copyright notice and this permission notice shall be included in all copies or substantial
- *  portions of the Software.
+ * The above copyright notice and this permission notice shall be included in all copies or substantial
+ * portions of the Software.
  *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT
  * LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
@@ -18,29 +15,43 @@ package com.landenlabs.all_UiDemo;
  * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *
- *  @author Dennis Lang  (3/21/2015)
- *  @see http://landenlabs.com
- *
+ * @author Dennis Lang
+ * @see http://LanDenLabs.com/
  */
+
+package com.landenlabs.all_UiDemo;
+
+import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
+import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.text.TextUtils;
+import android.view.DisplayCutout;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.SubMenu;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowInsets;
+import android.view.WindowInsetsController;
+import android.view.WindowManager;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
@@ -80,12 +91,56 @@ public class MainActivity extends AppCompatActivity {
         return ((appInfo.flags & ApplicationInfo.FLAG_DEBUGGABLE) != 0);
     }
 
+
     // ---------------------------------------------------------------------------------------------
     //  App can be started with deep link
     //    adb shell am start -W -a android.intent.action.VIEW -d "landenlabs://alluidemo/page1"
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        final boolean  EXP_SCREEN_BG = false;
+        if (EXP_SCREEN_BG) {
+            try {
+                // https://betterprogramming.pub/making-notch-friendly-apps-for-android-75776272be5c
+                Window window = getWindow();
+
+                //    window.requestFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
+                //    window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+                //     window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+                window.setStatusBarColor(Color.TRANSPARENT);
+
+                View decVw = window.getDecorView();
+                if (decVw instanceof ViewGroup) {
+                    // Try to get location of Camera cutout 
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                        window.getInsetsController().addOnControllableInsetsChangedListener(new WindowInsetsController.OnControllableInsetsChangedListener() {
+                            @Override
+                            public void onControllableInsetsChanged(@NonNull WindowInsetsController controller, int typeMask) {
+                                // DISPLAY_CUTOUT
+                                WindowInsetsCompat insets = ViewCompat.getRootWindowInsets(decVw.getRootView());
+                                if (insets != null && insets.hasInsets()) {
+                                    boolean isRound = insets.isRound();
+                                    ALog.d.tagMsg("Fullscreen", "inset is round");
+                                }
+                            }
+                        });
+                    }
+                    //  decVw.setWindowBackground(getContext().getDrawable( backgroundResId));
+                    ViewGroup fl = new FrameLayout(decVw.getContext());
+                    fl.setBackgroundColor(0x8000ff00);
+                    fl.setBackgroundResource(R.drawable.round_border1);
+                    ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(MATCH_PARENT, MATCH_PARENT);
+                    ((ViewGroup) decVw).addView(fl);
+                    ViewGroup fl2 = new FrameLayout(fl.getContext());
+                    fl2.setBackgroundColor(0x80ff00ff);
+                    ViewGroup.LayoutParams lp2 = new ViewGroup.LayoutParams(200, 200);
+                    fl.addView(fl2, lp2);
+                }
+            } catch (Exception ex) {
+                ALog.e.tagMsg("Fullscreen", ex);
+            }
+        }
 
         boolean DEBUG = isDebug(getApplicationInfo());
         AppCrash.initalize(getApplication(), DEBUG);
@@ -251,6 +306,7 @@ public class MainActivity extends AppCompatActivity {
             new PageItem( "Assorted", R.layout.page_assorted),
             new PageItem( "Text Alignment", R.layout.page_text),
             new PageItem( "TextSize", R.layout.page_text_height),
+            new PageItem( "TextSpan", R.layout.page_text_spans),
 
             new PageItem( "GridView Images", R.layout.page_grid_image),
             new PageItem( "GridLayout", R.layout.page_grid_layout),
@@ -271,8 +327,9 @@ public class MainActivity extends AppCompatActivity {
             new PageItem( "Checkbox Right",  R.layout.page_checkbox_right ),
             new PageItem( "Checkbox Left",  R.layout.page_checkbox_left ),
 
-            new PageItem( "Animated Vector",  R.layout.page_animated_vector_drawable ),
-            new PageItem( "Animation",  R.layout.page_animation ),
+            // Fails on Firestick API 25
+            new PageItem( "Animated Vector",  R.layout.page_animated_vector_drawable ),  // no firestick
+            new PageItem( "Animation",  R.layout.page_animation ),    // no firestick
             new PageItem( "Anim Bg", R.layout.page_anim_bg_frag),
 
             new PageItem( "SeekBar Hz", R.layout.page_seekbar_horz),
@@ -280,9 +337,11 @@ public class MainActivity extends AppCompatActivity {
             new PageItem( "Screen Draw", R.layout.page_screen),
             new PageItem( "DragView", R.layout.page_dragview),
 
+            new PageItem( "Clip Layout",  R.layout.page_cliplayout ),
             new PageItem( "Relative Layout",  R.layout.page_rellayout ),
-            new PageItem( "Constraint Layout ", R.layout.page_contraintlayout_frag),
-            new PageItem( "Other Layout",  R.layout.page_otherlayout_frag ),
+            // Fails on Firestick API 25
+            new PageItem( "Constraint Layout ", R.layout.page_contraintlayout_frag),    // no firestick
+            new PageItem( "Other Layout",  R.layout.page_otherlayout_frag ),    // no firestick
             new PageItem( "Bounded views", R.layout.page_bounded_size),
             new PageItem( "Scaled Btn", R.layout.page_scaled_image_btn),
             new PageItem( "Layout Anim",  R.layout.page_layout_anim ),

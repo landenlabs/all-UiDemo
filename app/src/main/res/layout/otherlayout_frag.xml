@@ -1,4 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2020 Dennis Lang (LanDen Labs) landenlabs@gmail.com
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
+  ~ associated documentation files (the "Software"), to deal in the Software without restriction, including
+  ~ without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  ~ copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the
+  ~ following conditions:
+  ~
+  ~ The above copyright notice and this permission notice shall be included in all copies or substantial
+  ~ portions of the Software.
+  ~
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT
+  ~ LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
+  ~ NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+  ~ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+  ~ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+  ~
+  ~ @author Dennis Lang
+  ~ @see http://LanDenLabs.com/
+  -->
+
 <!--suppress AndroidDomInspection -->
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -128,7 +148,6 @@
              android:stretchColumns="*"
         -->
         <TableLayout
-android:visibility="gone"
             android:id="@+id/other_tableLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -137,7 +156,7 @@ android:visibility="gone"
             android:divider="@drawable/hline"
             android:padding="10dp"
             android:showDividers="middle|end"
-            >
+            android:visibility="gone">
 
             <TableRow
                 android:baselineAligned="false"
@@ -145,44 +164,43 @@ android:visibility="gone"
                 android:showDividers="middle">
 
                 <TextView
-                    android:layout_weight="1"
                     android:layout_width="0dp"
-                    android:gravity="bottom"
                     android:layout_gravity="bottom"
-                    android:singleLine="true"
+                    android:layout_weight="1"
                     android:ellipsize="none"
+                    android:gravity="bottom"
+                    android:singleLine="true"
                     android:text="longertext0" />
 
                 <ImageView
-                    android:adjustViewBounds="true"
-                    android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_gravity="bottom"
+                    android:layout_weight="1"
+                    android:adjustViewBounds="true"
                     android:src="@drawable/scr_hourly" />
 
                 <ImageView
-                    android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="40dp"
                     android:layout_gravity="bottom"
+                    android:layout_weight="1"
                     android:src="@drawable/scr_hourly" />
 
                 <ImageView
-                    android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:layout_gravity="bottom"
+                    android:layout_weight="1"
                     android:src="@drawable/scr_hourly" />
 
                 <TextView
-                    android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_gravity="bottom"
-                    android:text="text2"
-                    android:singleLine="true"
+                    android:layout_weight="1"
                     android:ellipsize="none"
-                    android:textSize="30sp"
-                    />
+                    android:singleLine="true"
+                    android:text="text2"
+                    android:textSize="30sp" />
                 <!--
 
                 <TextView android:text="text3"
@@ -193,45 +211,45 @@ android:visibility="gone"
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
+                android:baselineAligned="false"
                 android:divider="@drawable/vline"
                 android:orientation="horizontal"
-                android:baselineAligned="false"
                 android:showDividers="middle">
 
                 <TextView
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
                     android:layout_weight="1"
-                    android:layout_width="0dp"
                     android:text="longtext1" />
 
                 <ImageView
-                    android:layout_height="match_parent"
-                    android:adjustViewBounds="true"
-                    android:layout_weight="1"
                     android:layout_width="0dp"
+                    android:layout_height="match_parent"
                     android:layout_gravity="bottom"
+                    android:layout_weight="1"
+                    android:adjustViewBounds="true"
                     android:src="@drawable/scr_hourly" />
 
                 <TextView
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
                     android:layout_weight="1"
-                    android:layout_width="0dp"
                     android:text="text3" />
 
                 <TextView
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
                     android:layout_weight="1"
-                    android:layout_width="0dp"
-                    android:textSize="30sp"
-                    android:text="text4444" />
+                    android:text="text4444"
+                    android:textSize="30sp" />
 
                 <TextView
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
-                    android:layout_width="0dp"
                     android:layout_weight="1"
                     android:text="text5" />
             </LinearLayout>
@@ -245,14 +263,14 @@ android:visibility="gone"
             android:text="Grid Layout (4 columns) \nwrap_content" />
 
         <com.landenlabs.all_UiDemo.Util.DividerGridLayout
-    android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:alignmentMode="alignBounds"
             android:background="#ffc0f0"
             android:columnCount="4"
-            android:padding="10dp">
+            android:padding="10dp"
+            android:visibility="gone">
 
             <TextView
                 android:layout_gravity="fill_horizontal"
@@ -359,12 +377,59 @@ android:visibility="gone"
             android:text="Grid Layout (4 columns) \nwrap_content" />
 
         <GridLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:alignmentMode="alignBounds"
-            android:columnCount="4">
+            android:columnCount="4"
+            android:useDefaultMargins="true">
+
+            <!--
+            Gravity=fill required with weight else
+            column does not render
+
+            Width of columns is the merging of all rows,
+            mixing weight rows with non-weight rows
+            ends with max width of each row.
+
+            Cells are not forced to fit column, wide
+            cells will alter entire column. Must force
+            text wrapping to prevent layout change.
+            -->
+            <!-- col width=0, is wrap -->
+            <TextView
+                android:layout_columnWeight="0"
+                android:layout_gravity="fill"
+                android:background="#cfc"
+                android:text="col1" />
+            <!-- wraps if not set to fill -->
+            <TextView
+                android:background="#fcc"
+                android:text="col2" />
+            <!-- weight without fill does not render -->
+            <TextView
+                android:layout_columnWeight="1"
+                android:background="#cfc"
+                android:text="col3" />
 
             <TextView
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill"
+                android:background="#fcc"
+                android:text="col4" />
+
+
+            <TextView android:text="column 1" />
+            <TextView android:text="column 2" />
+            <TextView android:text="column 3" />
+            <TextView android:text="column 4" />
+
+            <TextView android:text="column first" />
+            <TextView android:text="column second" />
+            <TextView android:text="column third" />
+            <TextView android:text="column forth" />
+
+            <TextView
+                android:visibility="gone"
                 android:layout_width="wrap_content"
                 android:layout_column="0"
                 android:layout_columnSpan="4"
@@ -374,26 +439,27 @@ android:visibility="gone"
                 android:textSize="32dp" />
 
             <TextView
+                android:gravity="center"
                 android:layout_columnSpan="4"
-                android:layout_gravity="left"
+                android:layout_gravity="fill"
                 android:background="#ffc0ff"
-                android:text="Span 4 left align"
+                android:text="Span 4 center align"
                 android:textSize="16dp" />
 
             <TextView
                 android:layout_gravity="right"
                 android:background="#c0ffff"
                 android:text="1 right gravity" />
-
+            <!--    width=match_parent breaks layout
+           <TextView
+               android:layout_width="match_parent"
+               android:background="#ffc0ff"
+               android:text="2 match_parent" />
+            -->
             <TextView
-                android:layout_width="match_parent"
-                android:background="#ffc0ff"
-                android:text="2 match_parent" />
-
-            <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:background="#ffffc0"
-                android:text="3 match_parent" />
+                android:text="2 wrap_content" />
 
             <TextView
                 android:layout_column="0"
@@ -403,36 +469,44 @@ android:visibility="gone"
             <TextView android:text="textView" />
 
             <TextView
-                android:layout_row="4"
                 android:layout_column="0"
                 android:layout_columnSpan="3"
+                android:gravity="right"
                 android:layout_gravity="fill"
                 android:background="#ccffff"
-                android:text="colspan=3,col=0,row=4" />
-
-            <TextView android:text="text0" />
-
-            <TextView android:text="text1" />
-
-            <TextView android:text="text2" />
-
-            <TextView android:text="text3" />
-
-            <Button
-                android:layout_column="2"
-                android:lines="3"
-                android:text="col=2 button long message" />
-
-            <TextView android:text="text0" />
-
-            <TextView android:text="text1" />
-
-            <TextView android:text="text2" />
-
-            <TextView android:text="text3" />
+                android:text="colspan=3,gravity=right" />
 
             <TextView android:text="text4" />
 
+            <TextView android:text="text1"
+                android:background="#fcc"
+                android:layout_gravity="fill"
+                />
+            <TextView android:text="text2" />
+            <TextView android:text="text3"
+                android:background="#fcc"
+                android:layout_gravity="fill"
+                />
+
+            <TextView
+                android:background="#fcc"
+                android:layout_gravity="fill"
+                android:layout_column="2"
+                android:lines="3"
+                android:text="force\nword\nwrap" />
+
+            <TextView android:text="text4" />
+
+            <TextView android:text="text1"
+                android:background="#fcc"
+                android:layout_gravity="fill"
+                />
+            <TextView android:text="text2" />
+            <TextView android:text="text3"
+                android:background="#fcc"
+                android:layout_gravity="fill"
+                />
+            <TextView android:text="text4" />
         </GridLayout>
 
         <View
