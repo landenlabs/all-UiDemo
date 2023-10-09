@@ -156,7 +156,7 @@
             android:divider="@drawable/hline"
             android:padding="10dp"
             android:showDividers="middle|end"
-            android:visibility="gone">
+            android:visibility="visible">
 
             <TableRow
                 android:baselineAligned="false"
@@ -270,7 +270,7 @@
             android:background="#ffc0f0"
             android:columnCount="4"
             android:padding="10dp"
-            android:visibility="gone">
+            android:visibility="visible">
 
             <TextView
                 android:layout_gravity="fill_horizontal"

@@ -196,6 +196,30 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
+        Bundle extras = intent.getExtras();
+        if (extras != null) {
+            String page = extras.getString("page");
+            if (!TextUtils.isEmpty(page)) {
+                for (int idx = 0; idx < mItems.length; idx++) {
+                    String title = mItems[idx].mTitle;
+                    if (title.contains(page)) {
+                        mStartPageIdx = idx;
+                        break;
+                    }
+                }
+
+                if (mStartPageIdx == -1) {
+                    page = page.toLowerCase();
+                    for (int idx = 0; idx < mItems.length; idx++) {
+                        String title = mItems[idx].mTitle;
+                        if (title.toLowerCase().contains(page)) {
+                            mStartPageIdx = idx;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
     }
 
     @Override
@@ -341,6 +365,7 @@ public class MainActivity extends AppCompatActivity {
             new PageItem( "Relative Layout",  R.layout.page_rellayout ),
             // Fails on Firestick API 25
             new PageItem( "Constraint Layout ", R.layout.page_contraintlayout_frag),    // no firestick
+            new PageItem( "Constraint Flow ", R.layout.page_contraintflow_frag),    // no firestick
             new PageItem( "Other Layout",  R.layout.page_otherlayout_frag ),    // no firestick
             new PageItem( "Bounded views", R.layout.page_bounded_size),
             new PageItem( "Scaled Btn", R.layout.page_scaled_image_btn),

@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2020 Dennis Lang (LanDen Labs) landenlabs@gmail.com
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
+  ~ associated documentation files (the "Software"), to deal in the Software without restriction, including
+  ~ without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  ~ copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the
+  ~ following conditions:
+  ~
+  ~ The above copyright notice and this permission notice shall be included in all copies or substantial
+  ~ portions of the Software.
+  ~
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT
+  ~ LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
+  ~ NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+  ~ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+  ~ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+  ~
+  ~ @author Dennis Lang
+  ~ @see http://LanDenLabs.com/
+  -->
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#cfc"
+    android:orientation="vertical"
+    tools:ignore="ButtonStyle">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Press to cycle visiblity vis, invis, gone"
+        android:textSize="20sp"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/btn_holder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/title">
+
+        <Button
+            android:id="@+id/constraint_btn1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="#1" />
+
+        <Button
+            android:id="@+id/constraint_btn2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="#2" />
+
+        <Button
+            android:id="@+id/constraint_btn3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="#3" />
+
+        <Button
+            android:id="@+id/constraint_btn4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="#4" />
+
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/title2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="#8ff"
+        android:text="Constrain chain packed, bias=0.0"
+        android:textSize="24sp"
+        app:layout_constraintTop_toBottomOf="@+id/btn_holder" />
+
+    <ScrollView
+        android:id="@+id/scroll_holder"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title2">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <View
+                android:id="@+id/divider0"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:layout_marginVertical="10dp"
+                android:background="#00f"
+                app:layout_constraintVertical_bias="0"
+                app:layout_constraintVertical_chainStyle="packed"
+                app:layout_constraintBottom_toTopOf="@+id/flow1"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.helper.widget.Flow
+                android:visibility="visible"
+                android:id="@+id/flow1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:constraint_referenced_ids="
+        card11, card12,
+        card13, card14,
+        card15, card16"
+                app:flow_horizontalAlign="start"
+                app:flow_horizontalGap="5dp"
+                app:flow_maxElementsWrap="2"
+                app:flow_verticalGap="5dp"
+                app:flow_wrapMode="chain"
+                app:layout_constraintBottom_toTopOf="@+id/divider1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/divider0" />
+
+            <View
+                android:id="@+id/divider1"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:layout_marginVertical="10dp"
+                android:background="#f00"
+                app:layout_constraintBottom_toTopOf="@+id/flow2"
+                app:layout_constraintTop_toBottomOf="@+id/flow1" />
+
+            <androidx.constraintlayout.helper.widget.Flow
+                android:id="@+id/flow2"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:visibility="visible"
+                app:constraint_referenced_ids="
+        card21, card22,
+        card23, card24,
+        card25, card26"
+                app:flow_horizontalAlign="start"
+                app:flow_horizontalGap="5dp"
+                app:flow_maxElementsWrap="2"
+                app:flow_verticalGap="5dp"
+                app:flow_wrapMode="aligned"
+                app:layout_constraintBottom_toTopOf="@+id/divider2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/divider1" />
+
+            <View
+                android:id="@+id/divider2"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:layout_marginVertical="10dp"
+                android:background="#0f0"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/flow2" />
+
+
+            <!-- -->
+            <include
+                android:id="@+id/card11"
+                style="@style/cardFlow"
+                layout="@layout/card_flow" />
+
+            <include
+                android:id="@+id/card12"
+                style="@style/cardFlow"
+                layout="@layout/card_flow_tall" />
+
+            <include
+                android:id="@+id/card13"
+                android:visibility="gone"
+                style="@style/cardFlow"
+                layout="@layout/card_flow_short" />
+
+            <include
+                android:id="@+id/card14"
+                style="@style/cardFlow"
+                layout="@layout/card_flow" />
+
+            <include
+                android:id="@+id/card15"
+                style="@style/cardFlow"
+                layout="@layout/card_flow" />
+
+            <include
+                android:id="@+id/card16"
+                style="@style/cardFlow"
+                layout="@layout/card_flow" />
+
+            <!-- -->
+            <include
+                android:id="@+id/card21"
+                style="@style/cardFlow"
+                layout="@layout/card_flow" />
+
+            <include
+                android:id="@+id/card22"
+                style="@style/cardFlow0"
+                layout="@layout/card_flow" />
+
+            <include
+                android:id="@+id/card23"
+                style="@style/cardFlow"
+                layout="@layout/card_flow_short" />
+
+            <include
+                android:id="@+id/card24"
+                style="@style/cardFlow"
+                layout="@layout/card_flow" />
+
+            <include
+                android:visibility="gone"
+                android:id="@+id/card25"
+                style="@style/cardFlow"
+                layout="@layout/card_flow_tall" />
+
+            <include
+                android:id="@+id/card26"
+                style="@style/cardFlow0"
+                layout="@layout/card_flow" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+

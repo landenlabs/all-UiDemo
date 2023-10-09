@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/cardStyle"
+    android:paddingStart="32dp"
+    android:paddingTop="28dp"
+    android:paddingBottom="28dp"
+    android:tag="card_flow">
+
+    <TextView
+        android:background="#80f0"
+        android:id="@+id/card_title1"
+        style="@style/text24"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_toLeftOf="@id/card_icon"
+        android:text="Tall"
+        android:textColor="#fff" />
+
+    <TextView
+        android:background="#8f00"
+        android:id="@+id/card_title2"
+        style="@style/text32"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/card_title1"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="8dp"
+        android:layout_toLeftOf="@id/card_icon"
+        android:breakStrategy="balanced"
+        android:text="TALL this is a very tall" />
+
+    <TextView
+        android:visibility="gone"
+        android:background="#80ff"
+        android:id="@+id/card_title3"
+        style="@style/text32"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/card_title2"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="8dp"
+        android:layout_toLeftOf="@id/card_icon"
+        android:text="TALL this is a very tall card which may span multiple rows" />
+
+    <ImageView
+        android:id="@+id/card_icon"
+        android:layout_width="156dp"
+        android:layout_height="156dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="40dp"
+        android:rotation="180"
+        android:src="@drawable/circle"
+        tools:background="#2000" />
+
+</RelativeLayout>
