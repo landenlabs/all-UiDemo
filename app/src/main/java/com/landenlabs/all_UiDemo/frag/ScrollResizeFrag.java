@@ -37,7 +37,7 @@ import com.landenlabs.all_UiDemo.Ui;
  * Demonstrate Scrollview resizing with views above and below.
  *
  * @author Dennis Lang (LanDen Labs)
- * @see <a href="http://landenlabs.com/android"> author's web-site </a>
+ * @see <a href="https://landenlabs.com/android"> author's web-site </a>
  */
 
 public class ScrollResizeFrag  extends UiFragment implements View.OnClickListener {
@@ -75,13 +75,10 @@ public class ScrollResizeFrag  extends UiFragment implements View.OnClickListene
     @Override
     public void onClick(View view) {
         int id = view.getId();
-        switch (id) {
-            case R.id.scroll_add:
-                addItem();
-                break;
-            case R.id.scroll_del:
-                delItem();
-                break;
+        if (id == R.id.scroll_add) {
+            addItem();
+        } else if (id == R.id.scroll_del) {
+            delItem();
         }
     }
 

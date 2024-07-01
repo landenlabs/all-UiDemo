@@ -48,7 +48,7 @@ import java.util.Arrays;
  * Demonstrate page of Menu items (icons or list layout)
  *
  * @author Dennis Lang (LanDen Labs)
- * @see <a href="http://landenlabs.com/android"> author's web-site </a>
+ * @see <a href="https://landenlabs.com/android"> author's web-site </a>
  */
 
 public class MenuFrag extends UiFragment
@@ -126,27 +126,18 @@ public class MenuFrag extends UiFragment
                 final Integer idx = (Integer) view.getTag();
                 mListVg.callOnClick();
                 // Delay action to allow any ripple to play out.
-                mListVg.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        mMainActivityWeakRef.get().selectPage(idx + FIRST_MENU_PAGE);
-                    }
-                }, 500);
+                mListVg.postDelayed(() -> mMainActivityWeakRef.get().selectPage(idx + FIRST_MENU_PAGE), 500);
                 return;
             }
         }
 
-        switch (view.getId()) {
-            case -1:
-            case R.id.menu_page:
-                mUiSplashScreen.hide();
-                break;
-            case R.id.menu_page_grid_btn:
-                setupGrid(fixPageItems(MainActivity.getPageItems()));
-                break;
-            case R.id.menu_page_list_btn:
-                setupList(fixPageItems(MainActivity.getPageItems()));
-                break;
+        int id = view.getId();
+        if (id == -1 || id == R.id.menu_page) {
+            mUiSplashScreen.hide();
+        } else if (id == R.id.menu_page_grid_btn) {
+            setupGrid(fixPageItems(MainActivity.getPageItems()));
+        } else if (id == R.id.menu_page_list_btn) {
+            setupList(fixPageItems(MainActivity.getPageItems()));
         }
     }
 

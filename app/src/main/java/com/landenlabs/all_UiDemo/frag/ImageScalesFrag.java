@@ -41,6 +41,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.core.graphics.drawable.DrawableCompat;
 
 import com.landenlabs.all_UiDemo.R;
@@ -50,7 +51,7 @@ import com.landenlabs.all_UiDemo.Ui;
  * Demonstrate Image Scale modes.
  *
  * @author Dennis Lang (LanDen Labs)
- * @see <a href="http://landenlabs.com/android"> author's web-site </a>
+ * @see <a href="https://landenlabs.com/android"> author's web-site </a>
  */
 
 
@@ -84,28 +85,21 @@ public class ImageScalesFrag  extends UiFragment implements View.OnClickListener
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.image_size_50:
-                setImage(R.drawable.image50);
-                break;
-            case R.id.image_size_220: // 220x124 = 16:9
-                setImage(R.drawable.image_16_9);
-                break;
-            case R.id.image_size_100w300h:
-                setImage(R.drawable.image100w300h);
-                break;
-            case R.id.image_size_300w100h:
-                setImage(R.drawable.image300w100h);
-                break;
-            case R.id.image_size_200:
-                setImage(R.drawable.image200);
-                break;
-            case R.id.image_size_400:
-                setImage(R.drawable.image400);
-                break;
-            case R.id.image_size_vec:
-                setImage(R.drawable.scr_home);
-                break;
+        int id = view.getId();
+        if (id == R.id.image_size_50) {
+            setImage(R.drawable.image50);
+        } else if (id == R.id.image_size_220) { // 220x124 = 16:9
+            setImage(R.drawable.image_16_9);
+        } else if (id == R.id.image_size_100w300h) {
+            setImage(R.drawable.image100w300h);
+        } else if (id == R.id.image_size_300w100h) {
+            setImage(R.drawable.image300w100h);
+        } else if (id == R.id.image_size_200) {
+            setImage(R.drawable.image200);
+        } else if (id == R.id.image_size_400) {
+            setImage(R.drawable.image400);
+        } else if (id == R.id.image_size_vec) {
+            setImage(R.drawable.scr_home);
         }
     }
 
@@ -130,19 +124,16 @@ public class ImageScalesFrag  extends UiFragment implements View.OnClickListener
         Ui.viewById(mRootView, R.id.image_size_200).setOnClickListener(this);
         Ui.viewById(mRootView, R.id.image_size_400).setOnClickListener(this);
 
-        mImageHolder.post(new Runnable() {
-            @Override
-            public void run() {
-                if (!ImageScalesFrag.this.isDetached()) {
-                    setImage(R.drawable.image200);
-                }
+        mImageHolder.post(() -> {
+            if (!ImageScalesFrag.this.isDetached()) {
+                setImage(R.drawable.image200);
             }
         });
 
     }
 
     private void setImage(ImageView imageView, int imageRes) {
-        // noinspection ConstantConditions,PointlessBooleanExpression
+        // noinspection PointlessBooleanExpression
         if (false &&  imageRes == R.drawable.scr_home) {
             // ScaleDrawable does nothing.
             setScaledVector(imageView, imageRes);
@@ -156,9 +147,9 @@ public class ImageScalesFrag  extends UiFragment implements View.OnClickListener
 
         Drawable rawDrawable;
         if (Build.VERSION.SDK_INT >= 21) {
-            rawDrawable = getResources().getDrawable(imageRes, getTheme());
+            rawDrawable = ResourcesCompat.getDrawable(getResources(), imageRes, getTheme());
         } else {
-            rawDrawable = getResources().getDrawable(imageRes, getTheme());
+            rawDrawable = ResourcesCompat.getDrawable(getResources(), imageRes, getTheme());
         }
 
         Drawable drawable = rawDrawable.mutate();

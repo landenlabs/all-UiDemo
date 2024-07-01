@@ -43,7 +43,7 @@ import java.util.ArrayList;
  * Demonstrate GridLayout, Linear, Scroll, Percent layout of stuff.
  *
  * @author Dennis Lang (LanDen Labs)
- * @see <a href="http://landenlabs.com/android"> author's web-site </a>
+ * @see <a href="https://landenlabs.com/android"> author's web-site </a>
  */
 
 @SuppressWarnings("FieldCanBeLocal")
@@ -114,23 +114,18 @@ public class OtherLayoutFrag  extends UiFragment
     @Override
     public void onClick(View view) {
         int id = view.getId();
-        switch (id) {
-            case R.id.card_title_btn:
-                setVis(Ui.viewById(mRootView, R.id.card_title));
-                break;
-            case R.id.card_more_btn:
-                setVis(Ui.viewById(mRootView, R.id.card_more));
-                break;
-            default:
-                // view.setBackgroundColor(Color.GREEN);
-                ViewGroup.LayoutParams params = view.getLayoutParams();
-                autoTransition.setDuration(3000);
-                TransitionManager.beginDelayedTransition((ViewGroup) mRootView, autoTransition);
-                params.width += INCR;
-                params.height += INCR;
-                view.requestLayout();
-                view.invalidate();
-                break;
+        if (id == R.id.card_title_btn) {
+            setVis(Ui.viewById(mRootView, R.id.card_title));
+        } else if (id == R.id.card_more_btn) {
+            setVis(Ui.viewById(mRootView, R.id.card_more));
+        } else {// view.setBackgroundColor(Color.GREEN);
+            ViewGroup.LayoutParams params = view.getLayoutParams();
+            autoTransition.setDuration(3000);
+            TransitionManager.beginDelayedTransition((ViewGroup) mRootView, autoTransition);
+            params.width += INCR;
+            params.height += INCR;
+            view.requestLayout();
+            view.invalidate();
         }
     }
 

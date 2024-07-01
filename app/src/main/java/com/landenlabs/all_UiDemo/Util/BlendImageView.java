@@ -34,10 +34,10 @@ import android.graphics.drawable.NinePatchDrawable;
 import android.graphics.drawable.PaintDrawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.VectorDrawable;
-import android.os.Build;
 import android.util.AttributeSet;
 
 import androidx.appcompat.widget.AppCompatImageView;
+import androidx.core.content.res.ResourcesCompat;
 
 import com.landenlabs.all_UiDemo.R;
 
@@ -80,11 +80,11 @@ public class BlendImageView extends AppCompatImageView {
             int resId;
             resId = a.getResourceId(R.styleable.BlendImageView_foreground, -1);
             if (resId != -1)
-            foregroundDrawable = getContext().getResources().getDrawable(resId, getContext().getTheme());
+                foregroundDrawable = ResourcesCompat.getDrawable(getResources(), resId, getContext().getTheme());
 
             resId = a.getResourceId(R.styleable.BlendImageView_background, -1);
             if (resId != -1)
-            backgroundDrawable  = getContext().getResources().getDrawable(resId, getContext().getTheme());
+                backgroundDrawable  = ResourcesCompat.getDrawable(getResources() , resId, getContext().getTheme());
 
             String modeStr = a.getString(R.styleable.BlendImageView_mode);
             mBlendMode = PorterDuff.Mode.valueOf(modeStr);
@@ -218,15 +218,11 @@ public class BlendImageView extends AppCompatImageView {
     }
 
     public Drawable getForegroundCompat() {
-        if (Build.VERSION.SDK_INT >= 23) {
-            return getForeground();
-        } else {
-            return foregroundDrawable;
-        }
+        return getForeground();
     }
 
     public void setForegroundCompat(int resId) {
-        setForegroundCompat(getContext().getResources().getDrawable(resId));
+        setForegroundCompat(ResourcesCompat.getDrawable(getResources(), resId, getContext().getTheme()));
     }
 
     public void setForegroundCompat(Drawable d) {

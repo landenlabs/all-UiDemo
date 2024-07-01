@@ -37,7 +37,7 @@ import com.landenlabs.all_UiDemo.Ui;
 
 /**
  * Demonstrate dragging view child around container.
- *
+ * <p>
  * https://stacktips.com/tutorials/android/how-to-drag-a-view-in-android
  * https://stackoverflow.com/questions/9398057/android-move-a-view-on-touch-move-action-move
  */
@@ -75,13 +75,11 @@ public class DragViewFrag extends UiFragment implements View.OnClickListener, Vi
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.dragZoomIn:
-                zoom(mDragView, +32);
-                break;
-            case R.id.dragZoomOut:
-                zoom(mDragView, -32);
-                break;
+        int id = view.getId();
+        if (id == R.id.dragZoomIn) {
+            zoom(mDragView, +32);
+        } else if (id == R.id.dragZoomOut) {
+            zoom(mDragView, -32);
         }
     }
 

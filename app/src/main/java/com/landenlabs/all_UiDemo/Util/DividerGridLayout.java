@@ -29,18 +29,20 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.widget.GridLayout;
 
+import androidx.annotation.NonNull;
+
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 /**
  * https://gist.github.com/Gaelan-Bolger/a5622eb3da9896254335404aa9370785
- *
+ * <p>
  * <com.landenlabs.all_UiDemo.Util.DividerGridLayout
  *     android:layout_width="match_parent"
  *     android:layout_height="wrap_content"
  *     app:alignmentMode="alignBounds"
  *     app:columnCount="2">
- *
+ * <p>
  *  </com.landenlabs.all_UiDemo.Util.DividerGridLayout>
  */
 public class DividerGridLayout extends GridLayout {
@@ -62,7 +64,7 @@ public class DividerGridLayout extends GridLayout {
     }
 
     @Override
-    protected void dispatchDraw(Canvas canvas) {
+    protected void dispatchDraw(@NonNull Canvas canvas) {
         /*
         final int count = getChildCount();
         for (int i = 0; i < count; i++) {
@@ -113,8 +115,8 @@ public class DividerGridLayout extends GridLayout {
 
             // int[] xs = mHorizontalAxis.locations;
             if (xs != null) {
-                for (int i = 0, length = xs.length; i < length; i++) {
-                    int x = left + xs[i];
+                for (int j : xs) {
+                    int x = left + j;
                     drawLine(canvas, x, top, x, bottom, paint);
                 }
             }

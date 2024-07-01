@@ -31,14 +31,13 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Region;
-import android.graphics.Xfermode;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -47,20 +46,20 @@ import java.util.Map;
  *
  *  LinearLayout which can clip its drawing area and optionally clear this objects background
  *  using the PorterDuff filter.
- *
+ * <p>
  *  https://medium.com/appkode/clipping-in-android-quickly-qualitatively-cheap-3ccfd31d5d6b
  *
  */
 public class ClipPathPorterLinearLayout extends LinearLayout {
-    private Path path1 = new Path();
-    private Path path2 = new Path();
+    private final Path path1 = new Path();
+    private final Path path2 = new Path();
     private int radius1 = 0;
     private int radius2 = 0;
     private Paint paint;
     private final Rect rect = new Rect();
     private final RectF rectF = new RectF();
 
-    private Map<View, Paint> childPaints = new HashMap<>();
+    private final Map<View, Paint> childPaints = new HashMap<>();
 
     // ---------------------------------------------------------------------------------------------
 
@@ -110,7 +109,7 @@ public class ClipPathPorterLinearLayout extends LinearLayout {
     }
     
     @Override
-    public void draw(Canvas canvas) {
+    public void draw(@NonNull Canvas canvas) {
         initPath();
         super.draw(canvas);
         // Paint over everything  background, children and foreground
@@ -121,7 +120,7 @@ public class ClipPathPorterLinearLayout extends LinearLayout {
      * Optionally clean this objects container background if child has tag set to "clear"
      */
     @Override
-    protected boolean drawChild(Canvas canvas, View child, long drawingTime) {
+    protected boolean drawChild(@NonNull Canvas canvas, View child, long drawingTime) {
         if (child.getTag() instanceof String) {
             String mode = (String)child.getTag();
             Paint paint = childPaints.get(child);

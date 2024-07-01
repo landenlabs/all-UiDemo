@@ -50,7 +50,7 @@ import java.util.ArrayList;
  * Demonstrate Scrollview Line Graph (chart).
  *
  * @author Dennis Lang (LanDen Labs)
- * @see <a href="http://landenlabs.com/android"> author's web-site </a>
+ * @see <a href="https://landenlabs.com/android"> author's web-site </a>
  */
 
 @SuppressWarnings({"FieldCanBeLocal", "unused"})
@@ -86,7 +86,7 @@ public class GraphLineFrag  extends UiFragment implements View.OnClickListener {
         }
 
         @Override
-        protected void onDraw(Canvas canvas) {
+        protected void onDraw(@NonNull Canvas canvas) {
             super.onDraw(canvas);
 
             paint.setColor(mColor);

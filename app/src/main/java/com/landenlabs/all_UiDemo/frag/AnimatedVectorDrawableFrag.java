@@ -23,7 +23,6 @@ package com.landenlabs.all_UiDemo.frag;
 
 import android.graphics.drawable.AnimatedVectorDrawable;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -98,12 +97,10 @@ public class AnimatedVectorDrawableFrag
     private void animate(View view) {
         ImageView v = (ImageView) view;
         Drawable d = v.getDrawable();
-        if (Build.VERSION.SDK_INT >= 21) {
-            if (d instanceof AnimatedVectorDrawable) {
-                AnimatedVectorDrawable avd = (AnimatedVectorDrawable) d;
-                avd.start();
-                return;
-            }
+        if (d instanceof AnimatedVectorDrawable) {
+            AnimatedVectorDrawable avd = (AnimatedVectorDrawable) d;
+            avd.start();
+            return;
         }
 
         if (d instanceof AnimatedVectorDrawableCompat) {

@@ -30,11 +30,11 @@ import com.landenlabs.all_UiDemo.ALog.ALog;
 
 /**
  * Debug version of ImageView to log scaling of images.
- *
+ * <p>
  * Created by Dennis Lang on 7/4/16.
  *
  * @author Dennis Lang (LanDen Labs)
- * @see <a href="http://landenlabs.com/android"> author's web-site </a>
+ * @see <a href="https://landenlabs.com/android"> author's web-site </a>
  */
 public class ExImageView extends androidx.appcompat.widget.AppCompatImageView {
 

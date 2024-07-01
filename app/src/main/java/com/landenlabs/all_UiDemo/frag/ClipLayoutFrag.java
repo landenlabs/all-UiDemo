@@ -53,16 +53,15 @@ import java.util.List;
 
 /**
  * Demonstrate clipping overlapping widgets
- *
+ * <p>
  * https://medium.com/appkode/clipping-in-android-quickly-qualitatively-cheap-3ccfd31d5d6b
  *
  * @author Dennis Lang (LanDen Labs)
- * @see <a href="http://landenlabs.com/android"> author's web-site </a>
+ * @see <a href="https://landenlabs.com/android"> author's web-site </a>
  */
 
 public class ClipLayoutFrag extends UiFragment {
 
-    @SuppressWarnings("FieldCanBeLocal")
     private View mRootView;
     private ViewGroup mHolder1;
     private ClipPathLinearLayout mHolder2;
@@ -130,12 +129,9 @@ public class ClipLayoutFrag extends UiFragment {
              }
          });
 
-        mModeRg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                setOutline();
-                mHolder1.invalidate();
-            }
+        mModeRg.setOnCheckedChangeListener((group, checkedId) -> {
+            setOutline();
+            mHolder1.invalidate();
         });
 
         initSpinner1();
@@ -152,8 +148,8 @@ public class ClipLayoutFrag extends UiFragment {
             options.add(mode.name());
         }
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                getContext(), android.R.layout.simple_spinner_item, options);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(
+                requireContext(), android.R.layout.simple_spinner_item, options);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mSpinner1.setAdapter(adapter);
         mSpinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -181,26 +177,20 @@ public class ClipLayoutFrag extends UiFragment {
                 Rect rect = new Rect(marg2, marg2, view.getWidth() - marg, view.getHeight() -  marg);
                 RectF rectf = new RectF(rect);
 
-                switch (mModeRg.getCheckedRadioButtonId()) {
-                    case R.id.clip_mode1:
-                        // Clip (mask) using Rectangle
-                        outline.setRect(marg2, marg2, view.getWidth() - marg, view.getHeight() -  marg);
-                        break;
-                    case R.id.clip_mode2:
-                        // Clip (mask) using round Rectangle
-                        outline.setRoundRect(rect, marg2);
-                        break;
-                    case R.id.clip_mode3:
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-                            Path path = new Path();
-                            path.addOval(rectf, Path.Direction.CW);
-                            //path.addRect(rectf, Path.Direction.CW);
-                            outline.setPath(path);  // does not work
-                        }
-                        break;
-                    case R.id.clip_mode4:
-                        mHolder1.setClipToOutline(false);
-                        break;
+                int checkedRadioButtonId = mModeRg.getCheckedRadioButtonId();
+                if (checkedRadioButtonId == R.id.clip_mode1) {// Clip (mask) using Rectangle
+                    outline.setRect(marg2, marg2, view.getWidth() - marg, view.getHeight() - marg);
+                } else if (checkedRadioButtonId == R.id.clip_mode2) {// Clip (mask) using round Rectangle
+                    outline.setRoundRect(rect, marg2);
+                } else if (checkedRadioButtonId == R.id.clip_mode3) {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                        Path path = new Path();
+                        path.addOval(rectf, Path.Direction.CW);
+                        //path.addRect(rectf, Path.Direction.CW);
+                        outline.setPath(path);  // does not work
+                    }
+                } else if (checkedRadioButtonId == R.id.clip_mode4) {
+                    mHolder1.setClipToOutline(false);
                 }
             }
 

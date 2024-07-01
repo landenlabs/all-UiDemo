@@ -50,7 +50,7 @@ import java.util.List;
  * and most of the standard pre-built list row layouts.
  *
  * @author Dennis Lang (LanDen Labs)
- * @see <a href="http://landenlabs.com/android"> author's web-site </a>
+ * @see <a href="https://landenlabs.com/android"> author's web-site </a>
  */
 public class List1Frag  extends UiFragment implements CompoundButton.OnCheckedChangeListener {
 
@@ -96,85 +96,68 @@ public class List1Frag  extends UiFragment implements CompoundButton.OnCheckedCh
     }
 
     private void setRowList(int id) {
-        switch (id) {
-            case R.id.row_ckBoxRb:
-                mTopTitle.setText("CheckBox (single)");
-                mRowLayoutRes = R.layout.list1_row_checkbox;
-                mListView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-                mListView.setAdapter(
-                        new ArrayAdapter<>(mRootView.getContext(), mRowLayoutRes, mListStrings));
-                break;
-            case R.id.row_ckTxBoxRb:
-                mTopTitle.setText("CheckTextBox (single)");
-                mRowLayoutRes = R.layout.list1_row_checktextbox;
-                mListView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-                mListView.setAdapter(
-                        new ArrayAdapter<>(mRootView.getContext(), mRowLayoutRes, mListStrings));
-                break;
-
-            case R.id.row_simpleList1:
-                mTopTitle.setText("Simple List");
-                mRowLayoutRes = android.R.layout.simple_list_item_1;
-                mListView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-                mListView.setAdapter(
-                        new ArrayAdapter<>(mRootView.getContext(), mRowLayoutRes, mListStrings));
-                break;
-            case R.id.row_simpleChk1:
-                mTopTitle.setText("Simple Checked (single)");
-                mRowLayoutRes = android.R.layout.simple_list_item_checked;
-                mListView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-                mListView.setAdapter(
-                        new ArrayAdapter<>(mRootView.getContext(), mRowLayoutRes, mListStrings));
-                break;
-
-            case R.id.row_singleChoice1:
-                mTopTitle.setText("Single Choice (single)");
-                mRowLayoutRes = android.R.layout.simple_list_item_single_choice;
-                mListView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-                mListView.setAdapter(
-                        new ArrayAdapter<>(mRootView.getContext(), mRowLayoutRes, mListStrings));
-                break;
-            case R.id.row_multiChoice1:
-                mTopTitle.setText("Multi Choice (multi)");
-                mRowLayoutRes = android.R.layout.simple_list_item_multiple_choice;
-                mListView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
-                mListView.setAdapter(
-                        new ArrayAdapter<>(mRootView.getContext(), mRowLayoutRes, mListStrings));
-                break;
-
-            case R.id.row_activatedList1:
-                mTopTitle.setText("Activated (single)");
-                mRowLayoutRes = android.R.layout.simple_list_item_activated_1;
-                mListView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-                mListView.setAdapter(
-                        new ArrayAdapter<>(mRootView.getContext(), mRowLayoutRes, mListStrings));
-                break;
-            case R.id.row_selectable:
-                mTopTitle.setText("Selectable (single)");
-                mRowLayoutRes = android.R.layout.simple_selectable_list_item;
-                mListView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-                mListView.setAdapter(
-                        new ArrayAdapter<>(mRootView.getContext(), mRowLayoutRes, mListStrings));
-                break;
-
-            case R.id.row_spinnerItem:
-                mTopTitle.setText("SpinnerItem");
-                mRowLayoutRes = android.R.layout.simple_spinner_item;
-                mListView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-                mListView.setAdapter(
-                        new ArrayAdapter<>(mRootView.getContext(), mRowLayoutRes, mListStrings));
-                break;
-
-            case R.id.row_spinner_dropdown:
-                mTopTitle.setText("SpinnerDropDown");
-                mRowLayoutRes = android.R.layout.simple_spinner_dropdown_item;
-                mListView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-                mListView.setAdapter(
-                        new ArrayAdapter<>(mRootView.getContext(), mRowLayoutRes, mListStrings));
-                break;
-
-            default:
-                Toast.makeText(this.getActivity(), "Unknown UI press", Toast.LENGTH_LONG).show();
+        if (id == R.id.row_ckBoxRb) {
+            mTopTitle.setText("CheckBox (single)");
+            mRowLayoutRes = R.layout.list1_row_checkbox;
+            mListView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+            mListView.setAdapter(
+                    new ArrayAdapter<>(mRootView.getContext(), mRowLayoutRes, mListStrings));
+        } else if (id == R.id.row_ckTxBoxRb) {
+            mTopTitle.setText("CheckTextBox (single)");
+            mRowLayoutRes = R.layout.list1_row_checktextbox;
+            mListView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+            mListView.setAdapter(
+                    new ArrayAdapter<>(mRootView.getContext(), mRowLayoutRes, mListStrings));
+        } else if (id == R.id.row_simpleList1) {
+            mTopTitle.setText("Simple List");
+            mRowLayoutRes = android.R.layout.simple_list_item_1;
+            mListView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+            mListView.setAdapter(
+                    new ArrayAdapter<>(mRootView.getContext(), mRowLayoutRes, mListStrings));
+        } else if (id == R.id.row_simpleChk1) {
+            mTopTitle.setText("Simple Checked (single)");
+            mRowLayoutRes = android.R.layout.simple_list_item_checked;
+            mListView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+            mListView.setAdapter(
+                    new ArrayAdapter<>(mRootView.getContext(), mRowLayoutRes, mListStrings));
+        } else if (id == R.id.row_singleChoice1) {
+            mTopTitle.setText("Single Choice (single)");
+            mRowLayoutRes = android.R.layout.simple_list_item_single_choice;
+            mListView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+            mListView.setAdapter(
+                    new ArrayAdapter<>(mRootView.getContext(), mRowLayoutRes, mListStrings));
+        } else if (id == R.id.row_multiChoice1) {
+            mTopTitle.setText("Multi Choice (multi)");
+            mRowLayoutRes = android.R.layout.simple_list_item_multiple_choice;
+            mListView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+            mListView.setAdapter(
+                    new ArrayAdapter<>(mRootView.getContext(), mRowLayoutRes, mListStrings));
+        } else if (id == R.id.row_activatedList1) {
+            mTopTitle.setText("Activated (single)");
+            mRowLayoutRes = android.R.layout.simple_list_item_activated_1;
+            mListView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+            mListView.setAdapter(
+                    new ArrayAdapter<>(mRootView.getContext(), mRowLayoutRes, mListStrings));
+        } else if (id == R.id.row_selectable) {
+            mTopTitle.setText("Selectable (single)");
+            mRowLayoutRes = android.R.layout.simple_selectable_list_item;
+            mListView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+            mListView.setAdapter(
+                    new ArrayAdapter<>(mRootView.getContext(), mRowLayoutRes, mListStrings));
+        } else if (id == R.id.row_spinnerItem) {
+            mTopTitle.setText("SpinnerItem");
+            mRowLayoutRes = android.R.layout.simple_spinner_item;
+            mListView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+            mListView.setAdapter(
+                    new ArrayAdapter<>(mRootView.getContext(), mRowLayoutRes, mListStrings));
+        } else if (id == R.id.row_spinner_dropdown) {
+            mTopTitle.setText("SpinnerDropDown");
+            mRowLayoutRes = android.R.layout.simple_spinner_dropdown_item;
+            mListView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+            mListView.setAdapter(
+                    new ArrayAdapter<>(mRootView.getContext(), mRowLayoutRes, mListStrings));
+        } else {
+            Toast.makeText(this.getActivity(), "Unknown UI press", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -193,17 +176,14 @@ public class List1Frag  extends UiFragment implements CompoundButton.OnCheckedCh
 
         mListView = Ui.viewById(mRootView, R.id.list1view);
         setRowList(R.id.row_ckBoxRb);
-        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
-                // String itemStr = listView.getItemAtPosition(position).toString();
-                // title.setText(itemStr);
-                // mCurrentIdx = position;
-                if(Build.VERSION.SDK_INT >= 21) {
-                    view.setStateListAnimator(AnimatorInflater.loadStateListAnimator(view.getContext(), R.animator.press));
-                }
-                view.setPressed(true);
+        mListView.setOnItemClickListener((parent, view, position, id) -> {
+            // String itemStr = listView.getItemAtPosition(position).toString();
+            // title.setText(itemStr);
+            // mCurrentIdx = position;
+            if(Build.VERSION.SDK_INT >= 21) {
+                view.setStateListAnimator(AnimatorInflater.loadStateListAnimator(view.getContext(), R.animator.press));
             }
+            view.setPressed(true);
         });
     }
 }

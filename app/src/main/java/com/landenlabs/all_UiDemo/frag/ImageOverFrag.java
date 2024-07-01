@@ -46,6 +46,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.res.ResourcesCompat;
 
 import com.landenlabs.all_UiDemo.R;
 import com.landenlabs.all_UiDemo.Ui;
@@ -55,7 +56,7 @@ import com.landenlabs.all_UiDemo.Ui;
  * Demonstrate overlapping images with notch cut out of top image.
  *
  * @author Dennis Lang (LanDen Labs)
- * @see <a href="http://landenlabs.com/android"> author's web-site </a>
+ * @see <a href="https://landenlabs.com/android"> author's web-site </a>
  */
 
 public class ImageOverFrag  extends UiFragment
@@ -139,12 +140,7 @@ public class ImageOverFrag  extends UiFragment
 
     private void setup() {
         final View titleView = Ui.viewById(mRootView, R.id.title);
-        Ui.viewById(mRootView, R.id.bottom).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                titleView.animate().alpha(1.0f - titleView.getAlpha()).start();
-            }
-        });
+        Ui.viewById(mRootView, R.id.bottom).setOnClickListener(v -> titleView.animate().alpha(1.0f - titleView.getAlpha()).start());
 
         graySb = Ui.viewById(mRootView, R.id.gray_sb);
         alphaSb = Ui.viewById(mRootView, R.id.alpha_sb);
@@ -247,7 +243,7 @@ public class ImageOverFrag  extends UiFragment
         ambientTv.setText(String.format("Ambient %.1f", ambient));
 
         // http://stackoverflow.com/questions/1705239/how-should-i-give-images-rounded-corners-in-android
-        BitmapDrawable botDrawable = (BitmapDrawable)getResources().getDrawable(R.drawable.paper_pink, getTheme());
+        BitmapDrawable botDrawable = (BitmapDrawable) ResourcesCompat.getDrawable(getResources(), R.drawable.paper_pink, getTheme());
         int imgWidth = botDrawable.getIntrinsicWidth();
         int imgHeight = botDrawable.getIntrinsicHeight();
 
@@ -405,51 +401,38 @@ public class ImageOverFrag  extends UiFragment
 
     public void onClick(View view) {
         int id = view.getId();
-        switch (id) {
-            // ---- Filters
-            case R.id.filter_blur:
-                filters = Filters.BlurFilter;
-                lightHolder.setVisibility(View.GONE);
-                break;
-            case R.id.filter_emboss:
-                filters = Filters.EmbossFilter;
-                lightHolder.setVisibility(View.VISIBLE);
-                break;
-            case R.id.filter_none:
-                filters = Filters.NoFilter;
-                lightHolder.setVisibility(View.GONE);
-                break;
+        // ---- Filters
+        if (id == R.id.filter_blur) {
+            filters = Filters.BlurFilter;
+            lightHolder.setVisibility(View.GONE);
+        } else if (id == R.id.filter_emboss) {
+            filters = Filters.EmbossFilter;
+            lightHolder.setVisibility(View.VISIBLE);
+        } else if (id == R.id.filter_none) {
+            filters = Filters.NoFilter;
+            lightHolder.setVisibility(View.GONE);
 
             // ---- Shaders
-            case R.id.shader_gradient:
-                shaderType = shaderGradientCb.isChecked() ? ShaderType.GradientShader : ShaderType.NoShader;
-                break;
+        } else if (id == R.id.shader_gradient) {
+            shaderType = shaderGradientCb.isChecked() ? ShaderType.GradientShader : ShaderType.NoShader;
 
             // ---- Duffy mode
-            case R.id.mode_add:
-                portDuffMode = PorterDuff.Mode.ADD;
-                break;
-            case R.id.mode_clear:
-                portDuffMode = PorterDuff.Mode.CLEAR;
-                break;
-            case R.id.mode_darken:
-                portDuffMode = PorterDuff.Mode.DARKEN;
-                break;
-            case R.id.mode_lighten:
-                portDuffMode = PorterDuff.Mode.LIGHTEN;
-                break;
-            case R.id.mode_mult:
-                portDuffMode = PorterDuff.Mode.MULTIPLY;
-                break;
-            case R.id.mode_xor:
-                portDuffMode = PorterDuff.Mode.XOR;
-                break;
-            case R.id.mode_src:
-                portDuffMode = PorterDuff.Mode.SRC;
-                break;
-            case R.id.mode_dst:
-                portDuffMode = PorterDuff.Mode.DST;
-                break;
+        } else if (id == R.id.mode_add) {
+            portDuffMode = PorterDuff.Mode.ADD;
+        } else if (id == R.id.mode_clear) {
+            portDuffMode = PorterDuff.Mode.CLEAR;
+        } else if (id == R.id.mode_darken) {
+            portDuffMode = PorterDuff.Mode.DARKEN;
+        } else if (id == R.id.mode_lighten) {
+            portDuffMode = PorterDuff.Mode.LIGHTEN;
+        } else if (id == R.id.mode_mult) {
+            portDuffMode = PorterDuff.Mode.MULTIPLY;
+        } else if (id == R.id.mode_xor) {
+            portDuffMode = PorterDuff.Mode.XOR;
+        } else if (id == R.id.mode_src) {
+            portDuffMode = PorterDuff.Mode.SRC;
+        } else if (id == R.id.mode_dst) {
+            portDuffMode = PorterDuff.Mode.DST;
         }
 
         updateView();

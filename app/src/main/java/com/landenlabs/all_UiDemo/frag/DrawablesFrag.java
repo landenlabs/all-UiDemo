@@ -25,7 +25,6 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,7 +43,7 @@ import com.landenlabs.all_UiDemo.Ui;
  * Demonstrate GridLayout, Linear, Scroll, Percent layout of stuff.
  *
  * @author Dennis Lang (LanDen Labs)
- * @see <a href="http://landenlabs.com/android"> author's web-site </a>
+ * @see <a href="https://landenlabs.com/android"> author's web-site </a>
  */
 
 public class DrawablesFrag  extends UiFragment  {
@@ -90,9 +89,7 @@ public class DrawablesFrag  extends UiFragment  {
 
         // Bitmap Drawable - tint works
         Drawable drawable2 = ContextCompat.getDrawable(requireContext(), R.drawable.shadow7);
-        if (Build.VERSION.SDK_INT >= 21) {
-            drawable2.setTint(tintColor);
-        }
+        drawable2.setTint(tintColor);
         // drawable2.setColorFilter(colorFilter);
         ImageView view2 = Ui.viewById(mRootView, R.id.drawables_2);
         view2.setImageDrawable(drawable2);
@@ -103,9 +100,7 @@ public class DrawablesFrag  extends UiFragment  {
         if (true) {
             Drawable drawable3 = ContextCompat.getDrawable(getContext(), R.drawable.shadow7);
             // drawable3.setColorFilter(colorFilter);  // Does not work.
-            if (Build.VERSION.SDK_INT >= 21) {
-                drawable3.setTint(tintColor);
-            }
+            drawable3.setTint(tintColor);
             ImageView view3 = Ui.viewById(mRootView, R.id.drawables_3);
             view3.setImageDrawable(drawable3);
             // view3.setBackgroundDrawable(drawable3);

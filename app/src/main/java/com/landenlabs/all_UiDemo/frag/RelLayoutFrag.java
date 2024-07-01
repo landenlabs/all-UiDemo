@@ -34,7 +34,7 @@ import com.landenlabs.all_UiDemo.R;
  * Demonstrate Relative layout and Gravity.
  *
  * @author Dennis Lang (LanDen Labs)
- * @see <a href="http://landenlabs.com/android"> author's web-site </a>
+ * @see <a href="https://landenlabs.com/android"> author's web-site </a>
  */
 
 public class RelLayoutFrag  extends UiFragment {

@@ -25,10 +25,10 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.view.Window;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -41,7 +41,7 @@ import java.util.Objects;
  * Base page fragment for UI Demo app.
  *
  * @author Dennis Lang (LanDen Labs)
- * @see <a href="http://landenlabs.com/android"> author's web-site </a>
+ * @see <a href="https://landenlabs.com/android"> author's web-site </a>
  */
 public abstract class UiFragment extends Fragment {
 
@@ -52,11 +52,11 @@ public abstract class UiFragment extends Fragment {
 
     @NonNull
     Context getContextSafe() {
-        return Objects.requireNonNull(this.getContext());
+        return requireContext();
     }
     @NonNull
     private Activity getActivitySafe() {
-        return Objects.requireNonNull(getActivity());
+        return requireActivity();
     }
 
     public Window getWindowSafe() {
@@ -65,7 +65,7 @@ public abstract class UiFragment extends Fragment {
 
     @NonNull
     private FragmentManager getFragmentMgrSafe() {
-        return Objects.requireNonNull(getFragmentManager());
+        return requireFragmentManager();
     }
 
     @NonNull
@@ -105,10 +105,6 @@ public abstract class UiFragment extends Fragment {
     }
 
     Drawable getDrawable(int resId) {
-        if (Build.VERSION.SDK_INT >= 22) {
-            return getResources().getDrawable(resId, getTheme());
-        } else {
-            return getResources().getDrawable(resId);
-        }
+        return ResourcesCompat.getDrawable(getResources(), resId, getTheme());
     }
 }

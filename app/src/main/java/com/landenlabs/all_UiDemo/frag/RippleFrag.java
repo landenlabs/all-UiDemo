@@ -42,7 +42,7 @@ import com.landenlabs.all_UiDemo.Ui;
  * Demonstrate ripple on various views using different settings.
  *
  * @author Dennis Lang (LanDen Labs)
- * @see <a href="http://landenlabs.com/android"> author's web-site </a>
+ * @see <a href="https://landenlabs.com/android"> author's web-site </a>
  */
 public class RippleFrag extends UiFragment implements View.OnClickListener {
 
@@ -110,7 +110,7 @@ public class RippleFrag extends UiFragment implements View.OnClickListener {
 
             // mDrawerListView.setSelector();
             // Drawable selector = mDrawerListView.getSelector().getConstantState().newDrawable().mutate();
-            Drawable selector = mDrawerListView.getResources().getDrawable(R.drawable.selector_white);
+            Drawable selector = mDrawerListView.ResourcesCompat.getDrawable(getResources() R.drawable.selector_white);
 
             if (Build.VERSION.SDK_INT >= 21) {
                 selector.setTintMode(PorterDuff.Mode.MULTIPLY);
@@ -185,7 +185,7 @@ public class RippleFrag extends UiFragment implements View.OnClickListener {
 
         // mDrawerListView.setSelector();
         // Drawable selector = mDrawerListView.getSelector().getConstantState().newDrawable().mutate();
-        mSelectorDrawable = context.getResources().getDrawable(R.drawable.selector_white);
+        mSelectorDrawable = context.ResourcesCompat.getDrawable(getResources() R.drawable.selector_white);
 
         if (Build.VERSION.SDK_INT >= 21) {
             mSelectorDrawable.setTintMode(PorterDuff.Mode.MULTIPLY);

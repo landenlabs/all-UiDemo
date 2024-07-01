@@ -1,67 +1,68 @@
-apply plugin: 'com.android.application'
-
-/*
- * Copyright (c) 2020 Dennis Lang (LanDen Labs) landenlabs@gmail.com
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
- * associated documentation files (the "Software"), to deal in the Software without restriction, including
- * without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the
- * following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all copies or substantial
- * portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT
- * LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
- * NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
- * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
- * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- *
- * @author Dennis Lang
- * @see http://LanDenLabs.com/
- */
-
-// String outputDirFramework = file('../dist').getPath();
+// all-uiDemo
+plugins {
+    id ("com.android.application")
+    id ("org.jetbrains.kotlin.android") // Prevents duplicate kotlin warnings
+}
 
 android {
-    signingConfigs {
-        release
-    }
-    compileSdkVersion 33
+    compileSdk 34
+    namespace 'com.landenlabs.all_UiDemo'
 
     defaultConfig {
         applicationId 'com.landenlabs.all_uidemo'
         minSdkVersion 23
-        targetSdkVersion 33
+        targetSdkVersion 34
+
         versionName '3.14.18'
         versionCode 31418
-
-        // renderscriptTargetApi 24
-
-        signingConfig signingConfigs.release
 
         // Unit test
         // http://robolectric.org/migrating/#migrating-to-40
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        // Limit languages to following list.
+        resConfigs "en", "es"
+
+        buildConfigField "long", "BuildTimeMilli", System.currentTimeMillis() + "L"
     }
 
     // Save app version in string so resource can be used in layouts
-    applicationVariants.all { variant ->
-        variant.resValue "string", "versionName", "version " + variant.versionName
+    applicationVariants.configureEach { variant ->
+        variant.resValue "string", "versionName", "v" + variant.versionName
+    }
+
+    signingConfigs {
+        release
+    }
+
+    // Load signing config (does not work for command line builds)
+    // println("Setting release=${rootDir}/release.properties")
+    if (file("${rootDir}/release.properties").exists()) {
+        def props = new Properties()
+        props.load(new FileInputStream(file("${rootDir}/release.properties")))
+        android.signingConfigs.release.storeFile = file(props.keyStore)
+        android.signingConfigs.release.storePassword = props.keyStorePassword
+        android.signingConfigs.release.keyAlias = props.keyAlias
+        android.signingConfigs.release.keyPassword = props.keyAliasPassword
+        println("Setting release to " + signingConfigs.release.storeFile.absolutePath )
     }
 
     buildTypes {
         release {
+            // Enables code shrinking, obfuscation, and optimization.
             minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.release
-        }
-        debug {
-            renderscriptDebuggable true
-        }
-    }
 
-    productFlavors {
+            // List of resources removed at end of generated mapping file:
+            // grep unused ./app/build/outputs/mapping/demoRelease/resources.txt
+            shrinkResources true
+
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            // signingConfig signingConfigs.release
+            ndk {
+                // abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
+                abiFilters 'armeabi-v7a', 'arm64-v8a'
+            }
+        }
     }
 
     sourceSets {
@@ -70,17 +71,7 @@ android {
         }
     }
 
-    // Load signing config (does not work for command line builds)
-    if (file("release.properties").exists()) {
-        def props = new Properties()
-        props.load(new FileInputStream(rootProject.file("release.properties")))
-        android.signingConfigs.release.storeFile rootProject.file(props.keyStore)
-        android.signingConfigs.release.storePassword props.keyStorePassword
-        android.signingConfigs.release.keyAlias props.keyAlias
-        android.signingConfigs.release.keyPassword props.keyAliasPassword
-    }
-
-    lintOptions {
+    lint {
         abortOnError false
         disable 'DefaultLocale', 'SimpleDateFormat', 'InflateParams', 'SpUsage',
                 'UseCompoundDrawables', 'HandlerLeak', 'ViewConstructor', 'SetTextI18n',
@@ -90,56 +81,38 @@ android {
     }
 
     gradle.projectsEvaluated {
-        tasks.withType(JavaCompile) {
-            // Enable verbose lint reporting during build.
-            options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+        tasks.withType(JavaCompile).tap {
+            configureEach {
+                // Enable verbose lint reporting during build.
+                options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+            }
         }
-    }
-
-    packagingOptions {
-        exclude 'META-INF/LICENSE.txt'
-        exclude 'META-INF/NOTICE.txt'
-    }
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
 dependencies {
     // https://developer.android.com/topic/libraries/support-library/revisions
-    implementation 'androidx.annotation:annotation:1.5.0'
-    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.annotation:annotation:1.8.0'
+    implementation 'androidx.appcompat:appcompat:1.7.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-   //xx implementation 'androidx.media:media:1.6.0'
-   //xx implementation 'androidx.percentlayout:percentlayout:1.0.0'
-    implementation 'com.google.android.material:material:1.8.0'
+    implementation 'com.google.android.material:material:1.12.0'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation "androidx.viewpager:viewpager:1.0.0"
-    implementation 'androidx.drawerlayout:drawerlayout:1.1.1'
-
-    // https://developers.google.com/android/guides/releases
-    implementation 'com.google.android.gms:play-services-analytics:18.0.2'
-
-    // AppCenter crash reporting
-    implementation "com.microsoft.appcenter:appcenter-crashes:4.4.3"
-    implementation "com.microsoft.appcenter:appcenter-analytics:4.4.3"
-
+    implementation 'androidx.drawerlayout:drawerlayout:1.2.0'
 
     // Unit testing
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    testImplementation "org.assertj:assertj-core:3.22.0"
-    testImplementation 'org.robolectric:robolectric:4.7.3'
+    testImplementation "org.assertj:assertj-core:3.26.0"
+    testImplementation 'org.robolectric:robolectric:4.12.2'
 }
 
 // Rename app
-android.applicationVariants.all { variant ->
-    variant.outputs.all {
+android.applicationVariants.configureEach { variant ->
+    variant.outputs.configureEach {
         def ourname = project.parent.name
         outputFileName = "$ourname-${variant.name}-${variant.versionName}.apk"
         println "out name= $outputFileName"

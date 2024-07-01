@@ -32,7 +32,7 @@ import com.landenlabs.all_UiDemo.R;
 /**
  * @author Dennis Lang (LanDen Labs)
  *
- * @see <a href="http://landenlabs.com/android"> author's web-site </a>
+ * @see <a href="https://landenlabs.com/android"> author's web-site </a>
  */
 
 @SuppressWarnings("FieldCanBeLocal")

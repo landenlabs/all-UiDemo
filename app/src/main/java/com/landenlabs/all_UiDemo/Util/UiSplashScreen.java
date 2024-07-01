@@ -34,7 +34,7 @@ import com.landenlabs.all_UiDemo.Ui;
  * Show Large application image and fade out.
  *
  * @author Dennis Lang (LanDen Labs)
- * @see <a href="http://landenlabs.com/android"> author's web-site </a>
+ * @see <a href="https://landenlabs.com/android"> author's web-site </a>
  */
 public class UiSplashScreen {
 
@@ -50,7 +50,7 @@ public class UiSplashScreen {
 
     /**
      * Show animated splash screen.
-     * See http://landenlabs.com
+     * See https://landenlabs.com
      */
     public void show(View context) {
         final int fadeinMsec = 2000;

@@ -45,7 +45,7 @@ import javax.microedition.khronos.opengles.GL10;
  * Demonstrate OpenGL Line
  *
  * @author Dennis Lang (LanDen Labs)
- * @see <a href="http://landenlabs.com/android"> author's web-site </a>
+ * @see <a href="https://landenlabs.com/android"> author's web-site </a>
  */
 
 public class GlLineFrag  extends UiFragment implements View.OnClickListener {

@@ -33,11 +33,11 @@ import com.landenlabs.all_UiDemo.R;
 
 /**
  * Demonstrate forcing screen to rotate
- *
+ * <p>
  * https://developer.android.com/reference/android/content/pm/ActivityInfo
  *
  * @author Dennis Lang (LanDen Labs)
- * @see <a href="http://landenlabs.com/android"> author's web-site </a>
+ * @see <a href="https://landenlabs.com/android"> author's web-site </a>
  */
 
 public class RotateScreenFrag  extends UiFragment implements View.OnClickListener {
@@ -80,22 +80,16 @@ public class RotateScreenFrag  extends UiFragment implements View.OnClickListene
     public void onClick(View view) {
         // https://developer.android.com/reference/android/content/pm/ActivityInfo
         int id = view.getId();
-        switch (id) {
-            case R.id.rot_unspecified:
-                getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
-                break;
-            case R.id.rot_portrait:
-                getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-                break;
-            case R.id.rot_portrait_reverse:
-                getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_REVERSE_PORTRAIT);
-                break;
-            case R.id.rot_landscape:
-                getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-                break;
-            case R.id.rot_landscape_reverse:
-                getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_REVERSE_LANDSCAPE);
-                break;
+        if (id == R.id.rot_unspecified) {
+            requireActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
+        } else if (id == R.id.rot_portrait) {
+            requireActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        } else if (id == R.id.rot_portrait_reverse) {
+            requireActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_REVERSE_PORTRAIT);
+        } else if (id == R.id.rot_landscape) {
+            requireActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        } else if (id == R.id.rot_landscape_reverse) {
+            requireActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_REVERSE_LANDSCAPE);
         }
 
     }

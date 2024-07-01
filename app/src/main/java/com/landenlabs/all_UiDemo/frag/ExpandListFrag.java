@@ -45,7 +45,7 @@ import java.util.LinkedHashMap;
  * Demonstrate Expandable List
  *
  * @author Dennis Lang (LanDen Labs)
- * @see <a href="http://landenlabs.com/android"> author's web-site </a>
+ * @see <a href="https://landenlabs.com/android"> author's web-site </a>
  */
 
 public class ExpandListFrag  extends UiFragment {
@@ -82,57 +82,31 @@ public class ExpandListFrag  extends UiFragment {
     private void setup() {
         ExpandableListView expListView = Ui.viewById(mRootView, R.id.expand_list);
 
-        expListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
+        expListView.setOnGroupExpandListener(groupPosition -> Toast.makeText(getContext(), " Expanded", Toast.LENGTH_SHORT).show());
 
-            @Override
-            public void onGroupExpand(int groupPosition) {
-                Toast.makeText(getContext(), " Expanded", Toast.LENGTH_SHORT).show();
-            }
+        expListView.setOnGroupCollapseListener(groupPosition -> Toast.makeText(getContext(), " Collapsed", Toast.LENGTH_SHORT).show());
+
+
+        expListView.setOnGroupClickListener((parent, v, groupPosition, id) -> {
+            Toast.makeText(getContext(), " onGroupClick", Toast.LENGTH_SHORT).show();
+            return false;
         });
 
-        expListView.setOnGroupCollapseListener(new ExpandableListView.OnGroupCollapseListener() {
+        expListView.setOnChildClickListener((parent, view, groupPosition, childPosition, id) -> {
+            int cp = (int) expandableListAdapter.getChildId(groupPosition, childPosition);
+            Toast.makeText(getContext(), " onClickChild grp="
+                    + groupPosition
+                    + " child="
+                    + childPosition
+                    + " cp="
+                    + cp
+                    , Toast.LENGTH_SHORT).show();
+            return false;
 
-            @Override
-            public void onGroupCollapse(int groupPosition) {
-                Toast.makeText(getContext(), " Collapsed", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-
-        expListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
-            @Override
-            public boolean onGroupClick(ExpandableListView parent, View v,
-                    int groupPosition, long id) {
-                Toast.makeText(getContext(), " onGroupClick", Toast.LENGTH_SHORT).show();
-                return false;
-            }
-        });
-
-        expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
-
-            @Override
-            public boolean onChildClick(ExpandableListView parent, View view,
-                    int groupPosition, int childPosition, long id) {
-                int cp = (int) expandableListAdapter.getChildId(groupPosition, childPosition);
-                Toast.makeText(getContext(), " onClickChild grp="
-                        + groupPosition
-                        + " child="
-                        + childPosition
-                        + " cp="
-                        + cp
-                        , Toast.LENGTH_SHORT).show();
-                return false;
-
-            }
         });
 
         // I think this only works for ListView not ExpandableListView
-        expListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getContext(), " onItemClick never called", Toast.LENGTH_SHORT).show();
-            }
-        });
+        expListView.setOnItemClickListener((parent, view, position, id) -> Toast.makeText(getContext(), " onItemClick never called", Toast.LENGTH_SHORT).show());
 
         loadData();
         expandableListAdapter = new MyExpandableListAdapter(getContext(), grouplist);

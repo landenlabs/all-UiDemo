@@ -24,8 +24,6 @@ package com.landenlabs.all_UiDemo.frag;
 import android.content.res.ColorStateList;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
-import android.graphics.drawable.StateListDrawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -35,7 +33,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import androidx.annotation.NonNull;
-import androidx.core.graphics.drawable.DrawableCompat;
+import androidx.core.content.res.ResourcesCompat;
 
 import com.landenlabs.all_UiDemo.R;
 import com.landenlabs.all_UiDemo.Ui;
@@ -45,7 +43,7 @@ import com.landenlabs.all_UiDemo.Util.TabPair;
  * Demonstrate Radio Buttons
  *
  * @author Dennis Lang (LanDen Labs)
- * @see <a href="http://landenlabs.com/android"> author's web-site </a>
+ * @see <a href="https://landenlabs.com/android"> author's web-site </a>
  */
 
 public class RadioBtnFrag  extends UiFragment {
@@ -120,26 +118,15 @@ public class RadioBtnFrag  extends UiFragment {
 
             String resName = "tab_" + pageName.toLowerCase();
             int resID = getResources().getIdentifier(resName, "drawable", getContextSafe().getPackageName());
-            Drawable tabBtnIcon = getResources().getDrawable(resID, getTheme());
+            Drawable tabBtnIcon = ResourcesCompat.getDrawable(getResources(), resID, getTheme());
             if (tabBtnIcon != null) {
 
-                if (Build.VERSION.SDK_INT >= 21) {
-                    tabBtnIcon.setTintMode(PorterDuff.Mode.MULTIPLY);
-                    tabBtnIcon.setTintList(colorStateList);
-                } else {
-                    tabBtnIcon = DrawableCompat.wrap(tabBtnIcon);
-                    DrawableCompat.setTintList(tabBtnIcon.mutate(), colorStateList);
-                    DrawableCompat.setTintMode(tabBtnIcon.mutate(), PorterDuff.Mode.MULTIPLY);
-                }
+                tabBtnIcon.setTintMode(PorterDuff.Mode.MULTIPLY);
+                tabBtnIcon.setTintList(colorStateList);
 
-                // tabBtnIcon = tabHolder.getResources().getDrawable(android.R.drawable.btn_radio);
-                if (Build.VERSION.SDK_INT >= 21) {
-                    // Hide standard radio button but leave ripple effect
-                    button.setButtonDrawable(null);
-                } else {
-                    // Hide standard radio button
-                    button.setButtonDrawable(new StateListDrawable());
-                }
+                // tabBtnIcon = tabHolder.ResourcesCompat.getDrawable(getResources() android.R.drawable.btn_radio);
+                // Hide standard radio button but leave ripple effect
+                button.setButtonDrawable(null);
                 button.setCompoundDrawablesWithIntrinsicBounds(null, tabBtnIcon, null, null);
 
                 /*

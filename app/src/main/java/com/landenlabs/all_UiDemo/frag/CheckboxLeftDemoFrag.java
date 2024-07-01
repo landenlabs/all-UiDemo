@@ -34,7 +34,7 @@ import com.landenlabs.all_UiDemo.R;
  * Demonstrate Checkbox ui components with checkmark on left margin.
  *
  * @author Dennis Lang (LanDen Labs)
- * @see <a href="http://landenlabs.com/android"> author's web-site </a>
+ * @see <a href="https://landenlabs.com/android"> author's web-site </a>
  */
 public class CheckboxLeftDemoFrag extends CheckboxDemoFrag {
 

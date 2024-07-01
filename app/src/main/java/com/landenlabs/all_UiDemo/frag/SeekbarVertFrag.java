@@ -40,7 +40,7 @@ import java.util.ArrayList;
  * Demonstrate ripple on various views using different settings.
  *
  * @author Dennis Lang (LanDen Labs)
- * @see <a href="http://landenlabs.com/android"> author's web-site </a>
+ * @see <a href="https://landenlabs.com/android"> author's web-site </a>
  */
 public class SeekbarVertFrag extends UiFragment
         implements  SeekBarWithLabelHorizontal.Apply {
@@ -74,7 +74,7 @@ public class SeekbarVertFrag extends UiFragment
     SeekBarWithLabelHorizontal primaryBar;
     SeekBarWithLabelHorizontal secondaryBar;
 
-    ArrayList<ProgressBar>  bars = new ArrayList<>();
+    final ArrayList<ProgressBar>  bars = new ArrayList<>();
 
     private void setup() {
         primaryBar = new SeekBarWithLabelHorizontal(mRootView, R.id.seekBarH1, R.id.seekBarH1_Lbl, this);

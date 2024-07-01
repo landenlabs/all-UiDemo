@@ -34,7 +34,7 @@ more
 
 ***
 
-[Wiki link](http://landenlabs.com/android/uicomponents/uicomponents.html) for more information.
+[Wiki link](https://landenlabs.com/android/uicomponents/uicomponents.html) for more information.
 
 ---
 <a name="menu"></a>
@@ -46,21 +46,21 @@ more
 <a name="switches"></a>
 **Switches** 
 
-![picture](http://landenlabs.com/android/uicomponents/switches.gif)
+![picture](https://landenlabs.com/android/uicomponents/switches.gif)
 
 [To Top](#table)
 ---
 <a name="checkboxes-right"></a>
 **Checkboxes right side**
  
-![picture](http://landenlabs.com/android/uicomponents/checkright.gif)
+![picture](https://landenlabs.com/android/uicomponents/checkright.gif)
 
 [To Top](#table)
 ---
 <a name="lists"></a>
 **Lists**
 
-![picture](http://landenlabs.com/android/uicomponents/lists.gif)
+![picture](https://landenlabs.com/android/uicomponents/lists.gif)
 
 [To Top](#table)
 ---

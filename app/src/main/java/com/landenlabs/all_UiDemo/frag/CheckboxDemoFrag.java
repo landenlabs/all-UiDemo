@@ -40,7 +40,7 @@ import java.util.List;
  * Demonstrate Checkbox ui components.
  *
  * @author Dennis Lang (LanDen Labs)
- * @see <a href="http://landenlabs.com/android"> author's web-site </a>
+ * @see <a href="https://landenlabs.com/android"> author's web-site </a>
  */
 public class CheckboxDemoFrag  extends UiFragment implements View.OnClickListener {
 
@@ -126,54 +126,38 @@ public class CheckboxDemoFrag  extends UiFragment implements View.OnClickListene
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.p2Button1:
-            case R.id.p2Button2:
-            case R.id.p2TextView1:
-            case R.id.p2TextView2:
-            case R.id.p2ImageButton1:
-                // Fake checked notion by using selected state on Button and TextView
-                view.setSelected(!view.isSelected());
-                // view.playSoundEffect(SoundEffectConstants.CLICK);
+        int id = view.getId();
+        if (id == R.id.p2Button1 || id == R.id.p2Button2 || id == R.id.p2TextView1 || id == R.id.p2TextView2 || id == R.id.p2ImageButton1) {// Fake checked notion by using selected state on Button and TextView
+            view.setSelected(!view.isSelected());
+            // view.playSoundEffect(SoundEffectConstants.CLICK);
 
                 /*
                 Drawable[] drawables = cBtn.getCompoundDrawables(); // left,top,right,bottom
                 int[] chkState = new int[]{android.R.attr.state_checked, android.R.attr.state_enabled, android.R.attr.state_selected};
                 drawables[2].setState(chkState);
                 */
-                break;
-
-            case R.id.p2RadioButton1:
-            case R.id.p2RadioButton2:
-                boolean isDirty = view.isDirty();
-                if (!isDirty)
-                    setChecked(view, !isChecked(view));
-                break;
-
-            case R.id.p2Checkbox3:
-            case R.id.p2Checkbox4:
-                // Silly - have to set checkbox manually when clicked.
+        } else if (id == R.id.p2RadioButton1 || id == R.id.p2RadioButton2) {
+            boolean isDirty = view.isDirty();
+            if (!isDirty)
                 setChecked(view, !isChecked(view));
-                break;
+        } else if (id == R.id.p2Checkbox3 || id == R.id.p2Checkbox4) {// Silly - have to set checkbox manually when clicked.
+            setChecked(view, !isChecked(view));
 
             // -- global  controls --
-            case R.id.p2Enable:
-                for (View viewItem : mViewList) {
-                    viewItem.setEnabled(isChecked(view));
-                }
-                break;
-            case R.id.p2Checked:
-                for (View viewItem : mViewList) {
-                    setChecked(viewItem, isChecked(view));
-                }
-                break;
-            case R.id.p2Background:
-                if (isChecked(view)) {
-                    mRootView.setBackgroundResource(R.drawable.paper_white);
-                } else {
-                    mRootView.setBackgroundResource(R.drawable.paper_black);
-                }
-                break;
+        } else if (id == R.id.p2Enable) {
+            for (View viewItem : mViewList) {
+                viewItem.setEnabled(isChecked(view));
+            }
+        } else if (id == R.id.p2Checked) {
+            for (View viewItem : mViewList) {
+                setChecked(viewItem, isChecked(view));
+            }
+        } else if (id == R.id.p2Background) {
+            if (isChecked(view)) {
+                mRootView.setBackgroundResource(R.drawable.paper_white);
+            } else {
+                mRootView.setBackgroundResource(R.drawable.paper_black);
+            }
         }
     }
 }

@@ -28,13 +28,12 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.landenlabs.all_UiDemo.Ui;
-import com.landenlabs.all_UiDemo.frag.SeekbarVertFrag;
 
 public class SeekBarWithLabelHorizontal {
 
     public interface Apply {
         void apply(SeekBar seekbar, int progress);
-    };
+    }
 
     public SeekBarWithLabelHorizontal(View rootView, int seekBarRes, int seekBarLbl,  Apply apply) {
         final TextView seekLbl =  Ui.viewById(rootView, seekBarLbl);

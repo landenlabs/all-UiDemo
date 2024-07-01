@@ -45,7 +45,7 @@ import com.landenlabs.all_UiDemo.Util.CompatSeekBar;
  * Demonstrate view shadows.
  *
  * @author Dennis Lang (LanDen Labs)
- * @see <a href="http://landenlabs.com/android"> author's web-site </a>
+ * @see <a href="https://landenlabs.com/android"> author's web-site </a>
  */
 
 @SuppressWarnings("FieldCanBeLocal")
@@ -134,12 +134,7 @@ public class ShadowsFrag  extends UiFragment
 
     private void setup() {
         final View titleView = Ui.viewById(mRootView, R.id.title);
-        Ui.viewById(mRootView, R.id.bottom).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                titleView.animate().alpha(1.0f - titleView.getAlpha()).start();
-            }
-        });
+        Ui.viewById(mRootView, R.id.bottom).setOnClickListener(v -> titleView.animate().alpha(1.0f - titleView.getAlpha()).start());
 
         shadowText1 = Ui.viewById(mRootView, R.id.shadow_text1);
         shadowText2 = Ui.viewById(mRootView, R.id.shadow_text2);
@@ -299,15 +294,9 @@ public class ShadowsFrag  extends UiFragment
     public void onClick(View view) {
         int id = view.getId();
 
-        switch (id) {
-            case R.id.shadow_text1:
-            case R.id.shadow_text2:
-            case R.id.shadow_text3:
-            case R.id.shadow_image1:
-            case R.id.shadow_image2:
-                shadowView = view;
-                getValuesFromView();
-                break;
+        if (id == R.id.shadow_text1 || id == R.id.shadow_text2 || id == R.id.shadow_text3 || id == R.id.shadow_image1 || id == R.id.shadow_image2) {
+            shadowView = view;
+            getValuesFromView();
         }
 
         if (mProcessChange) {

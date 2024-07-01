@@ -48,7 +48,7 @@ import java.util.List;
  * Demonstrate ReyclerView layout of images.
  *
  * @author Dennis Lang (LanDen Labs)
- * @see <a href="http://landenlabs.com/android"> author's web-site </a>
+ * @see <a href="https://landenlabs.com/android"> author's web-site </a>
  */
 
 @SuppressWarnings("FieldCanBeLocal")
@@ -116,7 +116,7 @@ public class RecyclerFrag  extends UiFragment {
 
         // --- Spinner1
         mSpinner1 = Ui.viewById(mRootView, R.id.spinner1);
-        ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(getContext(),
+        ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(requireContext(),
                 R.array.states, android.R.layout.simple_spinner_item);
         adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mSpinner1.setAdapter(adapter1);

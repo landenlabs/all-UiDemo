@@ -33,13 +33,14 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 
 import androidx.appcompat.widget.AppCompatSeekBar;
+import androidx.core.content.res.ResourcesCompat;
 
 import com.landenlabs.all_UiDemo.R;
 
 
 /**
  * @author Dennis Lang (LanDen Labs)
- * @see <a href="http://landenlabs.com/android"> author's web-site </a>
+ * @see <a href="https://landenlabs.com/android"> author's web-site </a>
  */
 
 public class CompatSeekBar extends AppCompatSeekBar {
@@ -122,7 +123,7 @@ public class CompatSeekBar extends AppCompatSeekBar {
         a.recycle();
 
         if (tickMark != -1) {
-            mTickMarkDr = getResources().getDrawable(tickMark, getContext().getTheme());
+            mTickMarkDr = ResourcesCompat.getDrawable(getResources(), tickMark, getContext().getTheme());
         }
     }
 

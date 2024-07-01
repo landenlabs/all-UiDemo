@@ -35,7 +35,7 @@ import com.landenlabs.all_UiDemo.Ui;
  * Demonstrate Constraint Layout
  *
  * @author Dennis Lang (LanDen Labs)
- * @see <a href="http://landenlabs.com/android"> author's web-site </a>
+ * @see <a href="https://landenlabs.com/android"> author's web-site </a>
  */
 
 public class ConstraintFlowFrag extends UiFragment implements View.OnClickListener {
@@ -75,19 +75,14 @@ public class ConstraintFlowFrag extends UiFragment implements View.OnClickListen
     @Override
     public void onClick(View view) {
         int id = view.getId();
-        switch (id) {
-            case R.id.constraint_btn1:
-                setVis(R.id.h1_1, R.id.h2_1, R.id.h3_1, R.id.h4_1);
-                break;
-            case R.id.constraint_btn2:
-                setVis(R.id.h1_2, R.id.h2_2, R.id.h3_2, R.id.h4_2, R.id.h5_2);
-                break;
-            case R.id.constraint_btn3:
-                setVis(R.id.h1_3, R.id.h2_3, R.id.h3_3, R.id.h4_3, R.id.h5_3);
-                break;
-            case R.id.constraint_btn4:
-                setVis(R.id.h1_4, R.id.h2_4, R.id.h3_4, R.id.h4_4, R.id.h5_4);
-                break;
+        if (id == R.id.constraint_btn1) {
+            setVis(R.id.h1_1, R.id.h2_1, R.id.h3_1, R.id.h4_1);
+        } else if (id == R.id.constraint_btn2) {
+            setVis(R.id.h1_2, R.id.h2_2, R.id.h3_2, R.id.h4_2, R.id.h5_2);
+        } else if (id == R.id.constraint_btn3) {
+            setVis(R.id.h1_3, R.id.h2_3, R.id.h3_3, R.id.h4_3, R.id.h5_3);
+        } else if (id == R.id.constraint_btn4) {
+            setVis(R.id.h1_4, R.id.h2_4, R.id.h3_4, R.id.h4_4, R.id.h5_4);
         }
     }
 

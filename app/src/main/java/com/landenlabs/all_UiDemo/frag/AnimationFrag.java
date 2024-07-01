@@ -21,10 +21,8 @@
 
 package com.landenlabs.all_UiDemo.frag;
 
-import android.animation.ObjectAnimator;
 import android.graphics.drawable.AnimatedVectorDrawable;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,7 +45,7 @@ import com.landenlabs.all_UiDemo.Ui;
  * Demonstrate animations
  *
  * @author Dennis Lang (LanDen Labs)
- * @see <a href="http://landenlabs.com/android"> author's web-site </a>
+ * @see <a href="https://landenlabs.com/android"> author's web-site </a>
  */
 
 @SuppressWarnings({"FieldCanBeLocal", "Convert2Lambda", "unused"})
@@ -123,130 +121,96 @@ public class AnimationFrag  extends UiFragment implements View.OnClickListener {
         ToggleButton tb = cast2(ToggleButton.class, view);
         final View target =  cast2(View.class, view.getTag());
 
-        switch (view.getId()) {
-            case R.id.animation_fade1:
-                showAnimStatus(target); // Can wire up before animate set.
-                // Changes  view alpha directly.
-                if (tb.isChecked()) {
-                    target.animate().alpha(0).setDuration(2000).start();
-                } else {
-                    target.animate().alpha(1).setDuration(2000).start();
-                }
-                break;
-
-            case R.id.animation_fade2:
-                // AlphaAnimation does not change the view's alpha it changes the transformation alpha.
-                // The view  final alpha = view.alpha * transformation.alpha
-                // NOTE - If view's alpha is zero, then no fade occurs because
-                //               final alpha = 0 * transformation.alpha is zero.
-                //
-                // See AlphaAnimation alphaAnimation
-                //
-                if (tb.isChecked()) {
-                    target.setAnimation(loadAnimation(R.anim.fad_out));
-                } else {
-                    target.setAnimation(loadAnimation(R.anim.fad_in));
-                }
-                showAnimStatus(target); // wire up status after animation set.
-                target.startAnimation(target.getAnimation());
-                break;
-
-            case R.id.animation_gradY:
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    ImageView imageView = (ImageView)target;
-                    // if (imageView.getBackground() instanceof AnimatedVectorDrawable) {
-                        imageView.setImageResource(nextAnimDrawRes[nextIdx++]);
-                        nextIdx = nextIdx % nextAnimDrawRes.length;
-                        AnimatedVectorDrawable avd = (AnimatedVectorDrawable)imageView.getDrawable();
-                        avd.start();
-                    // }
-                } else {
-                    ObjectAnimator anim = ObjectAnimator.ofFloat(target, "alpha", 0.0f, 1.0f);
-                    anim.setDuration(3000); // duration 3 seconds
-                    anim.start();
-                }
-                break;
-
-            case R.id.animation_scaleX:
-                if (tb.isChecked()) {
-                    target.animate().scaleX(0).setDuration(2000).start();
-                } else {
-                    target.animate().scaleX(1).setDuration(2000).start();
-                }
-                break;
-
-
-            case R.id.animation_translateX:
-                if (tb.isChecked()) {
-                    int w = target.getWidth();
-                    target.animate().translationX(w).setDuration(2000).start();
-                } else {
-                    target.animate().translationX(0).setDuration(2000).start();
-                }
-                break;
-
-            case R.id.animation_slideR:
-                if (tb.isChecked()) {
-                    int w = target.getWidth();
-                    target.animate().scaleX(0).translationX(w/2f).setDuration(2000).start();
-                } else {
-                    target.animate().scaleX(1).translationX(0).setDuration(2000).start();
-                }
-                break;
-
-
-            case R.id.animation_slideL:
-                if (tb.isChecked()) {
-                    int w = target.getWidth();
-                    target.animate().scaleX(0).translationX(-w/2f).setDuration(2000).start();
-                } else {
-                    target.animate().scaleX(1).translationX(0).setDuration(2000).start();
-                }
-                break;
-
-            case R.id.animation_rot360:
-                if (tb.isChecked()) {
-                    target.animate().rotationBy(360).setDuration(2000).start();
-                } else {
-                    target.animate().rotationBy(-360).setDuration(2000).start();
-                }
-                break;
-            case R.id.animation_rot180:
-                if (tb.isChecked()) {
-                    target.animate().rotationBy(180).setDuration(2000).start();
-                } else {
-                    target.animate().rotationBy(-180).setDuration(2000).start();
-                }
-                break;
-
-            case R.id.animation_rot90:
-                if (tb.isChecked()) {
-                    target.animate().rotationBy(90).setDuration(2000).start();
-                } else {
-                    target.animate().rotationBy(-90).setDuration(2000).start();
-                }
-                break;
-
-            case R.id.animation_rot90x:
-                if (tb.isChecked()) {
-                    target.animate().rotationXBy(90).setDuration(2000).start();
-                } else {
-                    target.animate().rotationXBy(-90).setDuration(2000).start();
-                }
-                break;
-
-
-            case R.id.animation_rot90y:
-                if (tb.isChecked()) {
-                    target.animate().rotationYBy(90).setDuration(2000).start();
-                } else {
-                    target.animate().rotationYBy(-90).setDuration(2000).start();
-                }
-                break;
-
-            case R.id.get_alpha:
-                getAlpha();
-                break;
+        int id = view.getId();
+        if (id == R.id.animation_fade1) {
+            showAnimStatus(target); // Can wire up before animate set.
+            // Changes  view alpha directly.
+            if (tb.isChecked()) {
+                target.animate().alpha(0).setDuration(2000).start();
+            } else {
+                target.animate().alpha(1).setDuration(2000).start();
+            }
+        } else if (id == R.id.animation_fade2) {// AlphaAnimation does not change the view's alpha it changes the transformation alpha.
+            // The view  final alpha = view.alpha * transformation.alpha
+            // NOTE - If view's alpha is zero, then no fade occurs because
+            //               final alpha = 0 * transformation.alpha is zero.
+            //
+            // See AlphaAnimation alphaAnimation
+            //
+            if (tb.isChecked()) {
+                target.setAnimation(loadAnimation(R.anim.fad_out));
+            } else {
+                target.setAnimation(loadAnimation(R.anim.fad_in));
+            }
+            showAnimStatus(target); // wire up status after animation set.
+            target.startAnimation(target.getAnimation());
+        } else if (id == R.id.animation_gradY) {
+            ImageView imageView = (ImageView) target;
+            // if (imageView.getBackground() instanceof AnimatedVectorDrawable) {
+            imageView.setImageResource(nextAnimDrawRes[nextIdx++]);
+            nextIdx = nextIdx % nextAnimDrawRes.length;
+            AnimatedVectorDrawable avd = (AnimatedVectorDrawable) imageView.getDrawable();
+            avd.start();
+            // }
+        } else if (id == R.id.animation_scaleX) {
+            if (tb.isChecked()) {
+                target.animate().scaleX(0).setDuration(2000).start();
+            } else {
+                target.animate().scaleX(1).setDuration(2000).start();
+            }
+        } else if (id == R.id.animation_translateX) {
+            if (tb.isChecked()) {
+                int w = target.getWidth();
+                target.animate().translationX(w).setDuration(2000).start();
+            } else {
+                target.animate().translationX(0).setDuration(2000).start();
+            }
+        } else if (id == R.id.animation_slideR) {
+            if (tb.isChecked()) {
+                int w = target.getWidth();
+                target.animate().scaleX(0).translationX(w / 2f).setDuration(2000).start();
+            } else {
+                target.animate().scaleX(1).translationX(0).setDuration(2000).start();
+            }
+        } else if (id == R.id.animation_slideL) {
+            if (tb.isChecked()) {
+                int w = target.getWidth();
+                target.animate().scaleX(0).translationX(-w / 2f).setDuration(2000).start();
+            } else {
+                target.animate().scaleX(1).translationX(0).setDuration(2000).start();
+            }
+        } else if (id == R.id.animation_rot360) {
+            if (tb.isChecked()) {
+                target.animate().rotationBy(360).setDuration(2000).start();
+            } else {
+                target.animate().rotationBy(-360).setDuration(2000).start();
+            }
+        } else if (id == R.id.animation_rot180) {
+            if (tb.isChecked()) {
+                target.animate().rotationBy(180).setDuration(2000).start();
+            } else {
+                target.animate().rotationBy(-180).setDuration(2000).start();
+            }
+        } else if (id == R.id.animation_rot90) {
+            if (tb.isChecked()) {
+                target.animate().rotationBy(90).setDuration(2000).start();
+            } else {
+                target.animate().rotationBy(-90).setDuration(2000).start();
+            }
+        } else if (id == R.id.animation_rot90x) {
+            if (tb.isChecked()) {
+                target.animate().rotationXBy(90).setDuration(2000).start();
+            } else {
+                target.animate().rotationXBy(-90).setDuration(2000).start();
+            }
+        } else if (id == R.id.animation_rot90y) {
+            if (tb.isChecked()) {
+                target.animate().rotationYBy(90).setDuration(2000).start();
+            } else {
+                target.animate().rotationYBy(-90).setDuration(2000).start();
+            }
+        } else if (id == R.id.get_alpha) {
+            getAlpha();
         }
     }
 

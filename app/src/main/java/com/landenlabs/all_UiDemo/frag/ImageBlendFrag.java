@@ -21,6 +21,8 @@
 
 package com.landenlabs.all_UiDemo.frag;
 
+import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
+
 import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -52,13 +54,11 @@ import com.landenlabs.all_UiDemo.ALog.ALog;
 import com.landenlabs.all_UiDemo.R;
 import com.landenlabs.all_UiDemo.Ui;
 
-import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
-
 /**
  * Demonstrate Image Blend using PorterDuff modes.
  *
  * @author Dennis Lang (LanDen Labs)
- * @see <a href="http://landenlabs.com/android"> author's web-site </a>
+ * @see <a href="https://landenlabs.com/android"> author's web-site </a>
  */
 
 @SuppressWarnings("SameParameterValue")
@@ -94,35 +94,28 @@ public class ImageBlendFrag  extends UiFragment implements View.OnClickListener 
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.blend_red:
-                mColor = Color.RED;
-                setImage(mSrcImg);
-                break;
-            case R.id.blend_green:
-                mColor = Color.GREEN;
-                setImage(mSrcImg);
-                break;
-            case R.id.blend_blue:
-                mColor = Color.BLUE;
-                setImage(mSrcImg);
-                break;
-            case R.id.blend_img1:
-                mColor = 0;
-                setImage(mSrcImg, R.drawable.checkmark5);
-                break;
-            case R.id.blend_img2:
-                mColor = 0;
-                setImage(mSrcImg, R.drawable.image_a);
-                break;
-            case R.id.blend_img3:
-                mColor = 0;
-                setImage(mSrcImg, R.drawable.image_e);
-                break;
-            case R.id.blend_img4:
-                mColor = 0;
-                setImage(mSrcImg, R.drawable.uidemo_sm);
-                break;
+        int id = view.getId();
+        if (id == R.id.blend_red) {
+            mColor = Color.RED;
+            setImage(mSrcImg);
+        } else if (id == R.id.blend_green) {
+            mColor = Color.GREEN;
+            setImage(mSrcImg);
+        } else if (id == R.id.blend_blue) {
+            mColor = Color.BLUE;
+            setImage(mSrcImg);
+        } else if (id == R.id.blend_img1) {
+            mColor = 0;
+            setImage(mSrcImg, R.drawable.checkmark5);
+        } else if (id == R.id.blend_img2) {
+            mColor = 0;
+            setImage(mSrcImg, R.drawable.image_a);
+        } else if (id == R.id.blend_img3) {
+            mColor = 0;
+            setImage(mSrcImg, R.drawable.image_e);
+        } else if (id == R.id.blend_img4) {
+            mColor = 0;
+            setImage(mSrcImg, R.drawable.uidemo_sm);
         }
     }
 

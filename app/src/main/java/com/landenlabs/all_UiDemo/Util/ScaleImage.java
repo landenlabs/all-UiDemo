@@ -46,7 +46,7 @@ import java.io.IOException;
  *
  * <p>It can be defined in an XML file with the <scale> element.
 
- *
+ * <p>
  * attr ref android.R.styleable#ScaleImage_scaleWidth
  * attr ref android.R.styleable#ScaleImage_scaleHeight
  * attr ref android.R.styleable#ScaleImage_scaleGravity
@@ -218,7 +218,7 @@ class ScaleImage extends Drawable implements Drawable.Callback {
     }
 
     @Override
-    protected boolean onStateChange(int[] state) {
+    protected boolean onStateChange(@NonNull int[] state) {
         boolean changed = mScaleState.mDrawable.setState(state);
         onBoundsChange(getBounds());
         return changed;
@@ -310,11 +310,13 @@ class ScaleImage extends Drawable implements Drawable.Callback {
             }
         }
 
+        @NonNull
         @Override
         public Drawable newDrawable() {
             return new ScaleImage(this, null);
         }
 
+        @NonNull
         @Override
         public Drawable newDrawable(Resources res) {
             return new ScaleImage(this, res);

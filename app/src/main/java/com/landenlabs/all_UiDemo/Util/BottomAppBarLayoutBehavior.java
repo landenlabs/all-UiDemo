@@ -120,15 +120,15 @@ public class BottomAppBarLayoutBehavior extends CoordinatorLayout.Behavior<AppBa
         ViewCompat.animate(appBarLayout).translationY(0F).alpha(0.0F).setInterpolator(INTERPOLATOR)
                 .withLayer()
                 .setListener(new ViewPropertyAnimatorListener() {
-                    public void onAnimationStart(View view) {
+                    public void onAnimationStart(@NonNull View view) {
                         BottomAppBarLayoutBehavior.this.mIsAnimatingOut = true;
                     }
 
-                    public void onAnimationCancel(View view) {
+                    public void onAnimationCancel(@NonNull View view) {
                         BottomAppBarLayoutBehavior.this.mIsAnimatingOut = false;
                     }
 
-                    public void onAnimationEnd(View view) {
+                    public void onAnimationEnd(@NonNull View view) {
                         BottomAppBarLayoutBehavior.this.mIsAnimatingOut = false;
                         view.setVisibility(View.GONE);
                     }

@@ -38,11 +38,12 @@ import android.renderscript.RSRuntimeException;
 import android.renderscript.RenderScript;
 import android.renderscript.ScriptIntrinsicBlur;
 
+
 import com.landenlabs.all_UiDemo.ALog.ALog;
 
 /**
  * Created by Dennis Lang on 8/8/16.
- *
+ * <p>
  * debug v8  image2 500,xxx,xxx Msec immage 1789 x 1527
  * debug std fails
  */
@@ -231,21 +232,21 @@ public class BitmapUtils {
 
     /**
      * http://stackoverflow.com/questions/2067955/fast-bitmap-blur-for-android-sdk
-     *
+     * <p>
      * Stack Blur v1.0 from
      * http://www.quasimondo.com/StackBlurForCanvas/StackBlurDemo.html
      * Java Author: Mario Klingemann <mario at quasimondo.com>
      * http://incubator.quasimondo.com
-     *
+     * <p>
      * created Feburary 29, 2004
      * Android port : Yahel Bouaziz <yahel at kayenko.com>
      * http://www.kayenko.com
      * ported april 5th, 2012
-     *
+     * <p>
      * This is a compromise between Gaussian Blur and Box blur
      * It creates much better looking blurs than Box Blur, but is
      * 7x faster than my Gaussian Blur implementation.
-     *
+     * <p>
      * I called it Stack Blur because this describes best how this
      * filter works internally: it creates a kind of moving stack
      * of colors whilst scanning through the image. Thereby it
@@ -254,7 +255,7 @@ public class BitmapUtils {
      * colors on the topmost layer of the stack are either added on
      * or reduced by one, depending on if they are on the right or
      * on the left side of the stack.
-     *
+     * <p>
      * If you are using this algorithm in your code please add
      * the following line:
      * Stack Blur Algorithm by Mario Klingemann <mario@quasimondo.com>

@@ -36,7 +36,7 @@ import com.landenlabs.all_UiDemo.Ui;
  * Demonstrate animated layout of images.
  *
  * @author Dennis Lang (LanDen Labs)
- * @see <a href="http://landenlabs.com/android"> author's web-site </a>
+ * @see <a href="https://landenlabs.com/android"> author's web-site </a>
  */
 
 public class AnimLayoutFrag  extends UiFragment {
@@ -97,12 +97,7 @@ public class AnimLayoutFrag  extends UiFragment {
             }
         }
 
-        layout.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                updateLayout(layout, bgColor, minChild, maxChild, sec);
-            }
-        }, sec * 1000);
+        layout.postDelayed(() -> updateLayout(layout, bgColor, minChild, maxChild, sec), sec * 1000);
     }
 
 }

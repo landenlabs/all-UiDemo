@@ -38,7 +38,7 @@ import java.util.List;
  * Demonstrate Toggle and Switch  ui components.
  *
  * @author Dennis Lang (LanDen Labs)
- * @see <a href="http://landenlabs.com/android"> author's web-site </a>
+ * @see <a href="https://landenlabs.com/android"> author's web-site </a>
  */
 public class SwitchDemoFrag  extends UiFragment implements View.OnClickListener  {
 
@@ -70,25 +70,21 @@ public class SwitchDemoFrag  extends UiFragment implements View.OnClickListener 
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()) {
-            // -- global  controls --
-            case R.id.enabledTb:
-                for (View viewItem : mViewList) {
-                    viewItem.setEnabled(isChecked(view));
-                }
-                break;
-            case R.id.checkedTb:
-                for (View viewItem : mViewList) {
-                    setChecked(viewItem, isChecked(view));
-                }
-                break;
-            case R.id.backgroundTb:
-                if (isChecked(view)) {
-                    Ui.needViewById(mRootView, R.id.switch_holder).setBackgroundResource(R.drawable.bg);
-                } else {
-                    Ui.needViewById(mRootView, R.id.switch_holder).setBackgroundResource(R.drawable.bg_dark);
-                }
-                break;
+        int id = view.getId();// -- global  controls --
+        if (id == R.id.enabledTb) {
+            for (View viewItem : mViewList) {
+                viewItem.setEnabled(isChecked(view));
+            }
+        } else if (id == R.id.checkedTb) {
+            for (View viewItem : mViewList) {
+                setChecked(viewItem, isChecked(view));
+            }
+        } else if (id == R.id.backgroundTb) {
+            if (isChecked(view)) {
+                Ui.needViewById(mRootView, R.id.switch_holder).setBackgroundResource(R.drawable.bg);
+            } else {
+                Ui.needViewById(mRootView, R.id.switch_holder).setBackgroundResource(R.drawable.bg_dark);
+            }
         }
     }
 

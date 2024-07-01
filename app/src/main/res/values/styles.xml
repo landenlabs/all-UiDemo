@@ -22,7 +22,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme1" parent="Theme.AppCompat.Light">
+    <style name="AppTheme" parent="Theme.AppCompat.Light">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
@@ -36,15 +36,16 @@
         -->
     </style>
 
-    <style name="AppTheme" parent="@style/Theme.CarUi.WithToolbar">
-        <item name="android:colorBackground">@color/black</item>
-        <item name="android:colorPrimary">@color/primary_color</item>
+    <!-- use when building for Car/Automotive
+    <style name="AppTheme1" parent="@style/Theme.CarUi.WithToolbar">
+        <item name="android:colorBackground">@android:color/black</item>
+        <item name="android:colorPrimary">@color/colorPrimary</item>
         <item name="colorAccent">#E91E63</item>
 
-        <!-- Disable animation on app start -->
         <item name="android:windowAnimationStyle">@null</item>
         <item name="android:windowDisablePreview">true</item>
     </style>
+    -->
 
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>

@@ -45,7 +45,7 @@ import java.io.Writer;
  * Save crash report and show it on next run of app.
  *
  * @author Dennis Lang (LanDen Labs)
- * @see <a href="http://landenlabs.com/android"> author's web-site </a>
+ * @see <a href="https://landenlabs.com/android"> author's web-site </a>
  */
 @SuppressWarnings({"Convert2Lambda", "StringBufferReplaceableByString"})
 public class UncaughtExceptionHandler implements Thread.UncaughtExceptionHandler {
@@ -113,7 +113,7 @@ public class UncaughtExceptionHandler implements Thread.UncaughtExceptionHandler
             final Writer result = new StringWriter();
             final PrintWriter printWriter = new PrintWriter(result);
             ex.printStackTrace(printWriter);
-            report.append(result.toString());
+            report.append(result);
             printWriter.close();
             report.append('\n');
 

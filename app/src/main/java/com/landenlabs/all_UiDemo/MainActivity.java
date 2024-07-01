@@ -22,18 +22,15 @@
 package com.landenlabs.all_UiDemo;
 
 import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
-import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.text.TextUtils;
-import android.view.DisplayCutout;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -41,9 +38,7 @@ import android.view.SubMenu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.view.WindowInsets;
 import android.view.WindowInsetsController;
-import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
@@ -59,19 +54,17 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.landenlabs.all_UiDemo.ALog.ALog;
 import com.landenlabs.all_UiDemo.ALog.UncaughtExceptionHandler;
-import com.landenlabs.all_UiDemo.Util.AppCrash;
-import com.landenlabs.all_UiDemo.Util.GoogleAnalyticsHelper;
 import com.landenlabs.all_UiDemo.Util.PageItem;
 
 
 /**
  * Main Activity to Ui Demo app.
- *
+ * <p>
  * App can be started with deep link
  *   adb shell am start -W -a android.intent.action.VIEW -d "landenlabs://alluidemo/page1"
  *
  * @author Dennis Lang (LanDen Labs)
- * @see <a href="http://landenlabs.com/android"> author's web-site </a>
+ * @see <a href="https://landenlabs.com/android"> author's web-site </a>
  */
 @SuppressWarnings("ConstantIfStatement")
 public class MainActivity extends AppCompatActivity {
@@ -82,10 +75,7 @@ public class MainActivity extends AppCompatActivity {
     private Parcelable mAdapterParcelable;
     private int mStartPageIdx = -1; // -1 = menu, else 0...n-1 pages
 
-    private GoogleAnalyticsHelper mAnalytics;
-
     private UncaughtExceptionHandler m_uncaughtExceptionHandler;
-
 
     private static boolean isDebug(ApplicationInfo appInfo) {
         return ((appInfo.flags & ApplicationInfo.FLAG_DEBUGGABLE) != 0);
@@ -114,15 +104,12 @@ public class MainActivity extends AppCompatActivity {
                 if (decVw instanceof ViewGroup) {
                     // Try to get location of Camera cutout 
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-                        window.getInsetsController().addOnControllableInsetsChangedListener(new WindowInsetsController.OnControllableInsetsChangedListener() {
-                            @Override
-                            public void onControllableInsetsChanged(@NonNull WindowInsetsController controller, int typeMask) {
-                                // DISPLAY_CUTOUT
-                                WindowInsetsCompat insets = ViewCompat.getRootWindowInsets(decVw.getRootView());
-                                if (insets != null && insets.hasInsets()) {
-                                    boolean isRound = insets.isRound();
-                                    ALog.d.tagMsg("Fullscreen", "inset is round");
-                                }
+                        window.getInsetsController().addOnControllableInsetsChangedListener((controller, typeMask) -> {
+                            // DISPLAY_CUTOUT
+                            WindowInsetsCompat insets = ViewCompat.getRootWindowInsets(decVw.getRootView());
+                            if (insets != null && insets.hasInsets()) {
+                                boolean isRound = insets.isRound();
+                                ALog.d.tagMsg("Fullscreen", "inset is round");
                             }
                         });
                     }
@@ -143,9 +130,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         boolean DEBUG = isDebug(getApplicationInfo());
-        AppCrash.initalize(getApplication(), DEBUG);
         ALog.minLevel = (DEBUG ? ALog.VERBOSE : ALog.NOLOGGING);
-        mAnalytics = new GoogleAnalyticsHelper(getApplication(), DEBUG);
 
         setContentView(R.layout.activity_main);
 

@@ -57,7 +57,7 @@ import com.landenlabs.all_UiDemo.Util.Translation;
  * Demonstrate grid layout of images.
  *
  * @author Dennis Lang (LanDen Labs)
- * @see <a href="http://landenlabs.com/android"> author's web-site </a>
+ * @see <a href="https://landenlabs.com/android"> author's web-site </a>
  */
 
 public class GridImagesFrag  extends UiFragment   {
@@ -115,24 +115,20 @@ public class GridImagesFrag  extends UiFragment   {
         ViewGroup.LayoutParams params = view.getLayoutParams();
         Transition autoTransition;
 
-        switch (id) {
-            case R.id.grid_image_scale1:
-                view.setBackgroundColor(0x80ff0000);    // red
-                params.width += incr;
-                params.height += incr;
-                view.setLayoutParams(params);
-                break;
-
-            case R.id.grid_image_scale2:
-
-                if (false) {
-                    autoTransition = new AutoTransition();
-                    autoTransition.setDuration(ANIM_MILLI);
-                    TransitionManager.beginDelayedTransition((ViewGroup) rootView, autoTransition);
-                } else {
-                    TransitionSet transitionSet = new TransitionSet();
-                    transitionSet.setDuration(ANIM_MILLI);
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        if (id == R.id.grid_image_scale1) {
+            view.setBackgroundColor(0x80ff0000);    // red
+            params.width += incr;
+            params.height += incr;
+            view.setLayoutParams(params);
+        } else if (id == R.id.grid_image_scale2) {
+            if (false) {
+                autoTransition = new AutoTransition();
+                autoTransition.setDuration(ANIM_MILLI);
+                TransitionManager.beginDelayedTransition((ViewGroup) rootView, autoTransition);
+            } else {
+                TransitionSet transitionSet = new TransitionSet();
+                transitionSet.setDuration(ANIM_MILLI);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                         /*
                         https://medium.com/@andkulikov/animate-all-the-things-transitions-in-android-914af5477d50
                         ChangeBounds changeBounds = new ChangeBounds();
@@ -142,69 +138,64 @@ public class GridImagesFrag  extends UiFragment   {
                         transitionSet.addTransition(new ChangeTransform());
                         transitionSet.addTransition(new Slide());
                          */
-                        transitionSet.addTransition(new AutoTransition());
-                        transitionSet.addTransition(new Translation());
-                    }
-                    transitionSet.addTransition(new ChangeBounds());
-
-                    TransitionManager.beginDelayedTransition((ViewGroup) rootView, transitionSet);
+                    transitionSet.addTransition(new AutoTransition());
+                    transitionSet.addTransition(new Translation());
                 }
+                transitionSet.addTransition(new ChangeBounds());
+
+                TransitionManager.beginDelayedTransition((ViewGroup) rootView, transitionSet);
+            }
+            view.setBackgroundColor(Color.WHITE);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                view.setElevation(params.width / 10f);
+            }
+
+            if (view instanceof TextView) {
+                TextView textView = (TextView) view;
+                textView.setGravity(Gravity.RIGHT);
+            }
+            // view.setForegroundGravity(Gravity.RIGHT);
+
+            params.width += incr;
+            params.height += incr;
+            // view.requestLayout();
+
+            // Rect viewableRect = new Rect();
+            // view.getGlobalVisibleRect(viewableRect);
+            if (view.getX() < 0) {
+                // view.setX(incr);
+                view.setTranslationX(incr * 2);
+                ViewGroup vg = (ViewGroup) view.getParent();
+                vg.setClipChildren(false);
+            } else if (view.getX() + params.width > screenRect.width()) {
+                view.setX(screenRect.width() - params.width);
+                // view.setTranslationX(-view.getX());
+            }
+            view.requestLayout();
+            view.invalidate();
+        } else if (id == R.id.grid_image_down) {
+            if (params.width > incr) {
                 view.setBackgroundColor(Color.WHITE);
+                autoTransition = new AutoTransition();
+                autoTransition.setDuration(ANIM_MILLI);
+                TransitionManager.beginDelayedTransition((ViewGroup) rootView, autoTransition);
+                params.width -= incr;
+                params.height -= incr;
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    view.setElevation(params.width/10f);
-                }
-
-                if (view instanceof TextView) {
-                    TextView textView = (TextView)view;
-                    textView.setGravity(Gravity.RIGHT);
-                }
-                // view.setForegroundGravity(Gravity.RIGHT);
-
-                params.width += incr;
-                params.height += incr;
-                // view.requestLayout();
-
-                // Rect viewableRect = new Rect();
-                // view.getGlobalVisibleRect(viewableRect);
-                if (view.getX() < 0) {
-                    // view.setX(incr);
-                    view.setTranslationX(incr*2);
-                    ViewGroup vg = (ViewGroup)view.getParent();
-                    vg.setClipChildren(false);
-                } else if (view.getX() + params.width > screenRect.width()) {
-                    view.setX(screenRect.width() - params.width);
-                    // view.setTranslationX(-view.getX());
+                    view.setElevation(params.width / 10f);
                 }
                 view.requestLayout();
                 view.invalidate();
-                break;
-
-            case R.id.grid_image_down:
-                if (params.width > incr) {
-                    view.setBackgroundColor(Color.WHITE);
-                    autoTransition = new AutoTransition();
-                    autoTransition.setDuration(ANIM_MILLI);
-                    TransitionManager.beginDelayedTransition((ViewGroup) rootView, autoTransition);
-                    params.width -= incr;
-                    params.height -= incr;
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                        view.setElevation(params.width/10f);
-                    }
-                    view.requestLayout();
-                    view.invalidate();
-                } else {
-                    scaleImage(view, R.id.grid_image_reset, pos);
-                }
-                break;
-
-            case R.id.grid_image_reset:
-                params.width = dimPx;
-                params.height = dimPx;
-                view.setLayoutParams(params);
-                if (view instanceof ImageView) {
-                    view.setBackgroundColor(Color.TRANSPARENT);
-                }
-                break;
+            } else {
+                scaleImage(view, R.id.grid_image_reset, pos);
+            }
+        } else if (id == R.id.grid_image_reset) {
+            params.width = dimPx;
+            params.height = dimPx;
+            view.setLayoutParams(params);
+            if (view instanceof ImageView) {
+                view.setBackgroundColor(Color.TRANSPARENT);
+            }
         }
     }
 
@@ -288,12 +279,7 @@ public class GridImagesFrag  extends UiFragment   {
             textView.setLayoutParams(new GridView.LayoutParams(dimPx, dimPx));
             textView.setPadding(8, 8, 8, 8);
             textView.setText(text);
-            textView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    doAction(view, pos);
-                }
-            });
+            textView.setOnClickListener(view -> doAction(view, pos));
             return textView;
         }
 
@@ -303,12 +289,7 @@ public class GridImagesFrag  extends UiFragment   {
             imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
             imageView.setPadding(8, 8, 8, 8);
 
-            imageView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    doAction(view, pos);
-                }
-            });
+            imageView.setOnClickListener(view -> doAction(view, pos));
 
             return imageView;
         }
@@ -318,31 +299,23 @@ public class GridImagesFrag  extends UiFragment   {
             int ckId = mRadioGroup.getCheckedRadioButtonId();
 
             try {
-                switch (ckId) {
-                    case R.id.grid_image_statelist:
-                        break;
-                    case R.id.grid_image_brAnim:
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                            if (view instanceof ImageView) {
-                                ((ImageView)view).setImageResource(mThumbIds[pos]);
-                            }
-                            view.setBackgroundResource(R.drawable.anim_grady1);
-                            ((AnimatedVectorDrawable)view.getBackground()).start();
+                if (ckId == R.id.grid_image_statelist) {
+                } else if (ckId == R.id.grid_image_brAnim) {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        if (view instanceof ImageView) {
+                            ((ImageView) view).setImageResource(mThumbIds[pos]);
                         }
-                        break;
-                    case R.id.grid_image_elev:
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                            // view.setTranslationZ(20.0f);
-                            // view.setZ(20.0f);
-                            view.setElevation(20.0f);
-                        }
-                        break;
-                    case R.id.grid_image_scale1:
-                    case R.id.grid_image_scale2:
-                    case R.id.grid_image_down:
-                    case R.id.grid_image_reset:
-                        scaleImage(view, ckId, pos);
-                        break;
+                        view.setBackgroundResource(R.drawable.anim_grady1);
+                        ((AnimatedVectorDrawable) view.getBackground()).start();
+                    }
+                } else if (ckId == R.id.grid_image_elev) {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        // view.setTranslationZ(20.0f);
+                        // view.setZ(20.0f);
+                        view.setElevation(20.0f);
+                    }
+                } else if (ckId == R.id.grid_image_scale1 || ckId == R.id.grid_image_scale2 || ckId == R.id.grid_image_down || ckId == R.id.grid_image_reset) {
+                    scaleImage(view, ckId, pos);
                 }
             } catch (Exception ex) {
                 ALog.w.msg(ex.getMessage());

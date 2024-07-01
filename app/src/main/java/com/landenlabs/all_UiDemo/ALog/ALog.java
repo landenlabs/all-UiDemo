@@ -21,18 +21,17 @@
 
 package com.landenlabs.all_UiDemo.ALog;
 
+import static android.content.Context.ACTIVITY_SERVICE;
+
 import android.app.ActivityManager;
 import android.content.Context;
 import android.net.TrafficStats;
-import android.os.Build;
 import android.os.Debug;
 import android.os.Looper;
 import android.util.Log;
 import android.widget.Toast;
 
 import java.lang.ref.WeakReference;
-
-import static android.content.Context.ACTIVITY_SERVICE;
 
 /**
  * Log wrapper (helper) enumeration class. Built-in joining of object strings or formatting
@@ -148,18 +147,18 @@ public enum ALog {
 
     /**
      * Custom formatting TAGs - uses optional parameters following ALog.Fmt.xxx tag
-     *
+     * <p>
      * Extend this method to support your own custom formatting needs. The goal is to avoid
      * preformatting any log information until the log message is needed (inside log level threshold).
-     *
+     * <p>
      * ID -
      * The Id is identical to the default Tag value which is the objects class name and unique id.
      * The Id is useful to monitor a collection of similar objects where the unique id helps distinguish
      * instance from one another.
-     *
+     * <p>
      *   Example ID for Instance of Foo
      *     Foo@12345
-     *
+     * <p>
      * Example:
      *    ALog.tagMsg(this, "pre msg", " Foo=", ALog.Fmt.Id, objFoo, " tailer msg");
      */
@@ -534,26 +533,24 @@ public enum ALog {
      */
     public void memory(Object tagObj, Context context,  Object... args) {
         if (mLevel >= minLevel) {
-            if (Build.VERSION.SDK_INT >= 23) {
-                System.gc();
-                ActivityManager activityManager =
-                        (ActivityManager) context.getSystemService(ACTIVITY_SERVICE);
-                if (activityManager != null) {
-                    Debug.MemoryInfo[] memInfos =
-                            activityManager.getProcessMemoryInfo(new int[]{android.os.Process.myPid()});
-                    Debug.MemoryInfo memoryInfo = memInfos[0];
+            System.gc();
+            ActivityManager activityManager =
+                    (ActivityManager) context.getSystemService(ACTIVITY_SERVICE);
+            if (activityManager != null) {
+                Debug.MemoryInfo[] memInfos =
+                        activityManager.getProcessMemoryInfo(new int[]{android.os.Process.myPid()});
+                Debug.MemoryInfo memoryInfo = memInfos[0];
 
-                    tagMsg(tagObj,
-                            join("", 0, args, null),
-                            " Memory javaHeap=",
-                            memoryInfo.getMemoryStat("summary.java-heap"),
-                            " nativeHeap=",
-                            memoryInfo.getMemoryStat("summary.native-heap"),
-                            " graphics=",
-                            memoryInfo.getMemoryStat("summary.graphics"),
-                            " NetRcv=", TrafficStats.getUidRxBytes(android.os.Process.myUid())
-                    );
-                }
+                tagMsg(tagObj,
+                        join("", 0, args, null),
+                        " Memory javaHeap=",
+                        memoryInfo.getMemoryStat("summary.java-heap"),
+                        " nativeHeap=",
+                        memoryInfo.getMemoryStat("summary.native-heap"),
+                        " graphics=",
+                        memoryInfo.getMemoryStat("summary.graphics"),
+                        " NetRcv=", TrafficStats.getUidRxBytes(android.os.Process.myUid())
+                );
             }
         }
     }
@@ -592,7 +589,7 @@ public enum ALog {
 
     /**
      * Helper to make Log tag from stack, provide class and line number.
-     *
+     * <p>
      * Make a Log tag by locating class calling ALog.
      *
      * @return  "filename:lineNumber"
