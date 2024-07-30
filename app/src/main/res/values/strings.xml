@@ -31,6 +31,7 @@
    <string name="imageButtonWrapHeight" translatable="false">wrap\nHeight</string>
 
     <string name="textItems" translatable="false">Two\nText Rows</string>
+    <string name="textMultipleRows" translatable="false">[Top]\nThis is\na lot of\nrows of text\nto test scrolling\nin a text view.\n[Bottom]</string>
 
     <string name="menu_settings" translatable="false">Ui Demo v1.4</string>
     <string name="menu_about" translatable="false">Dennis Lang</string>

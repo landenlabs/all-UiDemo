@@ -260,6 +260,62 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:text="Grid Layout, use column_weight" />
+
+        <!-- GridLayout must specify a width, such as match_parent to use column_weight
+             First row defines the columns.
+             For column_weight to work, the 1st row of column fields, must set width to 0dp
+             Field height defaults to wrap
+        -->
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:alignmentMode="alignBounds"
+            android:background="#ffc0f0"
+            android:columnCount="3"
+            android:padding="10dp"
+            android:visibility="visible">
+
+            <TextView
+                android:background="#f44"
+                android:layout_width="0dp"
+                android:layout_columnWeight="2"
+                android:text="Test Msg"/>
+            <TextView
+                android:background="#4f4"
+                android:layout_columnWeight="1"
+                android:layout_width="0dp"
+                android:text="This is a long text message"/>
+            <TextView
+                android:background="#44f"
+                android:layout_columnWeight="1"
+                android:textColor="#fff"
+                android:layout_width="0dp"
+                android:text="Test Msg"/>
+            <!-- 2nd and following rows, must set layout_gravity to fill to use same space -->
+            <TextView
+                android:background="#f4f"
+                android:layout_width="0dp"
+                android:layout_gravity="fill"
+                android:text="row2, col1"/>
+            <TextView
+                android:background="#4ff"
+                android:layout_width="0dp"
+                android:layout_gravity="fill"
+                android:text="row2, col2"/>
+            <TextView
+                android:background="#ff0"
+                android:layout_width="0dp"
+                android:layout_gravity="fill"
+                android:gravity="center"
+                android:text="row2, col3, really long text"/>
+        </GridLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
             android:text="Grid Layout (4 columns) \nwrap_content" />
 
         <com.landenlabs.all_UiDemo.Util.DividerGridLayout
