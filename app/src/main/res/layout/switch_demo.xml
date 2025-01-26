@@ -96,21 +96,20 @@
                 android:background="@drawable/transparent_ripple"
 
                 android:showText="true"
+                android:splitTrack="false"
+                android:switchMinWidth="100dp"
                 android:text="Custom\nthumb track"
                 android:textColor="#f00"
                 android:textOff="-"
                 android:textOn="+"
-                android:textSize="@dimen/buttonTextSize"
-                android:splitTrack="false"
 
-                android:switchMinWidth="100dp"
+                android:textSize="@dimen/buttonTextSize"
                 android:thumb="@drawable/thumb"
                 android:track="@drawable/track"
 
                 app:showText="true"
-                app:track="@drawable/track"
                 app:switchMinWidth="100dp"
-                />
+                app:track="@drawable/track" />
 
             <View
                 android:layout_width="wrap_content"
