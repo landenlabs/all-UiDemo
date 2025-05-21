@@ -16,7 +16,7 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *
  * @author Dennis Lang
- * @see http://LanDenLabs.com/
+ * @see https://LanDenLabs.com/
  */
 
 package com.landenlabs.all_UiDemo.Util;
@@ -25,7 +25,7 @@ package com.landenlabs.all_UiDemo.Util;
  * Created by Dennis Lang on 7/6/16.
  *
  * @author Dennis Lang (LanDen Labs)
- * @see <a href="https://landenlabs.com/android"> author's web-site </a>
+ * @see <a href="https://LanDenLabs.com/android"> author's web-site </a>
  */
 public class PageItem {
     public final String mTitle;

@@ -16,7 +16,7 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *
  * @author Dennis Lang
- * @see http://LanDenLabs.com/
+ * @see https://LanDenLabs.com/
  */
 
 package com.landenlabs.all_UiDemo.Util;
@@ -34,7 +34,7 @@ import com.landenlabs.all_UiDemo.Ui;
  * Show Large application image and fade out.
  *
  * @author Dennis Lang (LanDen Labs)
- * @see <a href="https://landenlabs.com/android"> author's web-site </a>
+ * @see <a href="https://LanDenLabs.com/android"> author's web-site </a>
  */
 public class UiSplashScreen {
 
@@ -50,7 +50,7 @@ public class UiSplashScreen {
 
     /**
      * Show animated splash screen.
-     * See https://landenlabs.com
+     * See https://LanDenLabs.com
      */
     public void show(View context) {
         final int fadeinMsec = 2000;

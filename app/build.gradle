@@ -47,6 +47,8 @@ android {
         println("Setting release to " + signingConfigs.release.storeFile.absolutePath )
     }
 
+    buildFeatures.buildConfig = true
+
     buildTypes {
         release {
             // Enables code shrinking, obfuscation, and optimization.
@@ -113,8 +115,8 @@ dependencies {
 // Rename app
 android.applicationVariants.configureEach { variant ->
     variant.outputs.configureEach {
-        def ourname = project.parent.name
-        outputFileName = "$ourname-${variant.name}-${variant.versionName}.apk"
+        def ourName = project.parent.name
+        outputFileName = "$ourName-${variant.name}-${variant.versionName}.apk"
         println "out name= $outputFileName"
     }
 }

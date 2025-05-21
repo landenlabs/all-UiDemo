@@ -16,7 +16,7 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *
  * @author Dennis Lang
- * @see http://LanDenLabs.com/
+ * @see https://LanDenLabs.com/
  */
 
 package com.landenlabs.all_UiDemo.frag;
@@ -37,7 +37,7 @@ import com.landenlabs.all_UiDemo.R;
  * and most of the standard pre-built list row layouts.
  *
  * @author Dennis Lang (LanDen Labs)
- * @see <a href="https://landenlabs.com/android"> author's web-site </a>
+ * @see <a href="https://LanDenLabs.com/android"> author's web-site </a>
  */
 public class PickerFrag extends UiFragment  {
 

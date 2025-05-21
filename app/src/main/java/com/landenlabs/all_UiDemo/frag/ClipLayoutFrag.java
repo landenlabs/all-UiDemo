@@ -16,7 +16,7 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *
  * @author Dennis Lang
- * @see http://LanDenLabs.com/
+ * @see https://LanDenLabs.com/
  */
 
 package com.landenlabs.all_UiDemo.frag;
@@ -57,7 +57,7 @@ import java.util.List;
  * https://medium.com/appkode/clipping-in-android-quickly-qualitatively-cheap-3ccfd31d5d6b
  *
  * @author Dennis Lang (LanDen Labs)
- * @see <a href="https://landenlabs.com/android"> author's web-site </a>
+ * @see <a href="https://LanDenLabs.com/android"> author's web-site </a>
  */
 
 public class ClipLayoutFrag extends UiFragment {

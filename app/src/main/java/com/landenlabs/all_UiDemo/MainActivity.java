@@ -16,7 +16,7 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *
  * @author Dennis Lang
- * @see http://LanDenLabs.com/
+ * @see https://LanDenLabs.com/
  */
 
 package com.landenlabs.all_UiDemo;
@@ -64,7 +64,7 @@ import com.landenlabs.all_UiDemo.Util.PageItem;
  *   adb shell am start -W -a android.intent.action.VIEW -d "landenlabs://alluidemo/page1"
  *
  * @author Dennis Lang (LanDen Labs)
- * @see <a href="https://landenlabs.com/android"> author's web-site </a>
+ * @see <a href="https://LanDenLabs.com/android"> author's web-site </a>
  */
 @SuppressWarnings("ConstantIfStatement")
 public class MainActivity extends AppCompatActivity {
