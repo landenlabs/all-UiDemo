@@ -232,11 +232,23 @@
         <item name="android:textFontWeight">400</item>
         <item name="android:includeFontPadding">false</item>
     </style>
+    <style name="text20" parent="font_default">
+        <item name="android:textSize">20dp</item>
+    </style>
     <style name="text24" parent="font_default">
         <item name="android:textSize">24dp</item>
     </style>
     <style name="text32" parent="font_default">
         <item name="android:textSize">32dp</item>
+    </style>
+
+
+    <style name="info_label" parent="text20">
+        <item name="android:textColor">#111</item>
+        <item name="android:textFontWeight">500</item>
+    </style>
+    <style name="info_value" parent="text20">
+        <item name="android:textColor">#f00</item>
     </style>
 
 </resources>

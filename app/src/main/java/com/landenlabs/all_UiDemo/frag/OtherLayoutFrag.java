@@ -21,16 +21,23 @@
 
 package com.landenlabs.all_UiDemo.frag;
 
+import android.content.Context;
+import android.graphics.Color;
 import android.graphics.drawable.AnimatedVectorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.transition.AutoTransition;
 import android.transition.TransitionManager;
+import android.view.ContextThemeWrapper;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridLayout;
 import android.widget.TableLayout;
+import android.widget.TextView;
 
+import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 
 import com.landenlabs.all_UiDemo.R;
@@ -94,6 +101,46 @@ public class OtherLayoutFrag  extends UiFragment
                 view.setOnClickListener(this);
             }
         }
+
+        Context context = requireContext();
+        GridLayout gridLayout1 =
+            Ui.viewById(mRootView, R.id.gridLayoutFillProgramatically);
+
+        // gridLayout1.removeAllViews();
+
+        for (int row = 0; row < 3; row++) {
+            TextView tvLeft1 = new TextView(new ContextThemeWrapper(context, R.style.info_label));
+            tvLeft1.setText("Top Left Text " + row);
+            tvLeft1.setBackgroundColor(0xffccffcc);
+            TextView tvLeft2 = new TextView(new ContextThemeWrapper(context, R.style.info_label));
+            tvLeft2.setText("Bottom Left " + row);
+            tvLeft2.setBackgroundColor(0xffffcccc);
+            TextView tvRight = new TextView(new ContextThemeWrapper(context, R.style.info_value));
+            tvRight.setText("Right 2 rows " + row);
+            tvRight.setBackgroundColor(0xffccccff);
+            View line = new View(context);
+            line.setBackgroundColor(Color.GREEN);
+
+            GridLayout.LayoutParams txLp = new GridLayout.LayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            txLp.columnSpec = GridLayout.spec(0, 1, 1f);  //  GridLayout.UNDEFINED
+            gridLayout1.addView(tvLeft1, txLp);
+
+            txLp = new GridLayout.LayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            txLp.columnSpec = GridLayout.spec(1, 1, 1f);  //  GridLayout.UNDEFINED
+            txLp.rowSpec = GridLayout.spec(GridLayout.UNDEFINED, 2);
+            txLp.setGravity(Gravity.CENTER_VERTICAL);
+            gridLayout1.addView(tvRight, txLp);
+
+            txLp = new GridLayout.LayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            txLp.columnSpec = GridLayout.spec(0, 1, 1f);  //  GridLayout.UNDEFINED
+            gridLayout1.addView(tvLeft2, txLp);
+
+            txLp = new GridLayout.LayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 4));
+            txLp.columnSpec = GridLayout.spec(0, 2, 1f);  //  GridLayout.UNDEFINED
+            txLp.setMargins(4, 10, 4, 10);
+            gridLayout1.addView(line, txLp);
+        }
+
     }
 
     void getChildren(ViewGroup viewGroup, ArrayList<View> childList) {
