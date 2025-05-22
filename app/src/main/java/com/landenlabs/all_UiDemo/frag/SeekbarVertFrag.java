@@ -16,7 +16,7 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *
  * @author Dennis Lang
- * @see http://LanDenLabs.com/
+ * @see https://LanDenLabs.com/
  */
 
 package com.landenlabs.all_UiDemo.frag;
@@ -40,7 +40,7 @@ import java.util.ArrayList;
  * Demonstrate ripple on various views using different settings.
  *
  * @author Dennis Lang (LanDen Labs)
- * @see <a href="https://landenlabs.com/android"> author's web-site </a>
+ * @see <a href="https://LanDenLabs.com/android"> author's web-site </a>
  */
 public class SeekbarVertFrag extends UiFragment
         implements  SeekBarWithLabelHorizontal.Apply {

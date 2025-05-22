@@ -16,7 +16,7 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *
  * @author Dennis Lang
- * @see http://LanDenLabs.com/
+ * @see https://LanDenLabs.com/
  */
 
 package com.landenlabs.all_UiDemo.Util;
@@ -34,7 +34,7 @@ import com.landenlabs.all_UiDemo.ALog.ALog;
  * Created by Dennis Lang on 7/4/16.
  *
  * @author Dennis Lang (LanDen Labs)
- * @see <a href="https://landenlabs.com/android"> author's web-site </a>
+ * @see <a href="https://LanDenLabs.com/android"> author's web-site </a>
  */
 public class ExImageView extends androidx.appcompat.widget.AppCompatImageView {
 

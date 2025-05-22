@@ -16,7 +16,7 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *
  * @author Dennis Lang
- * @see http://LanDenLabs.com/
+ * @see https://LanDenLabs.com/
  */
 
 package com.landenlabs.all_UiDemo.frag;
@@ -46,8 +46,8 @@ import java.util.List;
  * Demonstrate rotating Two Views using  ObjectAnimators (slide look)
  *
  * @author Dennis Lang (LanDen Labs)
- * @see <a href="https://landenlabs.com/android"> author's web-site </a>
- * @see <a href="https://landenlabs.com/android/flip-animation/index.html"> Flip animation</a>
+ * @see <a href="https://LanDenLabs.com/android"> author's web-site </a>
+ * @see <a href="https://LanDenLabs.com/android/flip-animation/index.html"> Flip animation</a>
  */
 @SuppressWarnings("Convert2Lambda")
 public class AnimListFrag  extends UiFragment {
