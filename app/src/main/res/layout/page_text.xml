@@ -130,9 +130,8 @@
                use EditText
             -->
             <EditText
-                android:editable="false"
-                android:inputType="none"
-                android:cursorVisible="false"
+                android:inputType="text"
+                android:cursorVisible="true"
 
                 android:background="@color/row1"
                 android:layout_width="wrap_content"
@@ -150,7 +149,7 @@
                 android:scrollbarSize="8dp"
                 android:scrollbarStyle="insideInset"
                 android:scrollbars="vertical"
-
+                android:selectAllOnFocus="true"
                 android:isScrollContainer="true"
                 android:nestedScrollingEnabled="true"
                 />
@@ -165,17 +164,16 @@
 
             <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
-                >
-            <TextView
-                android:background="@color/row0"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:text="@string/textMultipleRows"
-                android:textAppearance="@style/TextAppearanceWhite32"
-                android:gravity="center"
-                />
+                android:layout_height="150dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:background="@color/row0"
+                    android:gravity="center"
+                    android:text="@string/textMultipleRows"
+                    android:textAppearance="@style/TextAppearanceWhite32" />
 
             </androidx.core.widget.NestedScrollView>
 

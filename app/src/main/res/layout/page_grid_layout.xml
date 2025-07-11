@@ -66,6 +66,7 @@
                 android:layout_height="@dimen/grid_layout_image_height"
                 android:background="@drawable/ripple_boarderless"
                 android:clickable="true"
+                android:nextFocusForward=""
                 android:src="@drawable/image_e"
                 android:stateListAnimator="@animator/press"
                 android:focusable="true" />

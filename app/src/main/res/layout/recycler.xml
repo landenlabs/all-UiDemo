@@ -44,7 +44,6 @@
         tools:listitem="@layout/scroll_item_planet"
         android:id="@+id/recyclerView"
         android:requiresFadingEdge="vertical"
-        android:fadingEdge="vertical"
         android:fadingEdgeLength="30dp"
         android:layout_below="@+id/header"
         android:layout_above="@+id/footer"

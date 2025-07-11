@@ -232,6 +232,12 @@
         <item name="android:textFontWeight">400</item>
         <item name="android:includeFontPadding">false</item>
     </style>
+    <style name="text12" parent="font_default">
+        <item name="android:textSize">12dp</item>
+    </style>
+    <style name="text14" parent="font_default">
+        <item name="android:textSize">14dp</item>
+    </style>
     <style name="text20" parent="font_default">
         <item name="android:textSize">20dp</item>
     </style>
@@ -249,6 +255,34 @@
     </style>
     <style name="info_value" parent="text20">
         <item name="android:textColor">#f00</item>
+    </style>
+
+
+    <style name="dash1_flow">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/bg_card</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="flow_verticalBias">0</item>
+        <item name="flow_horizontalAlign">start</item>
+        <item name="flow_horizontalStyle">spread_inside</item>
+        <item name="flow_verticalGap">16dp</item>
+        <item name="flow_horizontalGap">16dp</item>
+        <item name="flow_wrapMode">chain</item>
+    </style>
+
+    <!--
+        <item name="layout_constrainedWidth">true</item>
+        <item name="layout_constraintHorizontal_weight">1</item>
+    -->
+    <style name="flowField1">
+        <item name="android:background">@drawable/bg_dash1_edittext_round</item>
+        <item name="layout_constraintWidth_min">100dp</item>
+        <item name="layout_constraintWidth_max">300dp</item>
+        <item name="layout_constraintWidth_default">wrap</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
     </style>
 
 </resources>
