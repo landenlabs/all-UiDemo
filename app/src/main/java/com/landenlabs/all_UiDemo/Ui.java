@@ -113,10 +113,15 @@ public class Ui {
     /**
      * @return DisplayMetrics
      */
+    @SuppressWarnings("deprecation")
     public static DisplayMetrics getDisplayMetrics(Context context) {
         DisplayMetrics dm = new DisplayMetrics();
         WindowManager winMgr = SysUtils.getServiceSafe(context, Context.WINDOW_SERVICE);
-        winMgr.getDefaultDisplay().getMetrics(dm);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            context.getDisplay().getRealMetrics(dm);
+        } else {
+            winMgr.getDefaultDisplay().getMetrics(dm);
+        }
         return dm;
     }
 

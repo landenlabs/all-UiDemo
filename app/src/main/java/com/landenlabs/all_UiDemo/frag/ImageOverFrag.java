@@ -35,6 +35,7 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
 import android.graphics.Shader;
 import android.graphics.drawable.BitmapDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -214,6 +215,7 @@ public class ImageOverFrag  extends UiFragment
         return maxXYZ/2 - seekBar.getProgress() *  maxXYZ / seekMax;
     }
 
+    @SuppressWarnings("deprecation")
     private void updateView() {
 
         gray = graySb.getProgress();
@@ -289,7 +291,11 @@ public class ImageOverFrag  extends UiFragment
         }
 
         // Now we apply the 'magic sauce' to the paint
-        xferPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            xferPaint.setBlendMode(android.graphics.BlendMode.DST_IN);
+        } else {
+            xferPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
+        }
 
         Bitmap result = Bitmap.createBitmap(imgWidth, imgHeight, Bitmap.Config.ARGB_8888);
         Canvas resultCanvas = new Canvas(result);
@@ -309,7 +315,7 @@ public class ImageOverFrag  extends UiFragment
         topView.setImageBitmap(result);
     }
 
-    @SuppressWarnings("SuspiciousNameCombination")
+    @SuppressWarnings({"deprecation", "SuspiciousNameCombination"})
     private void drawNotchShadow(Canvas canvas, int color, float notchCenter, float notchWidth,
                                  float pathWidth, float strokeWidth) {
 
@@ -338,7 +344,11 @@ public class ImageOverFrag  extends UiFragment
         //    paint.setStrokeJoin(Paint.Join.ROUND);
         //    paint.setStrokeCap(Paint.Cap.ROUND);
         paint.setStrokeWidth(strokeWidth);
-        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.MULTIPLY));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            paint.setBlendMode(android.graphics.BlendMode.MULTIPLY);
+        } else {
+            paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.MULTIPLY));
+        }
 
         float[] lightSrc = new float[]{lx, ly, lz};
         float blurRadius = rad;
@@ -362,11 +372,19 @@ public class ImageOverFrag  extends UiFragment
                     break;
                 case EmbossFilter:
                     filter = new EmbossMaskFilter(lightSrc, ambient, specular, blurRadius);
-                    paint.setXfermode(new PorterDuffXfermode(portDuffMode));
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                        paint.setBlendMode(android.graphics.BlendMode.valueOf(portDuffMode.name()));
+                    } else {
+                        paint.setXfermode(new PorterDuffXfermode(portDuffMode));
+                    }
                     break;
                 case BlurFilter:
                     filter = new BlurMaskFilter(Math.max(0.5f, blurRadius), BlurMaskFilter.Blur.NORMAL);
-                    paint.setXfermode(new PorterDuffXfermode(portDuffMode));
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                        paint.setBlendMode(android.graphics.BlendMode.valueOf(portDuffMode.name()));
+                    } else {
+                        paint.setXfermode(new PorterDuffXfermode(portDuffMode));
+                    }
                     break;
             }
 

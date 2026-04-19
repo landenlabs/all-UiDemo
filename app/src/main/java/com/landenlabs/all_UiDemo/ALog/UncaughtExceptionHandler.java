@@ -96,6 +96,7 @@ public class UncaughtExceptionHandler implements Thread.UncaughtExceptionHandler
     /**
      * Save stack trace in preferences to display on next app run.
      */
+    @SuppressWarnings("deprecation")
     private void saveCrashReport(Thread thread, Throwable ex) {
         try {
             StringBuilder report = new StringBuilder();

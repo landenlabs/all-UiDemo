@@ -94,9 +94,8 @@ public class GridImagesFrag  extends UiFragment   {
     @Override
     public void onResume() {
         super.onResume();
-        Point pt = new Point();
-        mRootView.getDisplay().getSize(pt);
-        screenRect = new Rect(0, 0, pt.x, pt.y);
+        android.util.DisplayMetrics dm = Ui.getDisplayMetrics(getContext());
+        screenRect = new Rect(0, 0, dm.widthPixels, dm.heightPixels);
     }
 
     private void setup() {

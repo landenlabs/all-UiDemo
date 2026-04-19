@@ -345,6 +345,7 @@ public enum ALog {
         return this;
     }
 
+    @SuppressWarnings("deprecation")
     public static String tagStr(Object obj) {
         String str = tagId(obj);
 

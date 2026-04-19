@@ -36,7 +36,7 @@ import java.util.Objects;
 public class SysUtils {
 
     @NonNull
-    public static  <T> T getServiceSafe(Context context, String service) {
+    public static <T> T getServiceSafe(Context context, String service) {
         //noinspection unchecked
         return (T) Objects.requireNonNull(context.getSystemService(service));
     }

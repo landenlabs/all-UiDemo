@@ -117,28 +117,30 @@ public class BottomAppBarLayoutBehavior extends CoordinatorLayout.Behavior<AppBa
     }
 
     private void animateOut(final AppBarLayout appBarLayout) {
-        ViewCompat.animate(appBarLayout).translationY(0F).alpha(0.0F).setInterpolator(INTERPOLATOR)
-                .withLayer()
-                .setListener(new ViewPropertyAnimatorListener() {
-                    public void onAnimationStart(@NonNull View view) {
+        appBarLayout.animate().translationY(0F).alpha(0.0F).setInterpolator(INTERPOLATOR)
+                .setListener(new android.animation.AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationStart(android.animation.Animator animation) {
                         BottomAppBarLayoutBehavior.this.mIsAnimatingOut = true;
                     }
 
-                    public void onAnimationCancel(@NonNull View view) {
+                    @Override
+                    public void onAnimationCancel(android.animation.Animator animation) {
                         BottomAppBarLayoutBehavior.this.mIsAnimatingOut = false;
                     }
 
-                    public void onAnimationEnd(@NonNull View view) {
+                    @Override
+                    public void onAnimationEnd(android.animation.Animator animation) {
                         BottomAppBarLayoutBehavior.this.mIsAnimatingOut = false;
-                        view.setVisibility(View.GONE);
+                        appBarLayout.setVisibility(View.GONE);
                     }
                 }).start();
     }
 
     private void animateIn(AppBarLayout appBarLayout) {
         appBarLayout.setVisibility(View.VISIBLE);
-        ViewCompat.animate(appBarLayout).scaleX(1.0F).scaleY(1.0F).alpha(1.0F)
-                .setInterpolator(INTERPOLATOR).withLayer().setListener(null)
+        appBarLayout.animate().scaleX(1.0F).scaleY(1.0F).alpha(1.0F)
+                .setInterpolator(INTERPOLATOR).setListener(null)
                 .start();
 
     }

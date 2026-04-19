@@ -147,7 +147,7 @@ public class ClipPathPorterLinearLayout extends LinearLayout {
                             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                                 canvas.clipOutRect(rect);
                             } else {
-                                canvas.clipRect(rect, Region.Op.DIFFERENCE);
+                                canvas.clipRect((float)rect.left, (float)rect.top, (float)rect.right, (float)rect.bottom);
                             }
                         }
 

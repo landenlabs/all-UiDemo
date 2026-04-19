@@ -246,7 +246,13 @@ public class ImageBlendFrag  extends UiFragment implements View.OnClickListener 
         iv.setBackgroundResource(drawableRes);
         if (iv.getBackground() instanceof LayerDrawable) {
             LayerDrawable background = (LayerDrawable) iv.getBackground();
-            background.findDrawableByLayerId(layerId).setColorFilter(mColor, mode);
+            Drawable layer = background.findDrawableByLayerId(layerId);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                layer.setColorFilter(new android.graphics.BlendModeColorFilter(mColor, android.graphics.BlendMode.valueOf(mode.name())));
+            } else {
+                //noinspection deprecation
+                layer.setColorFilter(mColor, mode);
+            }
         }
         int imgWidth = getResources().getDimensionPixelSize(R.dimen.blend_image_width);
         iv.setAdjustViewBounds(true);

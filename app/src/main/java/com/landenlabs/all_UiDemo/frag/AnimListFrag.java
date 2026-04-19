@@ -26,6 +26,7 @@ import android.animation.ObjectAnimator;
 import android.animation.TypeEvaluator;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,7 +54,7 @@ import java.util.List;
 public class AnimListFrag  extends UiFragment {
 
     // ---- Timer ----
-    private final Handler m_handler = new Handler();
+    private final Handler m_handler = new Handler(Looper.getMainLooper());
     private final int mDurationMsec = 3000;
     private final Runnable m_updateElapsedTimeTask = new Runnable() {
         public void run() {

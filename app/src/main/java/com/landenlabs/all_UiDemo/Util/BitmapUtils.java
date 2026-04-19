@@ -75,6 +75,7 @@ public class BitmapUtils {
      *            the radius of the blur. Supported range 0 < radius <= 25
      * @return bitmap that has been added blur effect
      */
+    @SuppressWarnings("deprecation")
     public static Bitmap createBlurBitmap(Context context, Bitmap bitmap, int radius) {
         try {
             if (radius <= 25) {

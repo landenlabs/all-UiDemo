@@ -25,6 +25,7 @@ import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
@@ -67,7 +68,7 @@ public class ScreenFrag extends UiFragment {
     private DisplayMetrics m_displayMetrics;
 
     static final int MSG_GET_UI_SIZE = 1;
-    private final Handler m_handler = new Handler() {
+    private final Handler m_handler = new Handler(Looper.getMainLooper()) {
 
         public void handleMessage(Message msg) {
 

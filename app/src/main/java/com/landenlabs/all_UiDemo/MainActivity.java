@@ -29,6 +29,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Looper;
 import android.os.Parcelable;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -133,6 +134,19 @@ public class MainActivity extends AppCompatActivity {
         ALog.minLevel = (DEBUG ? ALog.VERBOSE : ALog.NOLOGGING);
 
         setContentView(R.layout.activity_main);
+
+        getOnBackPressedDispatcher().addCallback(this, new androidx.activity.OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                if (mViewPager.getCurrentItem() == 0) {
+                    setEnabled(false);
+                    getOnBackPressedDispatcher().onBackPressed();
+                    setEnabled(true);
+                } else {
+                    selectPage(0);
+                }
+            }
+        });
 
         mActionBar = getSupportActionBar();
         if (mActionBar != null) {
@@ -283,14 +297,14 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void onBackPressed() {
-        if (mViewPager.getCurrentItem() == 0) {
-            super.onBackPressed(); // This will pop the Activity from the stack.
-        } else {
-            selectPage(0);
-        }
-    }
+    // @Override
+    // public void onBackPressed() {
+    //     if (mViewPager.getCurrentItem() == 0) {
+    //         getOnBackPressedDispatcher().onBackPressed();
+    //     } else {
+    //         selectPage(0);
+    //     }
+    // }
 
     public void selectPage(int idx) {
         mViewPager.setCurrentItem(idx);

@@ -65,7 +65,7 @@ public abstract class UiFragment extends Fragment {
 
     @NonNull
     private FragmentManager getFragmentMgrSafe() {
-        return requireFragmentManager();
+        return getParentFragmentManager();
     }
 
     @NonNull
@@ -82,6 +82,7 @@ public abstract class UiFragment extends Fragment {
 
 
     @Override
+    @SuppressWarnings("deprecation")
     public void onDestroyView()
     {
         ALog.d.tagMsg(this,  "onDestroyView id=" ,  getName() ,  " #" ,  getFragId());

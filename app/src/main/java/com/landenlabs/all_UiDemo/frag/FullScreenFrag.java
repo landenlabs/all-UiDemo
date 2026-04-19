@@ -148,6 +148,7 @@ public class FullScreenFrag  extends UiFragment implements View.OnClickListener 
         return (val & bits) == bits;
     }
 
+    @SuppressWarnings("deprecation")
     private void setSystemUiVisibility(ListView listView) {
         ListAdapter listAdapter = listView.getAdapter();
 

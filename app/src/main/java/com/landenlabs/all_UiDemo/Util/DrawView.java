@@ -28,6 +28,7 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PointF;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.SystemClock;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -43,7 +44,7 @@ import java.util.ArrayList;
 public class DrawView extends View {
 
     // ---- Timer ----
-    private final Handler m_handler = new Handler();
+    private final Handler m_handler = new Handler(Looper.getMainLooper());
     private final boolean m_autoPrune = true;
     private static final int MAX_POINTS = 10000;
     private static final int mDurationMsec = 3000;

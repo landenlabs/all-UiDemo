@@ -208,6 +208,7 @@ class ScaleImage extends Drawable implements Drawable.Callback {
     }
 
     @Override
+    @SuppressWarnings("deprecation")
     public int getOpacity() {
         return mScaleState.mDrawable.getOpacity();
     }
