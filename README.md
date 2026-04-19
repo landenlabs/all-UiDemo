@@ -1,9 +1,10 @@
-# a LanDen Labs - UiDemo
+# LanDen Labs - UiDemo
 Android UI Demo<br>
-<br>
-15-Jan-2020
-<br>
-API 28, Android, Java
+<br>18-Arp-2026
+<br>API 36 AndroidX Java
+<br>[Home website](https://landenlabs.com/android/index.html)
+
+<img src="screenshots/landenlabs.webp" width="300" alt="Logo">
 
 Demonstrate various Ui Components (useful to see how they change on different API levels 19...23)
 
